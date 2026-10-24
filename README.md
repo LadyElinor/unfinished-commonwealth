@@ -166,6 +166,16 @@ requests blocked by quarantine and deadline misses.
 python -m commonwealth.integrity_v1 run .local/integrity-v1
 ```
 
+The [R1 review extension](docs/REVIEW_V1.md) adds explicit contrary-evidence
+disclosure, declared conflict/capacity checks, alternatives and separate
+reconsideration of closed advice. Its [14 exposed traces](docs/REVIEW_V1_RESULTS.md)
+retain wrong restrictions, delays and unresolved reviews. The
+[repository review](docs/REPOSITORY_REVIEW_2026_10_24.md) records coverage and remaining gaps.
+
+```bash
+python -m commonwealth.review_v1 run .local/review-v1
+```
+
 [Metanoia](https://github.com/LadyElinor/Metanoia), [Adiona](https://github.com/LadyElinor/Adiona), and [CORTAC](https://github.com/LadyElinor/CORTAC) informed the design. This is new code with **no operational adapters or compatibility claim** for those projects. Their authority contracts remain unchanged. [Integration boundaries](docs/INTEGRATION.md).
 
 Contributions can add a failing case, an affected participant's account, a repair, or a competing interpretation. Each should say what evidence could change its conclusion. See [CONTRIBUTING.md](CONTRIBUTING.md).

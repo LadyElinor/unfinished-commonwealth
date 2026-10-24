@@ -40,6 +40,12 @@ I1 adds an optional advisory policy, not an operational firewall. Authenticated
 origin discovery, independent recovery and real effect-authority invalidation
 remain future work.
 
+The separate [R1 review extension](docs/REVIEW_V1.md) records disclosure of contrary
+material, reviewer conflicts/capacity, proportional service impacts, alternatives
+and one bounded reconsideration tier. Its 14 exposed traces preserve the original
+decision and costs. R1 advice cannot execute a restriction or clear I1 quarantine;
+authentic evidence, substantive fairness and live recovery remain unproven.
+
 ## Later 0.2: model-backed participation
 
 - Independently construct evaluation cases after policies and analysis are fixed. The original workshop's quality-stream fixtures and all study-v1 development cases are already exposed.

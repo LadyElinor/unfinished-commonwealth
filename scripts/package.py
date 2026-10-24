@@ -76,7 +76,9 @@ def main():
                          "examples/discernment-v1-summary.json", "tests/test_discernment_v1.py",
                          "commonwealth/integrity_v1/harness.py", "commonwealth/integrity_v1/claims.py",
                          "docs/INTEGRITY_V1.md", "docs/INTEGRITY_SOURCE_REVIEW.md",
-                         "examples/integrity-v1-summary.json", "tests/test_integrity_v1.py"):
+                         "examples/integrity-v1-summary.json", "tests/test_integrity_v1.py",
+                         "commonwealth/review_v1/engine.py", "docs/REVIEW_V1.md",
+                         "examples/review-v1-summary.json", "tests/test_review_v1.py"):
             if not (source / relative).is_file():
                 raise RuntimeError(f"Source archive omitted {relative}")
         # Run the same checks on what downstream source users actually receive.
@@ -158,6 +160,14 @@ def main():
             "replay", "integrity-v1/journals/undetected-compromise--integrity-gate.json"], smoke))
         if integrity_replay["verified"] is not True:
             raise RuntimeError("Installed undetected-compromise failure did not replay")
+        review = json.loads(run([str(executable), "-m", "commonwealth.review_v1", "run", "review-v1"], smoke))
+        if review["traces"] != 14 or review["model_calls"] != 0 or review["external_actions"] != 0:
+            raise RuntimeError("Installed balanced review omitted a trace or changed its boundary")
+        review_replay = json.loads(run([str(executable), "-m", "commonwealth.review_v1", "replay",
+            "review-v1/journals/new-evidence-reconsideration.json", "--parent",
+            "review-v1/journals/false-but-procedurally-valid.json"], smoke))
+        if review_replay["verified"] is not True or review_replay["parent_verified"] is not True:
+            raise RuntimeError("Installed reconsideration failed exact-parent replay")
         readiness = json.loads(run([str(command), "readiness"], smoke, expected=2))
         if readiness["deployment_ready"] is not False:
             raise RuntimeError("Research-only readiness boundary changed")
@@ -173,6 +183,7 @@ def main():
             "historical_procedure_replay": historical_procedure,
             "discernment_runs": discernment["runs"], "discernment_replay": discernment_replay,
             "integrity_runs": integrity["runs"], "integrity_replay": integrity_replay,
+            "review_traces": review["traces"], "review_replay": review_replay,
             "readiness_exit": 2, "model_calls": 0,
             "scope": "LOCAL_RESEARCH_ONLY",
         }

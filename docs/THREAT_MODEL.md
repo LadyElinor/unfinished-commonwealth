@@ -46,4 +46,10 @@ compromise still produces a harmful recommendation, and quarantine can block
 legitimate work. Recovery and real effect-authority invalidation are absent.
 Structured commitment review does not establish intent or grant authority.
 
+[R1](REVIEW_V1.md) trusts host classifications of evidence, controller identities,
+conflicts, workload and service impacts. It can require explicit disclosure and
+references, but cannot prove evidence is true or reasons are fair. Reconsideration
+requires the exact parent journal and preserves its decision; this checks lineage,
+not authenticated history. Every R1 outcome is advisory and cannot mutate I1 trust.
+
 No emergency exception exists. A report of urgency may justify choosing among already authorized actions; it cannot authorize a new action, bypass a required approval, or change a quorum.

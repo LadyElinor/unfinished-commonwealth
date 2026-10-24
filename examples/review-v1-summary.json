@@ -1,0 +1,386 @@
+{
+  "base_commit": "7b47c84d1d6e9ead632ed0a1547925821883dfc3",
+  "design": "R1",
+  "external_actions": 0,
+  "model_calls": 0,
+  "replay": {
+    "conflict-substitution": {
+      "events": 8,
+      "head": "23b9dcabc52a1c45b0b671f29555c15eb947c8a054c73cec9bf710a584c891ac",
+      "parent_verified": false,
+      "verified": true
+    },
+    "contrary-evidence": {
+      "events": 8,
+      "head": "2234f45e77915d83a393070d58c1b3a2bfc726fac5260282969b93a3d745af50",
+      "parent_verified": false,
+      "verified": true
+    },
+    "credibility-doubt": {
+      "events": 8,
+      "head": "77ef40ac697070894e170333e76b9183036b7e1db5705b67f072c6027547785a",
+      "parent_verified": false,
+      "verified": true
+    },
+    "disproportionate": {
+      "events": 7,
+      "head": "85929e9812d20c13aa126eb0c1aaa2e05b7c2c42d99bf05f7f8ab7fab2a7b823",
+      "parent_verified": false,
+      "verified": true
+    },
+    "false-but-procedurally-valid": {
+      "events": 7,
+      "head": "8032dd7b6d2083051e155fc96671d8b7fce850665bc1390a6a1a392844eb4553",
+      "parent_verified": false,
+      "verified": true
+    },
+    "late-counterevidence": {
+      "events": 12,
+      "head": "636d8a3c84a5a8ea1342bbb74708c7b9209374613ac9c28b09aadd2133d708e7",
+      "parent_verified": false,
+      "verified": true
+    },
+    "less-burdensome-alternative": {
+      "events": 7,
+      "head": "5c816ee65dcf6db565d81cfed7170fe8b51b6ac898f3f0115476dcb34b474b41",
+      "parent_verified": false,
+      "verified": true
+    },
+    "mitigating-evidence": {
+      "events": 8,
+      "head": "32bd3a06fd920c81a84524330489a676edc041a58537148d165ba306a5630f4d",
+      "parent_verified": false,
+      "verified": true
+    },
+    "new-evidence-reconsideration": {
+      "events": 8,
+      "head": "b801ed627eb9e387b61aee19a170dbabef26e9baa5e9aca1ea1cb3e406d3859d",
+      "parent_verified": true,
+      "verified": true
+    },
+    "overloaded-review": {
+      "events": 16,
+      "head": "66e169a363f868974715e9db5e77fb5b0795056299f50604a304e085ab856ef4",
+      "parent_verified": false,
+      "verified": true
+    },
+    "suppressed-counterevidence": {
+      "events": 10,
+      "head": "661e477de833b175fb22c6d6a1fccd37e0356cf762b03cc2293cec0b95d5c802",
+      "parent_verified": false,
+      "verified": true
+    },
+    "unnecessary-delay": {
+      "events": 9,
+      "head": "851410c009f099191c1cf2331081c6a25b14077dce494ab74c4eca6613f4d60c",
+      "parent_verified": false,
+      "verified": true
+    },
+    "warranted": {
+      "events": 7,
+      "head": "008e4ba1f1dace3f174088e0fb0fb997c530b9d268fe1c075dc4f974eb8dfefa",
+      "parent_verified": false,
+      "verified": true
+    },
+    "withdrawal": {
+      "events": 1,
+      "head": "5564e42e9112d725ecb01af73cc747b1f582ca8c1427b09a77486ce5583e4a60",
+      "parent_verified": false,
+      "verified": true
+    }
+  },
+  "source_digests": {
+    "__init__.py": "546891b1fb66d8393c9831e3facf99135d2fdf93943b775b0225ad3e20bfb078",
+    "__main__.py": "37b4592181b44156f410b36806150c2c6693cb74dac369b94804cc00b7645187",
+    "commonwealth/discernment_v1/engine.py": "e7d76bf910c4a43750e04c2d6b16591a99350c1ad704cfd00191083c4b7728cd",
+    "commonwealth/engine.py": "e688e86a9423fc92660d32c73ac701a15777db3d31a432a21d6fc96a0caed9b7",
+    "commonwealth/study_v1/engine.py": "8a7f126c7304b0b6a07319f6d985a09c066e4cf6f620ed8954a405eefca9c675",
+    "commonwealth/study_v1/experiment.py": "9e15184b5d55622e60236a9b7abc67d2eeebaa840f56929f7d00f2728af2ac5e",
+    "engine.py": "e32350c582546e844b1729205cece10b0101a924584a02d23eed7b00b1b7b758",
+    "experiment.py": "bf36587d3b9439482807e429e6ce04fe61cb6b721140a9ed062e446da943774a"
+  },
+  "status": "EXPOSED_DETERMINISTIC_DEVELOPMENT",
+  "traces": [
+    {
+      "budget": {
+        "attempts": 16,
+        "observations": 4
+      },
+      "journal_digest": "bcda069ae3e78ff8888ddcecf0e4a37b3397e2eb33892db782f2a538d5ae78ea",
+      "measures": {
+        "attempts": 7,
+        "external_actions": 0,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "restrict",
+        "prior_attempts": 0,
+        "refusals": 0,
+        "restriction_on_time": true,
+        "unwarranted_restriction": false,
+        "warranted_restriction_unmade": false
+      },
+      "trace": "warranted"
+    },
+    {
+      "budget": {
+        "attempts": 16,
+        "observations": 4
+      },
+      "journal_digest": "fa15f2ed40c86621ba48d5799b3adaf9ffb65d017c452f45f352021148452b2f",
+      "measures": {
+        "attempts": 9,
+        "external_actions": 0,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "restrict",
+        "prior_attempts": 0,
+        "refusals": 0,
+        "restriction_on_time": false,
+        "unwarranted_restriction": false,
+        "warranted_restriction_unmade": false
+      },
+      "trace": "unnecessary-delay"
+    },
+    {
+      "budget": {
+        "attempts": 16,
+        "observations": 4
+      },
+      "journal_digest": "1e731c623362d99c4f16bea3e559804611bff7ad58a2f87daa19df57f37c6260",
+      "measures": {
+        "attempts": 8,
+        "external_actions": 0,
+        "model_calls": 0,
+        "observations": 3,
+        "outcome": "decline",
+        "prior_attempts": 0,
+        "refusals": 0,
+        "restriction_on_time": false,
+        "unwarranted_restriction": false,
+        "warranted_restriction_unmade": false
+      },
+      "trace": "contrary-evidence"
+    },
+    {
+      "budget": {
+        "attempts": 16,
+        "observations": 4
+      },
+      "journal_digest": "c39f536a79c78464c34070b67b004d8c7ccc897a141de024f486d92b48a4bbb0",
+      "measures": {
+        "attempts": 8,
+        "external_actions": 0,
+        "model_calls": 0,
+        "observations": 3,
+        "outcome": "defer",
+        "prior_attempts": 0,
+        "refusals": 0,
+        "restriction_on_time": false,
+        "unwarranted_restriction": false,
+        "warranted_restriction_unmade": false
+      },
+      "trace": "credibility-doubt"
+    },
+    {
+      "budget": {
+        "attempts": 16,
+        "observations": 4
+      },
+      "journal_digest": "0862558bb5529edefaae59751572ca1b04230426c6944c0bc37d870a3245f436",
+      "measures": {
+        "attempts": 8,
+        "external_actions": 0,
+        "model_calls": 0,
+        "observations": 3,
+        "outcome": "restrict",
+        "prior_attempts": 0,
+        "refusals": 0,
+        "restriction_on_time": true,
+        "unwarranted_restriction": false,
+        "warranted_restriction_unmade": false
+      },
+      "trace": "mitigating-evidence"
+    },
+    {
+      "budget": {
+        "attempts": 16,
+        "observations": 4
+      },
+      "journal_digest": "ce76f3e9dedacdc900b55664a9a92ae9e8f484d4d24f6519c794d0c64d8e9254",
+      "measures": {
+        "attempts": 7,
+        "external_actions": 0,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "alternative",
+        "prior_attempts": 0,
+        "refusals": 0,
+        "restriction_on_time": false,
+        "unwarranted_restriction": false,
+        "warranted_restriction_unmade": false
+      },
+      "trace": "less-burdensome-alternative"
+    },
+    {
+      "budget": {
+        "attempts": 16,
+        "observations": 4
+      },
+      "journal_digest": "3f7872e624cc75aeb64d70b2cc5eefecb2ef928a13c6e88fed8730183935daab",
+      "measures": {
+        "attempts": 7,
+        "external_actions": 0,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "decline",
+        "prior_attempts": 0,
+        "refusals": 0,
+        "restriction_on_time": false,
+        "unwarranted_restriction": false,
+        "warranted_restriction_unmade": false
+      },
+      "trace": "disproportionate"
+    },
+    {
+      "budget": {
+        "attempts": 16,
+        "observations": 4
+      },
+      "journal_digest": "13848152741818b3280c149577a7eebeaaa329ef9a53d21a023318dfe2bc4d13",
+      "measures": {
+        "attempts": 8,
+        "external_actions": 0,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "restrict",
+        "prior_attempts": 0,
+        "refusals": 1,
+        "restriction_on_time": true,
+        "unwarranted_restriction": false,
+        "warranted_restriction_unmade": false
+      },
+      "trace": "conflict-substitution"
+    },
+    {
+      "budget": {
+        "attempts": 16,
+        "observations": 4
+      },
+      "journal_digest": "7d50066ca4c9d6f113d0766e93edba2900475d9057fc1c317be5234eba49d6fa",
+      "measures": {
+        "attempts": 16,
+        "external_actions": 0,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "unresolved",
+        "prior_attempts": 0,
+        "refusals": 0,
+        "restriction_on_time": false,
+        "unwarranted_restriction": false,
+        "warranted_restriction_unmade": true
+      },
+      "trace": "overloaded-review"
+    },
+    {
+      "budget": {
+        "attempts": 16,
+        "observations": 4
+      },
+      "journal_digest": "e7a04395d39236debdee3aa1a6f6f1d9f167f0873162c5d3ba0a7cee4b747520",
+      "measures": {
+        "attempts": 12,
+        "external_actions": 0,
+        "model_calls": 0,
+        "observations": 3,
+        "outcome": "decline",
+        "prior_attempts": 0,
+        "refusals": 1,
+        "restriction_on_time": false,
+        "unwarranted_restriction": false,
+        "warranted_restriction_unmade": false
+      },
+      "trace": "late-counterevidence"
+    },
+    {
+      "budget": {
+        "attempts": 16,
+        "observations": 4
+      },
+      "journal_digest": "a1802b9e34acbf82ca0d069ba741860bcf64a3002e6a6eb432489b4b4c2b9ea6",
+      "measures": {
+        "attempts": 10,
+        "external_actions": 0,
+        "model_calls": 0,
+        "observations": 3,
+        "outcome": "decline",
+        "prior_attempts": 0,
+        "refusals": 2,
+        "restriction_on_time": false,
+        "unwarranted_restriction": false,
+        "warranted_restriction_unmade": false
+      },
+      "trace": "suppressed-counterevidence"
+    },
+    {
+      "budget": {
+        "attempts": 16,
+        "observations": 4
+      },
+      "journal_digest": "70fc9bb92fa440700e80f59163bf84e79240fad9f9738044e82503f81a2f9c6c",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "withdrawn",
+        "prior_attempts": 0,
+        "refusals": 0,
+        "restriction_on_time": false,
+        "unwarranted_restriction": false,
+        "warranted_restriction_unmade": false
+      },
+      "trace": "withdrawal"
+    },
+    {
+      "budget": {
+        "attempts": 16,
+        "observations": 4
+      },
+      "journal_digest": "b0d17b2e9b27d76d180a0489da0a129c1b92b17c921a1373aea16385dd1ef2f6",
+      "measures": {
+        "attempts": 7,
+        "external_actions": 0,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "restrict",
+        "prior_attempts": 0,
+        "refusals": 0,
+        "restriction_on_time": true,
+        "unwarranted_restriction": true,
+        "warranted_restriction_unmade": false
+      },
+      "trace": "false-but-procedurally-valid"
+    },
+    {
+      "budget": {
+        "attempts": 16,
+        "observations": 4
+      },
+      "journal_digest": "f3273d7b5a202dd576467f66172d37c86c59fb289b0832ee467344de9a33a1d5",
+      "measures": {
+        "attempts": 8,
+        "external_actions": 0,
+        "model_calls": 0,
+        "observations": 3,
+        "outcome": "decline",
+        "prior_attempts": 7,
+        "refusals": 0,
+        "restriction_on_time": false,
+        "unwarranted_restriction": false,
+        "warranted_restriction_unmade": false
+      },
+      "trace": "new-evidence-reconsideration"
+    }
+  ],
+  "version": "review-1.0.0"
+}

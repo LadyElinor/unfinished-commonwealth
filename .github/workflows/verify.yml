@@ -39,6 +39,10 @@ jobs:
         run: python -m commonwealth.procedure_v1 run .local/ci-procedure-v1
       - name: Reproduce advisory fraud-discernment study
         run: python -m commonwealth.discernment_v1 run .local/ci-discernment-v1
+      - name: Reproduce commitment and issuer-integrity study
+        run: python -m commonwealth.integrity_v1 run .local/ci-integrity-v1
+      - name: Reproduce balanced review and reconsideration traces
+        run: python -m commonwealth.review_v1 run .local/ci-review-v1
       - name: Prepare package build tools
         run: python -m pip install "setuptools>=68" wheel
       - name: Verify source archive and clean wheel installation

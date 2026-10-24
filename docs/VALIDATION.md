@@ -1,5 +1,25 @@
 # Validation evidence
 
+## Deterministic research extensions, 2026-10-24
+
+The current review stage passes **303 tests** locally: 96 workshop baseline,
+48 D1, 60 procedural/replay, 31 F1, two issuer-trust regressions, 31 I1 and
+35 R1. Packaged JSON and documentation links also pass. Original release records
+below remain historical; the package baseline is still 0.1.3.
+
+Results and limits are documented separately for
+[D1](STUDY_V1_RESULTS.md), [P1.1](PROCEDURAL_REVIEW_V1_RESULTS.md),
+[F1](FRAUD_DISCERNMENT_V1_RESULTS.md), [I1](INTEGRITY_V1_RESULTS.md) and
+[R1](REVIEW_V1_RESULTS.md). Their 432 runs, eight current procedural traces,
+150 runs, 112 runs and 14 review traces preserve negative outcomes and replay.
+Reconsideration requires its exact parent and retains the prior decision and cost.
+All are exposed development material, with no provider calls or real effects.
+
+See the [repository review](REPOSITORY_REVIEW_2026_10_24.md) for inspected boundaries,
+maintenance corrections and remaining gaps, and the published commit's checks
+for hosted platform results. Test totals do not establish model intelligence,
+legal compliance, real-world effectiveness or independent evaluation.
+
 ## Release 0.1.3
 
 Validated locally on 24 October 2026 (UTC), using CPython 3.12.14 on Linux.
