@@ -11,10 +11,25 @@ import math
 import re
 
 from .pipeline import METHODS, aggregate, run_tick
+from . import legacy_v1
 
 
-class Rejected(ValueError):
-    """An invalid or unwarranted local transition; no state is committed."""
+Rejected = legacy_v1.Rejected
+
+PROTOCOL = 2
+REVIEW_LIMIT = 32
+FINAL_ACTIONS = ("halt", "revoke", "closeout")
+REVIEW_ACTIONS = ("testify", "listen", "reflect", "counterstory", "review-lesson")
+MAX_EVENTS = 1 + 256 + REVIEW_LIMIT + len(FINAL_ACTIONS)
+
+
+def upgrade_state(original):
+    """Upgrade only as part of a new v2 event; never rewrite historical events."""
+    state = deepcopy(original)
+    if state["schema"] == 1:
+        state.update(schema=2, version="0.1.2", review_count=0,
+                     final_actions=[], closeouts=[])
+    return state
 
 
 def parse_json(source):
@@ -105,15 +120,15 @@ def initial_state(scenario, fixture):
     scenario_name(scenario)
     validate_fixture(fixture)
     return {
-        # Historical journal identity, not the installed package release:
-        # changing these fields would invalidate existing valid replay hashes.
-        "schema": 1, "version": "0.1.0", "scope": "LOCAL_RESEARCH",
+        # State identity for protocol 2. Protocol 1 is frozen in legacy_v1.
+        "schema": 2, "version": "0.1.2", "scope": "LOCAL_RESEARCH",
         "external_authority": "NONE", "identity_assurance": "SUPPLIED_UNVERIFIED",
         "participant_kind": "SCRIPTED_OR_OPERATOR_SUPPLIED",
         "scenario": scenario, "fixture": deepcopy(fixture),
         "generation": 1, "worker": "worker-1", "retired_workers": [],
         "method": "zero-fill", "tick": 0, "revision": 0, "epoch": 0,
         "halted": False, "command_count": 0, "command_limit": 256,
+        "review_count": 0, "final_actions": [], "closeouts": [],
         "peer_queue": [], "proposals": {}, "observations": {},
         "testimonies": {}, "listening": [], "reflections": [],
         "lessons": {}, "counterstories": [], "casebook_consultations": [],
@@ -136,10 +151,12 @@ FIELDS = {
     "reflect": ("evidence", "before", "after", "next_check"),
     "lesson": ("method", "evidence", "scope", "guidance"),
     "accept-lesson": ("lesson",),
+    "review-lesson": ("lesson", "decision", "reason"),
     "counterstory": ("reference", "account"),
     "consult": ("case", "interpretation"),
     "handoff": ("scenario", "fixture", "note"),
     "halt": ("reason",), "resume": ("reason",), "revoke": ("reason",),
+    "closeout": ("reason", "follow_up"),
 }
 
 
@@ -175,6 +192,37 @@ def current_proposal(state, proposal_id):
     return proposal
 
 
+def current_observation(state):
+    """Fresh means observed in this successor generation, not successful."""
+    observations = [o for o in state["observations"].values()
+                    if o["generation"] == state["generation"]]
+    return max(observations, key=lambda o: o["tick"])["id"] if observations else None
+
+
+def require_successor_observation(state):
+    observation = current_observation(state)
+    if state["generation"] > 1 and observation is None:
+        raise Rejected("successor proposals require an observation in the current generation")
+    return observation
+
+
+def lesson_review(state, lesson_id):
+    """Expose challenges without treating an account as an adjudicated fact."""
+    lesson = state["lessons"][lesson_id]
+    references = {lesson_id, *lesson["evidence"]}
+    challenges = [c for c in state["counterstories"] if c["reference"] in references]
+    reviews = lesson.get("reviews", [])
+    latest = reviews[-1] if reviews else None
+    addressed = set(latest["counterstories"]) if latest else set()
+    pending = [c["id"] for c in challenges if c["id"] not in addressed]
+    decision = latest["decision"] if latest else None
+    status = ({"suspend": "SUSPENDED", "retire": "RETIRED"}.get(decision)
+              or ("DISPUTED" if pending else "REVIEWED_RETAINED" if latest else "UNCHALLENGED"))
+    return {"review_status": status, "requires_review": bool(pending),
+            "counterstories": deepcopy(challenges), "unaddressed_counterstories": pending,
+            "reviews": deepcopy(reviews)}
+
+
 def transition(original, command):
     if (not isinstance(command, dict) or not isinstance(command.get("action"), str)
             or command["action"] not in FIELDS):
@@ -187,9 +235,20 @@ def transition(original, command):
     actor = command["actor"]
     if actor not in ("keeper", "neighbor", "coach", original["worker"]):
         raise Rejected("unknown or retired fixture participant")
-    if original["command_count"] >= original["command_limit"]:
-        raise Rejected("workshop command budget exhausted")
-    state = deepcopy(original)
+    state = upgrade_state(original)
+    exhausted = state["command_count"] >= state["command_limit"]
+    if exhausted:
+        if action in FINAL_ACTIONS:
+            require_keeper(actor)
+            if action in state["final_actions"]:
+                raise Rejected("terminal control already recorded; operational budget remains exhausted")
+            state["final_actions"].append(action)
+        elif action in REVIEW_ACTIONS:
+            if state["review_count"] >= REVIEW_LIMIT:
+                raise Rejected("post-budget review allowance exhausted; unused terminal controls remain available")
+            state["review_count"] += 1
+        else:
+            raise Rejected("workshop command budget exhausted; only review and terminal controls remain")
     state["command_count"] += 1
     record_id = f"{action}-{state['command_count']}"
     result = {"id": record_id, "action": action}
@@ -215,6 +274,7 @@ def transition(original, command):
 
     elif action == "propose":
         require_worker(state, actor)
+        observation = require_successor_observation(state)
         if command["method"] not in METHODS:
             raise Rejected("method outside the bounded action set")
         prediction = command["prediction"]
@@ -230,9 +290,12 @@ def transition(original, command):
             "purpose": purpose, "revision": state["revision"], "epoch": state["epoch"],
             "expires_before_tick": state["tick"] + 3, "status": "PROPOSED",
         }
+        if state["generation"] > 1:
+            state["proposals"][record_id]["observation"] = observation
 
     elif action == "approve":
         require_keeper(actor)
+        require_successor_observation(state)
         proposal = current_proposal(state, command["proposal"])
         if proposal["status"] != "PROPOSED":
             raise Rejected("only a pending proposal can be approved")
@@ -241,6 +304,7 @@ def transition(original, command):
 
     elif action == "execute":
         require_worker(state, actor)
+        require_successor_observation(state)
         proposal = current_proposal(state, command["proposal"])
         if proposal["status"] != "APPROVED":
             raise Rejected("exact proposal approval required")
@@ -299,6 +363,23 @@ def transition(original, command):
         lesson["status"] = "ACCEPTED_LOCAL_PRACTICE"
         lesson["accepted_by"] = actor
 
+    elif action == "review-lesson":
+        require_keeper(actor)
+        lesson_id = command["lesson"]
+        lesson = state["lessons"].get(lesson_id)
+        if lesson is None or lesson["status"] != "ACCEPTED_LOCAL_PRACTICE":
+            raise Rejected("review requires an accepted local lesson")
+        if lesson_review(state, lesson_id)["review_status"] == "RETIRED":
+            raise Rejected("retired lessons remain in the record; submit a new lesson")
+        if command["decision"] not in ("retain", "suspend", "retire"):
+            raise Rejected("lesson review decision must be retain, suspend, or retire")
+        review = lesson_review(state, lesson_id)
+        lesson.setdefault("reviews", []).append({
+            "id": record_id, "actor": actor, "decision": command["decision"],
+            "reason": text(command["reason"], "reason"),
+            "counterstories": [c["id"] for c in review["counterstories"]],
+        })
+
     elif action == "counterstory":
         ref = command["reference"]
         if not isinstance(ref, str) or ref not in (set(state["lessons"]) | set(state["observations"]) | set(state["testimonies"])):
@@ -337,6 +418,20 @@ def transition(original, command):
             if proposal["status"] in ("PROPOSED", "APPROVED"):
                 proposal["status"] = "RETIRED_AT_HANDOFF"
         result["worker"] = state["worker"]
+
+    elif action == "closeout":
+        require_keeper(actor)
+        if not exhausted:
+            raise Rejected("closeout is reserved for an exhausted operational budget")
+        closeout = {"id": record_id, "reason": text(command["reason"], "reason"),
+                    "follow_up": text(command["follow_up"], "follow_up"),
+                    "pending_peer_jobs": deepcopy(state["peer_queue"]),
+                    "status": "UNRESOLVED" if state["peer_queue"] else "NO_PENDING_PEER_JOBS"}
+        state["closeouts"].append(closeout)
+        state["halted"] = True
+        state["epoch"] += 1
+        state["revision"] += 1
+        result["closeout"] = deepcopy(closeout)
 
     elif action in ("halt", "resume", "revoke"):
         require_keeper(actor)

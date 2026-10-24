@@ -15,6 +15,10 @@ The single, coached, and coached-plus-casebook arms use the same repair rule and
 
 This comparison exercises plumbing and exposes an information-attention assumption. It is not a fair causal estimate of the effects of coaching, stories, or decentralization. Do not use it to claim that society outperforms an individual controller.
 
+`quality-stream` defines the expected fixture result and succeeds in all three cases at no greater inspection cost than the alternatives. A constant policy can therefore solve them without adaptive method selection. Future trials need circumstances in which warranted choices differ. Reflection consumes a command but no simulated time; only observations advance ticks and execute pipeline work. The current comparison cannot measure the deadline cost of deliberation or establish when to wait, listen, or act.
+
+Scripted testimony now derives its factual outcome clauses from the referenced observation. Operator-supplied testimony remains an unadjudicated account, which may be mistaken; no general truth-checking capability is claimed.
+
 ## Measures
 
 - Primary correct ticks / observed ticks.

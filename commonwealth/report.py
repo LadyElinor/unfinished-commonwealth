@@ -3,6 +3,7 @@
 import json
 
 from .coach import advise, inherited_method
+from .engine import REVIEW_LIMIT, lesson_review
 
 
 def summarize(state):
@@ -27,6 +28,9 @@ def summarize(state):
             "peer_pending_jobs": len(state["peer_queue"]),
             "record_inspections": sum(o["total_inspections"] for o in observations),
             "command_count": state["command_count"], "command_limit": state["command_limit"],
+            "post_budget_review_count": state.get("review_count", 0),
+            "post_budget_review_limit": REVIEW_LIMIT,
+            "terminal_controls_used": state.get("final_actions", []),
             "scored_predictions": len(scored),
             "executed_unscored_predictions": sum(p["status"] == "EXECUTED" for p in state["proposals"].values()) - len(scored),
             "mean_primary_brier": primary_brier / len(scored) if scored else None,
@@ -36,6 +40,8 @@ def summarize(state):
             "accepted_lessons": sum(l["status"] == "ACCEPTED_LOCAL_PRACTICE" for l in state["lessons"].values()),
         },
         "next_practice": advise(state), "inherited_advice": inherited_method(state),
+        "lesson_reviews": {key: lesson_review(state, key) for key in state["lessons"]},
+        "closeouts": state.get("closeouts", []),
         "limitations": [
             "All included scenarios are exposed development fixtures, not held-out trials.",
             "Inspection credits model a shared budget; they do not measure wall time or energy.",
@@ -58,7 +64,8 @@ def markdown(state):
     # Fenced JSON prevents supplied testimony from becoming active Markdown links/HTML.
     for label, records in (("Testimony", state["testimonies"]), ("Listening", state["listening"]),
                            ("Reflection", state["reflections"]), ("Lessons", state["lessons"]),
-                           ("Counterstories", state["counterstories"]), ("Handoffs", state["handoffs"])):
+                           ("Counterstories", state["counterstories"]), ("Lesson review status", summary["lesson_reviews"]),
+                           ("Handoffs", state["handoffs"]), ("Closeouts", summary["closeouts"])):
         lines += [f"### {label}", "", "    " + json.dumps(records, ensure_ascii=True), ""]
     lines += ["## Limits", ""] + [f"- {item}" for item in summary["limitations"]]
     return "\n".join(lines) + "\n"

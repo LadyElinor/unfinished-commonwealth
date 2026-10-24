@@ -45,8 +45,10 @@ Observation itself advances the workshop: waiting another tick has an observable
 
 An accepted lesson names a supported data contract, method, guidance, and observed evidence. Structural acceptance requires a correct result, an on-time peer batch, and an empty queue in the proposing generation. This is a narrow evidence check, not an assessment of the truth or sufficiency of the written guidance.
 
-The first successor sees signed readings. Blindly repeating the positive-only shortcut fails. The scoped quality-flags practice works because the contract remains applicable. The successor still submits a new proposal and obtains a new observation.
+The first successor sees signed readings. Blindly repeating the positive-only shortcut fails. The scoped quality-flags practice works because the contract remains applicable. The successor must observe the new generation before proposing, obtain a new approval, and observe again to evaluate the repair. This is an enforced procedural requirement, not evidence of adaptive learning: the quality-stream method is the correct answer in every included fixture.
 
-Counterstories remain attached to observations, testimony, or lessons. They have no automatic veto or evidentiary promotion. Disputed lessons currently require human examination; amendment and retirement of accepted practices remain future work.
+Counterstories remain attached to observations, testimony, or lessons. Inherited advice exposes challenges to the lesson and its supporting evidence. They have no automatic veto or evidentiary promotion. The fixture keeper can record a reason to retain, suspend, or retire an accepted practice. Later challenges reopen review; suspended and retired practices are excluded from recommendations. This local review mechanism does not establish independent governance or settle the truth of testimony.
+
+At operational exhaustion the workshop cannot run more work, but retains a bounded review allowance and separate halt, revoke, and closeout records. Closeout preserves unfinished jobs as unresolved and records a follow-up note; it cannot claim that stopping has completed them. See [the protocol](PROTOCOL.md) for exact limits and replay versioning.
 
 The project neither reproduces nor resolves consciousness, personhood, moral standing, or the persistence of personal identity. Generation numbers indicate software-role replacement only.

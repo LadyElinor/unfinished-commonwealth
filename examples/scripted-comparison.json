@@ -18,6 +18,9 @@
         "record_inspections": 72,
         "command_count": 10,
         "command_limit": 256,
+        "post_budget_review_count": 0,
+        "post_budget_review_limit": 32,
+        "terminal_controls_used": [],
         "scored_predictions": 2,
         "executed_unscored_predictions": 0,
         "mean_primary_brier": 0.0,
@@ -31,7 +34,7 @@
       "replay": {
         "verified": true,
         "events": 11,
-        "head": "a7dba25cadeee70e225d0fc9187db88d2959265e38a2b941741d425d19acf595",
+        "head": "ada60f5313679b3dafe30d6a82367e3d0b708432bc6f34df16e3f5fd8eb14349",
         "generation": 1,
         "external_authority": "NONE",
         "assurance": "local deterministic replay; not authenticated history"
@@ -52,6 +55,9 @@
         "record_inspections": 76,
         "command_count": 7,
         "command_limit": 256,
+        "post_budget_review_count": 0,
+        "post_budget_review_limit": 32,
+        "terminal_controls_used": [],
         "scored_predictions": 1,
         "executed_unscored_predictions": 0,
         "mean_primary_brier": 0.0,
@@ -65,7 +71,7 @@
       "replay": {
         "verified": true,
         "events": 8,
-        "head": "dbaa2e6d25607e23939336c448c0ed8783b914fe245531d01f3332478a5e262a",
+        "head": "c83cacbff88a4456ac908eed2734c434e11c1fef92256d2344aad63b040013cf",
         "generation": 1,
         "external_authority": "NONE",
         "assurance": "local deterministic replay; not authenticated history"
@@ -86,6 +92,9 @@
         "record_inspections": 72,
         "command_count": 13,
         "command_limit": 256,
+        "post_budget_review_count": 0,
+        "post_budget_review_limit": 32,
+        "terminal_controls_used": [],
         "scored_predictions": 2,
         "executed_unscored_predictions": 0,
         "mean_primary_brier": 0.0,
@@ -99,7 +108,7 @@
       "replay": {
         "verified": true,
         "events": 14,
-        "head": "9b4c9e8378085b91036e60485b71cda432c9fae3193d4107f0c4bf21acfbd63c",
+        "head": "9ea8f276cfd6d9a0aec66e2af5bdb41f8789f5194586b9145628b7dddd998a03",
         "generation": 1,
         "external_authority": "NONE",
         "assurance": "local deterministic replay; not authenticated history"
@@ -120,6 +129,9 @@
         "record_inspections": 72,
         "command_count": 14,
         "command_limit": 256,
+        "post_budget_review_count": 0,
+        "post_budget_review_limit": 32,
+        "terminal_controls_used": [],
         "scored_predictions": 2,
         "executed_unscored_predictions": 0,
         "mean_primary_brier": 0.0,
@@ -133,7 +145,7 @@
       "replay": {
         "verified": true,
         "events": 15,
-        "head": "9af70d6eda388aacc6254756ff0f41ddcd563fe93e75e3d6ed9eafb1d183f846",
+        "head": "5224cfa0c5b2b17bfa9481a2444a11c0f551e459688bb5fd824c232ab96fc5ad",
         "generation": 1,
         "external_authority": "NONE",
         "assurance": "local deterministic replay; not authenticated history"
@@ -154,6 +166,9 @@
         "record_inspections": 72,
         "command_count": 10,
         "command_limit": 256,
+        "post_budget_review_count": 0,
+        "post_budget_review_limit": 32,
+        "terminal_controls_used": [],
         "scored_predictions": 2,
         "executed_unscored_predictions": 0,
         "mean_primary_brier": 0.5,
@@ -167,7 +182,7 @@
       "replay": {
         "verified": true,
         "events": 11,
-        "head": "0940c13fb3b3488613722f418fa0a2d5fc989fc99e7ac514ec5539c9fdacc49a",
+        "head": "cd18abece9394b5997a270a609c68f04401fc8ef5c0c92ad95f939fefaff1129",
         "generation": 1,
         "external_authority": "NONE",
         "assurance": "local deterministic replay; not authenticated history"
@@ -188,6 +203,9 @@
         "record_inspections": 72,
         "command_count": 10,
         "command_limit": 256,
+        "post_budget_review_count": 0,
+        "post_budget_review_limit": 32,
+        "terminal_controls_used": [],
         "scored_predictions": 2,
         "executed_unscored_predictions": 0,
         "mean_primary_brier": 0.5,
@@ -201,7 +219,7 @@
       "replay": {
         "verified": true,
         "events": 11,
-        "head": "0940c13fb3b3488613722f418fa0a2d5fc989fc99e7ac514ec5539c9fdacc49a",
+        "head": "cd18abece9394b5997a270a609c68f04401fc8ef5c0c92ad95f939fefaff1129",
         "generation": 1,
         "external_authority": "NONE",
         "assurance": "local deterministic replay; not authenticated history"
@@ -222,6 +240,9 @@
         "record_inspections": 72,
         "command_count": 13,
         "command_limit": 256,
+        "post_budget_review_count": 0,
+        "post_budget_review_limit": 32,
+        "terminal_controls_used": [],
         "scored_predictions": 2,
         "executed_unscored_predictions": 0,
         "mean_primary_brier": 0.5,
@@ -235,7 +256,7 @@
       "replay": {
         "verified": true,
         "events": 14,
-        "head": "1248832d8c06913bdbf5890a7649ee77f06225e3fe9dfe7ba61f3f37175aa78a",
+        "head": "b0d4f7fe1715a52c7717b5d65801de45f1ba5e9438928a1e4d987539dde3b525",
         "generation": 1,
         "external_authority": "NONE",
         "assurance": "local deterministic replay; not authenticated history"
@@ -256,6 +277,9 @@
         "record_inspections": 72,
         "command_count": 14,
         "command_limit": 256,
+        "post_budget_review_count": 0,
+        "post_budget_review_limit": 32,
+        "terminal_controls_used": [],
         "scored_predictions": 2,
         "executed_unscored_predictions": 0,
         "mean_primary_brier": 0.5,
@@ -269,7 +293,7 @@
       "replay": {
         "verified": true,
         "events": 15,
-        "head": "db69ab207b89b257861ea7fc0025aec8b4b382eac6760a86ed265e61c132b9cd",
+        "head": "85f940fff091f5b85c70a7c302509794e1655d0b702b4a2de342b63b09e64b9f",
         "generation": 1,
         "external_authority": "NONE",
         "assurance": "local deterministic replay; not authenticated history"
@@ -290,6 +314,9 @@
         "record_inspections": 72,
         "command_count": 10,
         "command_limit": 256,
+        "post_budget_review_count": 0,
+        "post_budget_review_limit": 32,
+        "terminal_controls_used": [],
         "scored_predictions": 2,
         "executed_unscored_predictions": 0,
         "mean_primary_brier": 0.5,
@@ -303,7 +330,7 @@
       "replay": {
         "verified": true,
         "events": 11,
-        "head": "ab1cc13dfde5850cf5754d14d66a61a828ebf0a03add7875b6556591cba3066e",
+        "head": "d577e6ab249885227f01d5ff180f6cfad31f0f41c152fcc6c6bd85b6700466d0",
         "generation": 1,
         "external_authority": "NONE",
         "assurance": "local deterministic replay; not authenticated history"
@@ -324,6 +351,9 @@
         "record_inspections": 72,
         "command_count": 10,
         "command_limit": 256,
+        "post_budget_review_count": 0,
+        "post_budget_review_limit": 32,
+        "terminal_controls_used": [],
         "scored_predictions": 2,
         "executed_unscored_predictions": 0,
         "mean_primary_brier": 0.5,
@@ -337,7 +367,7 @@
       "replay": {
         "verified": true,
         "events": 11,
-        "head": "ab1cc13dfde5850cf5754d14d66a61a828ebf0a03add7875b6556591cba3066e",
+        "head": "d577e6ab249885227f01d5ff180f6cfad31f0f41c152fcc6c6bd85b6700466d0",
         "generation": 1,
         "external_authority": "NONE",
         "assurance": "local deterministic replay; not authenticated history"
@@ -358,6 +388,9 @@
         "record_inspections": 72,
         "command_count": 13,
         "command_limit": 256,
+        "post_budget_review_count": 0,
+        "post_budget_review_limit": 32,
+        "terminal_controls_used": [],
         "scored_predictions": 2,
         "executed_unscored_predictions": 0,
         "mean_primary_brier": 0.5,
@@ -371,7 +404,7 @@
       "replay": {
         "verified": true,
         "events": 14,
-        "head": "15a91873554f0c727c10487ba6578ce7b94c0d8549ead063ce85215d47134128",
+        "head": "f7f525c0ac4dbc5c79ebca7ef36f8005e4d614c0a48022dcc7aab76718855d96",
         "generation": 1,
         "external_authority": "NONE",
         "assurance": "local deterministic replay; not authenticated history"
@@ -392,6 +425,9 @@
         "record_inspections": 72,
         "command_count": 14,
         "command_limit": 256,
+        "post_budget_review_count": 0,
+        "post_budget_review_limit": 32,
+        "terminal_controls_used": [],
         "scored_predictions": 2,
         "executed_unscored_predictions": 0,
         "mean_primary_brier": 0.5,
@@ -405,7 +441,7 @@
       "replay": {
         "verified": true,
         "events": 15,
-        "head": "67ac41183f4007d39eb03bb2b39b67d8b66f2c9a8547c6c426f9178439f64899",
+        "head": "82504697065a749ef3478210794c266a51ce5af460105da6898e26795dccc0ad",
         "generation": 1,
         "external_authority": "NONE",
         "assurance": "local deterministic replay; not authenticated history"

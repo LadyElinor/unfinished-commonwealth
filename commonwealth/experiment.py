@@ -24,10 +24,13 @@ def change_method(workshop, method, purpose, primary=1.0, peer=1.0):
 
 
 def hear_and_reflect(workshop, observation):
+    outcome = workshop.state()["observations"][observation]
+    primary = "passed" if outcome["primary_correct"] else "failed"
+    peer = "finished on time" if outcome["new_peer_on_time"] else "missed its deadline"
     testimony = dispatch(workshop, "testify", actor="neighbor", observation=observation,
-                         account="Your new output passed, but my batch missed its deadline. Please check the shared queue.")["id"]
+                         account=f"Your new output {primary}; my batch {peer}. Please check the shared queue.")["id"]
     dispatch(workshop, "listen", testimony=testimony,
-             acknowledgment="The primary result did not describe your experience. I will inspect the queue and keep the missed deadline in the record.")
+             acknowledgment=f"I have heard your account: the output {primary} and your batch {peer}. I will inspect the queue and preserve both outcomes.")
     dispatch(workshop, "reflect", evidence=[observation, testimony],
              before="A correct primary mean would complete the repair.",
              after="The shared inspection budget also determines whether the neighbor finishes.",

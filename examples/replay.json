@@ -1,7 +1,7 @@
 {
   "verified": true,
   "events": 24,
-  "head": "8c462114644fb93db2347d25ded1d8be77829289e6be71394cbc9e411ebb09b8",
+  "head": "96baf584d179654e5abc836d127afdac80d916a08c05bcb482f732a01c0acb0a",
   "generation": 2,
   "external_authority": "NONE",
   "assurance": "local deterministic replay; not authenticated history"

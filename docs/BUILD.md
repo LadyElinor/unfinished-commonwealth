@@ -69,8 +69,18 @@ The archive is a separate release copy; it does not replace the user's inputs.
 
 ## Replay compatibility
 
-Package release 0.1.1 retains journal schema 1 and the historical state
-`version: "0.1.0"`. That value participates in state hashes and is intentionally
-not changed with the package version. Valid original demonstration histories
-must replay to the same head. Malformed JSON or type-substituted records that
-previously passed permissive parsing are refused rather than migrated silently.
+Package releases through 0.1.1 used unversioned envelopes, journal schema 1,
+and historical state `version: "0.1.0"`. Release 0.1.2 replays those events
+with `commonwealth/legacy_v1.py` and leaves their hashes unchanged. New events
+use `protocol: 2`; the first accepted new event atomically upgrades the state
+to schema 2. A read or refused command makes no change. Historical fixtures
+in `tests/data/` were exported by 0.1.1 before changing the implementation.
+They include a successor execution without observation, which must replay
+historically even though new v2 commands enforce observation.
+
+The new demo has a new hash because new envelopes and testimony differ.
+Do not substitute a freshly generated demo for the frozen historical fixtures.
+Do not edit the legacy reducer to change live behavior. Unknown versions,
+protocol downgrades, malformed JSON, and type-substituted records are refused.
+See [protocol compatibility](PROTOCOL.md). Older packages cannot read v2
+events; back up an old database before continuing it with the new version.

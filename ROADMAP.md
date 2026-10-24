@@ -6,6 +6,8 @@ Bounded executable data work, peer consequences, observed predictions, testimony
 
 ## 0.2: model-backed participation
 
+- Add cases where the warranted method changes with observable circumstances; the current quality-stream method defines the reference answer in every fixture and cannot test adaptive selection.
+- Model the costs of waiting and reflection, and offer bounded choices to observe, listen, wait, or request action. Reflection currently spends a command but no simulated time.
 - Pin provider, model, prompt, adapter, sampling settings, and resource budgets for each run.
 - Run externally supplied proposal-only agents with a host-owned interface that cannot read keeper credentials, evaluation references, or other participants' private context.
 - Record transport failures and unknown outcomes explicitly. Never retry an uncertain external effect blindly.
@@ -17,7 +19,7 @@ Exit evidence: working adapters, boundary tests, provenance, actual model-call r
 
 ## 0.3: useful communal work and longer succession
 
-Maintain a consenting, noncritical software collection with scoped work grants. Study obligations surviving model replacement, unreliable memory, unavailable reviewers, limited budgets, and changed data contracts. Add separately governed lesson amendment, review, and retirement; the seed currently preserves counterstories but cannot resolve them into revised accepted lessons.
+Maintain a consenting, noncritical software collection with scoped work grants. Study obligations surviving model replacement, unreliable memory, unavailable reviewers, limited budgets, and changed data contracts. Extend the seed's keeper-controlled lesson review, suspension, and retirement into separately governed amendment and appeals with independently operated participants.
 
 Add safe-export policies, retention/deletion handling, observer diversity, and real identity/credential isolation before storing personal accounts. Preserve appeals and access to evidence during disputes. Provide bounded standing permissions for routine work; urgent conditions do not create new authority.
 

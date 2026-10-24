@@ -26,7 +26,7 @@ Someone who can invoke the unrestricted CLI can claim to be `keeper`. Someone wh
 - Tamper resistance against the operator, external receipts, or a protected governance root.
 - Privacy-preserving collection, consent management, redaction, or deletion for real personal accounts. Do not use the seed for those records.
 - A judgment that a reported experience is true, that a lesson's prose is sound, or that a procedure is legitimate.
-- Unbounded operation: a workshop has 256 accepted commands and public small fixtures. Replaying before each mutation is intentionally simple and not a scalable event store.
+- Unbounded operation: a workshop has 256 operational commands, then at most 32 review commands and three one-time terminal controls. None extends operational authority or resolves pending work by assertion. Public fixtures remain small. Replaying before each mutation is intentionally simple and not a scalable event store.
 
 `agent-view` hides the explicit reference field and keeper commands from its task packet. That omission does not stop an agent with filesystem access from finding them. Isolation must be enforced outside this program before giving an untrusted process access to a real keeper or sensitive information.
 

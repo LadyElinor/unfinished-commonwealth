@@ -1,5 +1,36 @@
 # Validation evidence
 
+## Release 0.1.2
+
+Validated locally on 23 October 2026 (America/New_York), using CPython 3.12.14
+on Linux. The complete suite has 84 passing tests: the prior 65 checks, with
+the historical-demo check changed to read an actual frozen 0.1.1 journal,
+plus 19 priority regression tests.
+
+The added cases cover every coached scenario's factual testimony, on-time peer
+accounts, reflection's command-only cost, direct and evidence-linked disputes,
+review/retirement history, new challenges after retention, keeper-only review,
+fresh successor observations and separate approval, the full operational/review
+boundary, unresolved closeout records, refused-command rollback, old journals
+at their previous ceiling, historical unobserved successors, and strict protocol
+tags/downgrade refusal. Additional cases reproduce the positive-only lesson
+transfer into signed data and verify chronological selection across numeric
+event-ID boundaries, including fallback when the newest lesson is suspended.
+
+Both frozen historical fixtures were exported by the unmodified 0.1.1 code
+before implementation. The historical demonstration retains its original head;
+the new demonstration has 24 events, five observed ticks, the same recorded
+missed deadline, and no pending peer jobs. All twelve scripted comparisons
+complete. Their environmental outcomes retain the original limitations.
+
+The source distribution, extracted-source test suite, wheel built from that
+source, and offline clean-environment CLI/module entry points are checked with
+`scripts/package.py`. See the exact published commit's hosted CI for platform
+results. This local record does not by itself certify Windows or other Python
+versions. The original 0.1.1 validation record is retained below.
+
+## Release 0.1.1 historical record
+
 Validated locally on 24 October 2026 using CPython 3.12.14 on Linux x86-64.
 Packaging used setuptools 84.1.0 and wheel 0.48.0. These are observed build-tool
 versions, not added runtime dependencies or claims of bit-identical builds.

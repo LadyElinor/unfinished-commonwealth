@@ -4,7 +4,7 @@
 
 The research question is practical: can a community improve its cooperation as its participants, circumstances, and procedures change?
 
-Version **0.1.1** provides a working local research seed. It runs real integer-data transformations inside a bounded workshop, shares a record-inspection budget between two jobs, records testimony and predictions, and passes a tested practice to a successor working on different data. Python 3.11 or later is sufficient. Runtime and tests use the standard library.
+Version **0.1.2** provides a working local research seed. It runs real integer-data transformations inside a bounded workshop, shares a record-inspection budget between two jobs, records testimony and predictions, and passes a tested practice to a successor working on different data. Python 3.11 or later is sufficient. Runtime and tests use the standard library.
 
 The included participants are **scripted fixture roles**, with an additional proposal-only JSON interface for a separately operated model or human. No model-backed study has been run. This repository does not establish independent machine persons, autonomous civilization, or authority outside its local workshop.
 
@@ -19,7 +19,7 @@ python -m unittest discover -s tests -v
 
 On Windows, use `py -3` if necessary. Run from the checkout root. A database or report that already exists is never overwritten; choose a new path to repeat a demonstration. Optional `python -m pip install .` adds the `commonwealth` command; installation may fetch the setuptools build dependency.
 
-For the full local check, run `python scripts/verify.py`. To produce a source archive and wheel, verify the source distribution, and smoke-test a clean offline installation, run `python scripts/package.py .local/release`. Packaging additionally requires locally installed setuptools (68 or later), wheel, pip, and venv; it never downloads build dependencies. See [build and validation](docs/BUILD.md) and [release 0.1.1](docs/RELEASE_0_1_1.md).
+For the full local check, run `python scripts/verify.py`. To produce a source archive and wheel, verify the source distribution, and smoke-test a clean offline installation, run `python scripts/package.py .local/release`. Packaging additionally requires locally installed setuptools (68 or later), wheel, pip, and venv; it never downloads build dependencies. See [build and validation](docs/BUILD.md) and [release 0.1.2](docs/RELEASE_0_1_2.md).
 
 The demonstration has five observed ticks:
 
@@ -33,7 +33,11 @@ The demonstration has five observed ticks:
 
 The original missed deadline remains in the record. A counterstory preserves the neighbor's account after the repair. The successor receives a lesson and its evidence, not an inherited execution grant.
 
+Inherited advice exposes disputes and the linked counterstories. Keeper reviews can retain, suspend, or retire a lesson; none certify that an account is true. Every successor must observe its own generation before proposing, then obtain separate approval before execution. After the 256-command operational limit, a bounded review allowance and terminal controls preserve accounts and unresolved obligations. [Protocol and limits](docs/PROTOCOL.md).
+
 These are deterministic authored events. The data transformations and deferred queue processing actually execute; inspection credits model resource pressure and do not measure wall time, energy, or token cost.
+
+Reflection consumes a command but no simulated time. `quality-stream` implements the fixtures' expected answer and works across every included case, so these scenarios cannot demonstrate adaptive method selection.
 
 ## Participate through a proposal
 
@@ -77,6 +81,7 @@ In the included comparison, the single controller and coached controller produce
 | --- | --- |
 | `commonwealth/pipeline.py` | Executable aggregation and shared-budget queue |
 | `commonwealth/engine.py` | Typed, replayable protocol transitions |
+| `commonwealth/legacy_v1.py` | Frozen historical transitions for replay only |
 | `commonwealth/store.py` | Atomic persistence, journal verification, and replay |
 | `commonwealth/coach.py` | Coaching cues and scoped inherited advice |
 | `commonwealth/interface.py` | Proposal-only external participant packet |

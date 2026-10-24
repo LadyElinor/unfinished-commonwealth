@@ -20,6 +20,9 @@
     "record_inspections": 88,
     "command_count": 23,
     "command_limit": 256,
+    "post_budget_review_count": 0,
+    "post_budget_review_limit": 32,
+    "terminal_controls_used": [],
     "scored_predictions": 3,
     "executed_unscored_predictions": 0,
     "mean_primary_brier": 0.0,
@@ -39,8 +42,41 @@
     "method": "quality-stream",
     "lesson": "lesson-14",
     "status": "ADVICE_ONLY",
-    "requires_new_observation": true
+    "requires_new_observation": true,
+    "review_status": "DISPUTED",
+    "requires_review": true,
+    "counterstories": [
+      {
+        "id": "counterstory-16",
+        "reference": "lesson-14",
+        "actor": "neighbor",
+        "account": "The backlog was cleared. The original missed deadline still happened; later success does not erase that cost."
+      }
+    ],
+    "unaddressed_counterstories": [
+      "counterstory-16"
+    ],
+    "reviews": []
   },
+  "lesson_reviews": {
+    "lesson-14": {
+      "review_status": "DISPUTED",
+      "requires_review": true,
+      "counterstories": [
+        {
+          "id": "counterstory-16",
+          "reference": "lesson-14",
+          "actor": "neighbor",
+          "account": "The backlog was cleared. The original missed deadline still happened; later success does not erase that cost."
+        }
+      ],
+      "unaddressed_counterstories": [
+        "counterstory-16"
+      ],
+      "reviews": []
+    }
+  },
+  "closeouts": [],
   "limitations": [
     "All included scenarios are exposed development fixtures, not held-out trials.",
     "Inspection credits model a shared budget; they do not measure wall time or energy.",

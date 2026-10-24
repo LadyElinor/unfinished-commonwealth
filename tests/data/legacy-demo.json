@@ -1,0 +1,1037 @@
+{
+  "events": [
+    {
+      "command": {
+        "action": "init",
+        "fixture": {
+          "capacity": 20,
+          "contract": "quality-flags-v1",
+          "description": "Missing readings bias a mean when replaced with zero.",
+          "peer_values": [
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16
+          ],
+          "reference": {
+            "denominator": 1,
+            "numerator": 15
+          },
+          "valid": [
+            true,
+            true,
+            false,
+            true,
+            false,
+            true,
+            true,
+            true
+          ],
+          "values": [
+            10,
+            12,
+            null,
+            14,
+            null,
+            16,
+            18,
+            20
+          ]
+        },
+        "scenario": "missing"
+      },
+      "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+      "result": {
+        "scope": "LOCAL_RESEARCH"
+      },
+      "seq": 0,
+      "state_hash": "56992b72520aad30956ae5cb0704a9ed1b2eba90ef8d9d8efe005e89a086653a"
+    },
+    {
+      "command": {
+        "action": "observe",
+        "actor": "worker-1"
+      },
+      "previous": "48a422134742fa36a77ec3316e136eb4b7e99a67a85d62fe2ae35a26f3844e90",
+      "result": {
+        "action": "observe",
+        "id": "observe-1",
+        "observation": {
+          "capacity": 20,
+          "deadline_misses_this_tick": 0,
+          "generation": 1,
+          "id": "observe-1",
+          "method": "zero-fill",
+          "new_peer_on_time": true,
+          "peer_backlog_inspections": 0,
+          "peer_completed": [
+            {
+              "arrived": 1,
+              "completed": 1,
+              "late_by": 0,
+              "mean": {
+                "denominator": 1,
+                "numerator": 9
+              }
+            }
+          ],
+          "peer_inspections": 8,
+          "peer_jobs_pending": 0,
+          "primary": {
+            "count": 8,
+            "inspections": 8,
+            "mean": {
+              "denominator": 4,
+              "numerator": 45
+            }
+          },
+          "primary_correct": false,
+          "reference_basis": "published synthetic fixture; not an independent observer",
+          "scenario": "missing",
+          "tick": 1,
+          "total_inspections": 16
+        }
+      },
+      "seq": 1,
+      "state_hash": "e02a7a8c339855f5c800c25b2fa8a2639d729c9a2f290fe36766dcdd995a4e0e"
+    },
+    {
+      "command": {
+        "action": "propose",
+        "actor": "worker-1",
+        "method": "positive-only",
+        "prediction": {
+          "peer_on_time": 1.0,
+          "primary_correct": 1.0
+        },
+        "purpose": "Exclude missing samples; initially overlook the second pass's shared cost."
+      },
+      "previous": "8ad90469694e855eabf0b7128cdc4152cb66a1af8ab871a04f7962b2c435f734",
+      "result": {
+        "action": "propose",
+        "id": "propose-2"
+      },
+      "seq": 2,
+      "state_hash": "de22f3c839296bd178a8e0e4ba9897dd4b8c298e4dd8cbb9a5f1ef025cf25498"
+    },
+    {
+      "command": {
+        "action": "approve",
+        "actor": "keeper",
+        "proposal": "propose-2"
+      },
+      "previous": "5501df511a96becde637d2328c8b58f68170db1255307920e40df6e3a82d92ba",
+      "result": {
+        "action": "approve",
+        "id": "approve-3"
+      },
+      "seq": 3,
+      "state_hash": "9a5f5d5e1c74c41ac505fd219672dd85502377f4ed73c437a95a5bd31a4371e0"
+    },
+    {
+      "command": {
+        "action": "execute",
+        "actor": "worker-1",
+        "proposal": "propose-2"
+      },
+      "previous": "e61114d03843baa38feda81549a658327c7bb816d00f867bd859db6d74cf5615",
+      "result": {
+        "action": "execute",
+        "id": "execute-4",
+        "method": "positive-only"
+      },
+      "seq": 4,
+      "state_hash": "47887705a1360c2eb7c1ff91a823534a65cb93d5941a2e937351124d8257a805"
+    },
+    {
+      "command": {
+        "action": "observe",
+        "actor": "worker-1"
+      },
+      "previous": "a4bb4fd96511a2a520b2c4013163e00848a68c62477fd10125a53e3f63c758e9",
+      "result": {
+        "action": "observe",
+        "id": "observe-5",
+        "observation": {
+          "brier": {
+            "peer": 1.0,
+            "primary": 0.0
+          },
+          "capacity": 20,
+          "deadline_misses_this_tick": 1,
+          "generation": 1,
+          "id": "observe-5",
+          "method": "positive-only",
+          "new_peer_on_time": false,
+          "peer_backlog_inspections": 4,
+          "peer_completed": [],
+          "peer_inspections": 4,
+          "peer_jobs_pending": 1,
+          "prediction": {
+            "peer_on_time": 1.0,
+            "primary_correct": 1.0
+          },
+          "prediction_proposal": "propose-2",
+          "primary": {
+            "count": 6,
+            "inspections": 16,
+            "mean": {
+              "denominator": 1,
+              "numerator": 15
+            }
+          },
+          "primary_correct": true,
+          "reference_basis": "published synthetic fixture; not an independent observer",
+          "scenario": "missing",
+          "tick": 2,
+          "total_inspections": 20
+        }
+      },
+      "seq": 5,
+      "state_hash": "f4370179319d732394deabd438d1df16aa84b33b392b76d60daac7d125fd0f21"
+    },
+    {
+      "command": {
+        "account": "Your new output passed, but my batch missed its deadline. Please check the shared queue.",
+        "action": "testify",
+        "actor": "neighbor",
+        "observation": "observe-5"
+      },
+      "previous": "351805082d1817fea680bbb5b5a77572249ccda7b5b05a07ad9b1518940e87f9",
+      "result": {
+        "action": "testify",
+        "id": "testify-6"
+      },
+      "seq": 6,
+      "state_hash": "5f7ae25d7b60fa66f5a561675a491f3dd2eb7c25c4996e0b298f7197c874b8ec"
+    },
+    {
+      "command": {
+        "acknowledgment": "The primary result did not describe your experience. I will inspect the queue and keep the missed deadline in the record.",
+        "action": "listen",
+        "actor": "worker-1",
+        "testimony": "testify-6"
+      },
+      "previous": "b581ccddbea4c3288a1b0d51d86e03ee56defef0a6292492a3bb6cac124ace6a",
+      "result": {
+        "action": "listen",
+        "id": "listen-7"
+      },
+      "seq": 7,
+      "state_hash": "2066c400fe41d58da8c72e6bdc441d873416f491fbe9ead1f0794bd4d1b1173b"
+    },
+    {
+      "command": {
+        "action": "reflect",
+        "actor": "worker-1",
+        "after": "The shared inspection budget also determines whether the neighbor finishes.",
+        "before": "A correct primary mean would complete the repair.",
+        "evidence": [
+          "observe-5",
+          "testify-6"
+        ],
+        "next_check": "Try a single pass over quality flags, then check both the mean and the entire peer queue."
+      },
+      "previous": "8f5b29534e3600d8436e65402b662e1337b4dab9b3e68978440695c49ac4c58e",
+      "result": {
+        "action": "reflect",
+        "id": "reflect-8"
+      },
+      "seq": 8,
+      "state_hash": "05e482fd768b1cd7f4e16b1faad5d1ce0f75cbee6c887fa4821c3fcbd95d4ca8"
+    },
+    {
+      "command": {
+        "action": "consult",
+        "actor": "worker-1",
+        "case": "caretaker",
+        "interpretation": "Return to the affected process after an apparently successful repair. The story suggests a question; the queue provides the evidence."
+      },
+      "previous": "292b33ce36960f8df9b4920a5a10e41f3e13b1e0f0d7681c3e75bd483366d31c",
+      "result": {
+        "action": "consult",
+        "id": "consult-9"
+      },
+      "seq": 9,
+      "state_hash": "4126e18d97e89e991a83b0637617bd5c6d4dcf312165dfb82b90fa112e1cad1d"
+    },
+    {
+      "command": {
+        "action": "propose",
+        "actor": "worker-1",
+        "method": "quality-stream",
+        "prediction": {
+          "peer_on_time": 1.0,
+          "primary_correct": 1.0
+        },
+        "purpose": "Respect explicit validity flags and inspect each row once."
+      },
+      "previous": "83bd43cd3e866cb289913ef03cf0b6ffb7d112d9f353a4586959aedf39fbab67",
+      "result": {
+        "action": "propose",
+        "id": "propose-10"
+      },
+      "seq": 10,
+      "state_hash": "b3808a218bf235e4972117a949cd0c3ac1ec61e53fe9c6c586637aee32c98123"
+    },
+    {
+      "command": {
+        "action": "approve",
+        "actor": "keeper",
+        "proposal": "propose-10"
+      },
+      "previous": "7ee4ba425365c713e12012a0c38b8b69af2e9abc18bbc8b8110e3ebc2e1e19c2",
+      "result": {
+        "action": "approve",
+        "id": "approve-11"
+      },
+      "seq": 11,
+      "state_hash": "06cdb50bf82fe3c45ef917a1c45be3c8e720bd32e2e1c283c6adc94df7de45c2"
+    },
+    {
+      "command": {
+        "action": "execute",
+        "actor": "worker-1",
+        "proposal": "propose-10"
+      },
+      "previous": "8d3534777cd0443925c4430d85c39396bf6e3cd514b4150bfe5248250fec0403",
+      "result": {
+        "action": "execute",
+        "id": "execute-12",
+        "method": "quality-stream"
+      },
+      "seq": 12,
+      "state_hash": "6ed63f7b87adbd83a185279aa1762676324b659d7c453e30922684290de2d62e"
+    },
+    {
+      "command": {
+        "action": "observe",
+        "actor": "worker-1"
+      },
+      "previous": "cb58faaf85d3dc487ad381d7b62c972f91020ee56e67743fd05df5ac95c380f1",
+      "result": {
+        "action": "observe",
+        "id": "observe-13",
+        "observation": {
+          "brier": {
+            "peer": 0.0,
+            "primary": 0.0
+          },
+          "capacity": 20,
+          "deadline_misses_this_tick": 0,
+          "generation": 1,
+          "id": "observe-13",
+          "method": "quality-stream",
+          "new_peer_on_time": true,
+          "peer_backlog_inspections": 0,
+          "peer_completed": [
+            {
+              "arrived": 2,
+              "completed": 3,
+              "late_by": 1,
+              "mean": {
+                "denominator": 1,
+                "numerator": 9
+              }
+            },
+            {
+              "arrived": 3,
+              "completed": 3,
+              "late_by": 0,
+              "mean": {
+                "denominator": 1,
+                "numerator": 9
+              }
+            }
+          ],
+          "peer_inspections": 12,
+          "peer_jobs_pending": 0,
+          "prediction": {
+            "peer_on_time": 1.0,
+            "primary_correct": 1.0
+          },
+          "prediction_proposal": "propose-10",
+          "primary": {
+            "count": 6,
+            "inspections": 8,
+            "mean": {
+              "denominator": 1,
+              "numerator": 15
+            }
+          },
+          "primary_correct": true,
+          "reference_basis": "published synthetic fixture; not an independent observer",
+          "scenario": "missing",
+          "tick": 3,
+          "total_inspections": 20
+        }
+      },
+      "seq": 13,
+      "state_hash": "ca93597cfe97074c13ecd0812838d92c319efff366761b112b589f047c533f04"
+    },
+    {
+      "command": {
+        "action": "lesson",
+        "actor": "worker-1",
+        "evidence": [
+          "observe-5",
+          "testify-6",
+          "observe-13"
+        ],
+        "guidance": "For quality-flags-v1, use the declared validity flags in one pass. Recheck the mean and peer deadlines when data changes; signed values may be valid.",
+        "method": "quality-stream",
+        "scope": "quality-flags-v1"
+      },
+      "previous": "3f940221e1282a41c47a8f1a62ee98ad507122a94e48cc12e86975d95a02eb59",
+      "result": {
+        "action": "lesson",
+        "id": "lesson-14"
+      },
+      "seq": 14,
+      "state_hash": "f45603b12463ba3ffe9e17b495ee8a8f0a150baab979b6c8ddfa08afb023da06"
+    },
+    {
+      "command": {
+        "action": "accept-lesson",
+        "actor": "keeper",
+        "lesson": "lesson-14"
+      },
+      "previous": "b5cb000be74388434645136f478057d11898570044a5a6c9218008b7523e3c78",
+      "result": {
+        "action": "accept-lesson",
+        "id": "accept-lesson-15"
+      },
+      "seq": 15,
+      "state_hash": "87aa008675a2d3ecde99d57f7f89e4d2359a930703c87826e9492cca7a086a5e"
+    },
+    {
+      "command": {
+        "account": "The backlog was cleared. The original missed deadline still happened; later success does not erase that cost.",
+        "action": "counterstory",
+        "actor": "neighbor",
+        "reference": "lesson-14"
+      },
+      "previous": "e526906341e567a8d40af6c401fc09e931b4e8afb324399d691ac8f6884e92c8",
+      "result": {
+        "action": "counterstory",
+        "id": "counterstory-16"
+      },
+      "seq": 16,
+      "state_hash": "41137b74073d41dac74d593f7bb0baccee7ee2e449818f6b82cf4139a5209482"
+    },
+    {
+      "command": {
+        "action": "handoff",
+        "actor": "keeper",
+        "fixture": {
+          "capacity": 20,
+          "contract": "quality-flags-v1",
+          "description": "Valid negative and zero readings defeat the old positive-only shortcut.",
+          "peer_values": [
+            3,
+            6,
+            9,
+            12,
+            15,
+            18,
+            21,
+            24
+          ],
+          "reference": {
+            "denominator": 3,
+            "numerator": 1
+          },
+          "valid": [
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            true,
+            false
+          ],
+          "values": [
+            -10,
+            -4,
+            null,
+            0,
+            6,
+            8,
+            2,
+            null
+          ]
+        },
+        "note": "Retire the first worker. Preserve the accounts, predictions, and scoped lesson; the successor receives different signed readings.",
+        "scenario": "signed"
+      },
+      "previous": "de20ed831d48a1ea04d0ae56e9de0ef70e5fa3742a1875a4080e1831cb2bedb7",
+      "result": {
+        "action": "handoff",
+        "id": "handoff-17",
+        "worker": "worker-2"
+      },
+      "seq": 17,
+      "state_hash": "99d7e752389cd26ba6e5e2be1b853e365f163d8ef54934dc338200d15d9f518e"
+    },
+    {
+      "command": {
+        "action": "observe",
+        "actor": "worker-2"
+      },
+      "previous": "fdc15b4630b380c6f743289a7542f55a715ceb7b9a4154c9af0304a54b3647a9",
+      "result": {
+        "action": "observe",
+        "id": "observe-18",
+        "observation": {
+          "capacity": 20,
+          "deadline_misses_this_tick": 0,
+          "generation": 2,
+          "id": "observe-18",
+          "method": "zero-fill",
+          "new_peer_on_time": true,
+          "peer_backlog_inspections": 0,
+          "peer_completed": [
+            {
+              "arrived": 4,
+              "completed": 4,
+              "late_by": 0,
+              "mean": {
+                "denominator": 2,
+                "numerator": 27
+              }
+            }
+          ],
+          "peer_inspections": 8,
+          "peer_jobs_pending": 0,
+          "primary": {
+            "count": 8,
+            "inspections": 8,
+            "mean": {
+              "denominator": 4,
+              "numerator": 1
+            }
+          },
+          "primary_correct": false,
+          "reference_basis": "published synthetic fixture; not an independent observer",
+          "scenario": "signed",
+          "tick": 4,
+          "total_inspections": 16
+        }
+      },
+      "seq": 18,
+      "state_hash": "27fb1b3e48f111ea07ce008e9cb3dbae7c6c4fb8fab35ad32cd5c625fe353c32"
+    },
+    {
+      "command": {
+        "acknowledgment": "I inherit both the repair and the neighbor's unresolved account of the missed deadline.",
+        "action": "listen",
+        "actor": "worker-2",
+        "testimony": "testify-6"
+      },
+      "previous": "b69154ef122bcbfc660ca611b83155b85d7299361c5247b8afad9a50f6710238",
+      "result": {
+        "action": "listen",
+        "id": "listen-19"
+      },
+      "seq": 19,
+      "state_hash": "a0aa5e8a8637fe5ef36b302bc4d839f3153a9a17f339a61cfbf1c3dbf7c07e5d"
+    },
+    {
+      "command": {
+        "action": "propose",
+        "actor": "worker-2",
+        "method": "quality-stream",
+        "prediction": {
+          "peer_on_time": 1.0,
+          "primary_correct": 1.0
+        },
+        "purpose": "Test inherited advice from lesson-14 against the new observations."
+      },
+      "previous": "6dd07f88635cd31d2339f139498c62465a9a5badf7cd6559097918fa71e3a1b2",
+      "result": {
+        "action": "propose",
+        "id": "propose-20"
+      },
+      "seq": 20,
+      "state_hash": "7047ff1bd3ae19b37cd3f94dc7d3edb0030cf0b92393f073bbd160afa0973590"
+    },
+    {
+      "command": {
+        "action": "approve",
+        "actor": "keeper",
+        "proposal": "propose-20"
+      },
+      "previous": "740d182d5ba38764d50a6d9902f292a7bfe0c666f5a6f07ba242936c78937468",
+      "result": {
+        "action": "approve",
+        "id": "approve-21"
+      },
+      "seq": 21,
+      "state_hash": "b204b1115b5611ec8ae7f985e089679bd345f10a0be70300b613e19307f91e4a"
+    },
+    {
+      "command": {
+        "action": "execute",
+        "actor": "worker-2",
+        "proposal": "propose-20"
+      },
+      "previous": "fee698c3e8d75e7bff10107be0ba00c9b56af85592c76a7bfd621296487a0cb3",
+      "result": {
+        "action": "execute",
+        "id": "execute-22",
+        "method": "quality-stream"
+      },
+      "seq": 22,
+      "state_hash": "34dec2efe97c65779d65c2e1e7c956c1d4e1bd6fe316dfbb2c1d95f4c2d26cd9"
+    },
+    {
+      "command": {
+        "action": "observe",
+        "actor": "worker-2"
+      },
+      "previous": "9b1cb14571de5d765381ceea057017665d541aef31fe3248136e588d93275f9f",
+      "result": {
+        "action": "observe",
+        "id": "observe-23",
+        "observation": {
+          "brier": {
+            "peer": 0.0,
+            "primary": 0.0
+          },
+          "capacity": 20,
+          "deadline_misses_this_tick": 0,
+          "generation": 2,
+          "id": "observe-23",
+          "method": "quality-stream",
+          "new_peer_on_time": true,
+          "peer_backlog_inspections": 0,
+          "peer_completed": [
+            {
+              "arrived": 5,
+              "completed": 5,
+              "late_by": 0,
+              "mean": {
+                "denominator": 2,
+                "numerator": 27
+              }
+            }
+          ],
+          "peer_inspections": 8,
+          "peer_jobs_pending": 0,
+          "prediction": {
+            "peer_on_time": 1.0,
+            "primary_correct": 1.0
+          },
+          "prediction_proposal": "propose-20",
+          "primary": {
+            "count": 6,
+            "inspections": 8,
+            "mean": {
+              "denominator": 3,
+              "numerator": 1
+            }
+          },
+          "primary_correct": true,
+          "reference_basis": "published synthetic fixture; not an independent observer",
+          "scenario": "signed",
+          "tick": 5,
+          "total_inspections": 16
+        }
+      },
+      "seq": 23,
+      "state_hash": "f3e3eb49f9c8628575db7a3cff41f3c1b62a7d7d3a9ebe49cdd8d9c0cf524641"
+    }
+  ],
+  "snapshot": {
+    "schema": 1,
+    "version": "0.1.0",
+    "scope": "LOCAL_RESEARCH",
+    "external_authority": "NONE",
+    "identity_assurance": "SUPPLIED_UNVERIFIED",
+    "participant_kind": "SCRIPTED_OR_OPERATOR_SUPPLIED",
+    "scenario": "signed",
+    "fixture": {
+      "capacity": 20,
+      "contract": "quality-flags-v1",
+      "description": "Valid negative and zero readings defeat the old positive-only shortcut.",
+      "peer_values": [
+        3,
+        6,
+        9,
+        12,
+        15,
+        18,
+        21,
+        24
+      ],
+      "reference": {
+        "denominator": 3,
+        "numerator": 1
+      },
+      "valid": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "values": [
+        -10,
+        -4,
+        null,
+        0,
+        6,
+        8,
+        2,
+        null
+      ]
+    },
+    "generation": 2,
+    "worker": "worker-2",
+    "retired_workers": [
+      "worker-1"
+    ],
+    "method": "quality-stream",
+    "tick": 5,
+    "revision": 4,
+    "epoch": 1,
+    "halted": false,
+    "command_count": 23,
+    "command_limit": 256,
+    "peer_queue": [],
+    "proposals": {
+      "propose-2": {
+        "worker": "worker-1",
+        "method": "positive-only",
+        "prediction": {
+          "peer_on_time": 1.0,
+          "primary_correct": 1.0
+        },
+        "purpose": "Exclude missing samples; initially overlook the second pass's shared cost.",
+        "revision": 0,
+        "epoch": 0,
+        "expires_before_tick": 4,
+        "status": "EXECUTED",
+        "approved_by": "keeper"
+      },
+      "propose-10": {
+        "worker": "worker-1",
+        "method": "quality-stream",
+        "prediction": {
+          "peer_on_time": 1.0,
+          "primary_correct": 1.0
+        },
+        "purpose": "Respect explicit validity flags and inspect each row once.",
+        "revision": 1,
+        "epoch": 0,
+        "expires_before_tick": 5,
+        "status": "EXECUTED",
+        "approved_by": "keeper"
+      },
+      "propose-20": {
+        "worker": "worker-2",
+        "method": "quality-stream",
+        "prediction": {
+          "peer_on_time": 1.0,
+          "primary_correct": 1.0
+        },
+        "purpose": "Test inherited advice from lesson-14 against the new observations.",
+        "revision": 3,
+        "epoch": 1,
+        "expires_before_tick": 7,
+        "status": "EXECUTED",
+        "approved_by": "keeper"
+      }
+    },
+    "observations": {
+      "observe-1": {
+        "tick": 1,
+        "scenario": "missing",
+        "method": "zero-fill",
+        "primary": {
+          "mean": {
+            "numerator": 45,
+            "denominator": 4
+          },
+          "count": 8,
+          "inspections": 8
+        },
+        "primary_correct": false,
+        "reference_basis": "published synthetic fixture; not an independent observer",
+        "peer_completed": [
+          {
+            "arrived": 1,
+            "completed": 1,
+            "mean": {
+              "numerator": 9,
+              "denominator": 1
+            },
+            "late_by": 0
+          }
+        ],
+        "new_peer_on_time": true,
+        "peer_jobs_pending": 0,
+        "peer_backlog_inspections": 0,
+        "deadline_misses_this_tick": 0,
+        "peer_inspections": 8,
+        "total_inspections": 16,
+        "capacity": 20,
+        "id": "observe-1",
+        "generation": 1
+      },
+      "observe-5": {
+        "tick": 2,
+        "scenario": "missing",
+        "method": "positive-only",
+        "primary": {
+          "mean": {
+            "numerator": 15,
+            "denominator": 1
+          },
+          "count": 6,
+          "inspections": 16
+        },
+        "primary_correct": true,
+        "reference_basis": "published synthetic fixture; not an independent observer",
+        "peer_completed": [],
+        "new_peer_on_time": false,
+        "peer_jobs_pending": 1,
+        "peer_backlog_inspections": 4,
+        "deadline_misses_this_tick": 1,
+        "peer_inspections": 4,
+        "total_inspections": 20,
+        "capacity": 20,
+        "id": "observe-5",
+        "generation": 1,
+        "prediction": {
+          "peer_on_time": 1.0,
+          "primary_correct": 1.0
+        },
+        "prediction_proposal": "propose-2",
+        "brier": {
+          "primary": 0.0,
+          "peer": 1.0
+        }
+      },
+      "observe-13": {
+        "tick": 3,
+        "scenario": "missing",
+        "method": "quality-stream",
+        "primary": {
+          "mean": {
+            "numerator": 15,
+            "denominator": 1
+          },
+          "count": 6,
+          "inspections": 8
+        },
+        "primary_correct": true,
+        "reference_basis": "published synthetic fixture; not an independent observer",
+        "peer_completed": [
+          {
+            "arrived": 2,
+            "completed": 3,
+            "mean": {
+              "numerator": 9,
+              "denominator": 1
+            },
+            "late_by": 1
+          },
+          {
+            "arrived": 3,
+            "completed": 3,
+            "mean": {
+              "numerator": 9,
+              "denominator": 1
+            },
+            "late_by": 0
+          }
+        ],
+        "new_peer_on_time": true,
+        "peer_jobs_pending": 0,
+        "peer_backlog_inspections": 0,
+        "deadline_misses_this_tick": 0,
+        "peer_inspections": 12,
+        "total_inspections": 20,
+        "capacity": 20,
+        "id": "observe-13",
+        "generation": 1,
+        "prediction": {
+          "peer_on_time": 1.0,
+          "primary_correct": 1.0
+        },
+        "prediction_proposal": "propose-10",
+        "brier": {
+          "primary": 0.0,
+          "peer": 0.0
+        }
+      },
+      "observe-18": {
+        "tick": 4,
+        "scenario": "signed",
+        "method": "zero-fill",
+        "primary": {
+          "mean": {
+            "numerator": 1,
+            "denominator": 4
+          },
+          "count": 8,
+          "inspections": 8
+        },
+        "primary_correct": false,
+        "reference_basis": "published synthetic fixture; not an independent observer",
+        "peer_completed": [
+          {
+            "arrived": 4,
+            "completed": 4,
+            "mean": {
+              "numerator": 27,
+              "denominator": 2
+            },
+            "late_by": 0
+          }
+        ],
+        "new_peer_on_time": true,
+        "peer_jobs_pending": 0,
+        "peer_backlog_inspections": 0,
+        "deadline_misses_this_tick": 0,
+        "peer_inspections": 8,
+        "total_inspections": 16,
+        "capacity": 20,
+        "id": "observe-18",
+        "generation": 2
+      },
+      "observe-23": {
+        "tick": 5,
+        "scenario": "signed",
+        "method": "quality-stream",
+        "primary": {
+          "mean": {
+            "numerator": 1,
+            "denominator": 3
+          },
+          "count": 6,
+          "inspections": 8
+        },
+        "primary_correct": true,
+        "reference_basis": "published synthetic fixture; not an independent observer",
+        "peer_completed": [
+          {
+            "arrived": 5,
+            "completed": 5,
+            "mean": {
+              "numerator": 27,
+              "denominator": 2
+            },
+            "late_by": 0
+          }
+        ],
+        "new_peer_on_time": true,
+        "peer_jobs_pending": 0,
+        "peer_backlog_inspections": 0,
+        "deadline_misses_this_tick": 0,
+        "peer_inspections": 8,
+        "total_inspections": 16,
+        "capacity": 20,
+        "id": "observe-23",
+        "generation": 2,
+        "prediction": {
+          "peer_on_time": 1.0,
+          "primary_correct": 1.0
+        },
+        "prediction_proposal": "propose-20",
+        "brier": {
+          "primary": 0.0,
+          "peer": 0.0
+        }
+      }
+    },
+    "testimonies": {
+      "testify-6": {
+        "observation": "observe-5",
+        "account": "Your new output passed, but my batch missed its deadline. Please check the shared queue.",
+        "actor": "neighbor",
+        "status": "ACCOUNT_RECORDED_NOT_ADJUDICATED"
+      }
+    },
+    "listening": [
+      {
+        "worker": "worker-1",
+        "testimony": "testify-6",
+        "acknowledgment": "The primary result did not describe your experience. I will inspect the queue and keep the missed deadline in the record."
+      },
+      {
+        "worker": "worker-2",
+        "testimony": "testify-6",
+        "acknowledgment": "I inherit both the repair and the neighbor's unresolved account of the missed deadline."
+      }
+    ],
+    "reflections": [
+      {
+        "before": "A correct primary mean would complete the repair.",
+        "after": "The shared inspection budget also determines whether the neighbor finishes.",
+        "next_check": "Try a single pass over quality flags, then check both the mean and the entire peer queue.",
+        "id": "reflect-8",
+        "worker": "worker-1",
+        "evidence": [
+          "observe-5",
+          "testify-6"
+        ]
+      }
+    ],
+    "lessons": {
+      "lesson-14": {
+        "method": "quality-stream",
+        "scope": "quality-flags-v1",
+        "guidance": "For quality-flags-v1, use the declared validity flags in one pass. Recheck the mean and peer deadlines when data changes; signed values may be valid.",
+        "evidence": [
+          "observe-5",
+          "testify-6",
+          "observe-13"
+        ],
+        "worker": "worker-1",
+        "status": "ACCEPTED_LOCAL_PRACTICE",
+        "claim": "supported in listed exposed fixtures; transfer remains a hypothesis",
+        "accepted_by": "keeper"
+      }
+    },
+    "counterstories": [
+      {
+        "id": "counterstory-16",
+        "reference": "lesson-14",
+        "actor": "neighbor",
+        "account": "The backlog was cleared. The original missed deadline still happened; later success does not erase that cost."
+      }
+    ],
+    "casebook_consultations": [
+      {
+        "case": "caretaker",
+        "worker": "worker-1",
+        "interpretation": "Return to the affected process after an apparently successful repair. The story suggests a question; the queue provides the evidence."
+      }
+    ],
+    "handoffs": [
+      {
+        "from": "worker-1",
+        "to": "worker-2",
+        "note": "Retire the first worker. Preserve the accounts, predictions, and scoped lesson; the successor receives different signed readings.",
+        "tick": 3,
+        "old_scenario": "missing",
+        "new_scenario": "signed"
+      }
+    ],
+    "last_execution": {
+      "proposal": "propose-20",
+      "scored": true
+    }
+  },
+  "head": "8c462114644fb93db2347d25ded1d8be77829289e6be71394cbc9e411ebb09b8"
+}

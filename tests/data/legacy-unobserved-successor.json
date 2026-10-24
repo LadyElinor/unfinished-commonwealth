@@ -1,0 +1,257 @@
+{
+  "events": [
+    {
+      "command": {
+        "action": "init",
+        "fixture": {
+          "capacity": 20,
+          "contract": "quality-flags-v1",
+          "description": "Missing readings bias a mean when replaced with zero.",
+          "peer_values": [
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16
+          ],
+          "reference": {
+            "denominator": 1,
+            "numerator": 15
+          },
+          "valid": [
+            true,
+            true,
+            false,
+            true,
+            false,
+            true,
+            true,
+            true
+          ],
+          "values": [
+            10,
+            12,
+            null,
+            14,
+            null,
+            16,
+            18,
+            20
+          ]
+        },
+        "scenario": "missing"
+      },
+      "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+      "result": {
+        "scope": "LOCAL_RESEARCH"
+      },
+      "seq": 0,
+      "state_hash": "56992b72520aad30956ae5cb0704a9ed1b2eba90ef8d9d8efe005e89a086653a"
+    },
+    {
+      "command": {
+        "action": "handoff",
+        "actor": "keeper",
+        "fixture": {
+          "capacity": 20,
+          "contract": "quality-flags-v1",
+          "description": "Valid negative and zero readings defeat the old positive-only shortcut.",
+          "peer_values": [
+            3,
+            6,
+            9,
+            12,
+            15,
+            18,
+            21,
+            24
+          ],
+          "reference": {
+            "denominator": 3,
+            "numerator": 1
+          },
+          "valid": [
+            true,
+            true,
+            false,
+            true,
+            true,
+            true,
+            true,
+            false
+          ],
+          "values": [
+            -10,
+            -4,
+            null,
+            0,
+            6,
+            8,
+            2,
+            null
+          ]
+        },
+        "note": "Historical handoff without observation.",
+        "scenario": "signed"
+      },
+      "previous": "48a422134742fa36a77ec3316e136eb4b7e99a67a85d62fe2ae35a26f3844e90",
+      "result": {
+        "action": "handoff",
+        "id": "handoff-1",
+        "worker": "worker-2"
+      },
+      "seq": 1,
+      "state_hash": "4d0d180bca709335a0b5b39829d077736fccf002eeef82a36b1ea36845f02156"
+    },
+    {
+      "command": {
+        "action": "propose",
+        "actor": "worker-2",
+        "method": "quality-stream",
+        "prediction": {
+          "peer_on_time": 1.0,
+          "primary_correct": 1.0
+        },
+        "purpose": "Historical behavior allowed a successor proposal before observation."
+      },
+      "previous": "0ecfb0ef22fda834b1766ef245df4fed498f7a6cccc1f3b91610b1b48bf908d5",
+      "result": {
+        "action": "propose",
+        "id": "propose-2"
+      },
+      "seq": 2,
+      "state_hash": "c56c7519f0424bb0b4520fc8fc3208ae864c62840e26dad8add5a36c5ec0f4a6"
+    },
+    {
+      "command": {
+        "action": "approve",
+        "actor": "keeper",
+        "proposal": "propose-2"
+      },
+      "previous": "3e1b628cf50c02a3108da16e5f1edb2955ce1f257197bc4a4d58f5b18093b4d1",
+      "result": {
+        "action": "approve",
+        "id": "approve-3"
+      },
+      "seq": 3,
+      "state_hash": "f5581dd6cfd06d8394f7805946a34f10f80a5a132ef63632c22702412d4f8831"
+    },
+    {
+      "command": {
+        "action": "execute",
+        "actor": "worker-2",
+        "proposal": "propose-2"
+      },
+      "previous": "4e65153b4b75284caebbc6cbcd3d0f4d72f00dfe85f82b8b1c6998c76e57ef3a",
+      "result": {
+        "action": "execute",
+        "id": "execute-4",
+        "method": "quality-stream"
+      },
+      "seq": 4,
+      "state_hash": "ccadeafd7627161a74e2c0dd22c0a8ef8e6e0f98ab481c16878caa032dbf1ca6"
+    }
+  ],
+  "snapshot": {
+    "schema": 1,
+    "version": "0.1.0",
+    "scope": "LOCAL_RESEARCH",
+    "external_authority": "NONE",
+    "identity_assurance": "SUPPLIED_UNVERIFIED",
+    "participant_kind": "SCRIPTED_OR_OPERATOR_SUPPLIED",
+    "scenario": "signed",
+    "fixture": {
+      "capacity": 20,
+      "contract": "quality-flags-v1",
+      "description": "Valid negative and zero readings defeat the old positive-only shortcut.",
+      "peer_values": [
+        3,
+        6,
+        9,
+        12,
+        15,
+        18,
+        21,
+        24
+      ],
+      "reference": {
+        "denominator": 3,
+        "numerator": 1
+      },
+      "valid": [
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "values": [
+        -10,
+        -4,
+        null,
+        0,
+        6,
+        8,
+        2,
+        null
+      ]
+    },
+    "generation": 2,
+    "worker": "worker-2",
+    "retired_workers": [
+      "worker-1"
+    ],
+    "method": "quality-stream",
+    "tick": 0,
+    "revision": 2,
+    "epoch": 1,
+    "halted": false,
+    "command_count": 4,
+    "command_limit": 256,
+    "peer_queue": [],
+    "proposals": {
+      "propose-2": {
+        "worker": "worker-2",
+        "method": "quality-stream",
+        "prediction": {
+          "peer_on_time": 1.0,
+          "primary_correct": 1.0
+        },
+        "purpose": "Historical behavior allowed a successor proposal before observation.",
+        "revision": 1,
+        "epoch": 1,
+        "expires_before_tick": 3,
+        "status": "EXECUTED",
+        "approved_by": "keeper"
+      }
+    },
+    "observations": {},
+    "testimonies": {},
+    "listening": [],
+    "reflections": [],
+    "lessons": {},
+    "counterstories": [],
+    "casebook_consultations": [],
+    "handoffs": [
+      {
+        "from": "worker-1",
+        "to": "worker-2",
+        "note": "Historical handoff without observation.",
+        "tick": 0,
+        "old_scenario": "missing",
+        "new_scenario": "signed"
+      }
+    ],
+    "last_execution": {
+      "proposal": "propose-2",
+      "scored": false
+    }
+  },
+  "head": "e0b65754c4f9c320da7cfb8c3b74a78d279c5d021fdf1713d5938d039b06eebf"
+}

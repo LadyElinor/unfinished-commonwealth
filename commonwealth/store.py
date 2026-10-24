@@ -8,7 +8,9 @@ from contextlib import closing
 from pathlib import Path
 import sqlite3
 
-from .engine import Rejected, canonical, digest, exact, initial_state, parse_json, transition
+from . import legacy_v1
+from .engine import (MAX_EVENTS, PROTOCOL, Rejected, canonical, digest, exact,
+                     initial_state, parse_json, transition)
 from .pipeline import scenarios
 
 
@@ -44,7 +46,7 @@ class Workshop:
                     );
                 """)
                 state = initial_state(scenario, fixtures[scenario])
-                envelope = {"seq": 0, "previous": "0" * 64,
+                envelope = {"protocol": PROTOCOL, "seq": 0, "previous": "0" * 64,
                             "command": {"action": "init", "scenario": scenario,
                                         "fixture": fixtures[scenario]},
                             "result": {"scope": "LOCAL_RESEARCH"}, "state_hash": digest(state)}
@@ -66,13 +68,19 @@ class Workshop:
     def _verify(connection):
         try:
             rows = connection.execute("SELECT seq, envelope, hash FROM events ORDER BY seq").fetchall()
-            if not rows or len(rows) > 257:
+            if not rows or len(rows) > MAX_EVENTS:
                 raise CorruptJournal("missing or over-budget journal")
             state = None
             previous = "0" * 64
+            previous_protocol = 1
             for index, (seq, raw, recorded_hash) in enumerate(rows):
                 envelope = parse_json(raw)
-                exact(envelope, ("seq", "previous", "command", "result", "state_hash"))
+                exact(envelope, ("seq", "previous", "command", "result", "state_hash"), ("protocol",))
+                protocol = envelope.get("protocol", 1)
+                if (("protocol" in envelope and (type(protocol) is not int or protocol != PROTOCOL))
+                        or protocol < previous_protocol):
+                    raise CorruptJournal("unsupported or downgraded journal protocol")
+                replay = legacy_v1 if protocol == 1 else None
                 if (type(envelope["seq"]) is not int or seq != index
                         or envelope["seq"] != index or envelope["previous"] != previous):
                     raise CorruptJournal("broken event sequence")
@@ -83,16 +91,19 @@ class Workshop:
                     exact(command, ("action", "scenario", "fixture"))
                     if command["action"] != "init":
                         raise CorruptJournal("missing genesis")
-                    state = initial_state(command["scenario"], command["fixture"])
+                    initialize = replay.initial_state if replay else initial_state
+                    state = initialize(command["scenario"], command["fixture"])
                     expected_result = {"scope": "LOCAL_RESEARCH"}
                 else:
-                    state, expected_result = transition(state, envelope["command"])
+                    apply = replay.transition if replay else transition
+                    state, expected_result = apply(state, envelope["command"])
                 # Python equality conflates JSON booleans and numbers (and
                 # integer/float encodings); replay checks must preserve types.
                 if (digest(state) != envelope["state_hash"]
                         or canonical(expected_result) != canonical(envelope["result"])):
                     raise CorruptJournal("event does not replay to its claimed result")
                 previous = recorded_hash
+                previous_protocol = protocol
             snapshot = connection.execute("SELECT body FROM snapshot WHERE singleton=1").fetchone()
             if snapshot is None or canonical(parse_json(snapshot[0])) != canonical(state):
                 raise CorruptJournal("snapshot disagrees with journal replay")
@@ -121,7 +132,7 @@ class Workshop:
             try:
                 state, head, count = self._verify(connection)
                 updated, result = transition(state, command)
-                envelope = {"seq": count, "previous": head, "command": command,
+                envelope = {"protocol": PROTOCOL, "seq": count, "previous": head, "command": command,
                             "result": result, "state_hash": digest(updated)}
                 connection.execute("INSERT INTO events VALUES (?, ?, ?)",
                                    (count, canonical(envelope), digest(envelope)))
