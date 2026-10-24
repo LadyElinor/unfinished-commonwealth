@@ -10,6 +10,7 @@ python scripts/verify.py
 python scripts/reproduce.py .local/reproduction
 python -m commonwealth verify .local/reproduction/demo.sqlite
 python -m commonwealth.study_v1 run .local/study-v1
+python -m commonwealth.procedure_v1 run .local/procedure-v1
 ```
 
 Choose a new output path for every reproduction. Existing databases, report
@@ -42,6 +43,7 @@ This command:
 5. Runs both installed entry points outside the checkout, verifies packaged data,
    replays the 24-event demonstration, runs all fifteen comparisons and the
    432-run study matrix, and replays an urgent-deadline failure record.
+   It also runs eight procedural traces and replays an unresolved appeal.
 6. Writes the wheel, source archive, and `package-verification.json` into the
    chosen output directory.
 

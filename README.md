@@ -120,6 +120,21 @@ future model-backed study would require separate authorization, a fixed analysis
 plan and genuinely withheld scenarios. More elaborate stories or more agent
 names cannot substitute for those gates. [Roadmap](ROADMAP.md).
 
+An opt-in [procedural review extension](docs/PROCEDURAL_REVIEW_V1.md), informed
+by the Congressional Record and federal court rules, adds recorded notice,
+response opportunities, specific objections, reasoned rulings, revision-bound
+grants, separate appeals, prospective stays and corrections that preserve the
+original record. It uses the same costed decision scheduler and leaves D1 frozen.
+
+```bash
+python -m commonwealth.procedure_v1 run .local/procedure-v1
+python -m commonwealth.procedure_v1 replay .local/procedure-v1/journals/terminal-appeal.json
+```
+
+Its [eight exposed traces](docs/PROCEDURAL_REVIEW_V1_RESULTS.md) retain denials,
+unresolved appeals, delay costs and a procedurally approved wrong answer.
+Procedural conformity does not establish truth, legal compliance or efficacy.
+
 [Metanoia](https://github.com/LadyElinor/Metanoia), [Adiona](https://github.com/LadyElinor/Adiona), and [CORTAC](https://github.com/LadyElinor/CORTAC) informed the design. This is new code with **no operational adapters or compatibility claim** for those projects. Their authority contracts remain unchanged. [Integration boundaries](docs/INTEGRATION.md).
 
 Contributions can add a failing case, an affected participant's account, a repair, or a competing interpretation. Each should say what evidence could change its conclusion. See [CONTRIBUTING.md](CONTRIBUTING.md).

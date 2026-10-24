@@ -15,6 +15,13 @@ selector matches the participant; inherited advice and coaching show no
 correctness advantage and can add delay. See [results](docs/STUDY_V1_RESULTS.md).
 Release 0.1.3 remains the frozen workshop baseline, not a new package release.
 
+The separate [P1 procedural extension](docs/PROCEDURAL_REVIEW_V1.md) now tests
+notice, objections, reasoned dispositions, amendment, appeal, prospective stays
+and append-only corrections. It has its own version and eight regression traces;
+the D1 sample, budgets and results are unchanged. Review costs and procedurally
+valid failures remain visible. Actual identity isolation and independently
+operated reviewers remain unimplemented.
+
 ## Later 0.2: model-backed participation
 
 - Independently construct evaluation cases after policies and analysis are fixed. The original workshop's quality-stream fixtures and all study-v1 development cases are already exposed.

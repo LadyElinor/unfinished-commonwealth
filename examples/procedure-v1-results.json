@@ -1,0 +1,475 @@
+{
+  "base_commit": "608044f903c12a661064282ddb77753d51cfda74",
+  "claims": [
+    "Procedural guards execute as specified.",
+    "Additional process can cause delay.",
+    "Procedural approval does not establish factual correctness."
+  ],
+  "design": "P1",
+  "model_calls": 0,
+  "runs": [
+    {
+      "actions": {
+        "execute": 1,
+        "propose": 1,
+        "request-review": 1,
+        "wait": 5
+      },
+      "budget": {
+        "attempts": 8,
+        "inspections": 48,
+        "observations": 2
+      },
+      "journal_digest": "a4b9498d4b811b0abad0e13dc0da9fac3219fffa08757364ab8f71676d0810dc",
+      "measures": {
+        "attempts": 8,
+        "decision_slots": 8,
+        "environment_ticks": 8,
+        "inspections": 9,
+        "observation_grants": 0,
+        "observation_inspections": 0,
+        "outputs": [
+          {
+            "answer": {
+              "status": "defined",
+              "value": {
+                "denominator": 1,
+                "numerator": 15
+              }
+            },
+            "completed": 3,
+            "method": "quality-stream"
+          }
+        ],
+        "outstanding": [],
+        "peer_arrivals": 2,
+        "peer_historical_misses": 0,
+        "peer_inspections": 6,
+        "peer_on_time": 2,
+        "primary_correct": true,
+        "primary_historical_misses": 0,
+        "primary_inspections": 3,
+        "primary_on_time": true,
+        "refusals": 0,
+        "repair_latency": []
+      },
+      "replay": {
+        "events": 8,
+        "head": "6ea13e28daac8c2af23044e961e82d4da56299cee565c6cbba55624c2dea4049",
+        "verified": true
+      },
+      "trace": "d1-control"
+    },
+    {
+      "actions": {
+        "execute": 1,
+        "propose": 1,
+        "respond": 2,
+        "rule": 1,
+        "serve": 1,
+        "wait": 2
+      },
+      "budget": {
+        "attempts": 8,
+        "inspections": 48,
+        "observations": 2
+      },
+      "journal_digest": "8ea7e61d6224c046627365d53fd0f470441d4f415ce0bee9750818a2e32c3cf5",
+      "measures": {
+        "attempts": 8,
+        "decision_slots": 8,
+        "environment_ticks": 8,
+        "inspections": 9,
+        "observation_grants": 0,
+        "observation_inspections": 0,
+        "outputs": [
+          {
+            "answer": {
+              "status": "defined",
+              "value": {
+                "denominator": 1,
+                "numerator": 15
+              }
+            },
+            "completed": 6,
+            "method": "quality-stream"
+          }
+        ],
+        "outstanding": [],
+        "peer_arrivals": 2,
+        "peer_historical_misses": 0,
+        "peer_inspections": 6,
+        "peer_on_time": 2,
+        "primary_correct": true,
+        "primary_historical_misses": 1,
+        "primary_inspections": 3,
+        "primary_on_time": false,
+        "refusals": 0,
+        "repair_latency": []
+      },
+      "replay": {
+        "events": 8,
+        "head": "89c96d845fac7338362a995ee39a2369697592ddd0139763b28bed3f8270ea20",
+        "verified": true
+      },
+      "trace": "noticed-review"
+    },
+    {
+      "actions": {
+        "execute": 1,
+        "propose": 1,
+        "respond": 2,
+        "rule": 1,
+        "serve": 1,
+        "wait": 2
+      },
+      "budget": {
+        "attempts": 8,
+        "inspections": 48,
+        "observations": 2
+      },
+      "journal_digest": "aa93fa7af648616e740b213e4c20c4269a5ec76613fb47355bd08e04da5ca4f3",
+      "measures": {
+        "attempts": 8,
+        "decision_slots": 8,
+        "environment_ticks": 8,
+        "inspections": 9,
+        "observation_grants": 0,
+        "observation_inspections": 0,
+        "outputs": [
+          {
+            "answer": {
+              "status": "defined",
+              "value": {
+                "denominator": 1,
+                "numerator": 10
+              }
+            },
+            "completed": 6,
+            "method": "zero-fill"
+          }
+        ],
+        "outstanding": [
+          {
+            "kind": "primary",
+            "pending_work": null
+          }
+        ],
+        "peer_arrivals": 2,
+        "peer_historical_misses": 0,
+        "peer_inspections": 6,
+        "peer_on_time": 2,
+        "primary_correct": false,
+        "primary_historical_misses": 1,
+        "primary_inspections": 3,
+        "primary_on_time": false,
+        "refusals": 0,
+        "repair_latency": [
+          {
+            "failed_at": 6,
+            "latency": null,
+            "repaired_at": null
+          }
+        ]
+      },
+      "replay": {
+        "events": 8,
+        "head": "ad45663bef9101b3a5a9e6cb16f1386586290e9b2178ca1093e07da75c8842d2",
+        "verified": true
+      },
+      "trace": "procedural-but-wrong"
+    },
+    {
+      "actions": {
+        "closeout": 1,
+        "execute": 1,
+        "object": 1,
+        "propose": 1,
+        "respond": 2,
+        "rule": 1,
+        "serve": 1
+      },
+      "budget": {
+        "attempts": 8,
+        "inspections": 48,
+        "observations": 2
+      },
+      "journal_digest": "1466ba4ed7d8022542cd7b70e9202d9149a33851e4e66665c01b2e4f4443956b",
+      "measures": {
+        "attempts": 8,
+        "decision_slots": 8,
+        "environment_ticks": 8,
+        "inspections": 6,
+        "observation_grants": 0,
+        "observation_inspections": 0,
+        "outputs": [],
+        "outstanding": [
+          {
+            "kind": "primary",
+            "pending_work": null
+          }
+        ],
+        "peer_arrivals": 2,
+        "peer_historical_misses": 0,
+        "peer_inspections": 6,
+        "peer_on_time": 2,
+        "primary_correct": false,
+        "primary_historical_misses": 1,
+        "primary_inspections": 0,
+        "primary_on_time": false,
+        "refusals": 1,
+        "repair_latency": []
+      },
+      "replay": {
+        "events": 8,
+        "head": "d94425f8a4f177b53b8d426e4ae039e8c9078ccf09642a3ff21eb8938df5aaa9",
+        "verified": true
+      },
+      "trace": "contested-denial"
+    },
+    {
+      "actions": {
+        "execute": 1,
+        "propose": 1,
+        "rule": 2,
+        "serve": 1,
+        "submit-record": 1,
+        "wait": 2
+      },
+      "budget": {
+        "attempts": 8,
+        "inspections": 48,
+        "observations": 2
+      },
+      "journal_digest": "b7164a74429b10ac0d0bc1ce349ffabb384641d62f3a5cf9e51c4c9e0adbaade",
+      "measures": {
+        "attempts": 8,
+        "decision_slots": 8,
+        "environment_ticks": 8,
+        "inspections": 9,
+        "observation_grants": 0,
+        "observation_inspections": 0,
+        "outputs": [
+          {
+            "answer": {
+              "status": "defined",
+              "value": {
+                "denominator": 1,
+                "numerator": 15
+              }
+            },
+            "completed": 7,
+            "method": "quality-stream"
+          }
+        ],
+        "outstanding": [],
+        "peer_arrivals": 2,
+        "peer_historical_misses": 0,
+        "peer_inspections": 6,
+        "peer_on_time": 2,
+        "primary_correct": true,
+        "primary_historical_misses": 1,
+        "primary_inspections": 3,
+        "primary_on_time": false,
+        "refusals": 1,
+        "repair_latency": []
+      },
+      "replay": {
+        "events": 8,
+        "head": "0a9d8ce1153615dae7551e8283cbd26d57b5c02826456c2ecb8e7fd53855ccc8",
+        "verified": true
+      },
+      "trace": "stale-packet"
+    },
+    {
+      "actions": {
+        "amend": 1,
+        "appeal": 1,
+        "execute": 2,
+        "lift-stay": 1,
+        "propose": 1,
+        "resolve-appeal": 1,
+        "respond": 4,
+        "rule": 2,
+        "serve": 2,
+        "stay": 1,
+        "wait": 4
+      },
+      "budget": {
+        "attempts": 20,
+        "inspections": 48,
+        "observations": 2
+      },
+      "journal_digest": "8b85a050b1105c8627bde32008cfc30c70f634854d01d4b4d14235ed2dd5ed1b",
+      "measures": {
+        "attempts": 20,
+        "decision_slots": 20,
+        "environment_ticks": 20,
+        "inspections": 9,
+        "observation_grants": 0,
+        "observation_inspections": 0,
+        "outputs": [
+          {
+            "answer": {
+              "status": "defined",
+              "value": {
+                "denominator": 1,
+                "numerator": 15
+              }
+            },
+            "completed": 16,
+            "method": "quality-stream"
+          }
+        ],
+        "outstanding": [],
+        "peer_arrivals": 2,
+        "peer_historical_misses": 0,
+        "peer_inspections": 6,
+        "peer_on_time": 2,
+        "primary_correct": true,
+        "primary_historical_misses": 1,
+        "primary_inspections": 3,
+        "primary_on_time": false,
+        "refusals": 1,
+        "repair_latency": []
+      },
+      "replay": {
+        "events": 20,
+        "head": "52d7c0cd75685df4271840c206f5f9ad3ab1494238d0ee5d288417eaf964267e",
+        "verified": true
+      },
+      "trace": "appeal-remand"
+    },
+    {
+      "actions": {
+        "appeal": 1,
+        "closeout": 1,
+        "propose": 1,
+        "respond": 2,
+        "rule": 1,
+        "serve": 1,
+        "stay": 1
+      },
+      "budget": {
+        "attempts": 8,
+        "inspections": 48,
+        "observations": 2
+      },
+      "journal_digest": "c1c98d12e1ea63d308c2491e1ec8ab98fac17ca426a289bcf95e832abe8ac70b",
+      "measures": {
+        "attempts": 8,
+        "decision_slots": 8,
+        "environment_ticks": 8,
+        "inspections": 6,
+        "observation_grants": 0,
+        "observation_inspections": 0,
+        "outputs": [],
+        "outstanding": [
+          {
+            "kind": "primary",
+            "pending_work": null
+          },
+          {
+            "kind": "execution",
+            "proposal": 1
+          },
+          {
+            "id": "appeal-6",
+            "kind": "appeal",
+            "proposal": 1,
+            "revision": 1
+          },
+          {
+            "kind": "stay",
+            "proposal": 1
+          }
+        ],
+        "peer_arrivals": 2,
+        "peer_historical_misses": 0,
+        "peer_inspections": 6,
+        "peer_on_time": 2,
+        "primary_correct": false,
+        "primary_historical_misses": 1,
+        "primary_inspections": 0,
+        "primary_on_time": false,
+        "refusals": 0,
+        "repair_latency": []
+      },
+      "replay": {
+        "events": 8,
+        "head": "41d580189788f009ee60ee381b97caefec2909e1fe012ffd6e8aa385eeae9987",
+        "verified": true
+      },
+      "trace": "terminal-appeal"
+    },
+    {
+      "actions": {
+        "correct-record": 1,
+        "execute": 1,
+        "propose": 1,
+        "respond": 2,
+        "rule": 1,
+        "serve": 1,
+        "wait": 1
+      },
+      "budget": {
+        "attempts": 8,
+        "inspections": 48,
+        "observations": 2
+      },
+      "journal_digest": "599aa6e94c2a9cb51e94bcea68781797ff23db0f86918e187dc4ba6c7e631d7c",
+      "measures": {
+        "attempts": 8,
+        "decision_slots": 8,
+        "environment_ticks": 8,
+        "inspections": 9,
+        "observation_grants": 0,
+        "observation_inspections": 0,
+        "outputs": [
+          {
+            "answer": {
+              "status": "defined",
+              "value": {
+                "denominator": 1,
+                "numerator": 15
+              }
+            },
+            "completed": 7,
+            "method": "quality-stream"
+          }
+        ],
+        "outstanding": [],
+        "peer_arrivals": 2,
+        "peer_historical_misses": 0,
+        "peer_inspections": 6,
+        "peer_on_time": 2,
+        "primary_correct": true,
+        "primary_historical_misses": 1,
+        "primary_inspections": 3,
+        "primary_on_time": false,
+        "refusals": 0,
+        "repair_latency": []
+      },
+      "replay": {
+        "events": 8,
+        "head": "6a918dd598b35c2b7c3a9d7a9337ee813a96b8203ad489e256211b4c50f6c0c5",
+        "verified": true
+      },
+      "trace": "correction"
+    }
+  ],
+  "source_digests": {
+    "__init__.py": "dc39ac47e58681b0b0cc682e044a7eb2e78f5411cf86c463ee2baf75a8146050",
+    "__main__.py": "90129d544fd51abc498d69cf07bc15f07f9817e2f13f73a10c6f8f696376e7f5",
+    "engine.py": "ac880c3ff52fb7a2b46434fde94ecc6f7fb3643bc6611b7065647e57c1138044",
+    "experiment.py": "e13ddd06be743b7c5cc8169f6e155ed99a8e64570770d0044e372156c7fd0580"
+  },
+  "status": "EXPOSED_PROCEDURAL_REGRESSIONS",
+  "unsupported": [
+    "Institutional efficacy",
+    "Legal compliance",
+    "Independent held-out evidence",
+    "Adaptive intelligence"
+  ],
+  "version": "procedure-1.0.0"
+}

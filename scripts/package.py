@@ -70,7 +70,8 @@ def main():
                          "scripts/verify.py", "tests/test_workshop.py",
                          "commonwealth/data/scenarios.json", "docs/STUDY_V1_DESIGN.md",
                          "commonwealth/study_v1/engine.py", "tests/test_study_scheduler.py",
-                         "examples/study-v1-summary.json"):
+                         "examples/study-v1-summary.json", "commonwealth/procedure_v1/engine.py",
+                         "docs/PROCEDURAL_REVIEW_V1.md", "examples/procedure-v1-results.json"):
             if not (source / relative).is_file():
                 raise RuntimeError(f"Source archive omitted {relative}")
         # Run the same checks on what downstream source users actually receive.
@@ -122,6 +123,14 @@ def main():
             "replay", "study-v1/journals/decision-slots-v1--yield-urgent--always-inspect.json"], smoke))
         if study_replay["verified"] is not True or study_replay["events"] != 8:
             raise RuntimeError("Installed study failure record did not replay")
+        procedure = json.loads(run([str(executable), "-m", "commonwealth.procedure_v1",
+                                   "run", "procedure-v1"], smoke))
+        if procedure["traces"] != 8 or procedure["model_calls"] != 0:
+            raise RuntimeError("Installed procedural extension omitted a trace")
+        procedure_replay = json.loads(run([str(executable), "-m", "commonwealth.procedure_v1",
+            "replay", "procedure-v1/journals/terminal-appeal.json"], smoke))
+        if procedure_replay["verified"] is not True:
+            raise RuntimeError("Installed unresolved appeal record did not replay")
         readiness = json.loads(run([str(command), "readiness"], smoke, expected=2))
         if readiness["deployment_ready"] is not False:
             raise RuntimeError("Research-only readiness boundary changed")
@@ -133,6 +142,7 @@ def main():
             "packaged_scenarios": sorted(fixtures), "demo_replay": replay,
             "comparison_runs": len(comparison["runs"]),
             "study_runs": study["runs"], "study_replay": study_replay,
+            "procedure_traces": procedure["traces"], "procedure_replay": procedure_replay,
             "readiness_exit": 2, "model_calls": 0,
             "scope": "LOCAL_RESEARCH_ONLY",
         }
