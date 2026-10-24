@@ -39,4 +39,11 @@ support a harmful recommendation even after the previous receipt was revoked.
 The [Korean finance incident review](INCIDENT_REVIEW_2026_10_KOREAN_FINANCE.md)
 records this negative regression and the unimplemented origin-quarantine boundary.
 
+[I1](INTEGRITY_V1.md) separately tests a policy that applies host-declared
+quarantine to an issuer and its descendants, including replacement receipt IDs.
+This depends on a correct host inventory and trustworthy notices. Undetected
+compromise still produces a harmful recommendation, and quarantine can block
+legitimate work. Recovery and real effect-authority invalidation are absent.
+Structured commitment review does not establish intent or grant authority.
+
 No emergency exception exists. A report of urgency may justify choosing among already authorized actions; it cannot authorize a new action, bypass a required approval, or change a quorum.

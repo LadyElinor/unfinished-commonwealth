@@ -32,6 +32,14 @@ Compromised trusted sources, false alarms, abstention and deadline misses remain
 recorded. Real identity verification, free-text extraction and externally held-out
 scam evaluation remain unimplemented. See [results](docs/FRAUD_DISCERNMENT_V1_RESULTS.md).
 
+The separate [I1 integrity extension](docs/INTEGRITY_V1.md) tests commitment
+attribution, disclosed departures, declared issuer/dependency quarantine and
+exact-scope checks after prior success. Its 112 exposed runs retain undetected
+compromise and the cost of blocking legitimate requests. F1 remains frozen;
+I1 adds an optional advisory policy, not an operational firewall. Authenticated
+origin discovery, independent recovery and real effect-authority invalidation
+remain future work.
+
 ## Later 0.2: model-backed participation
 
 - Independently construct evaluation cases after policies and analysis are fixed. The original workshop's quality-stream fixtures and all study-v1 development cases are already exposed.

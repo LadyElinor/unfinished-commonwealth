@@ -155,6 +155,17 @@ See the [discernment results and limits](docs/FRAUD_DISCERNMENT_V1_RESULTS.md).
 The [October 2026 Korean finance incident review](docs/INCIDENT_REVIEW_2026_10_KOREAN_FINANCE.md)
 adds negative regressions for receipt replacement and missing origin quarantine.
 
+The separate [I1 integrity extension](docs/INTEGRITY_V1.md) adds structured
+commitment/action review and tests declared issuer quarantine, shared evidence
+dependencies and trust overreach in 112 exposed runs. Its [source audit](docs/INTEGRITY_SOURCE_REVIEW.md)
+separates political criticism from demonstrated discrepancies. The
+[results](docs/INTEGRITY_V1_RESULTS.md) retain undetected compromise, legitimate
+requests blocked by quarantine and deadline misses.
+
+```bash
+python -m commonwealth.integrity_v1 run .local/integrity-v1
+```
+
 [Metanoia](https://github.com/LadyElinor/Metanoia), [Adiona](https://github.com/LadyElinor/Adiona), and [CORTAC](https://github.com/LadyElinor/CORTAC) informed the design. This is new code with **no operational adapters or compatibility claim** for those projects. Their authority contracts remain unchanged. [Integration boundaries](docs/INTEGRATION.md).
 
 Contributions can add a failing case, an affected participant's account, a repair, or a competing interpretation. Each should say what evidence could change its conclusion. See [CONTRIBUTING.md](CONTRIBUTING.md).
