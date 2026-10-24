@@ -125,6 +125,9 @@ by the Congressional Record and federal court rules, adds recorded notice,
 response opportunities, specific objections, reasoned rulings, revision-bound
 grants, separate appeals, prospective stays and corrections that preserve the
 original record. It uses the same costed decision scheduler and leaves D1 frozen.
+Its P1.1 version renews notice after new material, preserves both parties'
+petitions and replies in one bounded appeal, and refuses truncated notice
+windows. Old P1 journals retain their original replay rules.
 
 ```bash
 python -m commonwealth.procedure_v1 run .local/procedure-v1

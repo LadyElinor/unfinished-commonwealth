@@ -18,7 +18,9 @@ FIELDS = {
     "submit-record": {"kind", "account", "parent"},
     "rule": {"proposal", "revision", "decision", "findings", "rules", "reason", "packet", "addresses"},
     "appeal": {"proposal", "revision", "ruling", "grounds", "relief", "evidence"},
-    "resolve-appeal": {"proposal", "revision", "appeal", "decision", "findings", "rules", "reason", "packet"},
+    "serve-appeal": {"proposal", "revision", "appeal"},
+    "respond-appeal": {"proposal", "revision", "appeal", "position", "grounds", "relief", "evidence"},
+    "resolve-appeal": {"proposal", "revision", "appeal", "decision", "findings", "rules", "reason", "packet", "addresses"},
     "stay": {"proposal", "revision", "appeal", "reason"},
     "lift-stay": {"proposal", "revision", "appeal", "reason"},
     "correct-record": {"event", "correction", "reason"},
@@ -36,7 +38,7 @@ def require(condition, reason):
 
 
 def text(value):
-    require(isinstance(value, str) and 0 < len(value.strip()) <= 4000, "bounded nonempty text required")
+    require(isinstance(value, str) and bool(value.strip()) and len(value) <= 4000, "bounded nonempty text required")
 
 
 def identifiers(value):
@@ -57,6 +59,9 @@ class ProceduralEpisode(Episode):
         self.appeal_reviewer_at = appeal_reviewer_at
         self.genesis = {"version": VERSION, "base": deepcopy(self.genesis),
                         "procedure": {"response_slots": 2, "appeal_slots": 4,
+                                      "appeal_response_slots": 2, "petitions_per_party": 1,
+                                      "minimum_remaining_notice_attempts": 3,
+                                      "notice_material_bound": True,
                                       "appeal_reviewer_at": appeal_reviewer_at}}
         self.head = digest(self.genesis)
 
@@ -89,7 +94,7 @@ class ProceduralEpisode(Episode):
         p, revision = command["proposal"], command["revision"]
         require(type(p) is int and p in self.dockets, "unknown proposal")
         require(type(revision) is int and 1 <= revision <= len(self.dockets[p]), "unknown revision")
-        if command["action"] not in ("appeal", "resolve-appeal"):
+        if command["action"] not in ("appeal", "serve-appeal", "respond-appeal", "resolve-appeal"):
             require(revision == len(self.dockets[p]), "stale revision")
         docket = self.dockets[p][revision - 1]
         return self.proposals[p - 1], docket
@@ -101,9 +106,40 @@ class ProceduralEpisode(Episode):
     def _revision(self, proposal, command, revision):
         return {"revision": revision, "scope": self._scope(proposal, revision),
                 "motion": {k: deepcopy(command[k]) for k in ("method", "grounds", "relief", "evidence")},
-                "filed_at": self.tick, "notice": None, "responses": [], "objections": [],
+                "filed_at": self.tick, "notice": None, "notices": [], "responses": [], "objections": [],
                 "rulings": [], "appeals": [], "stay_orders": [], "stayed": False,
                 "grant": None, "requires_amendment": False}
+
+    def _material(self, docket, appeal=None):
+        # Replies do not endlessly reset their own window. New evidence,
+        # corrections, objections and cross-petitions do require renewed notice.
+        material = {"records": self.records, "corrections": self.corrections,
+                    "motion": docket["motion"], "objections": docket["objections"]}
+        if appeal is not None:
+            material.update(rulings=docket["rulings"], responses=docket["responses"],
+                            petitions=appeal["petitions"])
+        return digest(material)
+
+    def _fresh_notice(self, proceeding, material):
+        return proceeding["notice"] is not None and proceeding["notice"]["material"] == material
+
+    def _serve(self, proceeding, material):
+        require(not self._fresh_notice(proceeding, material), "current material already served")
+        require(self.budget["attempts"] - self.slots >= 3,
+                "insufficient remaining attempts for two replies and disposition")
+        notice = {"id": f"notice-{self.slots}", "material": material,
+                  "recipients": list(PARTIES), "served_at": self.tick,
+                  "respond_by": self.tick + 2, "transport": "SIMULATED_LOCAL_DELIVERY"}
+        proceeding["notices"].append(deepcopy(notice))
+        proceeding["notice"] = notice
+        return {"notice": deepcopy(notice)}
+
+    def _response_ready(self, proceeding, material):
+        require(self._fresh_notice(proceeding, material), "fresh notice of current material required")
+        responded = {r["actor"] for r in proceeding["responses"]
+                     if r["notice"] == proceeding["notice"]["id"]}
+        require(self.tick > proceeding["notice"]["respond_by"] or responded == set(PARTIES),
+                "response window remains open")
 
     def _reasons(self, command, proposal):
         for key in ("findings", "reason"):
@@ -115,6 +151,7 @@ class ProceduralEpisode(Episode):
     def _procedure(self, c):
         action, actor = c["action"], c["actor"]
         role = {"propose": ("worker",), "amend": ("worker",), "serve": ("clerk",),
+                "serve-appeal": ("clerk",),
                 "rule": ("keeper",), "resolve-appeal": ("reviewer",),
                 "stay": ("reviewer",), "lift-stay": ("reviewer",),
                 "correct-record": ("clerk",), "closeout": ("keeper",)}
@@ -163,18 +200,19 @@ class ProceduralEpisode(Episode):
             return {"effect": "RECORD_UNRESOLVED_OBLIGATIONS"}
         proposal, d = self._current(c)
         if action == "serve":
-            require(d["notice"] is None and not d["rulings"], "notice already served or disposition entered")
-            d["notice"] = {"recipients": list(PARTIES), "served_at": self.tick,
-                           "respond_by": self.tick + 2, "transport": "SIMULATED_LOCAL_DELIVERY"}
-            return {"notice": deepcopy(d["notice"])}
+            require(not d["rulings"], "disposition entered")
+            return self._serve(d, self._material(d))
         if action in ("respond", "object"):
             require(not d["rulings"], "disposition entered; use appeal")
             if action == "respond":
-                require(d["notice"] is not None, "notice must precede a response")
+                require(self._fresh_notice(d, self._material(d)), "fresh notice must precede a response")
+                require(not any(r["actor"] == actor and r["notice"] == d["notice"]["id"]
+                                for r in d["responses"]), "party already responded to this notice")
                 require(c["position"] in ("support", "oppose", "no-objection"), "unknown response position")
                 text(c["account"])
                 d["responses"].append({"actor": actor, "position": c["position"], "account": c["account"],
-                                       "at": self.tick, "timely": self.tick <= d["notice"]["respond_by"]})
+                                       "notice": d["notice"]["id"], "at": self.tick,
+                                       "timely": self.tick <= d["notice"]["respond_by"]})
                 return {"response_recorded": True}
             text(c["grounds"])
             self._evidence(c["evidence"])
@@ -185,9 +223,7 @@ class ProceduralEpisode(Episode):
         if action == "rule":
             require(self.tick >= self.case["reviewer_at"], "keeper unavailable")
             require(not d["rulings"] and not d["requires_amendment"], "new revision required before another ruling")
-            require(d["notice"] is not None, "notice to all parties required")
-            responded = {r["actor"] for r in d["responses"]}
-            require(self.tick > d["notice"]["respond_by"] or responded == set(PARTIES), "response window remains open")
+            self._response_ready(d, self._material(d))
             require(c["decision"] in ("approve", "deny"), "unknown ruling")
             self._reasons(c, proposal["id"])
             identifiers(c["addresses"])
@@ -203,26 +239,57 @@ class ProceduralEpisode(Episode):
         if action == "appeal":
             rulings = [r for r in d["rulings"] if r["id"] == c["ruling"]]
             require(bool(rulings), "unknown ruling")
-            require(self.tick <= rulings[0]["at"] + 4, "appeal window exhausted")
-            require(not any(a["ruling"] == c["ruling"] for a in d["appeals"]), "ruling already appealed")
+            existing = next((a for a in d["appeals"] if a["ruling"] == c["ruling"]), None)
+            if existing is None:
+                require(self.tick <= rulings[0]["at"] + 4, "appeal window exhausted")
+            else:
+                require(existing["status"] == "pending", "combined appeal already disposed")
+                require(not any(p["actor"] == actor for p in existing["petitions"]), "party already petitioned this ruling")
+                if self._fresh_notice(existing, self._material(d, existing)):
+                    require(self.tick <= max(rulings[0]["at"] + 4, existing["notice"]["respond_by"]),
+                            "cross-petition window exhausted")
             text(c["grounds"])
             text(c["relief"])
             self._evidence(c["evidence"])
-            ident = f"appeal-{self.slots}"
-            d["appeals"].append({"id": ident, "ruling": c["ruling"], "actor": actor,
-                                  "grounds": c["grounds"], "relief": c["relief"],
-                                  "evidence": deepcopy(c["evidence"]), "status": "pending"})
-            return {"appeal": ident, "automatic_stay": False}
+            petition = {"id": f"petition-{self.slots}", "actor": actor, "at": self.tick,
+                        **{k: deepcopy(c[k]) for k in ("grounds", "relief", "evidence")}}
+            if existing is None:
+                existing = {"id": f"appeal-{self.slots}", "ruling": c["ruling"], "status": "pending",
+                            "petitions": [], "notice": None, "notices": [], "responses": []}
+                d["appeals"].append(existing)
+            existing["petitions"].append(petition)
+            return {"appeal": existing["id"], "petition": petition["id"], "automatic_stay": False}
         appeals = [a for a in d["appeals"] if a["id"] == c["appeal"]]
         require(bool(appeals), "unknown appeal")
         appeal = appeals[0]
+        if action in ("serve-appeal", "respond-appeal"):
+            require(appeal["status"] == "pending", "appeal already disposed")
+            material = self._material(d, appeal)
+            if action == "serve-appeal":
+                return self._serve(appeal, material)
+            require(self._fresh_notice(appeal, material), "fresh appeal notice must precede a reply")
+            require(not any(r["actor"] == actor and r["notice"] == appeal["notice"]["id"]
+                            for r in appeal["responses"]), "party already replied to this notice")
+            require(c["position"] in ("support", "oppose", "no-objection"), "unknown response position")
+            text(c["grounds"])
+            text(c["relief"])
+            self._evidence(c["evidence"])
+            ident = f"reply-{self.slots}"
+            appeal["responses"].append({"id": ident, "actor": actor, "notice": appeal["notice"]["id"],
+                                        "at": self.tick, "timely": self.tick <= appeal["notice"]["respond_by"],
+                                        **{k: deepcopy(c[k]) for k in ("position", "grounds", "relief", "evidence")}})
+            return {"reply": ident}
         require(self.tick >= self.appeal_reviewer_at, "appeal reviewer unavailable")
         if action == "resolve-appeal":
             require(appeal["status"] == "pending", "appeal already disposed")
             require(c["decision"] in ("affirm", "vacate", "remand"), "unknown appellate disposition")
+            self._response_ready(appeal, self._material(d, appeal))
             self._reasons(c, proposal["id"])
+            identifiers(c["addresses"])
+            require(set(c["addresses"]) == {p["id"] for p in appeal["petitions"] + appeal["responses"]},
+                    "every petition and reply requires disposition")
             appeal.update(status=c["decision"], disposition={k: deepcopy(c[k]) for k in
-                          ("findings", "rules", "reason", "packet")})
+                          ("findings", "rules", "reason", "packet", "addresses")})
             if c["decision"] != "affirm":
                 d["grant"] = None
                 d["requires_amendment"] = True
@@ -281,9 +348,14 @@ class ProceduralEpisode(Episode):
             if not d["rulings"]:
                 result["outstanding"].append({"kind": "procedural-review", "proposal": p,
                                                "unserved": d["notice"] is None,
+                                               "notice_required": not self._fresh_notice(d, self._material(d)),
                                                "objections": [o["id"] for o in d["objections"]]})
             result["outstanding"].extend({"kind": "appeal", "id": a["id"], "proposal": p,
-                                           "revision": revision["revision"]}
+                                           "revision": revision["revision"],
+                                           "notice_required": not self._fresh_notice(a, self._material(revision, a)),
+                                           "respond_by": a["notice"]["respond_by"] if a["notice"] else None,
+                                           "petitions": [petition["id"] for petition in a["petitions"]],
+                                           "remaining_attempts": self.budget["attempts"] - self.slots}
                                          for revision in revisions for a in revision["appeals"] if a["status"] == "pending")
             if d["stayed"]:
                 result["outstanding"].append({"kind": "stay", "proposal": p})
@@ -296,6 +368,10 @@ class ProceduralEpisode(Episode):
 
 
 def replay(journal):
+    require(isinstance(journal, dict), "journal object required")
+    if isinstance(journal.get("genesis"), dict) and journal["genesis"].get("version") == "procedure-1.0.0":
+        from .legacy_p1 import replay as replay_legacy
+        return replay_legacy(journal)
     require(set(journal) == {"genesis", "events", "terminal"}, "invalid journal fields")
     g = journal["genesis"]
     require(set(g) == {"version", "base", "procedure"} and g["version"] == VERSION, "unsupported procedural version")

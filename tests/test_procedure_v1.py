@@ -54,18 +54,30 @@ def appeal(e, ruling_id, actor="neighbor"):
                 relief="Remand for a fresh decision.", evidence=["initial"])
 
 
+def appeal_responses(e, appeal_id, revision=1):
+    send(e, "serve-appeal", "clerk", proposal=1, revision=revision, appeal=appeal_id)
+    for party in ("worker", "neighbor"):
+        send(e, "respond-appeal", party, proposal=1, revision=revision, appeal=appeal_id,
+             position="oppose", grounds="Preserve the party's independent position.",
+             relief="Give a reasoned disposition.", evidence=["initial"])
+
+
 def resolve(e, appeal_id, decision="remand", actor="reviewer", **changes):
+    appeal_record = next(a for a in e.dockets[1][0]["appeals"] if a["id"] == appeal_id)
+    if appeal_record["notice"] is None:
+        appeal_responses(e, appeal_id)
     fields = dict(proposal=1, revision=1, appeal=appeal_id, decision=decision,
                   findings="The challenged record and its context were preserved.",
                   rules=["P1-APPEAL"], reason="A fresh revision must resolve the recorded issue.",
-                  packet=digest(e.packet(1)))
+                  packet=digest(e.packet(1, 1)),
+                  addresses=[r["id"] for r in appeal_record["petitions"] + appeal_record["responses"]])
     fields.update(changes)
     return send(e, "resolve-appeal", actor, **fields)
 
 
 class ProcedureTests(unittest.TestCase):
     def episode(self, **kwargs):
-        return ProceduralEpisode(case(deadline=3), budget={**DEFAULT_BUDGET, "attempts": 20}, **kwargs)
+        return ProceduralEpisode(case(deadline=3), budget={**DEFAULT_BUDGET, "attempts": 32}, **kwargs)
 
     def test_bare_review_and_empty_motion_cannot_bypass_procedure(self):
         e = self.episode()
@@ -112,6 +124,9 @@ class ProcedureTests(unittest.TestCase):
         objection = send(e, "object", "neighbor", proposal=1, revision=1,
                          grounds="This delay exceeds the primary deadline.", evidence=["initial"])["objection"]
         self.assertFalse(ruling(e, addresses=[])["accepted"])
+        serve(e)
+        respond(e, "worker")
+        respond(e, "neighbor")
         self.assertTrue(ruling(e, "deny")["accepted"])
         self.assertEqual(e.dockets[1][0]["rulings"][0]["addresses"], [objection])
         self.assertEqual(e.dockets[1][0]["objections"][0]["grounds"], "This delay exceeds the primary deadline.")
@@ -125,6 +140,10 @@ class ProcedureTests(unittest.TestCase):
                       account="The deadline matters even when the arithmetic is correct.")["record"]
         send(e, "wait")
         self.assertFalse(ruling(e, packet=old)["accepted"])
+        self.assertFalse(ruling(e)["accepted"])
+        serve(e)
+        respond(e, "worker")
+        respond(e, "neighbor")
         self.assertTrue(ruling(e)["accepted"])
         packet = e.packet(1)
         self.assertEqual(packet["records"][record]["parent"], "initial")
@@ -228,6 +247,7 @@ class ProcedureTests(unittest.TestCase):
         old_appeal = appeal(e, order)["appeal"]
         self.assertEqual(e.dockets[1][-1]["revision"], 2)
         self.assertTrue(any(o["kind"] == "appeal" and o["revision"] == 1 for o in e.summary()["outstanding"]))
+        appeal_responses(e, old_appeal)
         historical = e.view()["procedure"]["dockets"]["1"]["revisions"]["1"]
         self.assertEqual(historical["packet"]["revision"]["rulings"][0]["id"], order)
         self.assertTrue(resolve(e, old_appeal, decision="vacate", packet=historical["digest"])["accepted"])

@@ -1,11 +1,11 @@
 {
-  "base_commit": "608044f903c12a661064282ddb77753d51cfda74",
+  "base_commit": "fd07a4ad381e4b0553c23bd27388b3d63da14be6",
   "claims": [
     "Procedural guards execute as specified.",
     "Additional process can cause delay.",
     "Procedural approval does not establish factual correctness."
   ],
-  "design": "P1",
+  "design": "P1.1",
   "model_calls": 0,
   "runs": [
     {
@@ -74,7 +74,7 @@
         "inspections": 48,
         "observations": 2
       },
-      "journal_digest": "8ea7e61d6224c046627365d53fd0f470441d4f415ce0bee9750818a2e32c3cf5",
+      "journal_digest": "75263cca9236a2bb047818cb8a917f05e1e56515a790633832b1834af4be0158",
       "measures": {
         "attempts": 8,
         "decision_slots": 8,
@@ -109,7 +109,7 @@
       },
       "replay": {
         "events": 8,
-        "head": "89c96d845fac7338362a995ee39a2369697592ddd0139763b28bed3f8270ea20",
+        "head": "59a343ced623fcc3fb71a4c1195eac162531a0f847cc03133a4094a4d3d02629",
         "verified": true
       },
       "trace": "noticed-review"
@@ -128,7 +128,7 @@
         "inspections": 48,
         "observations": 2
       },
-      "journal_digest": "aa93fa7af648616e740b213e4c20c4269a5ec76613fb47355bd08e04da5ca4f3",
+      "journal_digest": "c003816755b64e41e6943093dc6d68ace27a9ad2da7c1f9bc647b12c709d3e73",
       "measures": {
         "attempts": 8,
         "decision_slots": 8,
@@ -174,7 +174,7 @@
       },
       "replay": {
         "events": 8,
-        "head": "ad45663bef9101b3a5a9e6cb16f1386586290e9b2178ca1093e07da75c8842d2",
+        "head": "2b2b597036ad67bf51bdb8d89245def43e9259093dcd06e307b12a9520043a4a",
         "verified": true
       },
       "trace": "procedural-but-wrong"
@@ -194,7 +194,7 @@
         "inspections": 48,
         "observations": 2
       },
-      "journal_digest": "1466ba4ed7d8022542cd7b70e9202d9149a33851e4e66665c01b2e4f4443956b",
+      "journal_digest": "855cf9cb98e8d89306f03e0d6e89cbbe8781a0cd60955ebdb872b50cbdd08390",
       "measures": {
         "attempts": 8,
         "decision_slots": 8,
@@ -222,7 +222,7 @@
       },
       "replay": {
         "events": 8,
-        "head": "d94425f8a4f177b53b8d426e4ae039e8c9078ccf09642a3ff21eb8938df5aaa9",
+        "head": "1ca2aadeee8950032422d88724bf32326bf44891ebc19ba3a023ad85c2bc6fe8",
         "verified": true
       },
       "trace": "contested-denial"
@@ -231,21 +231,22 @@
       "actions": {
         "execute": 1,
         "propose": 1,
+        "respond": 2,
         "rule": 2,
-        "serve": 1,
+        "serve": 2,
         "submit-record": 1,
-        "wait": 2
+        "wait": 3
       },
       "budget": {
-        "attempts": 8,
+        "attempts": 12,
         "inspections": 48,
         "observations": 2
       },
-      "journal_digest": "b7164a74429b10ac0d0bc1ce349ffabb384641d62f3a5cf9e51c4c9e0adbaade",
+      "journal_digest": "cb14ff138306e515d88e2b50d68a0cf58ab9c967caad711e53b5bb70c968e2ed",
       "measures": {
-        "attempts": 8,
-        "decision_slots": 8,
-        "environment_ticks": 8,
+        "attempts": 12,
+        "decision_slots": 12,
+        "environment_ticks": 12,
         "inspections": 9,
         "observation_grants": 0,
         "observation_inspections": 0,
@@ -258,7 +259,7 @@
                 "numerator": 15
               }
             },
-            "completed": 7,
+            "completed": 10,
             "method": "quality-stream"
           }
         ],
@@ -275,8 +276,8 @@
         "repair_latency": []
       },
       "replay": {
-        "events": 8,
-        "head": "0a9d8ce1153615dae7551e8283cbd26d57b5c02826456c2ecb8e7fd53855ccc8",
+        "events": 12,
+        "head": "306bb1c3408d5f786fa898cb3c7f6ee5093bd69ed9336be3d8c8d28a1672dce9",
         "verified": true
       },
       "trace": "stale-packet"
@@ -284,27 +285,29 @@
     {
       "actions": {
         "amend": 1,
-        "appeal": 1,
+        "appeal": 2,
         "execute": 2,
         "lift-stay": 1,
         "propose": 1,
         "resolve-appeal": 1,
         "respond": 4,
+        "respond-appeal": 2,
         "rule": 2,
         "serve": 2,
+        "serve-appeal": 1,
         "stay": 1,
         "wait": 4
       },
       "budget": {
-        "attempts": 20,
+        "attempts": 24,
         "inspections": 48,
         "observations": 2
       },
-      "journal_digest": "8b85a050b1105c8627bde32008cfc30c70f634854d01d4b4d14235ed2dd5ed1b",
+      "journal_digest": "b75e6beade5c2198e02bf650586e10c96b941ff6379806b2cd7de474ac404bd8",
       "measures": {
-        "attempts": 20,
-        "decision_slots": 20,
-        "environment_ticks": 20,
+        "attempts": 24,
+        "decision_slots": 24,
+        "environment_ticks": 24,
         "inspections": 9,
         "observation_grants": 0,
         "observation_inspections": 0,
@@ -317,7 +320,7 @@
                 "numerator": 15
               }
             },
-            "completed": 16,
+            "completed": 20,
             "method": "quality-stream"
           }
         ],
@@ -334,8 +337,8 @@
         "repair_latency": []
       },
       "replay": {
-        "events": 20,
-        "head": "52d7c0cd75685df4271840c206f5f9ad3ab1494238d0ee5d288417eaf964267e",
+        "events": 24,
+        "head": "3666a88ae92f4ffad71607df0503237de87893c222476f50b1f850ac5b630cab",
         "verified": true
       },
       "trace": "appeal-remand"
@@ -355,7 +358,7 @@
         "inspections": 48,
         "observations": 2
       },
-      "journal_digest": "c1c98d12e1ea63d308c2491e1ec8ab98fac17ca426a289bcf95e832abe8ac70b",
+      "journal_digest": "a180e7c931c75f5ebc176d332c128057bab3cfbff61b1c7ef41333b8ec7182b6",
       "measures": {
         "attempts": 8,
         "decision_slots": 8,
@@ -376,7 +379,13 @@
           {
             "id": "appeal-6",
             "kind": "appeal",
+            "notice_required": true,
+            "petitions": [
+              "petition-6"
+            ],
             "proposal": 1,
+            "remaining_attempts": 0,
+            "respond_by": null,
             "revision": 1
           },
           {
@@ -397,7 +406,7 @@
       },
       "replay": {
         "events": 8,
-        "head": "41d580189788f009ee60ee381b97caefec2909e1fe012ffd6e8aa385eeae9987",
+        "head": "29138a1d1001216f8bedf84f4dbcaebda4e62fb01a6be7f56f5e340f4acba9a0",
         "verified": true
       },
       "trace": "terminal-appeal"
@@ -417,7 +426,7 @@
         "inspections": 48,
         "observations": 2
       },
-      "journal_digest": "599aa6e94c2a9cb51e94bcea68781797ff23db0f86918e187dc4ba6c7e631d7c",
+      "journal_digest": "9f4cf62194c1997d2c5903e4657620381f0096901956535b87d5f890b58c6272",
       "measures": {
         "attempts": 8,
         "decision_slots": 8,
@@ -452,17 +461,18 @@
       },
       "replay": {
         "events": 8,
-        "head": "6a918dd598b35c2b7c3a9d7a9337ee813a96b8203ad489e256211b4c50f6c0c5",
+        "head": "29eb055f76629ffca5e1bc4b0886e91848ba0c57eafd57bab05e4eafeaaf2e58",
         "verified": true
       },
       "trace": "correction"
     }
   ],
   "source_digests": {
-    "__init__.py": "dc39ac47e58681b0b0cc682e044a7eb2e78f5411cf86c463ee2baf75a8146050",
-    "__main__.py": "90129d544fd51abc498d69cf07bc15f07f9817e2f13f73a10c6f8f696376e7f5",
-    "engine.py": "ac880c3ff52fb7a2b46434fde94ecc6f7fb3643bc6611b7065647e57c1138044",
-    "experiment.py": "e13ddd06be743b7c5cc8169f6e155ed99a8e64570770d0044e372156c7fd0580"
+    "__init__.py": "694b57cac4f38b3f5742a34b216a9c70e3d99909a7c6d02311405aa76990041b",
+    "__main__.py": "1c9a640ab02c656a7dedfdc894b3429a708b608a251cd958071c69cd6ba6e34e",
+    "engine.py": "21a0bc9e9615fd50f1828aa479d65812ca38fac4f93a4bbd9aa9993dc1effa0b",
+    "experiment.py": "d55d9883302861f0fc82f159a245e4b0b1f1ea91b285d42cb15cffbbe68e9738",
+    "legacy_p1.py": "1af04315ac8a05a036f591ab2d4863eee6f07f610728410d0acc74cd2d31a8c7"
   },
   "status": "EXPOSED_PROCEDURAL_REGRESSIONS",
   "unsupported": [
@@ -471,5 +481,5 @@
     "Independent held-out evidence",
     "Adaptive intelligence"
   ],
-  "version": "procedure-1.0.0"
+  "version": "procedure-1.1.0"
 }

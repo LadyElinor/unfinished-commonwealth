@@ -131,6 +131,12 @@ def main():
             "replay", "procedure-v1/journals/terminal-appeal.json"], smoke))
         if procedure_replay["verified"] is not True:
             raise RuntimeError("Installed unresolved appeal record did not replay")
+        historical = json.loads((source / "tests/data/procedure-v100-journals.json").read_text(encoding="utf-8"))["appeal-remand"]
+        (smoke / "historical-procedure.json").write_text(json.dumps(historical), encoding="utf-8")
+        historical_procedure = json.loads(run([str(executable), "-m", "commonwealth.procedure_v1",
+            "replay", "historical-procedure.json"], smoke))
+        if historical_procedure["verified"] is not True or historical_procedure["head"] != historical["terminal"]["head"]:
+            raise RuntimeError("Installed historical procedural journal did not replay")
         readiness = json.loads(run([str(command), "readiness"], smoke, expected=2))
         if readiness["deployment_ready"] is not False:
             raise RuntimeError("Research-only readiness boundary changed")
@@ -143,6 +149,7 @@ def main():
             "comparison_runs": len(comparison["runs"]),
             "study_runs": study["runs"], "study_replay": study_replay,
             "procedure_traces": procedure["traces"], "procedure_replay": procedure_replay,
+            "historical_procedure_replay": historical_procedure,
             "readiness_exit": 2, "model_calls": 0,
             "scope": "LOCAL_RESEARCH_ONLY",
         }

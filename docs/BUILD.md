@@ -43,7 +43,8 @@ This command:
 5. Runs both installed entry points outside the checkout, verifies packaged data,
    replays the 24-event demonstration, runs all fifteen comparisons and the
    432-run study matrix, and replays an urgent-deadline failure record.
-   It also runs eight procedural traces and replays an unresolved appeal.
+   It also runs eight P1.1 procedural traces, replays an unresolved appeal, and
+   checks a frozen P1 appeal journal through the installed legacy replay route.
 6. Writes the wheel, source archive, and `package-verification.json` into the
    chosen output directory.
 

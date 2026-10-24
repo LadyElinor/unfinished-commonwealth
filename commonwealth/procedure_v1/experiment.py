@@ -45,6 +45,14 @@ def start_appeal(e, ruling):
                 evidence=["initial"])["appeal"]
 
 
+def appeal_service_and_responses(e, ident):
+    send(e, "serve-appeal", "clerk", proposal=1, revision=1, appeal=ident)
+    for party in ("worker", "neighbor"):
+        send(e, "respond-appeal", party, proposal=1, revision=1, appeal=ident,
+             position="oppose", grounds="Consider each party's own grounds and the shared deadline.",
+             relief="Dispose every petition with reasons.", evidence=["initial"])
+
+
 def finish(e):
     while not e.closed:
         send(e, "wait")
@@ -68,34 +76,41 @@ def traces():
         result[name] = finish(e)
     e = ProceduralEpisode(fixture)
     motion(e)
-    send(e, "serve", "clerk", proposal=1, revision=1)
     send(e, "object", "neighbor", proposal=1, revision=1,
          grounds="The proposed sequence misses the urgent deadline.", evidence=["initial"])
+    send(e, "serve", "clerk", proposal=1, revision=1)
     for party in ("worker", "neighbor"):
         send(e, "respond", party, proposal=1, revision=1, position="oppose", account="Retain the objection for review.")
     rule(e, "deny")
     send(e, "execute", proposal=1)
     send(e, "closeout", "keeper", reason="Work was denied.", follow_up="A future request needs separate authorization.")
     result["contested-denial"] = e
-    e = ProceduralEpisode(fixture)
+    e = ProceduralEpisode(fixture, budget={**DEFAULT_BUDGET, "attempts": 12})
     motion(e)
     send(e, "serve", "clerk", proposal=1, revision=1)
     old_packet = digest(e.packet(1))
     send(e, "submit-record", "neighbor", kind="context", account="Shared deadlines remain part of the task.", parent="initial")
     send(e, "wait")
     rule(e, packet=old_packet)
+    service_and_responses(e)
     rule(e)
     send(e, "execute", proposal=1)
     result["stale-packet"] = finish(e)
-    e = ProceduralEpisode(fixture, budget={**DEFAULT_BUDGET, "attempts": 20})
+    e = ProceduralEpisode(fixture, budget={**DEFAULT_BUDGET, "attempts": 24})
     motion(e)
     service_and_responses(e)
     order = rule(e)["ruling"]
     ident = start_appeal(e, order)
+    send(e, "appeal", "worker", proposal=1, revision=1, ruling=order,
+         grounds="The moving party retains a separate position.", relief="Review the bounded scope as well.",
+         evidence=["initial"])
     send(e, "stay", "reviewer", proposal=1, revision=1, appeal=ident, reason="Preserve review before dispatch.")
+    appeal_service_and_responses(e, ident)
+    appeal = e.dockets[1][0]["appeals"][0]
     send(e, "resolve-appeal", "reviewer", proposal=1, revision=1, appeal=ident, decision="remand",
          findings="The old record and objection survive.", rules=["P1-APPEAL"],
-         reason="Require a fresh revision and keeper ruling.", packet=digest(e.packet(1)))
+         reason="Require a fresh revision and keeper ruling.", packet=digest(e.packet(1)),
+         addresses=[r["id"] for r in appeal["petitions"] + appeal["responses"]])
     send(e, "lift-stay", "reviewer", proposal=1, revision=1, appeal=ident, reason="Review disposed; no grant survives remand.")
     send(e, "execute", proposal=1)
     motion(e, revision=1)
@@ -135,8 +150,8 @@ def matrix():
                      "actions": dict(sorted(Counter(e["command"]["action"] for e in episode.events).items())),
                      "journal_digest": digest(journal), "replay": check})
         journals[name] = journal
-    return {"version": VERSION, "design": "P1", "status": "EXPOSED_PROCEDURAL_REGRESSIONS",
-            "base_commit": "608044f903c12a661064282ddb77753d51cfda74", "model_calls": 0,
+    return {"version": VERSION, "design": "P1.1", "status": "EXPOSED_PROCEDURAL_REGRESSIONS",
+            "base_commit": "fd07a4ad381e4b0553c23bd27388b3d63da14be6", "model_calls": 0,
             "source_digests": {p.name: sha256(p.read_bytes()).hexdigest() for p in sorted(Path(__file__).parent.glob("*.py"))},
             "claims": ["Procedural guards execute as specified.", "Additional process can cause delay.",
                        "Procedural approval does not establish factual correctness."],

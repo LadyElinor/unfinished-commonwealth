@@ -26,7 +26,8 @@ def main():
             journal = json.loads(Path(args.journal).read_text(encoding="utf-8"), object_pairs_hook=unique_object)
             if not isinstance(journal, dict) or not isinstance(journal.get("genesis"), dict):
                 raise ValueError("journal object and genesis required")
-            result = replay(journal) if journal["genesis"].get("version") == VERSION else replay_d1(journal)
+            result = (replay(journal) if journal["genesis"].get("version") in (VERSION, "procedure-1.0.0")
+                      else replay_d1(journal))
     except (ValueError, OSError, KeyError, TypeError) as error:
         parser.exit(2, f"procedure-v1: {error}\n")
     print(json.dumps(result, indent=2, sort_keys=True))

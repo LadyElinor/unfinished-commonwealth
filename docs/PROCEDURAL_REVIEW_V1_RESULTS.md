@@ -1,6 +1,6 @@
-# P1 procedural verification results
+# P1.1 procedural verification results
 
-The [source audit and P1 rules](PROCEDURAL_REVIEW_V1.md) distinguish borrowed
+The [source audit and P1.1 rules](PROCEDURAL_REVIEW_V1.md) distinguish borrowed
 procedural ideas from this simulator's own decisions. The Congressional Record
 was accessed through its official GPO mirror; federal rules through U.S. Courts.
 No scraped political assertions or court testimony become research ground truth.
@@ -19,18 +19,25 @@ trace, its budgets, actions, outcomes, unresolved obligations and replay digest.
 | Notice and reasoned review | 8 | slot 6 | Yes | No | 0 |
 | Procedure followed, wrong method approved | 8 | slot 6 | No | No | 0 |
 | Contested denial | 8 | Unexecuted | No | No | 1 |
-| Stale review packet, then fresh review | 8 | slot 7 | Yes | No | 1 |
-| Appeal, remand, fresh revision and approval | 20 | slot 16 | Yes | No | 1 |
+| Stale review packet, renewed notice, then fresh review | 12 | slot 10 | Yes | No | 1 |
+| Both parties' appeal, notice/replies, remand, fresh approval | 24 | slot 20 | Yes | No | 1 |
 | Terminal unresolved appeal and stay | 8 | Unexecuted | No | No | 0 |
 | Correction without overwriting original record | 8 | slot 7 | Yes | No | 0 |
 
 The timing control and noticed-review trace use the exact same task, evidence
 access and 8/2/48 decision/observation/inspection ceilings. P1 adds procedure,
 which delays completion from slot 3 to slot 6 and misses the deadline. No
-resource coefficient was changed to create a benefit. The longer appeal trace
-declares its 20-attempt ceiling at creation; it must not be pooled as a matched
+resource coefficient was changed to create a benefit. The renewed-notice trace
+declares 12 attempts and the longer combined-appeal trace declares 24 attempts
+at creation; neither may be pooled as a matched
 efficacy comparison with eight-attempt traces. All peer schedules continue
 during motions, responses, rulings and refusals.
+
+The earlier P1 release used 8 and 20 attempts for those two traces, completing
+at slots 7 and 16. P1.1 does not silently replace those histories: every original
+journal is frozen in `tests/data/procedure-v100-journals.json` and replays under
+its original version. The new budget choices explicitly accommodate additional
+procedure, not an apparent improvement. The delays are longer and remain late.
 
 The wrong-method trace is intentionally retained: notice, evidence references
 and reasons do not verify a substantive conclusion. A valid procedural grant
@@ -48,6 +55,14 @@ blocked: amendment cannot extinguish a timely appeal of an older ruling, and
 amendment cannot bypass an unlifted stay on the current revision. A denial also
 cannot be bypassed by filing a parallel motion for the same unexecuted work.
 
+P1.1 adds 30 adversarial notice/appeal regressions and four replay-preservation
+checks. New evidence (including paid observations), corrections and objections
+invalidate old service, not just old reviewer packets. Both parties can preserve
+separate petitions, all replies remain visible, and the disposition must identify
+every petition/reply. Fresh service is refused when its full response opportunity
+and a disposition cannot fit in the remaining budget. Exhaustion remains finite
+and leaves unresolved review rather than automatic permission or denial.
+
 Claims remain limited to local procedural invariants. There is no model call,
 legal-compliance certification, operator authentication, independent reviewer
 verification, evidence-admissibility classifier or proof of fair reasoning.
@@ -63,12 +78,14 @@ python -m commonwealth.procedure_v1 replay .local/procedure-reproduction/journal
 python scripts/package.py .local/procedure-package
 ```
 
-Local validation on 2026-10-24 passed all 170 tests: the 96 baseline tests,
-48 D1 tests and 26 P1 tests. JSON integrity and local documentation links passed.
+Local validation on 2026-10-24 passed all 204 tests: the 96 baseline tests,
+48 D1 tests, 26 retained/adapted P1 tests and 34 new P1.1 checks.
+JSON integrity and local documentation links passed.
 All eight procedural journals replayed, and independent output directories
 produced identical artifacts. Source-archive verification and clean wheel
 installation passed, including all 15 original comparisons, all 432 D1 runs,
-the eight P1 traces and replay of the terminal unresolved appeal. The installed
+the eight P1.1 traces and replay of both current and historical unresolved/appeal
+records. The installed
 24-event workshop demonstration retains head
 `96baf584d179654e5abc836d127afdac80d916a08c05bcb482f732a01c0acb0a`.
 No workshop or D1 source, fixtures, reference results or historical records were
