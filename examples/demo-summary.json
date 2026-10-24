@@ -45,6 +45,7 @@
     "requires_new_observation": true,
     "review_status": "DISPUTED",
     "requires_review": true,
+    "review_action_available": true,
     "counterstories": [
       {
         "id": "counterstory-16",
@@ -62,6 +63,7 @@
     "lesson-14": {
       "review_status": "DISPUTED",
       "requires_review": true,
+      "review_action_available": true,
       "counterstories": [
         {
           "id": "counterstory-16",

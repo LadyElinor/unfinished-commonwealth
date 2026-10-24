@@ -31,6 +31,13 @@ Evidence is a nonempty array of unique observation/testimony IDs. Lessons curren
 
 Inherited advice and the participant/report views include a derived `review_status`, all linked counterstories, unaddressed counterstory IDs, and prior reviews. A counterstory against a lesson or any of its cited evidence makes it `DISPUTED` until reviewed. It is still `ADVICE_ONLY`; a recorded account is not automatically a veto or a finding of truth. `review-lesson` accepts exactly `retain`, `suspend`, or `retire`, with a recorded reason. A review addresses all linked counterstories then present. Later challenges reopen review. Suspended and retired lessons are omitted from inherited recommendations; their evidence and accounts remain visible. Suspension can be reversed by another keeper review. Retirement is final for that record; a replacement requires a new lesson.
 
+Accounts added after retirement remain in `unaddressed_counterstories`, but do
+not imply the retired lesson can be reopened: `requires_review` and
+`review_action_available` are false. The same availability field is false for a
+lesson not yet accepted. It describes lifecycle eligibility for keeper review,
+not whether someone may read or preserve an objection. Actor and remaining
+command/review budget checks still apply when submitting an actual review.
+
 Proposal IDs are `propose-N`, where N is the accepted command number. An approval expires when `tick >= expires_before_tick`, with expiry set to the proposal tick plus three. Ticks advance only on observation. Revocation, halt/resume, execution, and handoff invalidate prior operational bindings. No real-time expiry or cryptographic signature is implied.
 
 The initial worker is `worker-1`; the keeper, affected neighbor, and coach are `keeper`, `neighbor`, and `coach`. Handoff increments the worker generation and retires the old worker. The keeper cannot silently discard unfinished peer work during handoff. Counterstories and accounts persist.

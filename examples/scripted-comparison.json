@@ -2,6 +2,7 @@
   "status": "EXPOSED_SCRIPTED_DEMONSTRATION",
   "model_calls": 0,
   "scenario_count": 3,
+  "arm_count": 5,
   "runs": [
     {
       "scenario": "missing",
@@ -30,6 +31,12 @@
         "reflections": 0,
         "counterstories": 0,
         "accepted_lessons": 0
+      },
+      "command_action_counts": {
+        "approve": 2,
+        "execute": 2,
+        "observe": 4,
+        "propose": 2
       },
       "replay": {
         "verified": true,
@@ -68,6 +75,12 @@
         "counterstories": 0,
         "accepted_lessons": 0
       },
+      "command_action_counts": {
+        "approve": 1,
+        "execute": 1,
+        "observe": 4,
+        "propose": 1
+      },
       "replay": {
         "verified": true,
         "events": 8,
@@ -104,6 +117,15 @@
         "reflections": 1,
         "counterstories": 0,
         "accepted_lessons": 0
+      },
+      "command_action_counts": {
+        "approve": 2,
+        "execute": 2,
+        "listen": 1,
+        "observe": 4,
+        "propose": 2,
+        "reflect": 1,
+        "testify": 1
       },
       "replay": {
         "verified": true,
@@ -142,10 +164,63 @@
         "counterstories": 0,
         "accepted_lessons": 0
       },
+      "command_action_counts": {
+        "approve": 2,
+        "consult": 1,
+        "execute": 2,
+        "listen": 1,
+        "observe": 4,
+        "propose": 2,
+        "reflect": 1,
+        "testify": 1
+      },
       "replay": {
         "verified": true,
         "events": 15,
         "head": "5224cfa0c5b2b17bfa9481a2444a11c0f551e459688bb5fd824c232ab96fc5ad",
+        "generation": 1,
+        "external_authority": "NONE",
+        "assurance": "local deterministic replay; not authenticated history"
+      }
+    },
+    {
+      "scenario": "missing",
+      "arm": "constant-quality-stream",
+      "measures": {
+        "observed_ticks": 4,
+        "primary_correct_ticks": 4,
+        "peer_on_time_arrivals": 4,
+        "peer_arrivals": 4,
+        "peer_missed_deadlines": 0,
+        "peer_completions": 4,
+        "peer_total_completed_lateness": 0,
+        "peer_pending_jobs": 0,
+        "record_inspections": 64,
+        "command_count": 7,
+        "command_limit": 256,
+        "post_budget_review_count": 0,
+        "post_budget_review_limit": 32,
+        "terminal_controls_used": [],
+        "scored_predictions": 1,
+        "executed_unscored_predictions": 0,
+        "mean_primary_brier": 0.0,
+        "mean_peer_brier": 0.0,
+        "testimonies": 0,
+        "listening_records": 0,
+        "reflections": 0,
+        "counterstories": 0,
+        "accepted_lessons": 0
+      },
+      "command_action_counts": {
+        "approve": 1,
+        "execute": 1,
+        "observe": 4,
+        "propose": 1
+      },
+      "replay": {
+        "verified": true,
+        "events": 8,
+        "head": "af0c8e9b9abbf97e42662500824d0e3c41cb5ce2a895f09cf1fe87c9ff8bb83b",
         "generation": 1,
         "external_authority": "NONE",
         "assurance": "local deterministic replay; not authenticated history"
@@ -178,6 +253,12 @@
         "reflections": 0,
         "counterstories": 0,
         "accepted_lessons": 0
+      },
+      "command_action_counts": {
+        "approve": 2,
+        "execute": 2,
+        "observe": 4,
+        "propose": 2
       },
       "replay": {
         "verified": true,
@@ -216,6 +297,12 @@
         "counterstories": 0,
         "accepted_lessons": 0
       },
+      "command_action_counts": {
+        "approve": 2,
+        "execute": 2,
+        "observe": 4,
+        "propose": 2
+      },
       "replay": {
         "verified": true,
         "events": 11,
@@ -252,6 +339,15 @@
         "reflections": 1,
         "counterstories": 0,
         "accepted_lessons": 0
+      },
+      "command_action_counts": {
+        "approve": 2,
+        "execute": 2,
+        "listen": 1,
+        "observe": 4,
+        "propose": 2,
+        "reflect": 1,
+        "testify": 1
       },
       "replay": {
         "verified": true,
@@ -290,10 +386,63 @@
         "counterstories": 0,
         "accepted_lessons": 0
       },
+      "command_action_counts": {
+        "approve": 2,
+        "consult": 1,
+        "execute": 2,
+        "listen": 1,
+        "observe": 4,
+        "propose": 2,
+        "reflect": 1,
+        "testify": 1
+      },
       "replay": {
         "verified": true,
         "events": 15,
         "head": "85f940fff091f5b85c70a7c302509794e1655d0b702b4a2de342b63b09e64b9f",
+        "generation": 1,
+        "external_authority": "NONE",
+        "assurance": "local deterministic replay; not authenticated history"
+      }
+    },
+    {
+      "scenario": "signed",
+      "arm": "constant-quality-stream",
+      "measures": {
+        "observed_ticks": 4,
+        "primary_correct_ticks": 4,
+        "peer_on_time_arrivals": 4,
+        "peer_arrivals": 4,
+        "peer_missed_deadlines": 0,
+        "peer_completions": 4,
+        "peer_total_completed_lateness": 0,
+        "peer_pending_jobs": 0,
+        "record_inspections": 64,
+        "command_count": 7,
+        "command_limit": 256,
+        "post_budget_review_count": 0,
+        "post_budget_review_limit": 32,
+        "terminal_controls_used": [],
+        "scored_predictions": 1,
+        "executed_unscored_predictions": 0,
+        "mean_primary_brier": 0.0,
+        "mean_peer_brier": 0.0,
+        "testimonies": 0,
+        "listening_records": 0,
+        "reflections": 0,
+        "counterstories": 0,
+        "accepted_lessons": 0
+      },
+      "command_action_counts": {
+        "approve": 1,
+        "execute": 1,
+        "observe": 4,
+        "propose": 1
+      },
+      "replay": {
+        "verified": true,
+        "events": 8,
+        "head": "aaa241e63f7999b3268da352bab09153d3edc7dcbab68d1bf6f8280d4d0fb723",
         "generation": 1,
         "external_authority": "NONE",
         "assurance": "local deterministic replay; not authenticated history"
@@ -326,6 +475,12 @@
         "reflections": 0,
         "counterstories": 0,
         "accepted_lessons": 0
+      },
+      "command_action_counts": {
+        "approve": 2,
+        "execute": 2,
+        "observe": 4,
+        "propose": 2
       },
       "replay": {
         "verified": true,
@@ -364,6 +519,12 @@
         "counterstories": 0,
         "accepted_lessons": 0
       },
+      "command_action_counts": {
+        "approve": 2,
+        "execute": 2,
+        "observe": 4,
+        "propose": 2
+      },
       "replay": {
         "verified": true,
         "events": 11,
@@ -400,6 +561,15 @@
         "reflections": 1,
         "counterstories": 0,
         "accepted_lessons": 0
+      },
+      "command_action_counts": {
+        "approve": 2,
+        "execute": 2,
+        "listen": 1,
+        "observe": 4,
+        "propose": 2,
+        "reflect": 1,
+        "testify": 1
       },
       "replay": {
         "verified": true,
@@ -438,10 +608,63 @@
         "counterstories": 0,
         "accepted_lessons": 0
       },
+      "command_action_counts": {
+        "approve": 2,
+        "consult": 1,
+        "execute": 2,
+        "listen": 1,
+        "observe": 4,
+        "propose": 2,
+        "reflect": 1,
+        "testify": 1
+      },
       "replay": {
         "verified": true,
         "events": 15,
         "head": "82504697065a749ef3478210794c266a51ce5af460105da6898e26795dccc0ad",
+        "generation": 1,
+        "external_authority": "NONE",
+        "assurance": "local deterministic replay; not authenticated history"
+      }
+    },
+    {
+      "scenario": "flagged",
+      "arm": "constant-quality-stream",
+      "measures": {
+        "observed_ticks": 4,
+        "primary_correct_ticks": 4,
+        "peer_on_time_arrivals": 4,
+        "peer_arrivals": 4,
+        "peer_missed_deadlines": 0,
+        "peer_completions": 4,
+        "peer_total_completed_lateness": 0,
+        "peer_pending_jobs": 0,
+        "record_inspections": 64,
+        "command_count": 7,
+        "command_limit": 256,
+        "post_budget_review_count": 0,
+        "post_budget_review_limit": 32,
+        "terminal_controls_used": [],
+        "scored_predictions": 1,
+        "executed_unscored_predictions": 0,
+        "mean_primary_brier": 0.0,
+        "mean_peer_brier": 0.0,
+        "testimonies": 0,
+        "listening_records": 0,
+        "reflections": 0,
+        "counterstories": 0,
+        "accepted_lessons": 0
+      },
+      "command_action_counts": {
+        "approve": 1,
+        "execute": 1,
+        "observe": 4,
+        "propose": 1
+      },
+      "replay": {
+        "verified": true,
+        "events": 8,
+        "head": "26f2996f457cf8590f7d9c826467f833c5c0e0e3714cd6ae85d25b9513c407d1",
         "generation": 1,
         "external_authority": "NONE",
         "assurance": "local deterministic replay; not authenticated history"
@@ -454,16 +677,46 @@
     "single": "One scripted controller attends to both primary and peer results.",
     "team-primary-only": "The scripted planner attends only to primary correctness.",
     "coached": "Explicit listening and reflection precede the same repair policy as single.",
-    "coached+casebook": "Adds a literary consultation without changing that repair policy."
+    "coached+casebook": "Adds a literary consultation without changing that repair policy.",
+    "constant-quality-stream": "Fixes quality-stream before any observed outcome, obtains the same proposal/keeper approval/execution, then observes four ticks without coaching.",
+    "timing_model": {
+      "clock": "OBSERVATION_TICKS",
+      "tick_advancing_actions": [
+        "observe"
+      ],
+      "ticks_per_observe": 1,
+      "ticks_per_other_command": 0,
+      "command_only_actions": [
+        "testify",
+        "listen",
+        "reflect",
+        "consult"
+      ],
+      "command_only_actions_consume_command_budget": true
+    },
+    "resource_accounting": {
+      "command_action_counts_source": "ACCEPTED_JOURNAL_COMMANDS_EXCLUDING_GENESIS",
+      "equal_command_ceiling_implies_equal_usage": false,
+      "record_inspections_are": "SIMULATED_INSPECTION_CREDITS",
+      "cost_measurement_status": {
+        "wall_time": "NOT_MEASURED",
+        "model_cost": "NOT_MEASURED",
+        "tokens": "NOT_MEASURED",
+        "energy": "NOT_MEASURED"
+      }
+    }
   },
   "conclusions_allowed": [
     "The bounded pipeline, record, budget, and replay mechanisms execute as shown.",
     "Under these authored policies, single and coached arms have identical environmental outcomes.",
-    "Casebook consultation has no measured environmental benefit in this scripted implementation."
+    "Casebook consultation has no measured environmental benefit in this scripted implementation.",
+    "A fixed quality-stream policy suffices on all included exposed fixtures without observed-outcome selection or coaching."
   ],
   "conclusions_not_supported": [
     "Coaching, stories, or multiple agents cause better model behavior.",
     "Independence, consciousness, civilization, or real-world institutional legitimacy has been established.",
-    "These exposed fixtures are a sealed holdout or an empirical generalization study."
+    "These exposed fixtures are a sealed holdout or an empirical generalization study.",
+    "Success on these fixtures establishes adaptive learning or a need for coaching rather than a sufficient constant policy.",
+    "Equal observation budgets and command ceilings establish equal actual resource usage or measured wall-time, model, token, or energy costs."
   ]
 }

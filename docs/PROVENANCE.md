@@ -41,4 +41,4 @@ The casebook is newly written teaching material based on the user-directed manus
 
 ## Reproduction
 
-`scripts/verify.py` runs the behavioral suite and checks documentation links and packaged JSON. `scripts/reproduce.py NEW_DIRECTORY` produces the five-tick demonstration, journal, and twelve-run comparison in a fresh directory. Example files in `examples/` are labeled local reproduction outputs, not independent observations or sealed evaluation data.
+`scripts/verify.py` runs the behavioral suite and checks documentation links and packaged JSON. `scripts/reproduce.py NEW_DIRECTORY` produces the five-tick demonstration, journal, and fifteen-run comparison in a fresh directory. Example files in `examples/` are labeled local reproduction outputs, not independent observations or sealed evaluation data.

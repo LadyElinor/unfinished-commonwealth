@@ -105,8 +105,13 @@ def main():
         if not replay["verified"] or replay["events"] != 24:
             raise RuntimeError("Installed demonstration did not replay")
         comparison = json.loads(run([str(command), "evaluate", "comparison"], smoke))
-        if len(comparison["runs"]) != 12:
+        if len(comparison["runs"]) != 15:
             raise RuntimeError("Installed comparison did not run all fixtures")
+        expected_arms = {"single", "team-primary-only", "coached", "coached+casebook",
+                         "constant-quality-stream"}
+        expected_runs = {(scenario, arm) for scenario in fixtures for arm in expected_arms}
+        if {(item["scenario"], item["arm"]) for item in comparison["runs"]} != expected_runs:
+            raise RuntimeError("Installed comparison omitted a scenario/arm pair")
         readiness = json.loads(run([str(command), "readiness"], smoke, expected=2))
         if readiness["deployment_ready"] is not False:
             raise RuntimeError("Research-only readiness boundary changed")

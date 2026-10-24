@@ -2,7 +2,7 @@
 
 ## Present evidence
 
-`python -m commonwealth evaluate NEW_DIRECTORY` creates twelve reproducible runs: three public datasets times four authored controller policies. Every run has four observation ticks and the same maximum of 256 accepted commands. Actual command counts differ and are reported. No model calls occur.
+`python -m commonwealth evaluate NEW_DIRECTORY` creates fifteen reproducible runs: three public datasets times five authored controller policies. Every run has four observation ticks and the same maximum of 256 accepted commands. Actual command counts differ and are reported. No model calls occur.
 
 | Arm | Information attended to | Added procedure |
 | --- | --- | --- |
@@ -10,12 +10,32 @@
 | `team-primary-only` | Primary correctness only | A deliberately restricted scripted planner |
 | `coached` | Primary correctness and peer completion | Recorded testimony, listening, and belief revision |
 | `coached+casebook` | Same observations as coached | An additional literary consultation |
+| `constant-quality-stream` | A fixed, declared policy with no outcome-dependent selection | Approve and execute quality-stream before the first tick; never change it |
 
 The single, coached, and coached-plus-casebook arms use the same repair rule and have identical environmental outcomes. They differ in procedural records and command costs. The restricted arm may leave peer work delayed when its own result passes. On scenarios where its own result fails, it also takes the quality-stream repair.
 
 This comparison exercises plumbing and exposes an information-attention assumption. It is not a fair causal estimate of the effects of coaching, stories, or decentralization. Do not use it to claim that society outperforms an individual controller.
 
 `quality-stream` defines the expected fixture result and succeeds in all three cases at no greater inspection cost than the alternatives. A constant policy can therefore solve them without adaptive method selection. Future trials need circumstances in which warranted choices differ. Reflection consumes a command but no simulated time; only observations advance ticks and execute pipeline work. The current comparison cannot measure the deadline cost of deliberation or establish when to wait, listen, or act.
+
+The constant arm makes this limitation executable rather than leaving it only in
+prose. It uses the same proposal/approval/execution boundary as other arms, but
+does not imitate their deliberately flawed initial repair. Its earlier correct
+method is part of the fixed policy, not learned from the run. A difference from
+the authored repair arms is not a causal estimate of coaching. The original four
+arms and the succession demonstration retain their previous journal histories.
+
+The JSON report exposes the clock and resource assumptions explicitly. An
+observation tick executes work; listening, reflection, and consultation consume
+accepted commands but add zero simulated time. Neither elapsed wall time,
+tokens, model latency, energy, nor independently arriving background work is
+measured. Equal ceilings do not mean equal actual spending. Counts from records
+are descriptive, not evidence that extra reflection was costless in reality.
+
+The next experiment is specified separately in the [proposed next-study
+design](NEXT_STUDY.md). That design has not been implemented or run. It must not
+be used to relabel these exposed fixtures as a holdout or an adaptive-learning
+result.
 
 Scripted testimony now derives its factual outcome clauses from the referenced observation. Operator-supplied testimony remains an unadjudicated account, which may be mistaken; no general truth-checking capability is claimed.
 

@@ -4,7 +4,7 @@
 
 The research question is practical: can a community improve its cooperation as its participants, circumstances, and procedures change?
 
-Version **0.1.2** provides a working local research seed. It runs real integer-data transformations inside a bounded workshop, shares a record-inspection budget between two jobs, records testimony and predictions, and passes a tested practice to a successor working on different data. Python 3.11 or later is sufficient. Runtime and tests use the standard library.
+Version **0.1.3** provides a working local research seed. It runs real integer-data transformations inside a bounded workshop, shares a record-inspection budget between two jobs, records testimony and predictions, and passes a tested practice to a successor working on different data. Python 3.11 or later is sufficient. Runtime and tests use the standard library.
 
 The included participants are **scripted fixture roles**, with an additional proposal-only JSON interface for a separately operated model or human. No model-backed study has been run. This repository does not establish independent machine persons, autonomous civilization, or authority outside its local workshop.
 
@@ -19,7 +19,7 @@ python -m unittest discover -s tests -v
 
 On Windows, use `py -3` if necessary. Run from the checkout root. A database or report that already exists is never overwritten; choose a new path to repeat a demonstration. Optional `python -m pip install .` adds the `commonwealth` command; installation may fetch the setuptools build dependency.
 
-For the full local check, run `python scripts/verify.py`. To produce a source archive and wheel, verify the source distribution, and smoke-test a clean offline installation, run `python scripts/package.py .local/release`. Packaging additionally requires locally installed setuptools (68 or later), wheel, pip, and venv; it never downloads build dependencies. See [build and validation](docs/BUILD.md) and [release 0.1.2](docs/RELEASE_0_1_2.md).
+For the full local check, run `python scripts/verify.py`. To produce a source archive and wheel, verify the source distribution, and smoke-test a clean offline installation, run `python scripts/package.py .local/release`. Packaging additionally requires locally installed setuptools (68 or later), wheel, pip, and venv; it never downloads build dependencies. See [build and validation](docs/BUILD.md) and [release 0.1.3](docs/RELEASE_0_1_3.md).
 
 The demonstration has five observed ticks:
 
@@ -64,7 +64,7 @@ The `propose-2` identifier applies to exactly the sequence above. Use the return
 - **Bounded transitions:** exact-action approval, revision and epoch binding, single-use consumption, logical-tick expiry, halt/resume, and revocation.
 - **Succession:** retirement of the old worker, invalidation of pending authority, preservation of accounts and counterstories, and retrieval of scoped lessons.
 - **A literary casebook:** questions from *The Codex of Unfinished Minds*, kept distinct from executable evidence and open to competing interpretations.
-- **Reproducible comparisons:** twelve exposed scripted runs with outcome and cost measures reported separately.
+- **Reproducible comparisons:** fifteen exposed scripted runs, including an explicit constant-quality-stream control with outcome and cost measures reported separately.
 
 ```bash
 python -m commonwealth evaluate .local/comparison
@@ -93,7 +93,7 @@ In the included comparison, the single controller and coached controller produce
 
 ## Growing the project
 
-The next useful step is a separately controlled model-backed study with predeclared comparisons, a fixed resource budget, and genuinely withheld scenarios. More elaborate stories or more agent names cannot substitute for it. [Roadmap](ROADMAP.md).
+The next useful step is a separate deterministic harness with contrasting data contracts and a clock that charges deliberation. The [proposed study design](docs/NEXT_STUDY.md) is not implemented or run. Only after its necessary gates pass would a separately authorized model-backed study with fixed budgets and genuinely withheld scenarios be informative. More elaborate stories or more agent names cannot substitute for those gates. [Roadmap](ROADMAP.md).
 
 [Metanoia](https://github.com/LadyElinor/Metanoia), [Adiona](https://github.com/LadyElinor/Adiona), and [CORTAC](https://github.com/LadyElinor/CORTAC) informed the design. This is new code with **no operational adapters or compatibility claim** for those projects. Their authority contracts remain unchanged. [Integration boundaries](docs/INTEGRATION.md).
 

@@ -165,6 +165,23 @@ class PriorityFixes(unittest.TestCase):
         self.refused(action="review-lesson", actor="neighbor", lesson=lesson, decision="retain", reason="Not authorized.")
         self.refused(action="review-lesson", actor="keeper", lesson=lesson, decision="certified-true", reason="Unsupported.")
 
+    def test_new_account_on_retired_lesson_is_archived_not_an_impossible_review(self):
+        lesson, _ = self.lesson()
+        self.review(lesson, "retire")
+        challenge = self.challenge(lesson)
+        state = self.workshop.state()
+        review = lesson_review(state, lesson)
+        self.assertEqual(review["review_status"], "RETIRED")
+        self.assertFalse(review["requires_review"])
+        self.assertFalse(review["review_action_available"])
+        self.assertEqual(review["unaddressed_counterstories"], [challenge])
+        self.assertEqual(review["counterstories"][0]["id"], challenge)
+        self.assertFalse(agent_view(state)["lessons"][lesson]["requires_review"])
+        self.assertFalse(summarize(state)["lesson_reviews"][lesson]["requires_review"])
+        self.assertEqual(inherited_method(state)["status"], "NO_APPLICABLE_LESSON")
+        self.refused(action="review-lesson", actor="keeper", lesson=lesson,
+                     decision="retain", reason="Retirement must remain final.")
+
     def test_latest_lesson_and_suspension_fallback_use_numeric_event_order(self):
         older, _ = self.lesson()
         newer, _ = self.lesson()

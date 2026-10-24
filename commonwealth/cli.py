@@ -48,7 +48,7 @@ def parser():
         item.add_argument("database")
         item.add_argument("--reason", required=True)
     suite = sub.add_parser("evaluate")
-    suite.add_argument("directory", help="new directory for the 12 exposed scripted runs")
+    suite.add_argument("directory", help="new directory for the 15 exposed scripted runs")
     sub.add_parser("scenarios")
     sub.add_parser("readiness")
     return root

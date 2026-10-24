@@ -16,7 +16,7 @@ files, and release directories are never deliberately overwritten. Inspect a
 partial output after a failed build before choosing another new directory.
 
 The reproduction creates a five-tick demonstration, its JSON event record and
-summary, and all twelve exposed scripted comparisons. `readiness` returns exit
+summary, and all fifteen exposed scripted comparisons. `readiness` returns exit
 code 2 by design; it is not a failing installation test.
 
 ## Offline package check
@@ -34,7 +34,7 @@ This command:
 3. Builds the wheel from the extracted source, not the original checkout.
 4. Installs the wheel into a fresh virtual environment with `--no-index`.
 5. Runs both installed entry points outside the checkout, verifies packaged data,
-   replays the 24-event demonstration, and runs all twelve comparisons.
+   replays the 24-event demonstration, and runs all fifteen comparisons.
 6. Writes the wheel, source archive, and `package-verification.json` into the
    chosen output directory.
 

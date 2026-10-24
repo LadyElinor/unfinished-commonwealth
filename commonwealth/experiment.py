@@ -1,5 +1,6 @@
 """Exposed scripted demonstrations, not model-backed experiments."""
 
+from collections import Counter
 from pathlib import Path
 import json
 
@@ -65,13 +66,21 @@ def demo(path):
     return workshop
 
 
-ARMS = ("single", "team-primary-only", "coached", "coached+casebook")
+ARMS = ("single", "team-primary-only", "coached", "coached+casebook",
+        "constant-quality-stream")
 
 
 def scripted_run(path, scenario, arm):
     if arm not in ARMS:
         raise ValueError("unknown arm")
     workshop = Workshop.create(path, scenario)
+    if arm == "constant-quality-stream":
+        # Predeclared from the exposed contract, not selected from outcomes.
+        # Use the same proposal/keeper-approval/execution path as every arm.
+        change_method(workshop, "quality-stream", "Apply the fixed quality-stream policy before observing any outcomes.")
+        for _ in range(4):
+            dispatch(workshop, "observe")
+        return workshop
     dispatch(workshop, "observe")
     change_method(workshop, "positive-only", "Scripted initial repair candidate.")
     failed = dispatch(workshop, "observe")
@@ -97,31 +106,55 @@ def evaluate(directory):
     output = Path(directory)
     output.mkdir(parents=True, exist_ok=False)
     runs = []
-    for scenario in scenarios():
+    fixtures = scenarios()
+    for scenario in fixtures:
         for arm in ARMS:
             workshop = scripted_run(output / f"{scenario}-{arm}.sqlite", scenario, arm)
+            # Genesis initializes the journal but is not a budgeted command.
+            actions = Counter(event["command"]["action"] for event in workshop.events()[1:])
             runs.append({"scenario": scenario, "arm": arm,
                          "measures": summarize(workshop.state())["measures"],
+                         "command_action_counts": dict(sorted(actions.items())),
                          "replay": workshop.verify()})
     report = {
         "status": "EXPOSED_SCRIPTED_DEMONSTRATION", "model_calls": 0,
-        "scenario_count": 3, "runs": runs,
+        "scenario_count": len(fixtures), "arm_count": len(ARMS), "runs": runs,
         "design": {
             "common_observation_ticks": 4, "common_command_ceiling": 256,
             "single": "One scripted controller attends to both primary and peer results.",
             "team-primary-only": "The scripted planner attends only to primary correctness.",
             "coached": "Explicit listening and reflection precede the same repair policy as single.",
             "coached+casebook": "Adds a literary consultation without changing that repair policy.",
+            "constant-quality-stream": "Fixes quality-stream before any observed outcome, obtains the same proposal/keeper approval/execution, then observes four ticks without coaching.",
+            "timing_model": {
+                "clock": "OBSERVATION_TICKS",
+                "tick_advancing_actions": ["observe"],
+                "ticks_per_observe": 1, "ticks_per_other_command": 0,
+                "command_only_actions": ["testify", "listen", "reflect", "consult"],
+                "command_only_actions_consume_command_budget": True,
+            },
+            "resource_accounting": {
+                "command_action_counts_source": "ACCEPTED_JOURNAL_COMMANDS_EXCLUDING_GENESIS",
+                "equal_command_ceiling_implies_equal_usage": False,
+                "record_inspections_are": "SIMULATED_INSPECTION_CREDITS",
+                "cost_measurement_status": {
+                    "wall_time": "NOT_MEASURED", "model_cost": "NOT_MEASURED",
+                    "tokens": "NOT_MEASURED", "energy": "NOT_MEASURED",
+                },
+            },
         },
         "conclusions_allowed": [
             "The bounded pipeline, record, budget, and replay mechanisms execute as shown.",
             "Under these authored policies, single and coached arms have identical environmental outcomes.",
             "Casebook consultation has no measured environmental benefit in this scripted implementation.",
+            "A fixed quality-stream policy suffices on all included exposed fixtures without observed-outcome selection or coaching.",
         ],
         "conclusions_not_supported": [
             "Coaching, stories, or multiple agents cause better model behavior.",
             "Independence, consciousness, civilization, or real-world institutional legitimacy has been established.",
             "These exposed fixtures are a sealed holdout or an empirical generalization study.",
+            "Success on these fixtures establishes adaptive learning or a need for coaching rather than a sufficient constant policy.",
+            "Equal observation budgets and command ceilings establish equal actual resource usage or measured wall-time, model, token, or energy costs.",
         ],
     }
     (output / "results.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

@@ -341,11 +341,11 @@ class IntegrationTests(unittest.TestCase):
             self.assertEqual(inherited["status"], "ADVICE_ONLY")
             self.assertTrue(inherited["requires_new_observation"])
 
-    def test_twelve_scripted_runs_do_not_invent_coaching_advantage(self):
+    def test_fifteen_scripted_runs_do_not_invent_coaching_advantage(self):
         with tempfile.TemporaryDirectory() as temp:
             report = evaluate(Path(temp) / "evaluation")
             self.assertEqual(report["model_calls"], 0)
-            self.assertEqual(len(report["runs"]), 12)
+            self.assertEqual(len(report["runs"]), 15)
             environment = ("primary_correct_ticks", "peer_on_time_arrivals", "peer_pending_jobs", "record_inspections")
             for scenario in scenarios():
                 arms = {r["arm"]: r["measures"] for r in report["runs"] if r["scenario"] == scenario}

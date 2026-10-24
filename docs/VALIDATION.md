@@ -1,5 +1,42 @@
 # Validation evidence
 
+## Release 0.1.3
+
+Validated locally on 24 October 2026 (UTC), using CPython 3.12.14 on Linux.
+All **96 tests pass**: the existing 84, eleven fixed-policy/accounting/history
+regressions, and one retired-lesson metadata regression. Packaged JSON,
+documentation links, byte compilation, and whitespace checks also pass.
+
+The existing public 0.1.2 tree was reproduced before editing. Independent
+adversarial review checked terminal-control orderings, exhaustion with an
+approved proposal, repeated lesson challenges through retirement, and
+unlabelled successor proposals. The only additional core change is derived
+review metadata: accounts after retirement remain archived and unaddressed,
+without requesting an impossible review or reopening the lesson.
+
+The new constant-quality-stream arm fixes its method before any observation,
+but still obtains separate keeper approval. All three exposed scenarios yield
+four correct primary results, four on-time peer arrivals, no pending peer
+work, 64 simulated inspections, and seven accepted commands. No testimony,
+reflection, lesson, or casebook lookup is needed. This is evidence that the
+existing suite does **not require adaptive method selection**, not evidence
+of a learned policy or generalization.
+
+All twelve previous comparison event histories retain both their full-event
+digests and replay heads. Both historical v1 journals remain replayable. The
+protocol-2 demo retains its 24-event head
+`96baf584d179654e5abc836d127afdac80d916a08c05bcb482f732a01c0acb0a`;
+the historical v1 demo retains
+`8c462114644fb93db2347d25ded1d8be77829289e6be71394cbc9e411ebb09b8`.
+
+The source distribution's extracted test suite and clean offline wheel install
+pass. Both installed entry points reproduce the demo and all fifteen
+scenario/arm pairs. Research-only readiness still exits 2. The full source
+delivery includes installed-package and exact-head hosted-CI receipts; consult
+the published commit's checks for platform coverage, not this Linux-only record.
+No model calls, deployment, wall-time/currency measurement, or new contrasting
+contract harness were run. Earlier release records are retained below.
+
 ## Release 0.1.2
 
 Validated locally on 23 October 2026 (America/New_York), using CPython 3.12.14

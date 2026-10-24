@@ -218,7 +218,10 @@ def lesson_review(state, lesson_id):
     decision = latest["decision"] if latest else None
     status = ({"suspend": "SUSPENDED", "retire": "RETIRED"}.get(decision)
               or ("DISPUTED" if pending else "REVIEWED_RETAINED" if latest else "UNCHALLENGED"))
-    return {"review_status": status, "requires_review": bool(pending),
+    review_available = (lesson["status"] == "ACCEPTED_LOCAL_PRACTICE"
+                        and status != "RETIRED")
+    return {"review_status": status, "requires_review": bool(pending) and review_available,
+            "review_action_available": review_available,
             "counterstories": deepcopy(challenges), "unaddressed_counterstories": pending,
             "reviews": deepcopy(reviews)}
 
