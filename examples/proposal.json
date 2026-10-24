@@ -1,0 +1,7 @@
+{
+  "action": "propose",
+  "actor": "worker-1",
+  "method": "quality-stream",
+  "prediction": {"primary_correct": 0.95, "peer_on_time": 0.9},
+  "purpose": "Test a single pass over declared quality flags and check the affected peer's completion."
+}

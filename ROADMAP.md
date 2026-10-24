@@ -1,0 +1,28 @@
+# Roadmap
+
+## 0.1: persistent workshop, implemented
+
+Bounded executable data work, peer consequences, observed predictions, testimony, coaching records, scoped lessons, succession, replay, CLI, and exposed scripted comparisons. The acceptance criterion is a reproducible correction and handoff without erasing the original cost. No model intelligence or institution-level efficacy claim follows.
+
+## 0.2: model-backed participation
+
+- Pin provider, model, prompt, adapter, sampling settings, and resource budgets for each run.
+- Run externally supplied proposal-only agents with a host-owned interface that cannot read keeper credentials, evaluation references, or other participants' private context.
+- Record transport failures and unknown outcomes explicitly. Never retry an uncertain external effect blindly.
+- Compare the same model with matched information and budgets: single planner, role-separated team, coaching intervention, and coaching plus casebook. Separate narrative exposure from extra evidence.
+- Freeze the evaluation protocol before collecting scored results. Obtain withheld cases from a separately controlled process. Count all attempts and costs.
+- Replace scripted accounts with consenting human participants or independently operated services where the study requires them; distinguish operator independence from correlated model weights.
+
+Exit evidence: working adapters, boundary tests, provenance, actual model-call receipts, analysis of failed trials, and a report that can be independently reproduced. The present twelve scripted runs cannot satisfy this gate.
+
+## 0.3: useful communal work and longer succession
+
+Maintain a consenting, noncritical software collection with scoped work grants. Study obligations surviving model replacement, unreliable memory, unavailable reviewers, limited budgets, and changed data contracts. Add separately governed lesson amendment, review, and retirement; the seed currently preserves counterstories but cannot resolve them into revised accepted lessons.
+
+Add safe-export policies, retention/deletion handling, observer diversity, and real identity/credential isolation before storing personal accounts. Preserve appeals and access to evidence during disputes. Provide bounded standing permissions for routine work; urgent conditions do not create new authority.
+
+## Later: federation as a research question
+
+Multiple separately operated workshops could exchange evidence and practices while retaining their own policies. Verify operator control, resource accounting, and trust roots instead of counting identities. Study refusal, exit, unequal resources, legitimate amendment, and harms to nonparticipants.
+
+Calling such arrangements a civilization would require an explicit account of the word and evidence far beyond convincing dialogue. Personhood, consciousness, moral standing, and institutional legitimacy are not settled by any release checklist in this repository.

@@ -1,0 +1,8 @@
+{
+  "verified": true,
+  "events": 24,
+  "head": "8c462114644fb93db2347d25ded1d8be77829289e6be71394cbc9e411ebb09b8",
+  "generation": 2,
+  "external_authority": "NONE",
+  "assurance": "local deterministic replay; not authenticated history"
+}

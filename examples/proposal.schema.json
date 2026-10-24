@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Unfinished Commonwealth proposal v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["action", "actor", "method", "prediction", "purpose"],
+  "properties": {
+    "action": {"const": "propose"},
+    "actor": {"type": "string", "pattern": "^worker-[1-9][0-9]*$"},
+    "method": {"enum": ["zero-fill", "positive-only", "quality-stream"]},
+    "prediction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary_correct", "peer_on_time"],
+      "properties": {
+        "primary_correct": {"type": "number", "minimum": 0, "maximum": 1},
+        "peer_on_time": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "purpose": {"type": "string", "minLength": 1, "maxLength": 4000}
+  }
+}

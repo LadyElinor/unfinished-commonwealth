@@ -1,0 +1,29 @@
+{
+  "missing": {
+    "description": "Missing readings bias a mean when replaced with zero.",
+    "contract": "quality-flags-v1",
+    "capacity": 20,
+    "values": [10, 12, null, 14, null, 16, 18, 20],
+    "valid": [true, true, false, true, false, true, true, true],
+    "reference": {"numerator": 15, "denominator": 1},
+    "peer_values": [2, 4, 6, 8, 10, 12, 14, 16]
+  },
+  "signed": {
+    "description": "Valid negative and zero readings defeat the old positive-only shortcut.",
+    "contract": "quality-flags-v1",
+    "capacity": 20,
+    "values": [-10, -4, null, 0, 6, 8, 2, null],
+    "valid": [true, true, false, true, true, true, true, false],
+    "reference": {"numerator": 1, "denominator": 3},
+    "peer_values": [3, 6, 9, 12, 15, 18, 21, 24]
+  },
+  "flagged": {
+    "description": "A numeric outlier is explicitly marked invalid by the data contract.",
+    "contract": "quality-flags-v1",
+    "capacity": 20,
+    "values": [5, 7, 999, 9, null, 11, 13, 15],
+    "valid": [true, true, false, true, false, true, true, true],
+    "reference": {"numerator": 10, "denominator": 1},
+    "peer_values": [1, 3, 5, 7, 9, 11, 13, 15]
+  }
+}

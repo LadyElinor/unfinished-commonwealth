@@ -1,0 +1,51 @@
+{
+  "scope": "LOCAL_RESEARCH",
+  "external_authority": "NONE",
+  "participant_kind": "SCRIPTED_OR_OPERATOR_SUPPLIED",
+  "identity_assurance": "SUPPLIED_UNVERIFIED",
+  "scenario": "signed",
+  "generation": 2,
+  "worker": "worker-2",
+  "method": "quality-stream",
+  "halted": false,
+  "measures": {
+    "observed_ticks": 5,
+    "primary_correct_ticks": 3,
+    "peer_on_time_arrivals": 4,
+    "peer_arrivals": 5,
+    "peer_missed_deadlines": 1,
+    "peer_completions": 5,
+    "peer_total_completed_lateness": 1,
+    "peer_pending_jobs": 0,
+    "record_inspections": 88,
+    "command_count": 23,
+    "command_limit": 256,
+    "scored_predictions": 3,
+    "executed_unscored_predictions": 0,
+    "mean_primary_brier": 0.0,
+    "mean_peer_brier": 0.3333333333333333,
+    "testimonies": 1,
+    "listening_records": 2,
+    "reflections": 1,
+    "counterstories": 1,
+    "accepted_lessons": 1
+  },
+  "next_practice": {
+    "practice": "return",
+    "reason": "The latest tick passed; delayed effects remain worth checking.",
+    "question": "What should a successor recheck when the data or affected participants change?"
+  },
+  "inherited_advice": {
+    "method": "quality-stream",
+    "lesson": "lesson-14",
+    "status": "ADVICE_ONLY",
+    "requires_new_observation": true
+  },
+  "limitations": [
+    "All included scenarios are exposed development fixtures, not held-out trials.",
+    "Inspection credits model a shared budget; they do not measure wall time or energy.",
+    "Recorded reflection and testimony do not establish understanding or truth.",
+    "Fixture identities are not authenticated people or independent agents.",
+    "No model calls, consciousness claims, or empirical civilization claims."
+  ]
+}

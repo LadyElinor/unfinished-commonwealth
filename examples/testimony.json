@@ -1,0 +1,6 @@
+{
+  "action": "testify",
+  "actor": "neighbor",
+  "observation": "observe-1",
+  "account": "This is an example account tied to the first observed tick. Replace it with the actual affected participant's report."
+}
