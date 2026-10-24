@@ -152,6 +152,8 @@ python -m commonwealth.discernment_v1 replay .local/discernment-v1/journals/comp
 ```
 
 See the [discernment results and limits](docs/FRAUD_DISCERNMENT_V1_RESULTS.md).
+The [October 2026 Korean finance incident review](docs/INCIDENT_REVIEW_2026_10_KOREAN_FINANCE.md)
+adds negative regressions for receipt replacement and missing origin quarantine.
 
 [Metanoia](https://github.com/LadyElinor/Metanoia), [Adiona](https://github.com/LadyElinor/Adiona), and [CORTAC](https://github.com/LadyElinor/CORTAC) informed the design. This is new code with **no operational adapters or compatibility claim** for those projects. Their authority contracts remain unchanged. [Integration boundaries](docs/INTEGRATION.md).
 

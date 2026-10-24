@@ -32,4 +32,11 @@ Someone who can invoke the unrestricted CLI can claim to be `keeper`. Someone wh
 
 Testimony and case text are untrusted data. The program stores them without executing them. A future model may still be susceptible to instructions embedded in those fields; a prompt warning is not a demonstrated prompt-injection defense.
 
+The separate F1 discernment simulator trusts fixture-supplied origin labels.
+Its revocations identify individual receipts; they do not quarantine an issuing
+channel, principal or shared dependency. A replacement receipt ID can therefore
+support a harmful recommendation even after the previous receipt was revoked.
+The [Korean finance incident review](INCIDENT_REVIEW_2026_10_KOREAN_FINANCE.md)
+records this negative regression and the unimplemented origin-quarantine boundary.
+
 No emergency exception exists. A report of urgency may justify choosing among already authorized actions; it cannot authorize a new action, bypass a required approval, or change a quorum.
