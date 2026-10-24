@@ -11,6 +11,7 @@ python scripts/reproduce.py .local/reproduction
 python -m commonwealth verify .local/reproduction/demo.sqlite
 python -m commonwealth.study_v1 run .local/study-v1
 python -m commonwealth.procedure_v1 run .local/procedure-v1
+python -m commonwealth.discernment_v1 run .local/discernment-v1
 ```
 
 Choose a new output path for every reproduction. Existing databases, report
@@ -45,6 +46,8 @@ This command:
    432-run study matrix, and replays an urgent-deadline failure record.
    It also runs eight P1.1 procedural traces, replays an unresolved appeal, and
    checks a frozen P1 appeal journal through the installed legacy replay route.
+   It runs all 150 advisory discernment cases and replays the compromised-source
+   failure through the installed discernment CLI.
 6. Writes the wheel, source archive, and `package-verification.json` into the
    chosen output directory.
 

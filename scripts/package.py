@@ -71,7 +71,9 @@ def main():
                          "commonwealth/data/scenarios.json", "docs/STUDY_V1_DESIGN.md",
                          "commonwealth/study_v1/engine.py", "tests/test_study_scheduler.py",
                          "examples/study-v1-summary.json", "commonwealth/procedure_v1/engine.py",
-                         "docs/PROCEDURAL_REVIEW_V1.md", "examples/procedure-v1-results.json"):
+                         "docs/PROCEDURAL_REVIEW_V1.md", "examples/procedure-v1-results.json",
+                         "commonwealth/discernment_v1/engine.py", "docs/FRAUD_DISCERNMENT_V1.md",
+                         "examples/discernment-v1-summary.json", "tests/test_discernment_v1.py"):
             if not (source / relative).is_file():
                 raise RuntimeError(f"Source archive omitted {relative}")
         # Run the same checks on what downstream source users actually receive.
@@ -137,6 +139,14 @@ def main():
             "replay", "historical-procedure.json"], smoke))
         if historical_procedure["verified"] is not True or historical_procedure["head"] != historical["terminal"]["head"]:
             raise RuntimeError("Installed historical procedural journal did not replay")
+        discernment = json.loads(run([str(executable), "-m", "commonwealth.discernment_v1",
+                                     "run", "discernment-v1"], smoke))
+        if discernment["runs"] != 150 or discernment["model_calls"] != 0 or discernment["external_actions"] != 0:
+            raise RuntimeError("Installed discernment study omitted a run or changed its boundary")
+        discernment_replay = json.loads(run([str(executable), "-m", "commonwealth.discernment_v1",
+            "replay", "discernment-v1/journals/compromised-trusted-roots--evidence-gate.json"], smoke))
+        if discernment_replay["verified"] is not True:
+            raise RuntimeError("Installed compromised-source failure did not replay")
         readiness = json.loads(run([str(command), "readiness"], smoke, expected=2))
         if readiness["deployment_ready"] is not False:
             raise RuntimeError("Research-only readiness boundary changed")
@@ -150,6 +160,7 @@ def main():
             "study_runs": study["runs"], "study_replay": study_replay,
             "procedure_traces": procedure["traces"], "procedure_replay": procedure_replay,
             "historical_procedure_replay": historical_procedure,
+            "discernment_runs": discernment["runs"], "discernment_replay": discernment_replay,
             "readiness_exit": 2, "model_calls": 0,
             "scope": "LOCAL_RESEARCH_ONLY",
         }

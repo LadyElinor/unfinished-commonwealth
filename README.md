@@ -138,6 +138,21 @@ Its [eight exposed traces](docs/PROCEDURAL_REVIEW_V1_RESULTS.md) retain denials,
 unresolved appeals, delay costs and a procedurally approved wrong answer.
 Procedural conformity does not establish truth, legal compliance or efficacy.
 
+A separate [fraud-discernment study](docs/FRAUD_DISCERNMENT_V1.md) translates
+documented fraud mechanisms into bounded, advisory evidence checks. Its 150
+exposed runs compare fixed controls on forged invoices, borrowed endorsements,
+dependent corroboration, missing authority and legitimate urgent requests.
+It preserves source status and tests false alarms, delay, abstention and a
+compromised-verifier failure. This is deterministic software research; it does
+not train an AI or establish a real-world scam-reduction rate.
+
+```bash
+python -m commonwealth.discernment_v1 run .local/discernment-v1
+python -m commonwealth.discernment_v1 replay .local/discernment-v1/journals/compromised-trusted-roots--evidence-gate.json
+```
+
+See the [discernment results and limits](docs/FRAUD_DISCERNMENT_V1_RESULTS.md).
+
 [Metanoia](https://github.com/LadyElinor/Metanoia), [Adiona](https://github.com/LadyElinor/Adiona), and [CORTAC](https://github.com/LadyElinor/CORTAC) informed the design. This is new code with **no operational adapters or compatibility claim** for those projects. Their authority contracts remain unchanged. [Integration boundaries](docs/INTEGRATION.md).
 
 Contributions can add a failing case, an affected participant's account, a repair, or a competing interpretation. Each should say what evidence could change its conclusion. See [CONTRIBUTING.md](CONTRIBUTING.md).

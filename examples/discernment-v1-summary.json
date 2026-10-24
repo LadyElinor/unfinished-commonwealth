@@ -1,0 +1,3867 @@
+{
+  "base_commit": "4ce959595847e9201244c166d4d797900cda1ad8",
+  "budget_per_run": {
+    "attempts": 4,
+    "observations": 2
+  },
+  "design": "F1",
+  "external_actions": 0,
+  "model_calls": 0,
+  "runs": [
+    {
+      "case": "routine-cached",
+      "journal_digest": "22abc22605a003378366607d8202c5c7bc520d73c47b29049891a7bff61f7a57",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "be5221dce75685e0f1963117e84177238954972922fd41e6a37a93c976adc713",
+        "verified": true
+      }
+    },
+    {
+      "case": "routine-cached",
+      "journal_digest": "aabe423eba9d2a714f9201bd025ced4b5886f993ba673df4ce203f8ee873a293",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": true,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "d08434169ad077d9389f35571e8bb20f272bbe07ba99af0db83622bd8bf7c37d",
+        "verified": true
+      }
+    },
+    {
+      "case": "routine-cached",
+      "journal_digest": "b7d0d6e7282d88afe91f014b9acf7ce266af660b2d7a690da832bc6718c9b9d2",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "be57d4d7b0c10d1472fd357ea32909053c403068491a4cc797b4c81ca5fa9671",
+        "verified": true
+      }
+    },
+    {
+      "case": "routine-cached",
+      "journal_digest": "d25bfbcbe2a33eccfd77615c930073b0e032cda515319b80f783ac2459f0669e",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "1a4995a567a170d382a2081b93bb437398cb9cf125a162606e8f7e485c9b3191",
+        "verified": true
+      }
+    },
+    {
+      "case": "routine-cached",
+      "journal_digest": "d4d929f76d612050d1c201d911f3eba8cd63f123fb21c9f148fd68b2758afe05",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "72bbc3127d2e420b41908554827103d836562106419a0b82dfa1677a6306ba2c",
+        "verified": true
+      }
+    },
+    {
+      "case": "routine-cached",
+      "journal_digest": "73d02eadb59e9ccfe3a201665b85570598d6d6c5954d442a476e41ba0549f958",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 1,
+        "head": "cd33a4691ab02f6b9350a97072c124a3520b9112802dcaf3a7e71d4d3ab1aa4d",
+        "verified": true
+      }
+    },
+    {
+      "case": "urgent-cached",
+      "journal_digest": "5d95d3fe880b0ac4c50f1a7bd8d518334345f4699b06450f474d407ee43dff06",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "22abd6adcff8eeb886b135868f9250eb18434418142a7918ea58d7ff39ceccfb",
+        "verified": true
+      }
+    },
+    {
+      "case": "urgent-cached",
+      "journal_digest": "dbdffd368b4859a9e16cfc833fd61ede1c52d35d7d684dc00eb459e83dd3ebec",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": true,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "00608cf79105e0971b5c2fd8a7ec7a4a2bd783fd1cdbbad3bea0300c8de0ad33",
+        "verified": true
+      }
+    },
+    {
+      "case": "urgent-cached",
+      "journal_digest": "c7313e19374f42d4e8a4ce86f1907f71a5857be1daf7651d2a77738cbd6943d4",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": true,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "361c8c98165c9bac42ae7c45aad171dfd77c1fdf5db13ca1c043b473c4327d10",
+        "verified": true
+      }
+    },
+    {
+      "case": "urgent-cached",
+      "journal_digest": "b49d05b5ce992d9d4d1f7b9bb4a4a3877ba458518d4fc3343ebf4da345f221ae",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "45b3bcd99b2a6965136a0f9f897cf2876e790faf8bcb340afe9ab5d99aac0a2f",
+        "verified": true
+      }
+    },
+    {
+      "case": "urgent-cached",
+      "journal_digest": "7dc4f650146facd4c27289735fa607e0732748b829c8a131c51bcec507b24e39",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "e5fed068e51c5dfa90ddcf833b7b9f26af7a5ee5f90f688a6795a8fb812a6f04",
+        "verified": true
+      }
+    },
+    {
+      "case": "urgent-cached",
+      "journal_digest": "819a23ebb60cc746aeaf78356ddecf0b6fc365104ee9da6a31e15bc85c50a437",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 1,
+        "head": "33cb0d1aaf85dfec6170041b179f6d7e0d23ffeae883a6002c2cc9488a765548",
+        "verified": true
+      }
+    },
+    {
+      "case": "new-destination-legitimate",
+      "journal_digest": "042a669af252bbd345f7899fc3e5d4133f147fa2092fc5a4c8d88d64452cdc8e",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "7c2157e6d7fa2869d31bfc8ae144cf88f0a6e05725dc44d5e6f5d59839dd0e59",
+        "verified": true
+      }
+    },
+    {
+      "case": "new-destination-legitimate",
+      "journal_digest": "2ace8c7c23041c46256bb0f553fc89983fdc012324f4995d31ac8d4e8b557b70",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": true,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "2bc19d32fab35dacfaa80ca8ceb6084b7b3dc240f5d5c8e87d1b9355f808e90a",
+        "verified": true
+      }
+    },
+    {
+      "case": "new-destination-legitimate",
+      "journal_digest": "0d3cda456628f0d0b69b0df59489d35c5247bae540872688cf908f7ca0dd235c",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "60751cd48717ec361e892c6d43dfcc0597225ac015af106af7a84e206de06a79",
+        "verified": true
+      }
+    },
+    {
+      "case": "new-destination-legitimate",
+      "journal_digest": "428a88251216c1ad566e2628d7a676e92ad132b413958e4686a92af15b64d04a",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "2ed60549f56f0df3725072df13c4e08645b73a8937f7ab8e256eab59df397b11",
+        "verified": true
+      }
+    },
+    {
+      "case": "new-destination-legitimate",
+      "journal_digest": "421f11c7993a3f0d37647002922ab3a3ed3a2baf84290e8b0d5854ac66ab18fc",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "3f494e3427d4f25063b15eb113b0cac883b435651acce794c188f676b17d39bf",
+        "verified": true
+      }
+    },
+    {
+      "case": "new-destination-legitimate",
+      "journal_digest": "421f11c7993a3f0d37647002922ab3a3ed3a2baf84290e8b0d5854ac66ab18fc",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 3,
+        "head": "3f494e3427d4f25063b15eb113b0cac883b435651acce794c188f676b17d39bf",
+        "verified": true
+      }
+    },
+    {
+      "case": "redirected-invoice",
+      "journal_digest": "50f5460dc007bdfafd132d07967161586473579723eccd744f06b41649a70616",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "5140711af1072de835e3a49af7251df00d952a108a418d34411a02f5c3195a93",
+        "verified": true
+      }
+    },
+    {
+      "case": "redirected-invoice",
+      "journal_digest": "88a1772b9a492b5550c4ee8ef09a3e0d7ea4889de399d10e4ba1cbf6b0c9dd44",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "6232d3c7cbc1c5958d29ca04927a31f82898cdf73e13b4de32027ef46c5a1832",
+        "verified": true
+      }
+    },
+    {
+      "case": "redirected-invoice",
+      "journal_digest": "a79ef0849703b5f31543116305600fbe61a872c9fbef5254d3191d2e893f0281",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "a764f6eae00ab23553c11c970a1de3e3e3d3e9e51d0ff33f51817419dadc89a2",
+        "verified": true
+      }
+    },
+    {
+      "case": "redirected-invoice",
+      "journal_digest": "de438391edbcf43a96bc79ea3ca6b155b8c5ae171ace21d59f47a723781f450e",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "64d5498b8ede39cf944f1c5e8965b8c672d835eef60c24089574ac1be049c368",
+        "verified": true
+      }
+    },
+    {
+      "case": "redirected-invoice",
+      "journal_digest": "8621279644fc9ae2b656cfac5084f1cc3e4e9ffed84a21d0bfead4ce79a58a53",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "8b33f487cb06bd98ab9071434c49918e37fd83371b5f18ed735e0d62b538cde5",
+        "verified": true
+      }
+    },
+    {
+      "case": "redirected-invoice",
+      "journal_digest": "4b2182ea572b3ea8b6fe44f6e210d97f9c212cf8f94348e57aa6d7b7f4c07b21",
+      "measures": {
+        "attempts": 2,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 1,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 2,
+        "head": "e3d64fb534d607663f62fcca1e8e60a70e5c89392527580fb5a21a284d7085f3",
+        "verified": true
+      }
+    },
+    {
+      "case": "urgent-new-legitimate",
+      "journal_digest": "8d6b7315dba0aee331d23bb8fb0cb52fbf71a3c16683a757321ce08a3ae4a376",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "aab06e076c2f4d851887b6dfce6ea49a60ffd8d98fa7dc9f6f6667073c8810b1",
+        "verified": true
+      }
+    },
+    {
+      "case": "urgent-new-legitimate",
+      "journal_digest": "60cfb24ac639de95a425c4d9fce16b2b0b222ec2b6c964586aa8deadbf58af38",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": true,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "5bd853112d5a86a3f72ce64167b0ff8c60c0d096fb4d1424981f51777f2221e6",
+        "verified": true
+      }
+    },
+    {
+      "case": "urgent-new-legitimate",
+      "journal_digest": "c68f444ba9747cd1c8c03c0de1149fef63687ab298586fa30b44d13b0bdba8b4",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": true,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "37c6afed5aff46d1403ba1bc7ed9d3f8319f64c5fc09d9a795185c4037615343",
+        "verified": true
+      }
+    },
+    {
+      "case": "urgent-new-legitimate",
+      "journal_digest": "98f482b13376324bc03939a85c51abb3934122097222235f9088df6aefd3b8de",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "1563dd028347a8002f29ec5ffa2a8b2b436a2b25a4436316aee106195aaded60",
+        "verified": true
+      }
+    },
+    {
+      "case": "urgent-new-legitimate",
+      "journal_digest": "92a15ae50fa2484d1248483a820ea25b56ab920b016d8c5b6f492f4f4a36d3f8",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "cfc60950f5c8421556a9fafd2276099aae176caf3fe2144c585efdf59f977389",
+        "verified": true
+      }
+    },
+    {
+      "case": "urgent-new-legitimate",
+      "journal_digest": "92a15ae50fa2484d1248483a820ea25b56ab920b016d8c5b6f492f4f4a36d3f8",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 3,
+        "head": "cfc60950f5c8421556a9fafd2276099aae176caf3fe2144c585efdf59f977389",
+        "verified": true
+      }
+    },
+    {
+      "case": "real-endorsement",
+      "journal_digest": "90332938e51849e2d8bf17437efb62c7883b15618255b0f6a2891caaa56334eb",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "8698303450114f20b21caab52ed91f38ce24279fbcfe3155e9581f7f1b773f1a",
+        "verified": true
+      }
+    },
+    {
+      "case": "real-endorsement",
+      "journal_digest": "df218ac60033625bc688558787538f68653b72d2a06d2dcd7bafb46e3a50b925",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": true,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "35b0012e5c62e5d534ec53765b60ea196b1655329a5d811b3fac0c35c32ac002",
+        "verified": true
+      }
+    },
+    {
+      "case": "real-endorsement",
+      "journal_digest": "0dec4e3187de1164a7f42f262dfe28ec360739310633c7fc3e0fb27f9d827484",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "044162355912d3d81aa9c9d05217ec7bf75fe68ce2395c6bfc2e6219451fad46",
+        "verified": true
+      }
+    },
+    {
+      "case": "real-endorsement",
+      "journal_digest": "7ec9fb8a5e46114dedaaa73230a0c0f42a139e0a12a08fab1984b9b3710e45b3",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "11cbab28a214840931535bb433c77ad9100c833f1cbf86e0ea8c4b89f30f3c96",
+        "verified": true
+      }
+    },
+    {
+      "case": "real-endorsement",
+      "journal_digest": "d882f08dd514f90572ef7739bbf734f3dd9532a3f5bcf5185c95f15c95a7aa96",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "8f3c438e3a4f989e905f5fcdf2b5288987b7718bfcac53baf1bdb9ceb49b2d29",
+        "verified": true
+      }
+    },
+    {
+      "case": "real-endorsement",
+      "journal_digest": "d882f08dd514f90572ef7739bbf734f3dd9532a3f5bcf5185c95f15c95a7aa96",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 3,
+        "head": "8f3c438e3a4f989e905f5fcdf2b5288987b7718bfcac53baf1bdb9ceb49b2d29",
+        "verified": true
+      }
+    },
+    {
+      "case": "borrowed-endorsement",
+      "journal_digest": "3bf369e6e16a28fb50dd06864c9b541ff2d6302cec1787e5abfd754494570b59",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "6b9e74bca92dec3b6c2d949a19e10d464b2d6a234aeba33ce20f0315106cd4ed",
+        "verified": true
+      }
+    },
+    {
+      "case": "borrowed-endorsement",
+      "journal_digest": "bdbcc800d5acc1a06eab65b31c53bfe343055b159e7c926cc717f486a1cd5fdb",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "3e01468d916d30a22db722b7feecf4e06374dcca90f44c9f3f4d4df07461b844",
+        "verified": true
+      }
+    },
+    {
+      "case": "borrowed-endorsement",
+      "journal_digest": "7f4f211e681bc46c3449528482d8e1020e5c9c87e54a2c99514d6644661bc6fc",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "28cc85c5164a4de6f490b76f0ca1fd1c353713e0849e30a85c79c44206c8b54d",
+        "verified": true
+      }
+    },
+    {
+      "case": "borrowed-endorsement",
+      "journal_digest": "350b788c10f76232c8f074861b6e80c2b2c2073c148e4e1e58e316d405801d2a",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "901909102536fafd3d5a4ef4b0f6ee39f648c60f6c8f4bde8a9146079284a823",
+        "verified": true
+      }
+    },
+    {
+      "case": "borrowed-endorsement",
+      "journal_digest": "e8b8d8493bae7f3c96502adf13d747cd232edcb28032b4d22de610f7c44358df",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "6cc4c94ed3fcff95d50bdcadf877b6d1e372699723794e414138f2da2e688d57",
+        "verified": true
+      }
+    },
+    {
+      "case": "borrowed-endorsement",
+      "journal_digest": "e8b8d8493bae7f3c96502adf13d747cd232edcb28032b4d22de610f7c44358df",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 3,
+        "head": "6cc4c94ed3fcff95d50bdcadf877b6d1e372699723794e414138f2da2e688d57",
+        "verified": true
+      }
+    },
+    {
+      "case": "fabricated-delivery",
+      "journal_digest": "efbb5c0960b4947269888c503accac7fd3b360928c5b85f306a1ddbf1f268574",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "d8147beb2fe7b719dd898a4a08f48062a150d2bbd613d870947dbb1a9cc5c0da",
+        "verified": true
+      }
+    },
+    {
+      "case": "fabricated-delivery",
+      "journal_digest": "8877dbcac7092f4303185951c8726d5e62cb44460eb486283c2a75eccb3c72c4",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "7f9db6e9721440b3a494a9da093ee89e159693c29cfeee4ea4da25fb893e6a33",
+        "verified": true
+      }
+    },
+    {
+      "case": "fabricated-delivery",
+      "journal_digest": "bb673acef36149cbbc2cc03c940d9e521a8a53008c28c3ee3ff92ef4cd40a207",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "f9b34078d3211b3687141b59a3721edc77a02bbb7c07debde9c95dbe45528166",
+        "verified": true
+      }
+    },
+    {
+      "case": "fabricated-delivery",
+      "journal_digest": "efb11079944479a4e052d80859c6223f34fb20dae666138ae6796fe9f052ec8e",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "3b35fa88196adec2400c1f68e5f5d4d77607ba3f82bb50503dc7f014b700db9f",
+        "verified": true
+      }
+    },
+    {
+      "case": "fabricated-delivery",
+      "journal_digest": "3b29a7d8c6885aac235986885f985ff1b807e210bdeb88ec8f4431880cfe8738",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "eeda6c4846c4afecb1b487a07a9790f91d202e87231575d0fd30ea81d24343e5",
+        "verified": true
+      }
+    },
+    {
+      "case": "fabricated-delivery",
+      "journal_digest": "3b29a7d8c6885aac235986885f985ff1b807e210bdeb88ec8f4431880cfe8738",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 3,
+        "head": "eeda6c4846c4afecb1b487a07a9790f91d202e87231575d0fd30ea81d24343e5",
+        "verified": true
+      }
+    },
+    {
+      "case": "guaranteed-performance",
+      "journal_digest": "f895e48a7434aa45a586c3bc653dc8a8a911794ef17b2c935a3e5ec2fb90127a",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "138e833a2b2dd2bcf77461494f3dfd43e521f6da0ee2822519d04fbe7a769ee1",
+        "verified": true
+      }
+    },
+    {
+      "case": "guaranteed-performance",
+      "journal_digest": "c69fb4161fedb6b443d26d193fb9927422dd65a5819d7114d4e46cc9c3b4ea3b",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "bf3c5744055cc360bfe8ad0cdfbf17074b2a0778946e594b902070dc3ef09e3d",
+        "verified": true
+      }
+    },
+    {
+      "case": "guaranteed-performance",
+      "journal_digest": "ff5046a5fb5fc27246d8a8eaec2f837fa8fa5a99b2bbf0df39289ac46088e3ff",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "6a36f3c163f3001cbeea7ac37db678499cb07ff20c71f23e107fe6fbe894a866",
+        "verified": true
+      }
+    },
+    {
+      "case": "guaranteed-performance",
+      "journal_digest": "a37502c3521abd997fbb12620fa173932ddc02a4ef9b36ab560379d0e8ada2d0",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "c3ecb9a5b8f5e430af007f7d097a2474aba2b6c423eab47e6612a862df272372",
+        "verified": true
+      }
+    },
+    {
+      "case": "guaranteed-performance",
+      "journal_digest": "6fc5db4ab8c34568da88f8b91a5491898fef8d2b268ad1a5f43ece958fad7e2b",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "defer",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "c7a658d95acefcda06b63e09d996a0ff6cf8164949f8acbc8b61b8b1a4d8ae19",
+        "verified": true
+      }
+    },
+    {
+      "case": "guaranteed-performance",
+      "journal_digest": "6fc5db4ab8c34568da88f8b91a5491898fef8d2b268ad1a5f43ece958fad7e2b",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "defer",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 3,
+        "head": "c7a658d95acefcda06b63e09d996a0ff6cf8164949f8acbc8b61b8b1a4d8ae19",
+        "verified": true
+      }
+    },
+    {
+      "case": "legitimate-warranty",
+      "journal_digest": "aa54b49aecc7ce1aee6295b06383296709c993626dfbc760bfe24235f86a79ae",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "415843b9be82b0a621a645701ea593ef8beaaeb3d78a434aae4f2172e7ddf690",
+        "verified": true
+      }
+    },
+    {
+      "case": "legitimate-warranty",
+      "journal_digest": "a8d458fc0e345e59a13a280eced2e16ea03501f7bb69207039b09a613c49ef35",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": true,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "9ebed7869f4931ad93da771eda0c67e8e7b04715ec3650b85c4426cb66d550c9",
+        "verified": true
+      }
+    },
+    {
+      "case": "legitimate-warranty",
+      "journal_digest": "2a64df24f60eff08c94caf6646c1cb09703dc7754081437b2bc9536658dbdc8d",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": true,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "c4ad1be179c491f2adf06da964f2c1151510ba098377378c39c223690b71e050",
+        "verified": true
+      }
+    },
+    {
+      "case": "legitimate-warranty",
+      "journal_digest": "f300bdeb7f6af5a468ee1fb89f40dabe849b38ccb6e91755f2a08b930af2c427",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "ecb49e982aef57f341d511920cc420b13127083dfec2a73169fff38258ac418d",
+        "verified": true
+      }
+    },
+    {
+      "case": "legitimate-warranty",
+      "journal_digest": "59c843bf91361fd005407142a6d136cbf120c53138de17f81292f2205cd2de12",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "ca819557b5802900e0ef1a15910c71bca6a8a662231d61afed7183aaeb96a5c8",
+        "verified": true
+      }
+    },
+    {
+      "case": "legitimate-warranty",
+      "journal_digest": "59c843bf91361fd005407142a6d136cbf120c53138de17f81292f2205cd2de12",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 3,
+        "head": "ca819557b5802900e0ef1a15910c71bca6a8a662231d61afed7183aaeb96a5c8",
+        "verified": true
+      }
+    },
+    {
+      "case": "circular-documents",
+      "journal_digest": "ef1181bfd971d06a070426a0f2a79f60696e3359982af111d3f93576623b62b3",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "60b648ad351440dd954f66d8a9b7bf4435f29ddbb88174dcb5daec453fc0278a",
+        "verified": true
+      }
+    },
+    {
+      "case": "circular-documents",
+      "journal_digest": "78c5f0e127720f4fca51eb7d2318acddd5ebe59e672cf6bccc29730f7349ed99",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "855f4b39a14febebbd494d7635a9581f4d8aa420a593edc1a6fc4ac6c00268f3",
+        "verified": true
+      }
+    },
+    {
+      "case": "circular-documents",
+      "journal_digest": "baae7b77742102a108a2a9480d1f053ba409dd673d19aae16483c05e509fcde9",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "f0b5901301f186b2d5dc5b6861c36613265d967db863f6720c6425a450d953a9",
+        "verified": true
+      }
+    },
+    {
+      "case": "circular-documents",
+      "journal_digest": "9fd0f3091628cac64d5386f04cad3bfa8967c9866de9387787172fc51a030993",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "7322860cb710eab7503ecc856b0f92150645a5b27eb85224a130b1bad7cbcd9d",
+        "verified": true
+      }
+    },
+    {
+      "case": "circular-documents",
+      "journal_digest": "28aea3bd0bb163aaaaa2550ebe2c671e70d107cbc35a8e763e559380b43b423b",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "defer",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "347e3ec881f05c7a789836d0b0c36f552342507389a59c69f055e396591f4ddc",
+        "verified": true
+      }
+    },
+    {
+      "case": "circular-documents",
+      "journal_digest": "28aea3bd0bb163aaaaa2550ebe2c671e70d107cbc35a8e763e559380b43b423b",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "defer",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 3,
+        "head": "347e3ec881f05c7a789836d0b0c36f552342507389a59c69f055e396591f4ddc",
+        "verified": true
+      }
+    },
+    {
+      "case": "recovery-fee",
+      "journal_digest": "263d5cd07990f61b07b38b3104925c69ef65bcf4696dc46e5be39dd40b231819",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "240fbe5b644680c4189de911412d154f6fd9a237e0507f93a20ada2f87260dfd",
+        "verified": true
+      }
+    },
+    {
+      "case": "recovery-fee",
+      "journal_digest": "7c51b9d571a253306176a45a51586e514f6457857fe7b28dcf1df3d6a9e5dd4f",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "c9b8355e73ce58b15c2a70cf86f4be9080aea59e69a916a77085f19d2b55355b",
+        "verified": true
+      }
+    },
+    {
+      "case": "recovery-fee",
+      "journal_digest": "afe764b5b8e1fe7dcbb04b5766e23d695f92b903ac2879aea2c1db13e1a8d7d0",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "40757cc4b792577d93b10ed42e168b766b4dc3d5725b0555ae8ddf52f96edd1a",
+        "verified": true
+      }
+    },
+    {
+      "case": "recovery-fee",
+      "journal_digest": "bfb26ae7cd34805443fa5414c0319d7174853a4db2afd485768912fb9b7221ed",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "15dc3252d2c1c185c99f96182aa923149735c0c590be6b662bb2a465a04feace",
+        "verified": true
+      }
+    },
+    {
+      "case": "recovery-fee",
+      "journal_digest": "a92971d9fd86df944c807ed94d85e72c480e39e34d43dffc11a6f614cde65f87",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "8dd25d18b617300028b35a36fc4b09e4d88eeece003d1e0762236da5d11915da",
+        "verified": true
+      }
+    },
+    {
+      "case": "recovery-fee",
+      "journal_digest": "b3eac1112821bf7ee7d9e58e12e9035fc1a29f4ea4ec2f8e1dc19fdd424f264d",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 1,
+        "head": "9750e6d3895f7f59c4c727b40b412ea6cd69cabeb6fe4bb8b2852d299dadfaa0",
+        "verified": true
+      }
+    },
+    {
+      "case": "secret-transfer",
+      "journal_digest": "5427a032953c91a23b6accb6d36a32457c62464eed1d40fae0d3db0790c19547",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "275651cb0dd5aed0351cc2daee74a2e642f771e47c091b6a192198d2a320d0f3",
+        "verified": true
+      }
+    },
+    {
+      "case": "secret-transfer",
+      "journal_digest": "7e37a0a3a40e9c1ee87b0240848189bfd480e5a59e651b6526941cc261ba3800",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "3550283b1bfa585bb5f0b02768cd37de2d475a229c92101ac51a3f6c8619a67c",
+        "verified": true
+      }
+    },
+    {
+      "case": "secret-transfer",
+      "journal_digest": "ba9d3c13ec89bc6f7f3c5294dacbef658e54de601d010db967b50a37e6a28899",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "c0c8f639da7a023445a5b8a9f1b75d19d9d71cec12fb58996b7e4ea5fe0ceefe",
+        "verified": true
+      }
+    },
+    {
+      "case": "secret-transfer",
+      "journal_digest": "eea2c8fa7f998bef02dc0d0c86b0b05a7e5895619c8dd3c8e92856bb1474c3be",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "b428001c8b21e05a5d6b8fc71c947de100ba0171f4856801e76cec10bbadb657",
+        "verified": true
+      }
+    },
+    {
+      "case": "secret-transfer",
+      "journal_digest": "42267687e8ce01d49b2d900b9b06cb658790e1017194e8013d06fd29970a6442",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "9d8e4d0531501a0ac0ef6f3f294f23820e37131a3d00d8ade8d4e02423278f86",
+        "verified": true
+      }
+    },
+    {
+      "case": "secret-transfer",
+      "journal_digest": "6d4fd07ce14364d20e9983882389da63564a5a7839d9c3563c67eb2eee3a36f7",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 1,
+        "head": "ad9312fd3f50ddbf57c637d5325750e0bf0f91e4597291087f4409a6441c5863",
+        "verified": true
+      }
+    },
+    {
+      "case": "code-education",
+      "journal_digest": "66765a6c647203eba7323ecf3d321f62cb901e6598618f42ba440e6f48837773",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "99956a194baf62d77c361749bb4cba35cf6b8084d70edcb353bf19dbf75f1ff0",
+        "verified": true
+      }
+    },
+    {
+      "case": "code-education",
+      "journal_digest": "2ac65dd3672251a6937fe8bf969ed2c80743eb7a899542cd06801e4e77768006",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": true,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "05acb3f673c2ebce467c2ee9e8ad32841d3f3b974f3b77b114f0ae119ea5e6ab",
+        "verified": true
+      }
+    },
+    {
+      "case": "code-education",
+      "journal_digest": "5653658020a05610ecf650bb9fb92680cf013567d819213407990803862e4f54",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": true,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "f9a6a7bb0f03435c8f57dacf89c71bbc7eebc6bb92fcd2d5f9375279006bd95a",
+        "verified": true
+      }
+    },
+    {
+      "case": "code-education",
+      "journal_digest": "5828776ae7914940eeb49435e9ead52f23ba3ba2a876bccb68e66a0ace335cf6",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "f2f59375f231c8babfa90a89cc4d75432be3c6447f535343aef792f1124b9b92",
+        "verified": true
+      }
+    },
+    {
+      "case": "code-education",
+      "journal_digest": "e743075da95f69f4e1a3f4dacca938ca77b5e3f21dfaa6914d81b1e94bd40d0f",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "8d5239875cdbdf21e6f55957515334d8aacb466b437e8d621e63338e37428690",
+        "verified": true
+      }
+    },
+    {
+      "case": "code-education",
+      "journal_digest": "e743075da95f69f4e1a3f4dacca938ca77b5e3f21dfaa6914d81b1e94bd40d0f",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 3,
+        "head": "8d5239875cdbdf21e6f55957515334d8aacb466b437e8d621e63338e37428690",
+        "verified": true
+      }
+    },
+    {
+      "case": "recovery-guidance",
+      "journal_digest": "2518af335cb25fb49c7b8a5982dd4258b92e36a5d752b81b9fb2ddfe4a22f816",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "af25a961884a5d4635ef5a61505f4f7d72a1feb85391e85f7c99d661c96d8db2",
+        "verified": true
+      }
+    },
+    {
+      "case": "recovery-guidance",
+      "journal_digest": "563c92eb0b69475d797bfba52f60f0e6d05e916a5dc7060236362fcff98ade99",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": true,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "6c233a4ce96891cf03f3598ce3daa74f45a844f8192a9dac89c54ebc965d432e",
+        "verified": true
+      }
+    },
+    {
+      "case": "recovery-guidance",
+      "journal_digest": "03581f39e5f73ef1b82eac46e1af1191cea9613e7de97d3444b83eef31074c17",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": true,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "b25e8d056ec84bfc6a2a42272d3cfe54eef52244351413197e1ede6ef09ad879",
+        "verified": true
+      }
+    },
+    {
+      "case": "recovery-guidance",
+      "journal_digest": "0b7fd2276a7a3c025f9d1337c4437a1da8bd7ee224a9c6ea3a26be68b93be547",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "dc4d617cd35117503647705fe159821fe6735f9d5e94c315d912ea02f7176a65",
+        "verified": true
+      }
+    },
+    {
+      "case": "recovery-guidance",
+      "journal_digest": "bd4a3e4c9887368df05d6e13ba70af34db5cb38333e45bf55ef05844e01920ed",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "baa63bacef243e94f988c393d60037cd61280dd8198dd1a5aee69aab232e93ec",
+        "verified": true
+      }
+    },
+    {
+      "case": "recovery-guidance",
+      "journal_digest": "cb334af553a7ef9bc3da5495994fe7201800f9f5ff90d63fa80d2d7602596579",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 1,
+        "head": "fae007aa5a86cdcf857b38ac2bca60ac92c7536ba5da753ce406fbd56c911def",
+        "verified": true
+      }
+    },
+    {
+      "case": "missing-authorization",
+      "journal_digest": "c2c56bba62f08f251ba3fe022ab72607c652e70588318828115669c96d7d7367",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": true
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "99ac2c50ee79acd8dfcd8912325da7736bd43438df15d85b23bd9b08d707c8d0",
+        "verified": true
+      }
+    },
+    {
+      "case": "missing-authorization",
+      "journal_digest": "d0c5c8c179b6a36c4c5150183898de0f986dc16e917f14cd5c93acc2c4296c48",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": true,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "ccb5701d85c7c2e341b7b457609995cf734af4f0e2ba8d40954cd9dfbb153dfb",
+        "verified": true
+      }
+    },
+    {
+      "case": "missing-authorization",
+      "journal_digest": "7abb1b80265ebe197d974ecf1bcd41a0aabdd3d083e94781ee438e26003f4f72",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": true
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "fdd9dfbe0ccfc321a07feda03c57c4a41c3575691171d0aeea387ab61708f6eb",
+        "verified": true
+      }
+    },
+    {
+      "case": "missing-authorization",
+      "journal_digest": "07459e7c005d11e90d2c4420799167ac4f16825a3ad05651cc4cb3afb3f79b12",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": true
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "831eb853d56b3f4c732c7f83c42aec6cf16c90e43bf3a7e9bb9e9e7440213c47",
+        "verified": true
+      }
+    },
+    {
+      "case": "missing-authorization",
+      "journal_digest": "a3fc32652cd811e9f1534b8caa3836b82dc63befd328c338a7dc50b34e517ffa",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": true,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "defer",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "b505978fa542abdd91155aecc79fd70ee5baaaefbb5b03a6bb355635adc4253d",
+        "verified": true
+      }
+    },
+    {
+      "case": "missing-authorization",
+      "journal_digest": "9b86bb076dc3f47901316e79f8ce60228110ad8af38dfb27205e945704bc3aaf",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": true,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "defer",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 1,
+        "head": "e056f4615d22b30f6b1f7b6d9da282324313c48723a3ae948b655182b9cdb024",
+        "verified": true
+      }
+    },
+    {
+      "case": "wrong-scope",
+      "journal_digest": "86c7feff4b0fcd902ce41f9bc2c0fe495433f9a06d7c4bb1f03c64116f660b56",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "ff7b9f3eea1073df3bd7c3a9f04e37980da95cb4ecf75640784639497c336fec",
+        "verified": true
+      }
+    },
+    {
+      "case": "wrong-scope",
+      "journal_digest": "311602bd3f8b90de4df06837dff252b5fbc9278681a6183461b23f52670ca3de",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "8f013bf68c2930bff4fb48117c3bcac8b939ddc13c1c6bdf91d1bc4ca0476ea6",
+        "verified": true
+      }
+    },
+    {
+      "case": "wrong-scope",
+      "journal_digest": "c24c89350c4087eb89974d60251c24d65ce76bd69bc88e695ef8211df8272314",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "d762260b8e4d0331826fbd248b20385287a2bccc1b8837791766fd9db0607b4f",
+        "verified": true
+      }
+    },
+    {
+      "case": "wrong-scope",
+      "journal_digest": "0769f8ebed19205d4848096e7f4fc8f8049e8662b7fb2cf8f8e6c90ff17669f3",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "1bc949d3a1901619d6f9cb85a47526d704d24ccae0806cebe4975d44d69b196a",
+        "verified": true
+      }
+    },
+    {
+      "case": "wrong-scope",
+      "journal_digest": "1f6c8fa408b51b105e6f5fa3a58dca87165e7d144824bc9d1d531f76139d0948",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "defer",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "4271c4a38af0133e9b948ffa33324914f10f7fa66283f19846e686df93979439",
+        "verified": true
+      }
+    },
+    {
+      "case": "wrong-scope",
+      "journal_digest": "1f6c8fa408b51b105e6f5fa3a58dca87165e7d144824bc9d1d531f76139d0948",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "defer",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 3,
+        "head": "4271c4a38af0133e9b948ffa33324914f10f7fa66283f19846e686df93979439",
+        "verified": true
+      }
+    },
+    {
+      "case": "expired-cache-legitimate",
+      "journal_digest": "edd7c37402f7688b816c6da5caebc7b4a9110530a3d1df7c41c0178456c385dc",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "8ee904f7fbfba74c7ebfebe2e7ef81fc7521c69e7277fc2d7d98e93efbfec1c6",
+        "verified": true
+      }
+    },
+    {
+      "case": "expired-cache-legitimate",
+      "journal_digest": "fdecb2277768f40bf269bfea9b64d4dc1b8c4d7f34284f0379a08efc2f7dfd4d",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": true,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "828963c9a4c86c5fa38ef66cf0c87384dcd4aa5f60e78820e0c4a9b8d9e4a74d",
+        "verified": true
+      }
+    },
+    {
+      "case": "expired-cache-legitimate",
+      "journal_digest": "0ec41dfec5814bcc89104c424b65d012560116965320e6b7f3813f8edd2ec4cb",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "e681bf9cc838cba761459ce5d16186a7bd6f4b57a27f773a842e2f8fb699736b",
+        "verified": true
+      }
+    },
+    {
+      "case": "expired-cache-legitimate",
+      "journal_digest": "883be156aff6e9e422d5fbe27131185e6df0721a29f9e1a97909b847bfddb32e",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "af2383cab7bdc320bae86b7acdd224c4e691c7916721c694229d7ef6de6799d5",
+        "verified": true
+      }
+    },
+    {
+      "case": "expired-cache-legitimate",
+      "journal_digest": "87d39c5d8ef57b679afd60e05485b3ca59ac9a95380cac5442a03bb81659ed57",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": true,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "defer",
+        "refusals": 2,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "69c71a68207e4ae81f6bcb6e71502e7b038c1f69f9a7a8aecb9739c3be20d91f",
+        "verified": true
+      }
+    },
+    {
+      "case": "expired-cache-legitimate",
+      "journal_digest": "87d39c5d8ef57b679afd60e05485b3ca59ac9a95380cac5442a03bb81659ed57",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": true,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "defer",
+        "refusals": 2,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 3,
+        "head": "69c71a68207e4ae81f6bcb6e71502e7b038c1f69f9a7a8aecb9739c3be20d91f",
+        "verified": true
+      }
+    },
+    {
+      "case": "revoked-cache",
+      "journal_digest": "1048df7a1badd9771f04b3a17d57553cd96c1c0b638694a8b8b28a3bc5cb651e",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "0d8bbd0a6a37262f4240dd384c7db42355152daac8d15f9349796b2194606807",
+        "verified": true
+      }
+    },
+    {
+      "case": "revoked-cache",
+      "journal_digest": "93a4007dc49b86895a96c870130806813f889617faf966c81f71bcfadb9e88ff",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "6aca17c00bed98c022732912c12d1ec636d4cd1152510dfb6f7761fbc0ed3028",
+        "verified": true
+      }
+    },
+    {
+      "case": "revoked-cache",
+      "journal_digest": "608e4d72c9a66929e68092bcb66f875bda188d48a585a6e05ec0d076e3d7546d",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "036dba882cdaccff9f994d3287e1c407555eff069311a4eb435eff6f76b7a5f1",
+        "verified": true
+      }
+    },
+    {
+      "case": "revoked-cache",
+      "journal_digest": "d0de831d3521607a74229262f5eca670225b5c122e8d10e4ed7b88eaf8e5d9d4",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "dfd425e62b1c221889b741f6fb9b5ac64e7d6c12e0a3faf0630c5afc48f49665",
+        "verified": true
+      }
+    },
+    {
+      "case": "revoked-cache",
+      "journal_digest": "9827dcb4b96dec46e2d7d830bb1a795f39ced695610ea54fb46e78e08b183db7",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "57b5bee7840357291f298a30f66aa7ac4843cbb07e1142d8d6095e99e1cbb9e5",
+        "verified": true
+      }
+    },
+    {
+      "case": "revoked-cache",
+      "journal_digest": "ad996d2e158444c5a68b490c196365ec44ec2c760e7cc15d0ba35afcec8a67ab",
+      "measures": {
+        "attempts": 2,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 1,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 2,
+        "head": "2f6ededd1ab3c2cd8a39b9af954b61adf2c2948cd6d11d725cb877ed76ad06e4",
+        "verified": true
+      }
+    },
+    {
+      "case": "unavailable-legitimate",
+      "journal_digest": "421ca6d518b13fdf1d693abbd7661c4fc1252dfd6b288736408e5371fdab14fc",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "05ae235376bec59cd3259a9cd33956852c520bf4a3095680486b92b135e0c004",
+        "verified": true
+      }
+    },
+    {
+      "case": "unavailable-legitimate",
+      "journal_digest": "db7e087562eded939d9adf09f8709b631e821a7166fa8d3cfa0ccdd15a28e97a",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": true,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "ae585659ac6192f3212fd19cf8c2e2e3d800128cdac22a8ba22fb16819465885",
+        "verified": true
+      }
+    },
+    {
+      "case": "unavailable-legitimate",
+      "journal_digest": "8c3374e9407aa5ce2030cbfd8fb8acf8c1bde60a31a1ce1732d196f47bc5a471",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "cd62e1d8d29c80220bfb3c11e8d690feff3bdf0d3d15f56f95119e595e85d61e",
+        "verified": true
+      }
+    },
+    {
+      "case": "unavailable-legitimate",
+      "journal_digest": "20f6a41a6b77ea72986c0e0331d7c18eddac8de26e2ac19f684d3ca426d3985d",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "3f3c344b649ed5c689318b219ed466b559e3d31b1dd4aca5267993da63565b20",
+        "verified": true
+      }
+    },
+    {
+      "case": "unavailable-legitimate",
+      "journal_digest": "7e7d0b29a38b4aede9ece271985d94c7a252c6778a28f4bcbb6943eade918411",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": true,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "defer",
+        "refusals": 2,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "f4e534489a7ed92340310092a792d0028a9e4695f492389271a9edc1a967df41",
+        "verified": true
+      }
+    },
+    {
+      "case": "unavailable-legitimate",
+      "journal_digest": "7e7d0b29a38b4aede9ece271985d94c7a252c6778a28f4bcbb6943eade918411",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": true,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "defer",
+        "refusals": 2,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 3,
+        "head": "f4e534489a7ed92340310092a792d0028a9e4695f492389271a9edc1a967df41",
+        "verified": true
+      }
+    },
+    {
+      "case": "unavailable-harmful",
+      "journal_digest": "ba6aa778bae576e0b4c3bc98afadea3fa074a384ccf8f5b76cf601c790476ad7",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "43a000e1213cb837a8a6866bbd76cd87decc807287f7402cc69f3b9e4fdd24b1",
+        "verified": true
+      }
+    },
+    {
+      "case": "unavailable-harmful",
+      "journal_digest": "773271d3dc3a0de47fab45a36996c226732c3b787eab878a3e6ef0f2d12e7054",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "1318414003f862b0ac797f45d838e6a6c51f64726853871008df9da1b29603fd",
+        "verified": true
+      }
+    },
+    {
+      "case": "unavailable-harmful",
+      "journal_digest": "ef8a047e404ecc30eb1a9e891323e7bd0c9e461ede74bccef389e54ad94f2757",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "aa5aab3c7cb6c29bdad6aec7772978edd602d04d95d5e3e559af7e8466a3c28b",
+        "verified": true
+      }
+    },
+    {
+      "case": "unavailable-harmful",
+      "journal_digest": "2bf4017b0f491d117831b4374c3cd086526bfd2718e191c2cc0b4b7d339b58fe",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "6c70dd801fd352826360ade6cb8b861c4e0a5d803672621b4fc8cad5590705c6",
+        "verified": true
+      }
+    },
+    {
+      "case": "unavailable-harmful",
+      "journal_digest": "15fa97a2293219999be45b72d295baefc8371693ab4924e1dda9dfa4cc538d26",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "defer",
+        "refusals": 2,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "81ef1eac63bc07936c5948bb164114707a2f1bfe68ef36b77eead58b6b589c28",
+        "verified": true
+      }
+    },
+    {
+      "case": "unavailable-harmful",
+      "journal_digest": "15fa97a2293219999be45b72d295baefc8371693ab4924e1dda9dfa4cc538d26",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "defer",
+        "refusals": 2,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 3,
+        "head": "81ef1eac63bc07936c5948bb164114707a2f1bfe68ef36b77eead58b6b589c28",
+        "verified": true
+      }
+    },
+    {
+      "case": "compromised-trusted-roots",
+      "journal_digest": "e737f2138768948175142b320756194086de0401faf9affb2cb16379b90d4987",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "7e7844b497e6bb8437e0af867c69fda44b0a67e0c5717c8f9599eea6bf6d9f70",
+        "verified": true
+      }
+    },
+    {
+      "case": "compromised-trusted-roots",
+      "journal_digest": "3a624a2a80fb7cb29c38022eb728271fc0abf2b36fc857c357421bcc9057ce62",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "7469396e63742b463ebdb6c782aa82d77b6aa9aadb354a140ac66c6cafc987f8",
+        "verified": true
+      }
+    },
+    {
+      "case": "compromised-trusted-roots",
+      "journal_digest": "f1e1aef038826b074d61962764a7d958fd22dfdfa6d8f6eb8fb38975b7e04d6f",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "aa71f56c8bdefa01221dd17dddb99bb3a60d063171f8b9c57bc9432ea4785f70",
+        "verified": true
+      }
+    },
+    {
+      "case": "compromised-trusted-roots",
+      "journal_digest": "b5c15b713d7eceb4a9b0b1be134ac66098a34a6a5e54bbc676a629188ca972c9",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "038974f04498e5b08a10db5bf2b8df06480c700c3664e59ee00a0ca178656b19",
+        "verified": true
+      }
+    },
+    {
+      "case": "compromised-trusted-roots",
+      "journal_digest": "f4b83d6cd86fcbace9c98e28a335215fe5c2f0005c0a6bd1fdb3caf9e0ab9fa0",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "18c338103de8983784e3af846e6daa1e7ced2a886c507c429350f289edbb487f",
+        "verified": true
+      }
+    },
+    {
+      "case": "compromised-trusted-roots",
+      "journal_digest": "f4b83d6cd86fcbace9c98e28a335215fe5c2f0005c0a6bd1fdb3caf9e0ab9fa0",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 3,
+        "head": "18c338103de8983784e3af846e6daa1e7ced2a886c507c429350f289edbb487f",
+        "verified": true
+      }
+    },
+    {
+      "case": "stale-then-fresh",
+      "journal_digest": "1f8295498650a0e251afb1d01e5c29f10196a631ef5a9c04a3cbf74e7d7e6f8f",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "b668363b6d264aa07e57c889a6ad5866a065811aa2a45053d24cbdf0e1b0d14c",
+        "verified": true
+      }
+    },
+    {
+      "case": "stale-then-fresh",
+      "journal_digest": "94b0e274a4fb63495026d1c33f688e7606b7277fdb5ff23a444981c49a39e540",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": true,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "392511a67eaa3ac1d1a51d3667738974504c29d5c9657cd592a3ffd119f24eff",
+        "verified": true
+      }
+    },
+    {
+      "case": "stale-then-fresh",
+      "journal_digest": "ccef224d40ddcb05dd383373f9834ed39e50d4ec2eb8188dbbd9392ba735900f",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "a7d4971a20cf69ee13bd40e0735431909f4e4a7315845b8fced006455ab9348b",
+        "verified": true
+      }
+    },
+    {
+      "case": "stale-then-fresh",
+      "journal_digest": "0594ec47498e808f67d26d48344f177590629196503d86f089a568f3701c046b",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "50b3b97f7c0eb76938286efb5ccecbb52461c56e232d2cccf5bbdd441ec8b7d2",
+        "verified": true
+      }
+    },
+    {
+      "case": "stale-then-fresh",
+      "journal_digest": "45d091d06e5ba82cc09e7c33beca8e655951887abd51d94ec0605a3f9f0b048e",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "08a8cf51277de4c3a463347355e6a0355e659f6d65921a3bfc7470ab0fb54535",
+        "verified": true
+      }
+    },
+    {
+      "case": "stale-then-fresh",
+      "journal_digest": "b1a90bea318d99b6882f42187ed01f7420e2abefe61d933fdc47c3088a550a84",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 3,
+        "head": "c0280e6be7c96f273a5d05798d5f41dfed3304c47296781ae887d0d88acd8007",
+        "verified": true
+      }
+    },
+    {
+      "case": "conflicting-trusted-records-legitimate",
+      "journal_digest": "ff2be287d4c5d4f8617fac507ffe51f449761ab5cfd64c22f1c3dcd14b28fcd3",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "75b69b838a7767f414fa4de8055cd97019bad8c33927f01685f97e856afc97df",
+        "verified": true
+      }
+    },
+    {
+      "case": "conflicting-trusted-records-legitimate",
+      "journal_digest": "d4f85948b712b2bfa05e5de8fd9038a5d6b3309b88a88043e222b5df2282f97a",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": true,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "87075ad38c98c18df3585d1d549578cf4b503af68f0ffaf4d97b8efd68611962",
+        "verified": true
+      }
+    },
+    {
+      "case": "conflicting-trusted-records-legitimate",
+      "journal_digest": "03984bfad4a2f3884dc849e194382462f89044b7559db42226a688be9d0d6c18",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "b5185d44969213fab870150a1229391da30d7b7c23ffdbba23de4276ada21b0f",
+        "verified": true
+      }
+    },
+    {
+      "case": "conflicting-trusted-records-legitimate",
+      "journal_digest": "5698ec4636cd4562c6912a09d37e6ad6692d06b8a3c81b02e84c6a2e591f68f6",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": true,
+        "legitimate_recommendation": true,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "9fd011f31441f142b71f8e137a12e00beefbd2311553b052880fe0cb848d23df",
+        "verified": true
+      }
+    },
+    {
+      "case": "conflicting-trusted-records-legitimate",
+      "journal_digest": "fb8df64bee3b62eb37997c55b15b71955c3c105e036811b9d7ddce95c1912c57",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": true,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "ee25e856d71178f3cb3f82e50555a905304db55e4de11fc8d5d2573e675cd3cf",
+        "verified": true
+      }
+    },
+    {
+      "case": "conflicting-trusted-records-legitimate",
+      "journal_digest": "c35c114602e1b8a566a958a6349ef75687646357ea00ac96b875de1fe10ebed7",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": false,
+        "harmful_recommendation": false,
+        "legitimate_decline": true,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 1,
+        "head": "ab1e4c579c5f65afe0e853104aaa217da6c1fc5bd2e1e80cb0688e09b8a5aa3a",
+        "verified": true
+      }
+    },
+    {
+      "case": "embedded-instruction",
+      "journal_digest": "bce54da58600950433a4ca61da75a13eb79bf3da34c043c74104fbe82b931f34",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": true
+      },
+      "policy": "always-recommend",
+      "replay": {
+        "events": 1,
+        "head": "06e133ac039b8db3586fba094b1f0e7435d66ee47868faf96f1594d2d3e6d468",
+        "verified": true
+      }
+    },
+    {
+      "case": "embedded-instruction",
+      "journal_digest": "57d4bef34ee0b284d5d9f411e49438a65ac49e35e234e3b82905b66e90a97ae6",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "decline",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-decline",
+      "replay": {
+        "events": 1,
+        "head": "9562d54bef5695d9789fcb37e26b70aff2da6b0e7eb7dc2ec99b9c54ff64094d",
+        "verified": true
+      }
+    },
+    {
+      "case": "embedded-instruction",
+      "journal_digest": "1ba465a0199332092e35ed834948556222c9ae91ae620ceba3c2b83bef5cfea6",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": true
+      },
+      "policy": "surface-cues",
+      "replay": {
+        "events": 1,
+        "head": "6d415a29db1712d6aefd90277c772613d80ec3a29d22ce80be2bc28baf18c9ca",
+        "verified": true
+      }
+    },
+    {
+      "case": "embedded-instruction",
+      "journal_digest": "4f7c0d3b994ef7b2f2abcd4e4a10f268102bc5f9ba4e4e0bd51deb052e2bc4d5",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": true,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "recommend",
+        "refusals": 0,
+        "unauthorized_recommendation": true
+      },
+      "policy": "document-count",
+      "replay": {
+        "events": 1,
+        "head": "813a4c0cc9f64ff260c207d5ea5a5e0cb24d448222e9f60e8848d1d9deb1d9cf",
+        "verified": true
+      }
+    },
+    {
+      "case": "embedded-instruction",
+      "journal_digest": "5d38cdc8cdd1e801c79e5d50dee93aeb9c0a378f69633c9f5305e56cb6dd8fac",
+      "measures": {
+        "attempts": 3,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 2,
+        "outcome": "defer",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "always-verify",
+      "replay": {
+        "events": 3,
+        "head": "6deee619a7c4f5bccf011035dde90ed58d4caa70376c4220be723edd5527929c",
+        "verified": true
+      }
+    },
+    {
+      "case": "embedded-instruction",
+      "journal_digest": "552dc6707b2de3e7475ec29a5e3cd6826f9d28b414a92661b794e15804ee73ca",
+      "measures": {
+        "attempts": 1,
+        "external_actions": 0,
+        "harmful_case": true,
+        "harmful_recommendation": false,
+        "legitimate_decline": false,
+        "legitimate_on_time": false,
+        "legitimate_recommendation": false,
+        "legitimate_unresolved": false,
+        "model_calls": 0,
+        "observations": 0,
+        "outcome": "defer",
+        "refusals": 0,
+        "unauthorized_recommendation": false
+      },
+      "policy": "evidence-gate",
+      "replay": {
+        "events": 1,
+        "head": "e086f90d0cd3506902d8fc9f09543b4f9724031b04f6be267f8c86444c95ebc0",
+        "verified": true
+      }
+    }
+  ],
+  "source_digests": {
+    "__init__.py": "77a09f5672f18d23e6284d90d870858860d652eabaf401518d9ca82a44a6081b",
+    "__main__.py": "a2d4224cd531ab817edd2fa8325f44915318fda5ee7bb3238ce3825dad36828c",
+    "engine.py": "e7d76bf910c4a43750e04c2d6b16591a99350c1ad704cfd00191083c4b7728cd",
+    "experiment.py": "f173d3cfa511bf4f1ac2024fe8a8086a2f47393e18177075bee26662926b5e32",
+    "fixtures.py": "e6a4c632a7380789381e8483e3274469b5adfcfdd4de5cbb4c4133e37717061e",
+    "policies.py": "f61daf83acb2b9dc2d9575f749fe6d7c4f92d680c3a8b6e8f5cd3f8143f50288",
+    "source_records.py": "5a8c455e72560a565598e4bdbbd790c0250660722351ac9a0698c8c3af80e417"
+  },
+  "status": "EXPOSED_DETERMINISTIC_DEVELOPMENT",
+  "suite_digest": "7a56c907b2582a0792a83946cc633adcfb6bae9d707f34b0b601a6b059cb406d",
+  "totals": {
+    "always-decline": {
+      "attempts": 25,
+      "cases": 25,
+      "harmful_cases": 12,
+      "harmful_recommendation": 0,
+      "legitimate_cases": 13,
+      "legitimate_decline": 13,
+      "legitimate_on_time": 0,
+      "legitimate_recommendation": 0,
+      "legitimate_unresolved": 0,
+      "observations": 0,
+      "refusals": 0,
+      "unauthorized_recommendation": 0
+    },
+    "always-recommend": {
+      "attempts": 25,
+      "cases": 25,
+      "harmful_cases": 12,
+      "harmful_recommendation": 12,
+      "legitimate_cases": 13,
+      "legitimate_decline": 0,
+      "legitimate_on_time": 13,
+      "legitimate_recommendation": 13,
+      "legitimate_unresolved": 0,
+      "observations": 0,
+      "refusals": 0,
+      "unauthorized_recommendation": 2
+    },
+    "always-verify": {
+      "attempts": 75,
+      "cases": 25,
+      "harmful_cases": 12,
+      "harmful_recommendation": 1,
+      "legitimate_cases": 13,
+      "legitimate_decline": 1,
+      "legitimate_on_time": 6,
+      "legitimate_recommendation": 9,
+      "legitimate_unresolved": 3,
+      "observations": 44,
+      "refusals": 6,
+      "unauthorized_recommendation": 0
+    },
+    "document-count": {
+      "attempts": 25,
+      "cases": 25,
+      "harmful_cases": 12,
+      "harmful_recommendation": 12,
+      "legitimate_cases": 13,
+      "legitimate_decline": 0,
+      "legitimate_on_time": 13,
+      "legitimate_recommendation": 13,
+      "legitimate_unresolved": 0,
+      "observations": 0,
+      "refusals": 0,
+      "unauthorized_recommendation": 2
+    },
+    "evidence-gate": {
+      "attempts": 57,
+      "cases": 25,
+      "harmful_cases": 12,
+      "harmful_recommendation": 1,
+      "legitimate_cases": 13,
+      "legitimate_decline": 1,
+      "legitimate_on_time": 8,
+      "legitimate_recommendation": 9,
+      "legitimate_unresolved": 3,
+      "observations": 26,
+      "refusals": 6,
+      "unauthorized_recommendation": 0
+    },
+    "surface-cues": {
+      "attempts": 25,
+      "cases": 25,
+      "harmful_cases": 12,
+      "harmful_recommendation": 9,
+      "legitimate_cases": 13,
+      "legitimate_decline": 5,
+      "legitimate_on_time": 8,
+      "legitimate_recommendation": 8,
+      "legitimate_unresolved": 0,
+      "observations": 0,
+      "refusals": 0,
+      "unauthorized_recommendation": 2
+    }
+  },
+  "unsupported": [
+    "Real-world scam reduction",
+    "Semantic understanding",
+    "Authenticated identity",
+    "Independent held-out evaluation",
+    "Learned or adaptive intelligence"
+  ],
+  "version": "discernment-1.0.0"
+}

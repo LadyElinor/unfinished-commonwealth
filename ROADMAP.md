@@ -25,6 +25,13 @@ Renewed notice for new material and a bounded combined appeal preserve each
 party's grounds and reply opportunity without inventing extra execution powers.
 The original P1 replay rules and all historical records remain available.
 
+The separate [F1 discernment study](docs/FRAUD_DISCERNMENT_V1.md) adds 150 exposed
+advisory runs on documented fraud mechanisms and benign counterparts. It checks
+scoped verification, independent origin, authority and evidentiary status.
+Compromised trusted sources, false alarms, abstention and deadline misses remain
+recorded. Real identity verification, free-text extraction and externally held-out
+scam evaluation remain unimplemented. See [results](docs/FRAUD_DISCERNMENT_V1_RESULTS.md).
+
 ## Later 0.2: model-backed participation
 
 - Independently construct evaluation cases after policies and analysis are fixed. The original workshop's quality-stream fixtures and all study-v1 development cases are already exposed.
