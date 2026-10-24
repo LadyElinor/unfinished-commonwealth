@@ -28,6 +28,26 @@ def run(arguments, cwd, expected=0):
     return result.stdout
 
 
+def extract_source(source_archive, destination):
+    # Windows temp paths may use an 8.3 alias (for example RUNNER~1).
+    # Normalize BOTH the boundary and each member before comparing them.
+    root = Path(destination).resolve()
+    root.mkdir(parents=True, exist_ok=True)
+    with tarfile.open(source_archive) as archive:
+        for item in archive.getmembers():
+            target = (root / item.name).resolve()
+            if (not target.is_relative_to(root)
+                    or not (item.isfile() or item.isdir())):
+                raise RuntimeError(f"Unexpected unsafe source-archive member: {item.name!r}")
+            if item.isdir():
+                target.mkdir(parents=True, exist_ok=True)
+            else:
+                target.parent.mkdir(parents=True, exist_ok=True)
+                with archive.extractfile(item) as incoming, target.open("wb") as handle:
+                    shutil.copyfileobj(incoming, handle)
+    return root
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("directory", help="new output directory for source archive, wheel and verification")
@@ -40,21 +60,8 @@ def main():
     if len(sources) != 1:
         raise RuntimeError("Expected exactly one source archive")
     with tempfile.TemporaryDirectory(prefix="commonwealth-package-") as temporary:
-        temporary = Path(temporary)
-        source_root = temporary / "source"
-        source_root.mkdir()
-        with tarfile.open(sources[0]) as archive:
-            for item in archive.getmembers():
-                destination = (source_root / item.name).resolve()
-                if (not destination.is_relative_to(source_root)
-                        or not (item.isfile() or item.isdir())):
-                    raise RuntimeError("Unexpected unsafe source-archive member")
-                if item.isdir():
-                    destination.mkdir(parents=True, exist_ok=True)
-                else:
-                    destination.parent.mkdir(parents=True, exist_ok=True)
-                    with archive.extractfile(item) as incoming, destination.open("wb") as target:
-                        shutil.copyfileobj(incoming, target)
+        temporary = Path(temporary).resolve()
+        source_root = extract_source(sources[0], temporary / "source")
         roots = list(source_root.iterdir())
         if len(roots) != 1 or not roots[0].is_dir():
             raise RuntimeError("Expected one source root")

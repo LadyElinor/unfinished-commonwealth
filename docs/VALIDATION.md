@@ -9,7 +9,7 @@ versions, not added runtime dependencies or claims of bit-identical builds.
 | Check | Result |
 | --- | --- |
 | Supplied 0.1.0 behavioral baseline | 46 tests passed before changes |
-| Final behavioral and adversarial suite | 60 tests passed |
+| Final behavioral, adversarial, and packaging suite | 65 tests passed |
 | Packaged JSON and local documentation links | Passed |
 | Compile all package, script, and test modules | Passed |
 | `git diff --check` | Passed |
@@ -29,6 +29,14 @@ excessive nesting and its boundary, duplicate nested keys, actual byte-size and
 multibyte limits, bounded reads without trustworthy metadata, strict snapshot
 and result types, integer sequence fields, malformed journal/snapshot JSON,
 fixture description limits, and historical replay compatibility.
+
+Five packaging tests additionally check regular extraction, aliased temporary
+roots, parent traversal, absolute paths, and rejection of symbolic/hard links.
+The first hosted matrix passed all behavioral tests and reproductions on every
+platform, but exposed a Windows temporary-path alias mismatch in the new
+packaging script. Both the extraction root and candidate paths are now resolved
+before the containment check; traversal and link protections remain in place.
+Consult the exact commit's hosted checks for the final cross-platform result.
 
 Rejected commands are checked against an unchanged verified journal. Adversarial
 stored-result tests recompute envelope hashes before verification, ensuring the

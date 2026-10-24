@@ -29,6 +29,8 @@ The source distribution explicitly includes tests, examples, scripts, and
 documentation. `scripts/package.py` builds that distribution, validates the
 extracted source, builds the wheel from it, and checks both installed entry
 points in a clean virtual environment without network dependency resolution.
+Source extraction normalizes temporary-directory aliases on Windows while
+rejecting traversal, absolute escapes, and archive links.
 The CI matrix now includes this package check after behavioral and reproduction
 checks. Configured CI is not evidence of a successful hosted run.
 
