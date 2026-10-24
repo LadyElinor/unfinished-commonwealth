@@ -9,6 +9,7 @@ standard library. From the checkout root:
 python scripts/verify.py
 python scripts/reproduce.py .local/reproduction
 python -m commonwealth verify .local/reproduction/demo.sqlite
+python -m commonwealth.study_v1 run .local/study-v1
 ```
 
 Choose a new output path for every reproduction. Existing databases, report
@@ -18,6 +19,11 @@ partial output after a failed build before choosing another new directory.
 The reproduction creates a five-tick demonstration, its JSON event record and
 summary, and all fifteen exposed scripted comparisons. `readiness` returns exit
 code 2 by design; it is not a failing installation test.
+
+The separate study command creates 432 complete journals, a detailed result
+matrix and a compact summary. Replay uses `python -m commonwealth.study_v1 replay
+PATH_TO_JOURNAL`. The last-written `results.json` marks a complete run; files
+left before that marker are partial artifacts. All study fixtures are exposed.
 
 ## Offline package check
 
@@ -34,7 +40,8 @@ This command:
 3. Builds the wheel from the extracted source, not the original checkout.
 4. Installs the wheel into a fresh virtual environment with `--no-index`.
 5. Runs both installed entry points outside the checkout, verifies packaged data,
-   replays the 24-event demonstration, and runs all fifteen comparisons.
+   replays the 24-event demonstration, runs all fifteen comparisons and the
+   432-run study matrix, and replays an urgent-deadline failure record.
 6. Writes the wheel, source archive, and `package-verification.json` into the
    chosen output directory.
 

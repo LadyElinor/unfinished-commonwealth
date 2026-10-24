@@ -68,7 +68,9 @@ def main():
         source = roots[0]
         for relative in ("README.md", "LICENSE", "docs/PROTOCOL.md",
                          "scripts/verify.py", "tests/test_workshop.py",
-                         "commonwealth/data/scenarios.json"):
+                         "commonwealth/data/scenarios.json", "docs/STUDY_V1_DESIGN.md",
+                         "commonwealth/study_v1/engine.py", "tests/test_study_scheduler.py",
+                         "examples/study-v1-summary.json"):
             if not (source / relative).is_file():
                 raise RuntimeError(f"Source archive omitted {relative}")
         # Run the same checks on what downstream source users actually receive.
@@ -112,6 +114,14 @@ def main():
         expected_runs = {(scenario, arm) for scenario in fixtures for arm in expected_arms}
         if {(item["scenario"], item["arm"]) for item in comparison["runs"]} != expected_runs:
             raise RuntimeError("Installed comparison omitted a scenario/arm pair")
+        study = json.loads(run([str(executable), "-m", "commonwealth.study_v1",
+                               "run", "study-v1"], smoke))
+        if study["runs"] != 432 or study["model_calls"] != 0:
+            raise RuntimeError("Installed study harness omitted its deterministic matrix")
+        study_replay = json.loads(run([str(executable), "-m", "commonwealth.study_v1",
+            "replay", "study-v1/journals/decision-slots-v1--yield-urgent--always-inspect.json"], smoke))
+        if study_replay["verified"] is not True or study_replay["events"] != 8:
+            raise RuntimeError("Installed study failure record did not replay")
         readiness = json.loads(run([str(command), "readiness"], smoke, expected=2))
         if readiness["deployment_ready"] is not False:
             raise RuntimeError("Research-only readiness boundary changed")
@@ -122,6 +132,7 @@ def main():
             "installed_entry_points": ["commonwealth", "python -m commonwealth"],
             "packaged_scenarios": sorted(fixtures), "demo_replay": replay,
             "comparison_runs": len(comparison["runs"]),
+            "study_runs": study["runs"], "study_replay": study_replay,
             "readiness_exit": 2, "model_calls": 0,
             "scope": "LOCAL_RESEARCH_ONLY",
         }

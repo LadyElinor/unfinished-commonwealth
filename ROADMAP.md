@@ -4,20 +4,21 @@
 
 Bounded executable data work, peer consequences, observed predictions, testimony, coaching records, scoped lessons, succession, replay, CLI, and exposed scripted comparisons. The acceptance criterion is a reproducible correction and handoff without erasing the original cost. No model intelligence or institution-level efficacy claim follows.
 
-## Next bounded stage: a discriminating deterministic harness, proposed
+## Separate study harness 1.0.0: deterministic portion implemented
 
-Implement the [frozen next-study design](docs/NEXT_STUDY.md) separately from the
-existing pipeline and historical reducers. First require contrasting legitimate
-contracts, constant/contract-selector controls, matched evidence access, and a
-decision clock that charges inspection and waiting. Stop at reproducible
-development fixtures and tests; no model provider or efficacy claim is part of
-this proposed stage. Release 0.1.3 adds only the existing-suite constant control
-and transparent resource accounting, not this new harness.
+The [D1 implementation design](docs/STUDY_V1_DESIGN.md) implements the bounded
+part of [NEXT_STUDY](docs/NEXT_STUDY.md) separately from the existing pipeline
+and historical reducers. Contrasting contracts, constant and selector controls,
+matched evidence ceilings, decision-slot scheduling and preserved refusal
+records are exercised in 432 exposed deterministic runs. The simple evidence
+selector matches the participant; inherited advice and coaching show no
+correctness advantage and can add delay. See [results](docs/STUDY_V1_RESULTS.md).
+Release 0.1.3 remains the frozen workshop baseline, not a new package release.
 
 ## Later 0.2: model-backed participation
 
-- Add cases where the warranted method changes with observable circumstances; the current quality-stream method defines the reference answer in every fixture and cannot test adaptive selection.
-- Model the costs of waiting and reflection, and offer bounded choices to observe, listen, wait, or request action. Reflection currently spends a command but no simulated time.
+- Independently construct evaluation cases after policies and analysis are fixed. The original workshop's quality-stream fixtures and all study-v1 development cases are already exposed.
+- Validate any timing model against the intended task. Study-v1 charges synthetic decision slots; the original workshop still advances only on observation. Neither measures real model latency.
 - Pin provider, model, prompt, adapter, sampling settings, and resource budgets for each run.
 - Run externally supplied proposal-only agents with a host-owned interface that cannot read keeper credentials, evaluation references, or other participants' private context.
 - Record transport failures and unknown outcomes explicitly. Never retry an uncertain external effect blindly.
@@ -25,7 +26,7 @@ and transparent resource accounting, not this new harness.
 - Freeze the evaluation protocol before collecting scored results. Obtain withheld cases from a separately controlled process. Count all attempts and costs.
 - Replace scripted accounts with consenting human participants or independently operated services where the study requires them; distinguish operator independence from correlated model weights.
 
-Exit evidence: working adapters, boundary tests, provenance, actual model-call receipts, analysis of failed trials, and a report that can be independently reproduced. The present fifteen scripted runs cannot satisfy this gate.
+Exit evidence: working adapters, boundary tests, provenance, actual model-call receipts, analysis of failed trials, and a report that can be independently reproduced. Neither the original fifteen scripted comparisons nor the 432 exposed study-v1 runs can satisfy this gate.
 
 ## 0.3: useful communal work and longer succession
 

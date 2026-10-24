@@ -37,7 +37,10 @@ Inherited advice exposes disputes and the linked counterstories. Keeper reviews 
 
 These are deterministic authored events. The data transformations and deferred queue processing actually execute; inspection credits model resource pressure and do not measure wall time, energy, or token cost.
 
-Reflection consumes a command but no simulated time. `quality-stream` implements the fixtures' expected answer and works across every included case, so these scenarios cannot demonstrate adaptive method selection.
+In the original workshop, reflection consumes a command but no simulated time.
+`quality-stream` implements every original fixture's expected answer, so those
+scenarios cannot demonstrate adaptive method selection. The separate study
+harness below uses contrasting contracts and a decision clock.
 
 ## Participate through a proposal
 
@@ -86,6 +89,7 @@ In the included comparison, the single controller and coached controller produce
 | `commonwealth/coach.py` | Coaching cues and scoped inherited advice |
 | `commonwealth/interface.py` | Proposal-only external participant packet |
 | `commonwealth/experiment.py` | Scripted demonstration and exposed comparisons |
+| `commonwealth/study_v1/` | Separate contrasting-contract harness, scheduler, controls and replay |
 | `commonwealth/data/` | Three explicitly public development fixtures |
 | `tests/` | Behavioral, persistence, concurrency, and failure tests |
 | `docs/` | Design, casebook, trust boundary, provenance, and research plan |
@@ -93,7 +97,28 @@ In the included comparison, the single controller and coached controller produce
 
 ## Growing the project
 
-The next useful step is a separate deterministic harness with contrasting data contracts and a clock that charges deliberation. The [proposed study design](docs/NEXT_STUDY.md) is not implemented or run. Only after its necessary gates pass would a separately authorized model-backed study with fixed budgets and genuinely withheld scenarios be informative. More elaborate stories or more agent names cannot substitute for those gates. [Roadmap](ROADMAP.md).
+A separate **study harness 1.0.0** now implements the deterministic portion of the
+[next-study specification](docs/NEXT_STUDY.md). It leaves the original workshop,
+fifteen comparisons and historical replay unchanged. Run it independently:
+
+```bash
+python -m commonwealth.study_v1 run .local/study-v1
+python -m commonwealth.study_v1 replay .local/study-v1/journals/decision-slots-v1--yield-urgent--always-inspect.json
+```
+
+Its 432 exposed runs cross 12 environments, 18 control/treatment arms and two
+resource models. The two contracts require 15 and 10 from the same readings.
+No constant method solves the discriminating suite; the simple evidence selector
+matches the uncoached participant. Unnecessary inspection and advice can miss
+urgent deadlines. These results demonstrate harness behavior, not intelligence
+or institutional benefit. See the [fixed design](docs/STUDY_V1_DESIGN.md),
+[negative results and limits](docs/STUDY_V1_RESULTS.md) and
+[complete aggregate record](examples/study-v1-summary.json).
+
+No model-provider calls or independent held-out evaluation are included. A
+future model-backed study would require separate authorization, a fixed analysis
+plan and genuinely withheld scenarios. More elaborate stories or more agent
+names cannot substitute for those gates. [Roadmap](ROADMAP.md).
 
 [Metanoia](https://github.com/LadyElinor/Metanoia), [Adiona](https://github.com/LadyElinor/Adiona), and [CORTAC](https://github.com/LadyElinor/CORTAC) informed the design. This is new code with **no operational adapters or compatibility claim** for those projects. Their authority contracts remain unchanged. [Integration boundaries](docs/INTEGRATION.md).
 
