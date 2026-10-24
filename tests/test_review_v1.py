@@ -187,6 +187,24 @@ class ReviewBoundaryTests(unittest.TestCase):
         replies(e)
         self.assertFalse(e.step(decision(e.view(), "restrict"))["response"]["accepted"])
 
+    def test_cheaper_alternative_must_itself_prevent_more_loss_than_it_costs(self):
+        # Independent arithmetic: preventing 5 while costing 10, 5, or 4
+        # leaves net benefits -5, 0, or 1. Only the last warrants this advice.
+        for loss, allowed in ((10, False), (5, False), (4, True)):
+            with self.subTest(alternative_loss=loss):
+                c = case(warranted=False)
+                c["service_loss"] = 11
+                c["alternatives"] = [{"id": "repair", "service_loss": loss, "preventable_loss": 5}]
+                e = prepare(c)
+                replies(e)
+                command = decision(e.view())
+                command.update(outcome="alternative", alternative="repair")
+                event = e.step(command)
+                self.assertEqual(event["response"]["accepted"], allowed)
+                if not allowed:
+                    self.assertIsNone(e.decision)
+                    self.assertEqual(complete(e)["terminal"]["decision"]["outcome"], "decline")
+
     def test_changed_request_does_not_inherit_scope_authority(self):
         c = case()
         c["request"]["duration"] = 3

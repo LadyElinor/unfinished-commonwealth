@@ -2,9 +2,9 @@
 
 ## Deterministic research extensions, 2026-10-24
 
-The current review stage passes **303 tests** locally: 96 workshop baseline,
+The current review stage passes **304 tests** locally: 96 workshop baseline,
 48 D1, 60 procedural/replay, 31 F1, two issuer-trust regressions, 31 I1 and
-35 R1. Packaged JSON and documentation links also pass. Original release records
+36 R1. Packaged JSON and documentation links also pass. Original release records
 below remain historical; the package baseline is still 0.1.3.
 
 Results and limits are documented separately for

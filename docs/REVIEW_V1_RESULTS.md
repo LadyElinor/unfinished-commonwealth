@@ -40,7 +40,8 @@ of the host's impact estimates. Origin labels and reviewer controller labels are
 declarations; invented independence can still defeat the intended protection.
 
 Tests additionally cover missing authority, wrong-target and excluded evidence,
-duplicated origins, suppressed disclosures, notices that cannot fit, response
+duplicated origins, cheaper alternatives that still have nonpositive net benefit,
+suppressed disclosures, notices that cannot fit, response
 windows, dissent, reviewer changes, unsupported waiver/execution requests,
 observation exhaustion, parent tampering, newly available prior inventory,
 future evidence that has not been examined, terminal closure and atomic output.

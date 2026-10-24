@@ -69,7 +69,7 @@ with unresolved work and no automatic adverse recommendation.
 | Proposed advice | Required conditions | Result if missing |
 | --- | --- | --- |
 | Restrict the declared source | Current scope authority; complete examined inventory; no unresolved credibility doubt or usable counterevidence; two usable supporting origin IDs for this target; estimated prevented service loss exceeds restriction loss; no adequate less costly declared alternative | Restrict is refused; a reasoned decline/defer remains possible after current disclosure and response opportunity |
-| Prefer an alternative | Reliable examined evidence and the same review conditions; named alternative prevents at least the declared loss while costing less service | Unsupported alternative is refused; no execution authority is granted |
+| Prefer an alternative | Reliable examined evidence and the same review conditions; named alternative prevents at least the declared loss, costs less service than the restriction and itself prevents more loss than it costs | Unsupported alternative is refused; no execution authority is granted |
 | Decline or defer | Assigned reviewer, current disclosure, reply opportunity and complete reasons/record references | Premature or incomplete disposition is refused |
 | Withdraw | Proposer and a recorded reason | No forced escalation; unresolved inventory remains visible |
 

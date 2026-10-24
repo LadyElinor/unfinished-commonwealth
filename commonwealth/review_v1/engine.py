@@ -85,6 +85,7 @@ def assessment(view):
     supporters = {r["origin"] for r in usable if r["kind"] == "support"}
     alternatives = [a["id"] for a in view["alternatives"]
                     if a["service_loss"] < view["service_loss"]
+                    and a["preventable_loss"] > a["service_loss"]
                     and a["preventable_loss"] >= view["preventable_loss"]]
     reasons = []
     if view["authority_scope"] != scope(view["request"]):
