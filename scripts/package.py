@@ -89,7 +89,9 @@ def main():
                          "tests/data/participant-preserved-baseline.json",
                          "scripts/uid_isolation.py", "scripts/isolation/worker.py",
                          "docs/UID_ISOLATION.md", "docs/UID_ISOLATION_DESIGN.md",
-                         "tests/test_uid_isolation.py", "tests/data/uid-isolation-preserved-baseline.json"):
+                         "tests/test_uid_isolation.py", "tests/data/uid-isolation-preserved-baseline.json",
+                         "commonwealth/participant_v1_1/store.py", "commonwealth/participant_v1_1/demo.py",
+                         "tests/test_participant_v1_1.py", "docs/PARTICIPANT_V1_1.md"):
             if not (source / relative).is_file():
                 raise RuntimeError(f"Source archive omitted {relative}")
         # Run the same checks on what downstream source users actually receive.
@@ -200,6 +202,12 @@ def main():
                 or participant["host_approval_required"] is not True
                 or participant["model_calls"] != 0 or participant["external_actions"] != 0):
             raise RuntimeError("Installed participant boundary failed its loopback gate")
+        participant_v11 = json.loads(run([str(executable), "-m", "commonwealth.participant_v1_1", "demo"], smoke))
+        if (participant_v11["version"] != "participant-1.1.0"
+                or participant_v11["expiry_refusal_retained"] is not True
+                or participant_v11["restart_rollback_refused"] is not True
+                or participant_v11["attempts"] != 1):
+            raise RuntimeError("Installed corrected participant clock gate failed")
         readiness = json.loads(run([str(command), "readiness"], smoke, expected=2))
         if readiness["deployment_ready"] is not False:
             raise RuntimeError("Research-only readiness boundary changed")
@@ -219,6 +227,7 @@ def main():
             "authority_traces": authority["traces"], "authority_replay": authority_replay,
             "authority_packet_review": authority_review, "authority_language": language,
             "participant_loopback": participant,
+            "participant_v11_clock_and_loopback": participant_v11,
             "readiness_exit": 2, "model_calls": 0,
             "scope": "LOCAL_RESEARCH_ONLY",
         }

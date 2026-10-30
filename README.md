@@ -42,6 +42,15 @@ In the original workshop, reflection consumes a command but no simulated time.
 scenarios cannot demonstrate adaptive method selection. The separate study
 harness below uses contrasting contracts and a decision clock.
 
+## Corrected participant clock handling (B1.1)
+
+New participant hosts should use [B1.1 and its explicit migration guide](docs/PARTICIPANT_V1_1.md).
+Historical B1 can revive an expired bearer after a refused future-time request
+and subsequent clock rollback. B1.1 retains refused clock observations while
+rolling back failed operation writes, and upgraded databases refuse historical
+B1 operators. Earlier code and evidence remain frozen for reproduction. This is
+a bounded local correction, not secure time or production-security assurance.
+
 ## Participate through a proposal
 
 ```bash
