@@ -111,7 +111,10 @@ This bounded local ingress is not a network denial-of-service defense. Finite
 correction capacity can still be exhausted, leaving challenges or remedy work
 unresolved. `finish` explicitly closes the episode; it does not pretend a review
 completed or erase outstanding effects. There is no real-time expiry service
-after a process exits.
+after a process exits. Replay input is bounded at 16 MiB, accommodating the
+maximum admitted command history plus genesis and terminal records. Review and
+language input limits remain 120,000 bytes; repeated amendments do not make a
+valid history unreadable by the replay command.
 
 Replay recomputes transitions, costs and terminal results. Digests detect a
 mismatch against the supplied journal, not a forged source. A host that rebuilds

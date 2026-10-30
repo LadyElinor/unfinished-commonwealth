@@ -11,7 +11,7 @@ from .experiment import evaluate
 from .records import compare, review
 
 
-def read(path, maximum=1048576):
+def read(path, maximum=16 * 1048576):
     with Path(path).open("rb") as handle:
         raw = handle.read(maximum + 1)
     if len(raw) > maximum:

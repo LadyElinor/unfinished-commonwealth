@@ -76,9 +76,13 @@ also runs the A1 commands from a clean installed wheel, outside the source tree.
 All output has `external_authority: NONE`; model calls and external actions are
 zero. The existing workshop version remains 0.1.3; A1 is separately versioned.
 
-Local verification completed with 343 passing tests: the 304-test baseline and
-39 A1 tests. The source-distribution verifier passed the same suite. A clean
+Local verification completed with 344 passing tests: the 304-test baseline and
+40 A1 tests. The source-distribution verifier passed the same suite. A clean
 wheel installation reproduced all prior studies, all 14 A1 traces, the
 false-host replay, packet review and language comparison. The 59 baseline file
 digests matched. This is developer verification, not independent review or a
 new release of the original workshop protocol.
+
+The final distribution regression includes 32 maximal valid packet amendments
+and replays the resulting journal through the CLI. Replay permits up to 16 MiB;
+the smaller packet input limit does not truncate accumulated history.

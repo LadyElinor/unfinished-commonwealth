@@ -319,6 +319,23 @@ class ReplayAndDistributionTests(unittest.TestCase):
             for name, journal in self.journals.items():
                 self.assertEqual(json.loads((output/'journals'/f'{name}.json').read_text()), journal)
 
+    def test_large_valid_amendment_history_replays_through_cli(self):
+        c = case()
+        for key in FIELDS:
+            if key not in OPTIONS:
+                c['packet']['answers'][key] = 'x' * 4000
+        e = Episode(c, {'primary': 32, 'correction': 0})
+        for _ in range(32):
+            self.assertTrue(step(e, 'amend', packet=c['packet'], request=c['request'])['response']['accepted'])
+        raw = json.dumps(e.journal())
+        self.assertGreater(len(raw.encode('utf-8')), 1048576)
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp)/'large-journal.json'; p.write_text(raw)
+            result = subprocess.run([sys.executable, '-m', 'commonwealth.authority_v1', 'replay', str(p)],
+                                    cwd=ROOT, capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertTrue(json.loads(result.stdout)['verified'])
+
     def test_historical_implementations_and_fixtures_unchanged(self):
         manifest = json.loads((ROOT/'tests/data/authority-preserved-baseline.json').read_text())
         for name, expected in manifest['sha256'].items():
