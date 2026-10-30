@@ -57,7 +57,19 @@ python -m commonwealth coach .local/manual.sqlite
 
 The `propose-2` identifier applies to exactly the sequence above. Use the returned ID when your sequence differs. `agent-view` produces a bounded task packet suitable for a separate model session. `propose` accepts only strict proposal JSON. The broader `submit` command is an operator tool for testimony, listening, reflection, lessons, and counterstories; it is not a protected agent endpoint.
 
-**Actor names are supplied fixture identities, not authentication.** A person with CLI or database access can act as `keeper`. Proposal/approval separation exercises a protocol; production credential separation is unimplemented. See [the trust boundary](docs/THREAT_MODEL.md).
+**Actor names in the raw CLI are supplied fixture identities.** A person with CLI or database access can act as `keeper`. The separate [B1 participant service](docs/PARTICIPANT_V1.md) now authenticates scoped bearer possession and derives the proposal actor server-side. Actual isolation still requires externally enforced OS/filesystem separation; production credential separation and human identity verification remain unimplemented. See [the trust boundary](docs/THREAT_MODEL.md).
+
+```bash
+python -m commonwealth.participant_v1 demo
+```
+
+B1 uses real loopback HTTP, expiring/revocable credentials, exact-view binding,
+bounded attempt accounting and durable receipts. A lost response is reported as
+unknown; identical retries cannot duplicate a proposal in the same database.
+It has no approval or execution endpoint. Its [35 boundary tests and negative
+controls](docs/PARTICIPANT_V1_RESULTS.md) retain stolen-token, cloned-database,
+host-rewrite and authenticated-bad-proposal failures. This advances participant
+transport, with no model calls, external effect adapter or deployment claim.
 
 ## What is implemented
 
@@ -88,6 +100,7 @@ In the included comparison, the single controller and coached controller produce
 | `commonwealth/store.py` | Atomic persistence, journal verification, and replay |
 | `commonwealth/coach.py` | Coaching cues and scoped inherited advice |
 | `commonwealth/interface.py` | Proposal-only external participant packet |
+| `commonwealth/participant_v1/` | B1 local capability, proposal transport and atomic receipts |
 | `commonwealth/experiment.py` | Scripted demonstration and exposed comparisons |
 | `commonwealth/study_v1/` | Separate contrasting-contract harness, scheduler, controls and replay |
 | `commonwealth/data/` | Three explicitly public development fixtures |

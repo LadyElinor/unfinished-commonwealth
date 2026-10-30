@@ -28,3 +28,16 @@ mandate/representation to Normative and Decision, scoped action to Execution,
 and challenge/remedy to Audit. No constitutional amendment is ratified by code
 passing tests, an operator possessing credentials or this repository accepting
 a pull request.
+
+## B1 local participant transport
+
+The [B1 endpoint](PARTICIPANT_V1.md) accepts only its own versioned proposal
+envelope for the existing bounded data workshop. Bearers authorize task retrieval,
+proposal submission and receipt lookup; they do not establish an A1 mandate or
+issue Metanoia attestations, Adiona capabilities or CORTAC appointments. A local
+receipt records a disposition, not an external effect or independent fact.
+
+Relay research packets and their allegations are not accepted as direct commands.
+Evidence interpretation remains separate from host review and execution. No
+network centrality, shared affiliation, emergency label or persuasive language
+changes B1's action set or supplies authority to act on people or institutions.

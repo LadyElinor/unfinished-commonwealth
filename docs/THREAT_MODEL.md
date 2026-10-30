@@ -2,7 +2,7 @@
 
 ## What is trusted
 
-The local host, Python interpreter, source checkout, SQLite database, fixture keeper, reference fixture, and operator are trusted. The database stores fictional sample data and invented accounts. All identity and control declarations are supplied and unverified.
+The local host, Python interpreter, source checkout, SQLite database, fixture keeper, reference fixture, and operator are trusted. The database stores fictional sample data and invented accounts. Human identity and control declarations remain supplied and unverified. The optional B1 service checks scoped bearer possession; it does not identify a person or establish controller independence.
 
 Someone who can invoke the unrestricted CLI can claim to be `keeper`. Someone who controls the host can edit the verifier, fixtures, timestamps represented by logical ticks, database, and every hash. Hash linking and deterministic replay detect inconsistency relative to the retained program and history; they do not establish external authenticity, chronology, or independent testimony.
 
@@ -20,9 +20,9 @@ Someone who can invoke the unrestricted CLI can claim to be `keeper`. Someone wh
 
 ## What is not provided
 
-- Authentication, credential isolation, public-key attestation, real principal discovery, or proof of cognitive independence.
+- Human identity authentication, OS credential isolation, public-key attestation, real principal discovery, or proof of cognitive independence. B1 provides only local scoped bearer authentication.
 - A sandbox for arbitrary Python, shell commands, model-generated code, or third-party plugins. Those operations are not in the action set.
-- Network, messaging, financial, deployment, or production-system adapters.
+- Remote network, messaging, financial, deployment, or production-system effect adapters. B1 is a local loopback proposal transport only.
 - Tamper resistance against the operator, external receipts, or a protected governance root.
 - Privacy-preserving collection, consent management, redaction, or deletion for real personal accounts. Do not use the seed for those records.
 - A judgment that a reported experience is true, that a lesson's prose is sound, or that a procedure is legitimate.
@@ -53,3 +53,21 @@ requires the exact parent journal and preserves its decision; this checks lineag
 not authenticated history. Every R1 outcome is advisory and cannot mutate I1 trust.
 
 No emergency exception exists. A report of urgency may justify choosing among already authorized actions; it cannot authorize a new action, bypass a required approval, or change a quorum.
+
+## B1 participant transport
+
+[B1](PARTICIPANT_V1.md) exposes only task, proposal and receipt routes. The
+server derives actor/action, rejects stale views, checks expiry/revocation and
+generation on every access, and atomically records proposal effects and receipt
+accounting. It rejects non-loopback binding, browser Origin and ambiguous framing.
+It uses plaintext loopback HTTP and Python's non-production server. Do not expose
+or forward it outside the trusted host. The standard client follows no redirects
+and makes no automatic retry; a failed POST response is an unknown outcome.
+
+Keep the operator process, DB, raw CLI, issuer and credential directories outside
+participant access. The program does not create that OS boundary. A same-user
+process or host administrator can bypass it. Stolen bearers work; copied databases
+fork consumption; a host can reconstruct a false but locally consistent journal;
+an authenticated proposal can be wrong. All four limits have executable negative
+controls. UTC rollback causes a fail-closed pause, not trusted-time attestation.
+Request bounds are not a denial-of-service guarantee. See [results](PARTICIPANT_V1_RESULTS.md).

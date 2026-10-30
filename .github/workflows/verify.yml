@@ -45,6 +45,8 @@ jobs:
         run: python -m commonwealth.review_v1 run .local/ci-review-v1
       - name: Reproduce authority, language and correction boundaries
         run: python -m commonwealth.authority_v1 run .local/ci-authority-v1
+      - name: Verify local participant transport
+        run: python -m commonwealth.participant_v1 demo
       - name: Prepare package build tools
         run: python -m pip install "setuptools>=68" wheel
       - name: Verify source archive and clean wheel installation

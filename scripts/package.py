@@ -82,7 +82,11 @@ def main():
                          "commonwealth/authority_v1/engine.py", "commonwealth/authority_v1/records.py",
                          "docs/AUTHORITY_V1.md", "docs/AUTHORITY_V1_RESULTS.md",
                          "examples/authority-v1-summary.json", "examples/authority-review-packet.json",
-                         "tests/test_authority_v1.py", "tests/data/authority-preserved-baseline.json"):
+                         "tests/test_authority_v1.py", "tests/data/authority-preserved-baseline.json",
+                         "commonwealth/participant_v1/store.py", "commonwealth/participant_v1/transport.py",
+                         "docs/PARTICIPANT_V1.md", "docs/PARTICIPANT_V1_DESIGN.md",
+                         "docs/PARTICIPANT_V1_RESULTS.md", "tests/test_participant_v1.py",
+                         "tests/data/participant-preserved-baseline.json"):
             if not (source / relative).is_file():
                 raise RuntimeError(f"Source archive omitted {relative}")
         # Run the same checks on what downstream source users actually receive.
@@ -187,6 +191,12 @@ def main():
             str(source / "examples/authority-language-records.json")], smoke))
         if language["finding"] != "curated-position-difference" or language["intent"] != "not-established":
             raise RuntimeError("Installed language review changed its inference boundary")
+        participant = json.loads(run([str(executable), "-m", "commonwealth.participant_v1", "demo"], smoke))
+        if (participant["verified"] is not True or participant["proposals"] != 1
+                or participant["identical_retry_additional_proposals"] != 0
+                or participant["host_approval_required"] is not True
+                or participant["model_calls"] != 0 or participant["external_actions"] != 0):
+            raise RuntimeError("Installed participant boundary failed its loopback gate")
         readiness = json.loads(run([str(command), "readiness"], smoke, expected=2))
         if readiness["deployment_ready"] is not False:
             raise RuntimeError("Research-only readiness boundary changed")
@@ -205,6 +215,7 @@ def main():
             "review_traces": review["traces"], "review_replay": review_replay,
             "authority_traces": authority["traces"], "authority_replay": authority_replay,
             "authority_packet_review": authority_review, "authority_language": language,
+            "participant_loopback": participant,
             "readiness_exit": 2, "model_calls": 0,
             "scope": "LOCAL_RESEARCH_ONLY",
         }

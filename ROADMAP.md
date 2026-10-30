@@ -1,5 +1,20 @@
 # Roadmap
 
+## B1 local participant boundary: implemented separately
+
+[B1](docs/PARTICIPANT_V1.md) adds a loopback proposal-only HTTP service with
+scoped expiring bearers, server-derived actors, exact-view binding, transactionally
+recorded attempts/receipts and explicit unknown transport outcomes. The old
+workshop and all D1/P1/F1/I1/R1/A1 records remain unchanged. Its [35 exposed
+tests](docs/PARTICIPANT_V1_RESULTS.md) include failures at every persistence
+stage, lost replies, concurrent retries and four deliberate negative controls.
+
+This establishes local proposal transport under a trusted host. It does not
+establish independently verified people, independent mandate, OS isolation,
+production security, model efficacy or authority for external effects. Next:
+demonstrate a separately operated participant under an explicit external access
+policy and measure end-to-end costs before any fixed-protocol model comparison.
+
 ## A1 authority and language boundaries: implemented separately
 
 [A1](docs/AUTHORITY_V1.md) adds read-only review-packet input compatibility,
@@ -67,7 +82,7 @@ authentic evidence, substantive fairness and live recovery remain unproven.
 - Independently construct evaluation cases after policies and analysis are fixed. The original workshop's quality-stream fixtures and all study-v1 development cases are already exposed.
 - Validate any timing model against the intended task. Study-v1 charges synthetic decision slots; the original workshop still advances only on observation. Neither measures real model latency.
 - Pin provider, model, prompt, adapter, sampling settings, and resource budgets for each run.
-- Run externally supplied proposal-only agents with a host-owned interface that cannot read keeper credentials, evaluation references, or other participants' private context.
+- Use B1 as the local proposal transport, then demonstrate external OS/filesystem restrictions preventing participant access to keeper tools, evaluation references or other participants' private context. B1 alone cannot enforce those restrictions.
 - Record transport failures and unknown outcomes explicitly. Never retry an uncertain external effect blindly.
 - Compare the same model with matched information and budgets: single planner, role-separated team, coaching intervention, and coaching plus casebook. Separate narrative exposure from extra evidence.
 - Freeze the evaluation protocol before collecting scored results. Obtain withheld cases from a separately controlled process. Count all attempts and costs.

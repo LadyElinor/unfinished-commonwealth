@@ -14,6 +14,8 @@ python -m commonwealth.procedure_v1 run .local/procedure-v1
 python -m commonwealth.discernment_v1 run .local/discernment-v1
 python -m commonwealth.integrity_v1 run .local/integrity-v1
 python -m commonwealth.review_v1 run .local/review-v1
+python -m commonwealth.authority_v1 run .local/authority-v1
+python -m commonwealth.participant_v1 demo
 ```
 
 Choose a new output path for every reproduction. Existing databases, report
@@ -59,6 +61,10 @@ This command:
    failure through the installed discernment CLI.
    It also runs the 112 I1 comparisons and 14 R1 traces, replaying undetected
    compromise and the exact-parent reconsideration record through installed CLIs.
+   It runs 14 A1 authority traces and ten language comparisons, checks packet
+   input compatibility, and runs B1's real loopback demonstration from the wheel.
+   B1 uses temporary local sockets and files; no remote service or provider call
+   is needed. Sandboxes that prohibit all sockets cannot complete that gate.
 6. Writes the wheel, source archive, and `package-verification.json` into the
    chosen output directory.
 
