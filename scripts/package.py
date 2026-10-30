@@ -78,7 +78,11 @@ def main():
                          "docs/INTEGRITY_V1.md", "docs/INTEGRITY_SOURCE_REVIEW.md",
                          "examples/integrity-v1-summary.json", "tests/test_integrity_v1.py",
                          "commonwealth/review_v1/engine.py", "docs/REVIEW_V1.md",
-                         "examples/review-v1-summary.json", "tests/test_review_v1.py"):
+                         "examples/review-v1-summary.json", "tests/test_review_v1.py",
+                         "commonwealth/authority_v1/engine.py", "commonwealth/authority_v1/records.py",
+                         "docs/AUTHORITY_V1.md", "docs/AUTHORITY_V1_RESULTS.md",
+                         "examples/authority-v1-summary.json", "examples/authority-review-packet.json",
+                         "tests/test_authority_v1.py", "tests/data/authority-preserved-baseline.json"):
             if not (source / relative).is_file():
                 raise RuntimeError(f"Source archive omitted {relative}")
         # Run the same checks on what downstream source users actually receive.
@@ -168,6 +172,21 @@ def main():
             "review-v1/journals/false-but-procedurally-valid.json"], smoke))
         if review_replay["verified"] is not True or review_replay["parent_verified"] is not True:
             raise RuntimeError("Installed reconsideration failed exact-parent replay")
+        authority = json.loads(run([str(executable), "-m", "commonwealth.authority_v1", "run", "authority-v1"], smoke))
+        if authority["traces"] != 14 or authority["language_cases"] != 10 or authority["external_actions"] != 0:
+            raise RuntimeError("Installed authority study omitted a trace or changed its boundary")
+        authority_replay = json.loads(run([str(executable), "-m", "commonwealth.authority_v1", "replay",
+            "authority-v1/journals/false-but-complete-host.json"], smoke))
+        if authority_replay["verified"] is not True:
+            raise RuntimeError("Installed false-host failure did not replay")
+        authority_review = json.loads(run([str(executable), "-m", "commonwealth.authority_v1", "review",
+            str(source / "examples/authority-review-packet.json")], smoke))
+        if authority_review["authority_granted"] is not False or authority_review["permits_execution"] is not False:
+            raise RuntimeError("Installed packet review promoted itself to authority")
+        language = json.loads(run([str(executable), "-m", "commonwealth.authority_v1", "compare",
+            str(source / "examples/authority-language-records.json")], smoke))
+        if language["finding"] != "curated-position-difference" or language["intent"] != "not-established":
+            raise RuntimeError("Installed language review changed its inference boundary")
         readiness = json.loads(run([str(command), "readiness"], smoke, expected=2))
         if readiness["deployment_ready"] is not False:
             raise RuntimeError("Research-only readiness boundary changed")
@@ -184,6 +203,8 @@ def main():
             "discernment_runs": discernment["runs"], "discernment_replay": discernment_replay,
             "integrity_runs": integrity["runs"], "integrity_replay": integrity_replay,
             "review_traces": review["traces"], "review_replay": review_replay,
+            "authority_traces": authority["traces"], "authority_replay": authority_replay,
+            "authority_packet_review": authority_review, "authority_language": language,
             "readiness_exit": 2, "model_calls": 0,
             "scope": "LOCAL_RESEARCH_ONLY",
         }

@@ -178,6 +178,27 @@ python -m commonwealth.review_v1 run .local/review-v1
 
 [Metanoia](https://github.com/LadyElinor/Metanoia), [Adiona](https://github.com/LadyElinor/Adiona), and [CORTAC](https://github.com/LadyElinor/CORTAC) informed the design. This is new code with **no operational adapters or compatibility claim** for those projects. Their authority contracts remain unchanged. [Integration boundaries](docs/INTEGRATION.md).
 
+The separate [A1 authority and language extension](docs/AUTHORITY_V1.md) applies
+the same scrutiny to our own operators: diagnosing failure does not confer a
+mandate. It distinguishes public statements, working records and analyst
+interpretations; keeps legitimacy meanings and stages separate; and models
+scoped delegation, amendment invalidation, preserved dissent, expiry,
+revocation and separately delegated remedies. Dedicated halt/revoke slots remain
+available after ordinary or correction budgets are exhausted.
+
+```bash
+python -m commonwealth.authority_v1 review examples/authority-review-packet.json
+python -m commonwealth.authority_v1 compare examples/authority-language-records.json
+python -m commonwealth.authority_v1 run .local/authority-v1
+```
+
+The read-only packet reviewer accepts Relay Atlas/Terra v1 input exports and
+always returns `authority_granted: false`. The [14 synthetic traces and ten
+language cases](docs/AUTHORITY_V1_RESULTS.md) preserve false-but-complete host
+records that lead to an unwarranted simulated effect, unresolved remedies and
+the limits of supplied controller identities. There is no real execution
+adapter, legal validity finding or claim of independent evaluation.
+
 Contributions can add a failing case, an affected participant's account, a repair, or a competing interpretation. Each should say what evidence could change its conclusion. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Licensed under the [MIT License](LICENSE). External references and the full manuscript are not bundled or relicensed by this repository.

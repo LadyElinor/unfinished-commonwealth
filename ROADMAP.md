@@ -1,5 +1,21 @@
 # Roadmap
 
+## A1 authority and language boundaries: implemented separately
+
+[A1](docs/AUTHORITY_V1.md) adds read-only review-packet input compatibility,
+curated three-register comparison, synthetic scoped delegation, fresh review
+after amendment/challenge, and separately budgeted correction with reserved
+halt/revoke slots. [Executed failures](docs/AUTHORITY_V1_RESULTS.md) retain false
+host declarations, unrepresented affected people and missing remedy authority.
+The baseline implementations and fixtures remain frozen.
+
+Before any operational adapter: establish authenticated issuers and identities,
+protected enforcement outside the participant, externally validated mandates,
+independent representation and review, and observed real effects/remedies. Fix
+the evaluation protocol and obtain independently authored cases before claiming
+improved decisions. More persuasive rhetoric or a completed packet is not an
+acceptance criterion for delegated power.
+
 ## 0.1: persistent workshop, implemented
 
 Bounded executable data work, peer consequences, observed predictions, testimony, coaching records, scoped lessons, succession, replay, CLI, and exposed scripted comparisons. The acceptance criterion is a reproducible correction and handoff without erasing the original cost. No model intelligence or institution-level efficacy claim follows.
