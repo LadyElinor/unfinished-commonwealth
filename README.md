@@ -71,6 +71,12 @@ controls](docs/PARTICIPANT_V1_RESULTS.md) retain stolen-token, cloned-database,
 host-rewrite and authenticated-bad-proposal failures. This advances participant
 transport, with no model calls, external effect adapter or deployment claim.
 
+The opt-in [U1 Linux isolation check](docs/UID_ISOLATION.md) runs the host and
+two participants under distinct unprivileged UIDs, records actual permission
+denials and tests lost-response recovery across host restart. A disposable
+privileged supervisor is required for setup; missing privileges are reported
+as blocked. Ordinary unit tests do not establish that this OS boundary passed.
+
 ## What is implemented
 
 - **Persistent experience:** transactional SQLite state and a hash-linked journal, with deterministic replay before every accepted mutation.

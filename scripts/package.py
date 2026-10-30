@@ -86,7 +86,10 @@ def main():
                          "commonwealth/participant_v1/store.py", "commonwealth/participant_v1/transport.py",
                          "docs/PARTICIPANT_V1.md", "docs/PARTICIPANT_V1_DESIGN.md",
                          "docs/PARTICIPANT_V1_RESULTS.md", "tests/test_participant_v1.py",
-                         "tests/data/participant-preserved-baseline.json"):
+                         "tests/data/participant-preserved-baseline.json",
+                         "scripts/uid_isolation.py", "scripts/isolation/worker.py",
+                         "docs/UID_ISOLATION.md", "docs/UID_ISOLATION_DESIGN.md",
+                         "tests/test_uid_isolation.py", "tests/data/uid-isolation-preserved-baseline.json"):
             if not (source / relative).is_file():
                 raise RuntimeError(f"Source archive omitted {relative}")
         # Run the same checks on what downstream source users actually receive.

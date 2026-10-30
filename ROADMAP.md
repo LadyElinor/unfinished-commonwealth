@@ -1,5 +1,19 @@
 # Roadmap
 
+## U1 Linux isolation observation: separate opt-in gate
+
+[U1](docs/UID_ISOLATION.md) implements the next B1 gate as an explicit temporary
+Linux experiment: three distinct UIDs, protected filesystem paths, actual keeper
+CLI denials, working participant transport, lost replies/restart, revocation and
+real TTL expiry. It preserves root access and leaked-bearer success as negative
+controls. No global accounts, services, firewall rules or namespaces are changed.
+Only an observed successful run supports a claim about the tested permission
+boundary; portable unit checks and blocked environments do not.
+
+This remains a discretionary-access demonstration on a trusted host. Independent
+issuers, full sandboxing, constrained egress and substantive decision evaluation
+remain separate work.
+
 ## B1 local participant boundary: implemented separately
 
 [B1](docs/PARTICIPANT_V1.md) adds a loopback proposal-only HTTP service with
