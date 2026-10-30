@@ -22,6 +22,12 @@ offline wheel installation. The installed check also reproduced all earlier
 study matrices and replay gates. No package-version change or release is implied.
 The 69 baseline runtime/example/test-data files retain their original hashes.
 
+The first hosted run passed Linux 3.11–3.13 and exposed four Windows cleanup
+errors in the fault-injection tests: a SQLite connection context commits or
+rolls back but does not close the connection. The test connections now use
+explicit closing as well as transaction contexts. Runtime B1 connections already
+closed in `finally`; no production behavior or expected outcome was relaxed.
+
 ## Observations
 
 | Gate | Observed result |

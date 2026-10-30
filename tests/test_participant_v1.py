@@ -1,7 +1,7 @@
 """Exposed B1 development gates, including real sockets and failure controls."""
 
 from concurrent.futures import ThreadPoolExecutor
-from contextlib import contextmanager, redirect_stderr
+from contextlib import closing, contextmanager, redirect_stderr
 import hashlib
 import io
 import json
@@ -225,13 +225,13 @@ class ParticipantTests(unittest.TestCase):
                              ("participant_caps", "UPDATE"), ("participant_attempts", "INSERT"),
                              ("participant_receipts", "INSERT")):
             with self.subTest(table=table):
-                with sqlite3.connect(self.workshop.path) as db:
+                with closing(sqlite3.connect(self.workshop.path)) as db, db:
                     db.execute(f"CREATE TRIGGER fail_write BEFORE {event} ON {table} BEGIN SELECT RAISE(ABORT,'injected'); END")
                 try:
                     with self.assertRaises(sqlite3.DatabaseError):
                         self.boundary.submit(self.token, raw)
                 finally:
-                    with sqlite3.connect(self.workshop.path) as db:
+                    with closing(sqlite3.connect(self.workshop.path)) as db, db:
                         db.execute("DROP TRIGGER fail_write")
                 self.assertEqual(self.workshop.verify(), before)
                 self.assertEqual(self.used(), 0)
@@ -371,7 +371,7 @@ class ParticipantTests(unittest.TestCase):
         updated, _ = transition(state, event["command"])
         event["state_hash"] = digest(updated)
         receipt["event_hash"] = digest(event)
-        with sqlite3.connect(self.workshop.path) as db:
+        with closing(sqlite3.connect(self.workshop.path)) as db, db:
             db.execute("UPDATE events SET envelope=?,hash=? WHERE seq=1", (canonical(event), digest(event)))
             db.execute("UPDATE snapshot SET body=?", (canonical(updated),))
             db.execute("UPDATE participant_receipts SET body=?", (canonical(receipt),))
@@ -400,14 +400,14 @@ class ParticipantTests(unittest.TestCase):
         self.assertEqual(self.boundary.submit(self.token, raw)[0], 200)
 
     def test_audit_detects_broken_accounting(self):
-        with sqlite3.connect(self.workshop.path) as db:
+        with closing(sqlite3.connect(self.workshop.path)) as db, db:
             db.execute("UPDATE participant_caps SET used=1")
         with self.assertRaisesRegex(ValueError, "accounting"):
             self.boundary.audit()
 
     def test_audit_detects_deleted_accepted_receipt(self):
         self.boundary.submit(self.token, self.raw())
-        with sqlite3.connect(self.workshop.path) as db:
+        with closing(sqlite3.connect(self.workshop.path)) as db, db:
             db.execute("DELETE FROM participant_receipts")
         with self.assertRaisesRegex(ValueError, "accepted receipt"):
             self.boundary.audit()
