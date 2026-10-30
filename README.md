@@ -37,7 +37,19 @@ Inherited advice exposes disputes and the linked counterstories. Keeper reviews 
 
 These are deterministic authored events. The data transformations and deferred queue processing actually execute; inspection credits model resource pressure and do not measure wall time, energy, or token cost.
 
-Reflection consumes a command but no simulated time. `quality-stream` implements the fixtures' expected answer and works across every included case, so these scenarios cannot demonstrate adaptive method selection.
+In the original workshop, reflection consumes a command but no simulated time.
+`quality-stream` implements every original fixture's expected answer, so those
+scenarios cannot demonstrate adaptive method selection. The separate study
+harness below uses contrasting contracts and a decision clock.
+
+## Corrected participant clock handling (B1.1)
+
+New participant hosts should use [B1.1 and its explicit migration guide](docs/PARTICIPANT_V1_1.md).
+Historical B1 can revive an expired bearer after a refused future-time request
+and subsequent clock rollback. B1.1 retains refused clock observations while
+rolling back failed operation writes, and upgraded databases refuse historical
+B1 operators. Earlier code and evidence remain frozen for reproduction. This is
+a bounded local correction, not secure time or production-security assurance.
 
 ## Participate through a proposal
 
@@ -54,7 +66,25 @@ python -m commonwealth coach .local/manual.sqlite
 
 The `propose-2` identifier applies to exactly the sequence above. Use the returned ID when your sequence differs. `agent-view` produces a bounded task packet suitable for a separate model session. `propose` accepts only strict proposal JSON. The broader `submit` command is an operator tool for testimony, listening, reflection, lessons, and counterstories; it is not a protected agent endpoint.
 
-**Actor names are supplied fixture identities, not authentication.** A person with CLI or database access can act as `keeper`. Proposal/approval separation exercises a protocol; production credential separation is unimplemented. See [the trust boundary](docs/THREAT_MODEL.md).
+**Actor names in the raw CLI are supplied fixture identities.** A person with CLI or database access can act as `keeper`. The separate [B1 participant service](docs/PARTICIPANT_V1.md) now authenticates scoped bearer possession and derives the proposal actor server-side. Actual isolation still requires externally enforced OS/filesystem separation; production credential separation and human identity verification remain unimplemented. See [the trust boundary](docs/THREAT_MODEL.md).
+
+```bash
+python -m commonwealth.participant_v1 demo
+```
+
+B1 uses real loopback HTTP, expiring/revocable credentials, exact-view binding,
+bounded attempt accounting and durable receipts. A lost response is reported as
+unknown; identical retries cannot duplicate a proposal in the same database.
+It has no approval or execution endpoint. Its [35 boundary tests and negative
+controls](docs/PARTICIPANT_V1_RESULTS.md) retain stolen-token, cloned-database,
+host-rewrite and authenticated-bad-proposal failures. This advances participant
+transport, with no model calls, external effect adapter or deployment claim.
+
+The opt-in [U1 Linux isolation check](docs/UID_ISOLATION.md) runs the host and
+two participants under distinct unprivileged UIDs, records actual permission
+denials and tests lost-response recovery across host restart. A disposable
+privileged supervisor is required for setup; missing privileges are reported
+as blocked. Ordinary unit tests do not establish that this OS boundary passed.
 
 ## What is implemented
 
@@ -85,7 +115,9 @@ In the included comparison, the single controller and coached controller produce
 | `commonwealth/store.py` | Atomic persistence, journal verification, and replay |
 | `commonwealth/coach.py` | Coaching cues and scoped inherited advice |
 | `commonwealth/interface.py` | Proposal-only external participant packet |
+| `commonwealth/participant_v1/` | B1 local capability, proposal transport and atomic receipts |
 | `commonwealth/experiment.py` | Scripted demonstration and exposed comparisons |
+| `commonwealth/study_v1/` | Separate contrasting-contract harness, scheduler, controls and replay |
 | `commonwealth/data/` | Three explicitly public development fixtures |
 | `tests/` | Behavioral, persistence, concurrency, and failure tests |
 | `docs/` | Design, casebook, trust boundary, provenance, and research plan |
@@ -93,9 +125,107 @@ In the included comparison, the single controller and coached controller produce
 
 ## Growing the project
 
-The next useful step is a separate deterministic harness with contrasting data contracts and a clock that charges deliberation. The [proposed study design](docs/NEXT_STUDY.md) is not implemented or run. Only after its necessary gates pass would a separately authorized model-backed study with fixed budgets and genuinely withheld scenarios be informative. More elaborate stories or more agent names cannot substitute for those gates. [Roadmap](ROADMAP.md).
+A separate **study harness 1.0.0** now implements the deterministic portion of the
+[next-study specification](docs/NEXT_STUDY.md). It leaves the original workshop,
+fifteen comparisons and historical replay unchanged. Run it independently:
+
+```bash
+python -m commonwealth.study_v1 run .local/study-v1
+python -m commonwealth.study_v1 replay .local/study-v1/journals/decision-slots-v1--yield-urgent--always-inspect.json
+```
+
+Its 432 exposed runs cross 12 environments, 18 control/treatment arms and two
+resource models. The two contracts require 15 and 10 from the same readings.
+No constant method solves the discriminating suite; the simple evidence selector
+matches the uncoached participant. Unnecessary inspection and advice can miss
+urgent deadlines. These results demonstrate harness behavior, not intelligence
+or institutional benefit. See the [fixed design](docs/STUDY_V1_DESIGN.md),
+[negative results and limits](docs/STUDY_V1_RESULTS.md) and
+[complete aggregate record](examples/study-v1-summary.json).
+
+No model-provider calls or independent held-out evaluation are included. A
+future model-backed study would require separate authorization, a fixed analysis
+plan and genuinely withheld scenarios. More elaborate stories or more agent
+names cannot substitute for those gates. [Roadmap](ROADMAP.md).
+
+An opt-in [procedural review extension](docs/PROCEDURAL_REVIEW_V1.md), informed
+by the Congressional Record and federal court rules, adds recorded notice,
+response opportunities, specific objections, reasoned rulings, revision-bound
+grants, separate appeals, prospective stays and corrections that preserve the
+original record. It uses the same costed decision scheduler and leaves D1 frozen.
+Its P1.1 version renews notice after new material, preserves both parties'
+petitions and replies in one bounded appeal, and refuses truncated notice
+windows. Old P1 journals retain their original replay rules.
+
+```bash
+python -m commonwealth.procedure_v1 run .local/procedure-v1
+python -m commonwealth.procedure_v1 replay .local/procedure-v1/journals/terminal-appeal.json
+```
+
+Its [eight exposed traces](docs/PROCEDURAL_REVIEW_V1_RESULTS.md) retain denials,
+unresolved appeals, delay costs and a procedurally approved wrong answer.
+Procedural conformity does not establish truth, legal compliance or efficacy.
+
+A separate [fraud-discernment study](docs/FRAUD_DISCERNMENT_V1.md) translates
+documented fraud mechanisms into bounded, advisory evidence checks. Its 150
+exposed runs compare fixed controls on forged invoices, borrowed endorsements,
+dependent corroboration, missing authority and legitimate urgent requests.
+It preserves source status and tests false alarms, delay, abstention and a
+compromised-verifier failure. This is deterministic software research; it does
+not train an AI or establish a real-world scam-reduction rate.
+
+```bash
+python -m commonwealth.discernment_v1 run .local/discernment-v1
+python -m commonwealth.discernment_v1 replay .local/discernment-v1/journals/compromised-trusted-roots--evidence-gate.json
+```
+
+See the [discernment results and limits](docs/FRAUD_DISCERNMENT_V1_RESULTS.md).
+The [October 2026 Korean finance incident review](docs/INCIDENT_REVIEW_2026_10_KOREAN_FINANCE.md)
+adds negative regressions for receipt replacement and missing origin quarantine.
+
+The separate [I1 integrity extension](docs/INTEGRITY_V1.md) adds structured
+commitment/action review and tests declared issuer quarantine, shared evidence
+dependencies and trust overreach in 112 exposed runs. Its [source audit](docs/INTEGRITY_SOURCE_REVIEW.md)
+separates political criticism from demonstrated discrepancies. The
+[results](docs/INTEGRITY_V1_RESULTS.md) retain undetected compromise, legitimate
+requests blocked by quarantine and deadline misses.
+
+```bash
+python -m commonwealth.integrity_v1 run .local/integrity-v1
+```
+
+The [R1 review extension](docs/REVIEW_V1.md) adds explicit contrary-evidence
+disclosure, declared conflict/capacity checks, alternatives and separate
+reconsideration of closed advice. Its [14 exposed traces](docs/REVIEW_V1_RESULTS.md)
+retain wrong restrictions, delays and unresolved reviews. The
+[repository review](docs/REPOSITORY_REVIEW_2026_10_24.md) records coverage and remaining gaps.
+
+```bash
+python -m commonwealth.review_v1 run .local/review-v1
+```
 
 [Metanoia](https://github.com/LadyElinor/Metanoia), [Adiona](https://github.com/LadyElinor/Adiona), and [CORTAC](https://github.com/LadyElinor/CORTAC) informed the design. This is new code with **no operational adapters or compatibility claim** for those projects. Their authority contracts remain unchanged. [Integration boundaries](docs/INTEGRATION.md).
+
+The separate [A1 authority and language extension](docs/AUTHORITY_V1.md) applies
+the same scrutiny to our own operators: diagnosing failure does not confer a
+mandate. It distinguishes public statements, working records and analyst
+interpretations; keeps legitimacy meanings and stages separate; and models
+scoped delegation, amendment invalidation, preserved dissent, expiry,
+revocation and separately delegated remedies. Dedicated halt/revoke slots remain
+available after ordinary or correction budgets are exhausted.
+
+```bash
+python -m commonwealth.authority_v1 review examples/authority-review-packet.json
+python -m commonwealth.authority_v1 compare examples/authority-language-records.json
+python -m commonwealth.authority_v1 run .local/authority-v1
+```
+
+The read-only packet reviewer accepts Relay Atlas/Terra v1 input exports and
+always returns `authority_granted: false`. The [14 synthetic traces and ten
+language cases](docs/AUTHORITY_V1_RESULTS.md) preserve false-but-complete host
+records that lead to an unwarranted simulated effect, unresolved remedies and
+the limits of supplied controller identities. There is no real execution
+adapter, legal validity finding or claim of independent evaluation.
 
 Contributions can add a failing case, an affected participant's account, a repair, or a competing interpretation. Each should say what evidence could change its conclusion. See [CONTRIBUTING.md](CONTRIBUTING.md).
 

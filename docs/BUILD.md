@@ -9,6 +9,13 @@ standard library. From the checkout root:
 python scripts/verify.py
 python scripts/reproduce.py .local/reproduction
 python -m commonwealth verify .local/reproduction/demo.sqlite
+python -m commonwealth.study_v1 run .local/study-v1
+python -m commonwealth.procedure_v1 run .local/procedure-v1
+python -m commonwealth.discernment_v1 run .local/discernment-v1
+python -m commonwealth.integrity_v1 run .local/integrity-v1
+python -m commonwealth.review_v1 run .local/review-v1
+python -m commonwealth.authority_v1 run .local/authority-v1
+python -m commonwealth.participant_v1 demo
 ```
 
 Choose a new output path for every reproduction. Existing databases, report
@@ -18,6 +25,18 @@ partial output after a failed build before choosing another new directory.
 The reproduction creates a five-tick demonstration, its JSON event record and
 summary, and all fifteen exposed scripted comparisons. `readiness` returns exit
 code 2 by design; it is not a failing installation test.
+
+The separate study command creates 432 complete journals, a detailed result
+matrix and a compact summary. Replay uses `python -m commonwealth.study_v1 replay
+PATH_TO_JOURNAL`. The last-written `results.json` marks a complete run; files
+left before that marker are partial artifacts. All study fixtures are exposed.
+
+I1 writes 112 advisory comparisons. R1 writes 14 review traces. R1 reconsideration
+requires the exact original journal at replay:
+
+```bash
+python -m commonwealth.review_v1 replay .local/review-v1/journals/new-evidence-reconsideration.json --parent .local/review-v1/journals/false-but-procedurally-valid.json
+```
 
 ## Offline package check
 
@@ -34,7 +53,18 @@ This command:
 3. Builds the wheel from the extracted source, not the original checkout.
 4. Installs the wheel into a fresh virtual environment with `--no-index`.
 5. Runs both installed entry points outside the checkout, verifies packaged data,
-   replays the 24-event demonstration, and runs all fifteen comparisons.
+   replays the 24-event demonstration, runs all fifteen comparisons and the
+   432-run study matrix, and replays an urgent-deadline failure record.
+   It also runs eight P1.1 procedural traces, replays an unresolved appeal, and
+   checks a frozen P1 appeal journal through the installed legacy replay route.
+   It runs all 150 advisory discernment comparisons and replays the compromised-source
+   failure through the installed discernment CLI.
+   It also runs the 112 I1 comparisons and 14 R1 traces, replaying undetected
+   compromise and the exact-parent reconsideration record through installed CLIs.
+   It runs 14 A1 authority traces and ten language comparisons, checks packet
+   input compatibility, and runs B1's real loopback demonstration from the wheel.
+   B1 uses temporary local sockets and files; no remote service or provider call
+   is needed. Sandboxes that prohibit all sockets cannot complete that gate.
 6. Writes the wheel, source archive, and `package-verification.json` into the
    chosen output directory.
 

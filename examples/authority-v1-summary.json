@@ -1,0 +1,694 @@
+{
+  "version": "authority-1.0.0",
+  "design": "A1",
+  "status": "EXPOSED_DETERMINISTIC_DEVELOPMENT",
+  "base_commit": "7a11f2ba587cc14b595e995e14d7b47a1e54a94d",
+  "source_digests": {
+    "__init__.py": "d28f951efdf8e749917b84f157c16864300f59135bd77f7f4eb829a26f206c4e",
+    "__main__.py": "565abe9af38d780d9664369159fe0c5a3cb0580b48c45075634b1f8e25f90783",
+    "engine.py": "96ee4398eaa1d56705c7aacf2f7612f22abbbea2e3207dbfcb184639d738c432",
+    "experiment.py": "e198c70baee1cff74933fe22bace9ceb85497e9a2a5089bc96dcb5a258a47da3",
+    "fixtures.py": "8d7e7e6973c5039dba31c8f17a51c687b9755aa765e24f064c053913dc7e11ab",
+    "records.py": "7796a2ffa76706f2fbb949b3f29c4d84d8efd19d99efbd88c22fa314eb0c1f3a",
+    "commonwealth/engine.py": "e688e86a9423fc92660d32c73ac701a15777db3d31a432a21d6fc96a0caed9b7",
+    "commonwealth/discernment_v1/engine.py": "e7d76bf910c4a43750e04c2d6b16591a99350c1ad704cfd00191083c4b7728cd",
+    "commonwealth/study_v1/engine.py": "8a7f126c7304b0b6a07319f6d985a09c066e4cf6f620ed8954a405eefca9c675",
+    "commonwealth/study_v1/experiment.py": "9e15184b5d55622e60236a9b7abc67d2eeebaa840f56929f7d00f2728af2ac5e"
+  },
+  "traces": [
+    {
+      "trace": "bounded-authority",
+      "measures": {
+        "head": "95ab8eac842f9dcc1a48e2df5d638fe6c08b8789d84e6cfa3e038801ea28cdf8",
+        "costs": {
+          "primary": 3,
+          "correction": 0,
+          "safety": 0
+        },
+        "slots": 3,
+        "maintenance": true,
+        "ever_executed": true,
+        "unwarranted_effect": false,
+        "historical_effect": {
+          "at": 3,
+          "request": {
+            "operation": "set-maintenance",
+            "target": "service-A",
+            "before": false,
+            "after": true
+          },
+          "warrant": "5d5dead7dda25b5d7fd7b7819327bcaed9672e8a403204f681521fc7d30a88cf",
+          "synthetic_only": true
+        },
+        "remedies": [],
+        "challenges": [],
+        "unaddressed_challenges": [],
+        "unreversed_inactive_effect": false,
+        "external_authority": "NONE",
+        "external_actions": 0
+      },
+      "journal_digest": "d386a04c42fed084073fc9989aa67c8770e570c9a533ff0191742d5e0e895813",
+      "replay": {
+        "verified": true,
+        "events": 3,
+        "head": "95ab8eac842f9dcc1a48e2df5d638fe6c08b8789d84e6cfa3e038801ea28cdf8",
+        "external_authority": "NONE",
+        "authenticity": "not established"
+      }
+    },
+    {
+      "trace": "rhetoric-without-mandate",
+      "measures": {
+        "head": "caa73e1b294e06fa9a5eb83cd56162a9fba611a560255e81ad87813168c7e68b",
+        "costs": {
+          "primary": 3,
+          "correction": 0,
+          "safety": 0
+        },
+        "slots": 3,
+        "maintenance": false,
+        "ever_executed": false,
+        "unwarranted_effect": false,
+        "historical_effect": null,
+        "remedies": [],
+        "challenges": [],
+        "unaddressed_challenges": [],
+        "unreversed_inactive_effect": false,
+        "external_authority": "NONE",
+        "external_actions": 0
+      },
+      "journal_digest": "e04ef555e22950cb5660b7dd834a276c977b1442c53ae17ea2f99ad192e18ec7",
+      "replay": {
+        "verified": true,
+        "events": 3,
+        "head": "caa73e1b294e06fa9a5eb83cd56162a9fba611a560255e81ad87813168c7e68b",
+        "external_authority": "NONE",
+        "authenticity": "not established"
+      }
+    },
+    {
+      "trace": "unrepresented-users",
+      "measures": {
+        "head": "bbbd90381b0455acf1936fd26286ee6a07df37cce91ee9034cbeb29395edc821",
+        "costs": {
+          "primary": 3,
+          "correction": 0,
+          "safety": 0
+        },
+        "slots": 3,
+        "maintenance": false,
+        "ever_executed": false,
+        "unwarranted_effect": false,
+        "historical_effect": null,
+        "remedies": [],
+        "challenges": [],
+        "unaddressed_challenges": [],
+        "unreversed_inactive_effect": false,
+        "external_authority": "NONE",
+        "external_actions": 0
+      },
+      "journal_digest": "485cf417de56c234dc5f5b7de2365734b3a0e6a0770d928debf49fc58f3d3992",
+      "replay": {
+        "verified": true,
+        "events": 3,
+        "head": "bbbd90381b0455acf1936fd26286ee6a07df37cce91ee9034cbeb29395edc821",
+        "external_authority": "NONE",
+        "authenticity": "not established"
+      }
+    },
+    {
+      "trace": "unknown-trigger",
+      "measures": {
+        "head": "fb5c6d5657f297babb506642658bc795fee0308e0abf1d69d3e8b85343664dce",
+        "costs": {
+          "primary": 3,
+          "correction": 0,
+          "safety": 0
+        },
+        "slots": 3,
+        "maintenance": false,
+        "ever_executed": false,
+        "unwarranted_effect": false,
+        "historical_effect": null,
+        "remedies": [],
+        "challenges": [],
+        "unaddressed_challenges": [],
+        "unreversed_inactive_effect": false,
+        "external_authority": "NONE",
+        "external_actions": 0
+      },
+      "journal_digest": "5bafb8dee2721c60c314f2c5aeeb0c6f1872d0e5d5f3ea423e596cd06e71c6e2",
+      "replay": {
+        "verified": true,
+        "events": 3,
+        "head": "fb5c6d5657f297babb506642658bc795fee0308e0abf1d69d3e8b85343664dce",
+        "external_authority": "NONE",
+        "authenticity": "not established"
+      }
+    },
+    {
+      "trace": "conflicted-reviewer",
+      "measures": {
+        "head": "5a9afed48a3ba5b8e366a0df8169c933714957bb668fce6df0b4cfe9b34778cf",
+        "costs": {
+          "primary": 3,
+          "correction": 0,
+          "safety": 0
+        },
+        "slots": 3,
+        "maintenance": false,
+        "ever_executed": false,
+        "unwarranted_effect": false,
+        "historical_effect": null,
+        "remedies": [],
+        "challenges": [],
+        "unaddressed_challenges": [],
+        "unreversed_inactive_effect": false,
+        "external_authority": "NONE",
+        "external_actions": 0
+      },
+      "journal_digest": "7a1c2e4b04f1f7507ab758359c5f813979421ff4afe1bb7ce5e4ae717a92f430",
+      "replay": {
+        "verified": true,
+        "events": 3,
+        "head": "5a9afed48a3ba5b8e366a0df8169c933714957bb668fce6df0b4cfe9b34778cf",
+        "external_authority": "NONE",
+        "authenticity": "not established"
+      }
+    },
+    {
+      "trace": "review-unavailable",
+      "measures": {
+        "head": "c983303be9197419b4092d2b40591c18b4561d51b54f43089e183c35433dd716",
+        "costs": {
+          "primary": 3,
+          "correction": 0,
+          "safety": 0
+        },
+        "slots": 3,
+        "maintenance": false,
+        "ever_executed": false,
+        "unwarranted_effect": false,
+        "historical_effect": null,
+        "remedies": [],
+        "challenges": [],
+        "unaddressed_challenges": [],
+        "unreversed_inactive_effect": false,
+        "external_authority": "NONE",
+        "external_actions": 0
+      },
+      "journal_digest": "4aeeb00303c63c3c5ade6e303ce4d871a275e4e9e693b47755cedfc2937d8361",
+      "replay": {
+        "verified": true,
+        "events": 3,
+        "head": "c983303be9197419b4092d2b40591c18b4561d51b54f43089e183c35433dd716",
+        "external_authority": "NONE",
+        "authenticity": "not established"
+      }
+    },
+    {
+      "trace": "amendment-invalidates-grant",
+      "measures": {
+        "head": "7eab4cf508b1867e088e8d0a899463cabbb6df4e92258f2b02f3c4db86a6ee15",
+        "costs": {
+          "primary": 4,
+          "correction": 0,
+          "safety": 0
+        },
+        "slots": 4,
+        "maintenance": false,
+        "ever_executed": false,
+        "unwarranted_effect": false,
+        "historical_effect": null,
+        "remedies": [],
+        "challenges": [],
+        "unaddressed_challenges": [],
+        "unreversed_inactive_effect": false,
+        "external_authority": "NONE",
+        "external_actions": 0
+      },
+      "journal_digest": "92ee6a33ef063a0f8052fdf62b97e121af22dd8df59722cf1faa9d1c13e96713",
+      "replay": {
+        "verified": true,
+        "events": 4,
+        "head": "7eab4cf508b1867e088e8d0a899463cabbb6df4e92258f2b02f3c4db86a6ee15",
+        "external_authority": "NONE",
+        "authenticity": "not established"
+      }
+    },
+    {
+      "trace": "amendment-expands-scope",
+      "measures": {
+        "head": "c627845ec14999537fc839b2a346bd5280abdddbe28afb23ed1123c0dc953e2d",
+        "costs": {
+          "primary": 6,
+          "correction": 0,
+          "safety": 0
+        },
+        "slots": 6,
+        "maintenance": false,
+        "ever_executed": false,
+        "unwarranted_effect": false,
+        "historical_effect": null,
+        "remedies": [],
+        "challenges": [],
+        "unaddressed_challenges": [],
+        "unreversed_inactive_effect": false,
+        "external_authority": "NONE",
+        "external_actions": 0
+      },
+      "journal_digest": "3b938f51349d267310428e063e952bb0f9caddb3eb65722f051eeaa0fe972d72",
+      "replay": {
+        "verified": true,
+        "events": 6,
+        "head": "c627845ec14999537fc839b2a346bd5280abdddbe28afb23ed1123c0dc953e2d",
+        "external_authority": "NONE",
+        "authenticity": "not established"
+      }
+    },
+    {
+      "trace": "challenge-stays-grant",
+      "measures": {
+        "head": "b8a913eca25a98eea82007ba43753d499f3c6b636c6ecc28f9993631c16a9f6a",
+        "costs": {
+          "primary": 6,
+          "correction": 1,
+          "safety": 0
+        },
+        "slots": 7,
+        "maintenance": true,
+        "ever_executed": true,
+        "unwarranted_effect": false,
+        "historical_effect": {
+          "at": 7,
+          "request": {
+            "operation": "set-maintenance",
+            "target": "service-A",
+            "before": false,
+            "after": true
+          },
+          "warrant": "598f2a1f090471e7ea77bcb755ca78d4a7b9eae5b5552941f9353af0fd038bb5",
+          "synthetic_only": true
+        },
+        "remedies": [],
+        "challenges": [
+          {
+            "id": "challenge-1",
+            "actor": "affected",
+            "account": "The sensor could be wrong. Preserve our objection.",
+            "at": 3
+          }
+        ],
+        "unaddressed_challenges": [],
+        "unreversed_inactive_effect": false,
+        "external_authority": "NONE",
+        "external_actions": 0
+      },
+      "journal_digest": "bd284d4dcd8e493cdfca34c037dfa2ae5dc9c170dd5d38c95b4e62a854cbc849",
+      "replay": {
+        "verified": true,
+        "events": 7,
+        "head": "b8a913eca25a98eea82007ba43753d499f3c6b636c6ecc28f9993631c16a9f6a",
+        "external_authority": "NONE",
+        "authenticity": "not established"
+      }
+    },
+    {
+      "trace": "expired-grant",
+      "measures": {
+        "head": "9aa569e9121f68b27e67d40e38e174b5815f19fc10da5b7ec687f8427b7d2776",
+        "costs": {
+          "primary": 4,
+          "correction": 0,
+          "safety": 0
+        },
+        "slots": 4,
+        "maintenance": false,
+        "ever_executed": false,
+        "unwarranted_effect": false,
+        "historical_effect": null,
+        "remedies": [],
+        "challenges": [],
+        "unaddressed_challenges": [],
+        "unreversed_inactive_effect": false,
+        "external_authority": "NONE",
+        "external_actions": 0
+      },
+      "journal_digest": "8a6ce85ad8e62d13a3e23c7197a3bbcca6512617ebd8a575ad1c3e83d4b67848",
+      "replay": {
+        "verified": true,
+        "events": 4,
+        "head": "9aa569e9121f68b27e67d40e38e174b5815f19fc10da5b7ec687f8427b7d2776",
+        "external_authority": "NONE",
+        "authenticity": "not established"
+      }
+    },
+    {
+      "trace": "revoked-mandate",
+      "measures": {
+        "head": "bd0f0e80320ded87caf07c67aea44ef2414479c2330a44b3a46d3f63d33891d0",
+        "costs": {
+          "primary": 3,
+          "correction": 0,
+          "safety": 1
+        },
+        "slots": 4,
+        "maintenance": false,
+        "ever_executed": false,
+        "unwarranted_effect": false,
+        "historical_effect": null,
+        "remedies": [],
+        "challenges": [],
+        "unaddressed_challenges": [],
+        "unreversed_inactive_effect": false,
+        "external_authority": "NONE",
+        "external_actions": 0
+      },
+      "journal_digest": "b4a8da46ecd947f2765f9409579a6f285ae5ae3cf2dbe3736a6b94f372f70653",
+      "replay": {
+        "verified": true,
+        "events": 4,
+        "head": "bd0f0e80320ded87caf07c67aea44ef2414479c2330a44b3a46d3f63d33891d0",
+        "external_authority": "NONE",
+        "authenticity": "not established"
+      }
+    },
+    {
+      "trace": "exhaustion-correction",
+      "measures": {
+        "head": "9fb7d23d62e59bb9965f832371d63566ab9dd55569c09098fb6ce58b49a8bd94",
+        "costs": {
+          "primary": 3,
+          "correction": 2,
+          "safety": 2
+        },
+        "slots": 7,
+        "maintenance": false,
+        "ever_executed": true,
+        "unwarranted_effect": false,
+        "historical_effect": {
+          "at": 3,
+          "request": {
+            "operation": "set-maintenance",
+            "target": "service-A",
+            "before": false,
+            "after": true
+          },
+          "warrant": "5d5dead7dda25b5d7fd7b7819327bcaed9672e8a403204f681521fc7d30a88cf",
+          "synthetic_only": true
+        },
+        "remedies": [
+          {
+            "at": 6,
+            "effect_at": 3,
+            "reason": "Restore the prior fictional maintenance state, retaining costs and dissent.",
+            "observed_maintenance": false
+          }
+        ],
+        "challenges": [
+          {
+            "id": "challenge-1",
+            "actor": "affected",
+            "account": "Report the adverse consequence after the ordinary budget is exhausted.",
+            "at": 4
+          }
+        ],
+        "unaddressed_challenges": [
+          "challenge-1"
+        ],
+        "unreversed_inactive_effect": false,
+        "external_authority": "NONE",
+        "external_actions": 0
+      },
+      "journal_digest": "acc861e29cba150e977a6819688e35707b922e0026c88972bc9e8b5af53698d1",
+      "replay": {
+        "verified": true,
+        "events": 7,
+        "head": "9fb7d23d62e59bb9965f832371d63566ab9dd55569c09098fb6ce58b49a8bd94",
+        "external_authority": "NONE",
+        "authenticity": "not established"
+      }
+    },
+    {
+      "trace": "unavailable-remedy",
+      "measures": {
+        "head": "2d4610dda15715efb083865f7b7f8b066ace97e5ae67c3ebcf806c81488ab177",
+        "costs": {
+          "primary": 3,
+          "correction": 2,
+          "safety": 2
+        },
+        "slots": 7,
+        "maintenance": true,
+        "ever_executed": true,
+        "unwarranted_effect": false,
+        "historical_effect": {
+          "at": 3,
+          "request": {
+            "operation": "set-maintenance",
+            "target": "service-A",
+            "before": false,
+            "after": true
+          },
+          "warrant": "5d5dead7dda25b5d7fd7b7819327bcaed9672e8a403204f681521fc7d30a88cf",
+          "synthetic_only": true
+        },
+        "remedies": [],
+        "challenges": [
+          {
+            "id": "challenge-1",
+            "actor": "affected",
+            "account": "Report the adverse consequence after the ordinary budget is exhausted.",
+            "at": 4
+          }
+        ],
+        "unaddressed_challenges": [
+          "challenge-1"
+        ],
+        "unreversed_inactive_effect": true,
+        "external_authority": "NONE",
+        "external_actions": 0
+      },
+      "journal_digest": "ae361bdb3acfd87c449b110aa24253ec8a3b7c30ff0c827ba41a833935869577",
+      "replay": {
+        "verified": true,
+        "events": 7,
+        "head": "2d4610dda15715efb083865f7b7f8b066ace97e5ae67c3ebcf806c81488ab177",
+        "external_authority": "NONE",
+        "authenticity": "not established"
+      }
+    },
+    {
+      "trace": "false-but-complete-host",
+      "measures": {
+        "head": "d1eb34b8596ab21b3351b41d0eea6e426826244812a1e5fde0497182b0e97c69",
+        "costs": {
+          "primary": 3,
+          "correction": 0,
+          "safety": 0
+        },
+        "slots": 3,
+        "maintenance": true,
+        "ever_executed": true,
+        "unwarranted_effect": true,
+        "historical_effect": {
+          "at": 3,
+          "request": {
+            "operation": "set-maintenance",
+            "target": "service-A",
+            "before": false,
+            "after": true
+          },
+          "warrant": "5d5dead7dda25b5d7fd7b7819327bcaed9672e8a403204f681521fc7d30a88cf",
+          "synthetic_only": true
+        },
+        "remedies": [],
+        "challenges": [],
+        "unaddressed_challenges": [],
+        "unreversed_inactive_effect": false,
+        "external_authority": "NONE",
+        "external_actions": 0
+      },
+      "journal_digest": "1c3a7a541e90fbcad1b5749edafa35b56a3da7d075321c2efded91cf372bed9e",
+      "replay": {
+        "verified": true,
+        "events": 3,
+        "head": "d1eb34b8596ab21b3351b41d0eea6e426826244812a1e5fde0497182b0e97c69",
+        "external_authority": "NONE",
+        "authenticity": "not established"
+      }
+    }
+  ],
+  "language": {
+    "same-position-different-tone": {
+      "finding": "same-curated-position",
+      "gaps": [],
+      "underlying_origin_groups": 2,
+      "analyst_is_separate": true,
+      "source_digests": [
+        "939df70ab3b98835652468c10be1d0e58d7ec3f1bb7585bfc1b76fa8c70c43b7",
+        "8410e023fd5435ac27ee3a6845c203ad8efbb622fe61ee8d035a19224d460cf5",
+        "8a96def880c16399dc1b404106b9e4fb0dbd9251e57c54cf33605271c034a895"
+      ],
+      "intent": "not-established",
+      "deception": "not-established",
+      "authority_granted": false,
+      "limit": "Exact supplied labels are compared; no source authentication or semantic contradiction detection."
+    },
+    "reported-excerpt": {
+      "finding": "comparison-gaps",
+      "gaps": [
+        "underlying-record-not-reviewed"
+      ],
+      "underlying_origin_groups": 2,
+      "analyst_is_separate": true,
+      "source_digests": [
+        "939df70ab3b98835652468c10be1d0e58d7ec3f1bb7585bfc1b76fa8c70c43b7",
+        "f34b2b4f44f219225bc92309147b0eac072e2e821aff39b556292263ad11cced",
+        "8a96def880c16399dc1b404106b9e4fb0dbd9251e57c54cf33605271c034a895"
+      ],
+      "intent": "not-established",
+      "deception": "not-established",
+      "authority_granted": false,
+      "limit": "Exact supplied labels are compared; no source authentication or semantic contradiction detection."
+    },
+    "proposal-not-execution": {
+      "finding": "comparison-gaps",
+      "gaps": [
+        "different-stage"
+      ],
+      "underlying_origin_groups": 2,
+      "analyst_is_separate": true,
+      "source_digests": [
+        "939df70ab3b98835652468c10be1d0e58d7ec3f1bb7585bfc1b76fa8c70c43b7",
+        "498842ae6f905c7c27870a9b4cd942f3f892fdaace8530de8559e33bd3f6ea6d",
+        "8a96def880c16399dc1b404106b9e4fb0dbd9251e57c54cf33605271c034a895"
+      ],
+      "intent": "not-established",
+      "deception": "not-established",
+      "authority_granted": false,
+      "limit": "Exact supplied labels are compared; no source authentication or semantic contradiction detection."
+    },
+    "acceptance-not-legal-authority": {
+      "finding": "comparison-gaps",
+      "gaps": [
+        "different-legitimacy"
+      ],
+      "underlying_origin_groups": 2,
+      "analyst_is_separate": true,
+      "source_digests": [
+        "939df70ab3b98835652468c10be1d0e58d7ec3f1bb7585bfc1b76fa8c70c43b7",
+        "fa0ff2a4f028a1521aededb5f74016d131d12307a8843337c16839eeb0ec185d",
+        "8a96def880c16399dc1b404106b9e4fb0dbd9251e57c54cf33605271c034a895"
+      ],
+      "intent": "not-established",
+      "deception": "not-established",
+      "authority_granted": false,
+      "limit": "Exact supplied labels are compared; no source authentication or semantic contradiction detection."
+    },
+    "different-condition": {
+      "finding": "comparison-gaps",
+      "gaps": [
+        "different-condition"
+      ],
+      "underlying_origin_groups": 2,
+      "analyst_is_separate": true,
+      "source_digests": [
+        "939df70ab3b98835652468c10be1d0e58d7ec3f1bb7585bfc1b76fa8c70c43b7",
+        "db0f312ae04c7b81bc8fc6711c4a099661dc6b7b729b7c35afb1907699058452",
+        "8a96def880c16399dc1b404106b9e4fb0dbd9251e57c54cf33605271c034a895"
+      ],
+      "intent": "not-established",
+      "deception": "not-established",
+      "authority_granted": false,
+      "limit": "Exact supplied labels are compared; no source authentication or semantic contradiction detection."
+    },
+    "different-actor": {
+      "finding": "comparison-gaps",
+      "gaps": [
+        "different-actor"
+      ],
+      "underlying_origin_groups": 2,
+      "analyst_is_separate": true,
+      "source_digests": [
+        "939df70ab3b98835652468c10be1d0e58d7ec3f1bb7585bfc1b76fa8c70c43b7",
+        "ca0b1832f896c238817a438b7b279c8c466cab278013506c3d593932cdc4a247",
+        "8a96def880c16399dc1b404106b9e4fb0dbd9251e57c54cf33605271c034a895"
+      ],
+      "intent": "not-established",
+      "deception": "not-established",
+      "authority_granted": false,
+      "limit": "Exact supplied labels are compared; no source authentication or semantic contradiction detection."
+    },
+    "different-period": {
+      "finding": "comparison-gaps",
+      "gaps": [
+        "different-event_at"
+      ],
+      "underlying_origin_groups": 2,
+      "analyst_is_separate": true,
+      "source_digests": [
+        "939df70ab3b98835652468c10be1d0e58d7ec3f1bb7585bfc1b76fa8c70c43b7",
+        "e65efe2a285dd4850916d28969a74e0b6f75610681cf1421efbb45c9798b41d1",
+        "8a96def880c16399dc1b404106b9e4fb0dbd9251e57c54cf33605271c034a895"
+      ],
+      "intent": "not-established",
+      "deception": "not-established",
+      "authority_granted": false,
+      "limit": "Exact supplied labels are compared; no source authentication or semantic contradiction detection."
+    },
+    "curated-difference": {
+      "finding": "curated-position-difference",
+      "gaps": [],
+      "underlying_origin_groups": 2,
+      "analyst_is_separate": true,
+      "source_digests": [
+        "939df70ab3b98835652468c10be1d0e58d7ec3f1bb7585bfc1b76fa8c70c43b7",
+        "b1abc9666d9ef3da1df0fa7f61e4924100e016063b9775094f8fe49a771b3cd4",
+        "8a96def880c16399dc1b404106b9e4fb0dbd9251e57c54cf33605271c034a895"
+      ],
+      "intent": "not-established",
+      "deception": "not-established",
+      "authority_granted": false,
+      "limit": "Exact supplied labels are compared; no source authentication or semantic contradiction detection."
+    },
+    "repeated-origin": {
+      "finding": "same-curated-position",
+      "gaps": [],
+      "underlying_origin_groups": 1,
+      "analyst_is_separate": true,
+      "source_digests": [
+        "939df70ab3b98835652468c10be1d0e58d7ec3f1bb7585bfc1b76fa8c70c43b7",
+        "e123e9162fe6c1ec271faca3d08a1f7a762a77ac6d6438748d6fa0ee28486723",
+        "8a96def880c16399dc1b404106b9e4fb0dbd9251e57c54cf33605271c034a895"
+      ],
+      "intent": "not-established",
+      "deception": "not-established",
+      "authority_granted": false,
+      "limit": "Exact supplied labels are compared; no source authentication or semantic contradiction detection."
+    },
+    "analyst-overstatement": {
+      "finding": "same-curated-position",
+      "gaps": [],
+      "underlying_origin_groups": 2,
+      "analyst_is_separate": true,
+      "source_digests": [
+        "939df70ab3b98835652468c10be1d0e58d7ec3f1bb7585bfc1b76fa8c70c43b7",
+        "3b006aac7849723f09c455461fcbce1feb31aa5336aaf9c0a9c3995e04abdec1",
+        "b5dae6fd6d2cb5f28093b4cffd0faff8bd0307542b22bd687b082fcb1f6e2af3"
+      ],
+      "intent": "not-established",
+      "deception": "not-established",
+      "authority_granted": false,
+      "limit": "Exact supplied labels are compared; no source authentication or semantic contradiction detection."
+    }
+  },
+  "model_calls": 0,
+  "external_actions": 0,
+  "limits": [
+    "Host identities, source labels, mandates and representation are not authenticated.",
+    "Complete but false host input can produce an unwarranted simulated effect.",
+    "Reason text is preserved but not semantically evaluated.",
+    "No population accuracy, institutional advantage or real legal authority is demonstrated."
+  ]
+}

@@ -1,0 +1,485 @@
+{
+  "base_commit": "fd07a4ad381e4b0553c23bd27388b3d63da14be6",
+  "claims": [
+    "Procedural guards execute as specified.",
+    "Additional process can cause delay.",
+    "Procedural approval does not establish factual correctness."
+  ],
+  "design": "P1.1",
+  "model_calls": 0,
+  "runs": [
+    {
+      "actions": {
+        "execute": 1,
+        "propose": 1,
+        "request-review": 1,
+        "wait": 5
+      },
+      "budget": {
+        "attempts": 8,
+        "inspections": 48,
+        "observations": 2
+      },
+      "journal_digest": "a4b9498d4b811b0abad0e13dc0da9fac3219fffa08757364ab8f71676d0810dc",
+      "measures": {
+        "attempts": 8,
+        "decision_slots": 8,
+        "environment_ticks": 8,
+        "inspections": 9,
+        "observation_grants": 0,
+        "observation_inspections": 0,
+        "outputs": [
+          {
+            "answer": {
+              "status": "defined",
+              "value": {
+                "denominator": 1,
+                "numerator": 15
+              }
+            },
+            "completed": 3,
+            "method": "quality-stream"
+          }
+        ],
+        "outstanding": [],
+        "peer_arrivals": 2,
+        "peer_historical_misses": 0,
+        "peer_inspections": 6,
+        "peer_on_time": 2,
+        "primary_correct": true,
+        "primary_historical_misses": 0,
+        "primary_inspections": 3,
+        "primary_on_time": true,
+        "refusals": 0,
+        "repair_latency": []
+      },
+      "replay": {
+        "events": 8,
+        "head": "6ea13e28daac8c2af23044e961e82d4da56299cee565c6cbba55624c2dea4049",
+        "verified": true
+      },
+      "trace": "d1-control"
+    },
+    {
+      "actions": {
+        "execute": 1,
+        "propose": 1,
+        "respond": 2,
+        "rule": 1,
+        "serve": 1,
+        "wait": 2
+      },
+      "budget": {
+        "attempts": 8,
+        "inspections": 48,
+        "observations": 2
+      },
+      "journal_digest": "75263cca9236a2bb047818cb8a917f05e1e56515a790633832b1834af4be0158",
+      "measures": {
+        "attempts": 8,
+        "decision_slots": 8,
+        "environment_ticks": 8,
+        "inspections": 9,
+        "observation_grants": 0,
+        "observation_inspections": 0,
+        "outputs": [
+          {
+            "answer": {
+              "status": "defined",
+              "value": {
+                "denominator": 1,
+                "numerator": 15
+              }
+            },
+            "completed": 6,
+            "method": "quality-stream"
+          }
+        ],
+        "outstanding": [],
+        "peer_arrivals": 2,
+        "peer_historical_misses": 0,
+        "peer_inspections": 6,
+        "peer_on_time": 2,
+        "primary_correct": true,
+        "primary_historical_misses": 1,
+        "primary_inspections": 3,
+        "primary_on_time": false,
+        "refusals": 0,
+        "repair_latency": []
+      },
+      "replay": {
+        "events": 8,
+        "head": "59a343ced623fcc3fb71a4c1195eac162531a0f847cc03133a4094a4d3d02629",
+        "verified": true
+      },
+      "trace": "noticed-review"
+    },
+    {
+      "actions": {
+        "execute": 1,
+        "propose": 1,
+        "respond": 2,
+        "rule": 1,
+        "serve": 1,
+        "wait": 2
+      },
+      "budget": {
+        "attempts": 8,
+        "inspections": 48,
+        "observations": 2
+      },
+      "journal_digest": "c003816755b64e41e6943093dc6d68ace27a9ad2da7c1f9bc647b12c709d3e73",
+      "measures": {
+        "attempts": 8,
+        "decision_slots": 8,
+        "environment_ticks": 8,
+        "inspections": 9,
+        "observation_grants": 0,
+        "observation_inspections": 0,
+        "outputs": [
+          {
+            "answer": {
+              "status": "defined",
+              "value": {
+                "denominator": 1,
+                "numerator": 10
+              }
+            },
+            "completed": 6,
+            "method": "zero-fill"
+          }
+        ],
+        "outstanding": [
+          {
+            "kind": "primary",
+            "pending_work": null
+          }
+        ],
+        "peer_arrivals": 2,
+        "peer_historical_misses": 0,
+        "peer_inspections": 6,
+        "peer_on_time": 2,
+        "primary_correct": false,
+        "primary_historical_misses": 1,
+        "primary_inspections": 3,
+        "primary_on_time": false,
+        "refusals": 0,
+        "repair_latency": [
+          {
+            "failed_at": 6,
+            "latency": null,
+            "repaired_at": null
+          }
+        ]
+      },
+      "replay": {
+        "events": 8,
+        "head": "2b2b597036ad67bf51bdb8d89245def43e9259093dcd06e307b12a9520043a4a",
+        "verified": true
+      },
+      "trace": "procedural-but-wrong"
+    },
+    {
+      "actions": {
+        "closeout": 1,
+        "execute": 1,
+        "object": 1,
+        "propose": 1,
+        "respond": 2,
+        "rule": 1,
+        "serve": 1
+      },
+      "budget": {
+        "attempts": 8,
+        "inspections": 48,
+        "observations": 2
+      },
+      "journal_digest": "855cf9cb98e8d89306f03e0d6e89cbbe8781a0cd60955ebdb872b50cbdd08390",
+      "measures": {
+        "attempts": 8,
+        "decision_slots": 8,
+        "environment_ticks": 8,
+        "inspections": 6,
+        "observation_grants": 0,
+        "observation_inspections": 0,
+        "outputs": [],
+        "outstanding": [
+          {
+            "kind": "primary",
+            "pending_work": null
+          }
+        ],
+        "peer_arrivals": 2,
+        "peer_historical_misses": 0,
+        "peer_inspections": 6,
+        "peer_on_time": 2,
+        "primary_correct": false,
+        "primary_historical_misses": 1,
+        "primary_inspections": 0,
+        "primary_on_time": false,
+        "refusals": 1,
+        "repair_latency": []
+      },
+      "replay": {
+        "events": 8,
+        "head": "1ca2aadeee8950032422d88724bf32326bf44891ebc19ba3a023ad85c2bc6fe8",
+        "verified": true
+      },
+      "trace": "contested-denial"
+    },
+    {
+      "actions": {
+        "execute": 1,
+        "propose": 1,
+        "respond": 2,
+        "rule": 2,
+        "serve": 2,
+        "submit-record": 1,
+        "wait": 3
+      },
+      "budget": {
+        "attempts": 12,
+        "inspections": 48,
+        "observations": 2
+      },
+      "journal_digest": "cb14ff138306e515d88e2b50d68a0cf58ab9c967caad711e53b5bb70c968e2ed",
+      "measures": {
+        "attempts": 12,
+        "decision_slots": 12,
+        "environment_ticks": 12,
+        "inspections": 9,
+        "observation_grants": 0,
+        "observation_inspections": 0,
+        "outputs": [
+          {
+            "answer": {
+              "status": "defined",
+              "value": {
+                "denominator": 1,
+                "numerator": 15
+              }
+            },
+            "completed": 10,
+            "method": "quality-stream"
+          }
+        ],
+        "outstanding": [],
+        "peer_arrivals": 2,
+        "peer_historical_misses": 0,
+        "peer_inspections": 6,
+        "peer_on_time": 2,
+        "primary_correct": true,
+        "primary_historical_misses": 1,
+        "primary_inspections": 3,
+        "primary_on_time": false,
+        "refusals": 1,
+        "repair_latency": []
+      },
+      "replay": {
+        "events": 12,
+        "head": "306bb1c3408d5f786fa898cb3c7f6ee5093bd69ed9336be3d8c8d28a1672dce9",
+        "verified": true
+      },
+      "trace": "stale-packet"
+    },
+    {
+      "actions": {
+        "amend": 1,
+        "appeal": 2,
+        "execute": 2,
+        "lift-stay": 1,
+        "propose": 1,
+        "resolve-appeal": 1,
+        "respond": 4,
+        "respond-appeal": 2,
+        "rule": 2,
+        "serve": 2,
+        "serve-appeal": 1,
+        "stay": 1,
+        "wait": 4
+      },
+      "budget": {
+        "attempts": 24,
+        "inspections": 48,
+        "observations": 2
+      },
+      "journal_digest": "b75e6beade5c2198e02bf650586e10c96b941ff6379806b2cd7de474ac404bd8",
+      "measures": {
+        "attempts": 24,
+        "decision_slots": 24,
+        "environment_ticks": 24,
+        "inspections": 9,
+        "observation_grants": 0,
+        "observation_inspections": 0,
+        "outputs": [
+          {
+            "answer": {
+              "status": "defined",
+              "value": {
+                "denominator": 1,
+                "numerator": 15
+              }
+            },
+            "completed": 20,
+            "method": "quality-stream"
+          }
+        ],
+        "outstanding": [],
+        "peer_arrivals": 2,
+        "peer_historical_misses": 0,
+        "peer_inspections": 6,
+        "peer_on_time": 2,
+        "primary_correct": true,
+        "primary_historical_misses": 1,
+        "primary_inspections": 3,
+        "primary_on_time": false,
+        "refusals": 1,
+        "repair_latency": []
+      },
+      "replay": {
+        "events": 24,
+        "head": "3666a88ae92f4ffad71607df0503237de87893c222476f50b1f850ac5b630cab",
+        "verified": true
+      },
+      "trace": "appeal-remand"
+    },
+    {
+      "actions": {
+        "appeal": 1,
+        "closeout": 1,
+        "propose": 1,
+        "respond": 2,
+        "rule": 1,
+        "serve": 1,
+        "stay": 1
+      },
+      "budget": {
+        "attempts": 8,
+        "inspections": 48,
+        "observations": 2
+      },
+      "journal_digest": "a180e7c931c75f5ebc176d332c128057bab3cfbff61b1c7ef41333b8ec7182b6",
+      "measures": {
+        "attempts": 8,
+        "decision_slots": 8,
+        "environment_ticks": 8,
+        "inspections": 6,
+        "observation_grants": 0,
+        "observation_inspections": 0,
+        "outputs": [],
+        "outstanding": [
+          {
+            "kind": "primary",
+            "pending_work": null
+          },
+          {
+            "kind": "execution",
+            "proposal": 1
+          },
+          {
+            "id": "appeal-6",
+            "kind": "appeal",
+            "notice_required": true,
+            "petitions": [
+              "petition-6"
+            ],
+            "proposal": 1,
+            "remaining_attempts": 0,
+            "respond_by": null,
+            "revision": 1
+          },
+          {
+            "kind": "stay",
+            "proposal": 1
+          }
+        ],
+        "peer_arrivals": 2,
+        "peer_historical_misses": 0,
+        "peer_inspections": 6,
+        "peer_on_time": 2,
+        "primary_correct": false,
+        "primary_historical_misses": 1,
+        "primary_inspections": 0,
+        "primary_on_time": false,
+        "refusals": 0,
+        "repair_latency": []
+      },
+      "replay": {
+        "events": 8,
+        "head": "29138a1d1001216f8bedf84f4dbcaebda4e62fb01a6be7f56f5e340f4acba9a0",
+        "verified": true
+      },
+      "trace": "terminal-appeal"
+    },
+    {
+      "actions": {
+        "correct-record": 1,
+        "execute": 1,
+        "propose": 1,
+        "respond": 2,
+        "rule": 1,
+        "serve": 1,
+        "wait": 1
+      },
+      "budget": {
+        "attempts": 8,
+        "inspections": 48,
+        "observations": 2
+      },
+      "journal_digest": "9f4cf62194c1997d2c5903e4657620381f0096901956535b87d5f890b58c6272",
+      "measures": {
+        "attempts": 8,
+        "decision_slots": 8,
+        "environment_ticks": 8,
+        "inspections": 9,
+        "observation_grants": 0,
+        "observation_inspections": 0,
+        "outputs": [
+          {
+            "answer": {
+              "status": "defined",
+              "value": {
+                "denominator": 1,
+                "numerator": 15
+              }
+            },
+            "completed": 7,
+            "method": "quality-stream"
+          }
+        ],
+        "outstanding": [],
+        "peer_arrivals": 2,
+        "peer_historical_misses": 0,
+        "peer_inspections": 6,
+        "peer_on_time": 2,
+        "primary_correct": true,
+        "primary_historical_misses": 1,
+        "primary_inspections": 3,
+        "primary_on_time": false,
+        "refusals": 0,
+        "repair_latency": []
+      },
+      "replay": {
+        "events": 8,
+        "head": "29eb055f76629ffca5e1bc4b0886e91848ba0c57eafd57bab05e4eafeaaf2e58",
+        "verified": true
+      },
+      "trace": "correction"
+    }
+  ],
+  "source_digests": {
+    "__init__.py": "694b57cac4f38b3f5742a34b216a9c70e3d99909a7c6d02311405aa76990041b",
+    "__main__.py": "1c9a640ab02c656a7dedfdc894b3429a708b608a251cd958071c69cd6ba6e34e",
+    "engine.py": "21a0bc9e9615fd50f1828aa479d65812ca38fac4f93a4bbd9aa9993dc1effa0b",
+    "experiment.py": "d55d9883302861f0fc82f159a245e4b0b1f1ea91b285d42cb15cffbbe68e9738",
+    "legacy_p1.py": "1af04315ac8a05a036f591ab2d4863eee6f07f610728410d0acc74cd2d31a8c7"
+  },
+  "status": "EXPOSED_PROCEDURAL_REGRESSIONS",
+  "unsupported": [
+    "Institutional efficacy",
+    "Legal compliance",
+    "Independent held-out evidence",
+    "Adaptive intelligence"
+  ],
+  "version": "procedure-1.1.0"
+}

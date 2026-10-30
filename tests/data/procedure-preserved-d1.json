@@ -1,0 +1,11 @@
+{
+  "commonwealth/study_v1/__init__.py": "f61a5ae6e77ff13276713824ca182c31198a153e4d7ee4be548cb60e81d59b80",
+  "commonwealth/study_v1/__main__.py": "7b02f4f624e8bfc213285cc740a6ec4484844370695106b0e8834ec16d7b2e6d",
+  "commonwealth/study_v1/contracts.py": "d343b44b741dc2e4c175e1268a590c50821460faf92b4ef86920cb4e2a4ec526",
+  "commonwealth/study_v1/engine.py": "8a7f126c7304b0b6a07319f6d985a09c066e4cf6f620ed8954a405eefca9c675",
+  "commonwealth/study_v1/experiment.py": "9e15184b5d55622e60236a9b7abc67d2eeebaa840f56929f7d00f2728af2ac5e",
+  "commonwealth/study_v1/fixtures.py": "f24120cff3309562b81b6ea5b03244ca3e99cc3b501b0a70a49fe717ecdab854",
+  "commonwealth/study_v1/methods.py": "614ffcd6e07cfa132e0374685da227043bf46f01484e24d091ee6de48ae0ccb3",
+  "commonwealth/study_v1/policies.py": "5c676376745ff46614e7d1f7be2b9ea3a025a7df37c0fc3328c244451b692725",
+  "examples/study-v1-summary.json": "6c5b71af565e7eda906cfa9cb9b6218659de3d597d6a23f8b9edecd095c172b3"
+}
