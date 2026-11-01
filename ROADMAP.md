@@ -1,5 +1,13 @@
 # Roadmap
 
+## C2 client-only artifact: separately verified packaging boundary
+
+[C2](docs/CLIENT_ONLY_V2.md) removes keeper/evaluator/fixture dependencies from a
+separately built participant wheel, with isolated installed-client checks. C1
+and prior implementations remain frozen. This is artifact separation, not OS
+isolation or secrecy for public cases. Independently controlled evidence and
+fixed-protocol evaluation remain open gates.
+
 ## C1 durable participant recovery: implemented separately
 
 [C1](docs/CLIENT_OUTBOX_V1.md) retains immutable participant intent across restart,

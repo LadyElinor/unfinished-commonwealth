@@ -93,7 +93,8 @@ def main():
                          "commonwealth/participant_v1_1/store.py", "commonwealth/participant_v1_1/demo.py",
                          "tests/test_participant_v1_1.py", "docs/PARTICIPANT_V1_1.md",
                          "commonwealth/client_outbox_v1/store.py", "docs/CLIENT_OUTBOX_V1.md",
-                         "tests/test_client_outbox_v1.py"):
+                         "tests/test_client_outbox_v1.py", "scripts/package_client.py",
+                         "client_dist/pyproject.toml", "client_dist/src/commonwealth_client_v2/store.py"):
             if not (source / relative).is_file():
                 raise RuntimeError(f"Source archive omitted {relative}")
         # Run the same checks on what downstream source users actually receive.
@@ -217,6 +218,8 @@ def main():
         readiness = json.loads(run([str(command), "readiness"], smoke, expected=2))
         if readiness["deployment_ready"] is not False:
             raise RuntimeError("Research-only readiness boundary changed")
+        client_only = json.loads(run([sys.executable, "scripts/package_client.py",
+            str(output / "client-only")], source))
         result = {
             "source_archive": sources[0].name, "wheel": wheels[0].name,
             "source_checks": "PASSED", "clean_install": "PASSED",
@@ -235,6 +238,7 @@ def main():
             "participant_loopback": participant,
             "participant_v11_clock_and_loopback": participant_v11,
             "client_outbox_recovery": client_outbox,
+            "client_only_artifact": client_only,
             "readiness_exit": 2, "model_calls": 0,
             "scope": "LOCAL_RESEARCH_ONLY",
         }

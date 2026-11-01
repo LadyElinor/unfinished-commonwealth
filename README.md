@@ -238,3 +238,11 @@ adapter, legal validity finding or claim of independent evaluation.
 Contributions can add a failing case, an affected participant's account, a repair, or a competing interpretation. Each should say what evidence could change its conclusion. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Licensed under the [MIT License](LICENSE). External references and the full manuscript are not bundled or relicensed by this repository.
+
+### Standalone participant artifact (C2)
+
+Use the separately built [C2 client-only distribution](docs/CLIENT_ONLY_V2.md)
+when a participant installation must omit keeper, evaluator and fixture code.
+It retains explicit C1 recovery semantics with a separate local outbox version;
+existing C1 databases are not silently migrated. Artifact separation does not
+make public references secret or establish OS isolation.
