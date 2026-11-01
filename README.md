@@ -42,6 +42,14 @@ In the original workshop, reflection consumes a command but no simulated time.
 scenarios cannot demonstrate adaptive method selection. The separate study
 harness below uses contrasting contracts and a decision clock.
 
+## Durable participant recovery (C1)
+
+[The C1 client outbox](docs/CLIENT_OUTBOX_V1.md) preserves one immutable intent
+before sending, validates receipts, and recovers through explicit exact-byte
+retries. Unknown responses remain unresolved. It binds the original capability
+and workshop instance, without storing the bearer or creating new authority.
+Lookup alone does not bind request bytes; a trusted host and B1.1 remain required.
+
 ## Corrected participant clock handling (B1.1)
 
 New participant hosts should use [B1.1 and its explicit migration guide](docs/PARTICIPANT_V1_1.md).

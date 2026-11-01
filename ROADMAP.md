@@ -1,5 +1,17 @@
 # Roadmap
 
+## C1 durable participant recovery: implemented separately
+
+[C1](docs/CLIENT_OUTBOX_V1.md) retains immutable participant intent across restart,
+validates receipt semantics and recovers only with the original capability and
+exact request bytes. Missing/malformed/expired outcomes remain unresolved.
+The existing B1.1 host is required; historical B1/B1.1/U1 code stays frozen.
+C1 does not provide independent host attestation, hidden evaluation references,
+operator-independent participants or a production durable queue. Next research
+gates remain separately controlled evidence and fixed-protocol evaluation, not
+more authored cases presented as held-out performance.
+
+
 ## U1 Linux isolation observation: separate opt-in gate
 
 [U1](docs/UID_ISOLATION.md) implements the next B1 gate as an explicit temporary

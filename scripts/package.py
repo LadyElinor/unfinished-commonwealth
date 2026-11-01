@@ -91,7 +91,9 @@ def main():
                          "docs/UID_ISOLATION.md", "docs/UID_ISOLATION_DESIGN.md",
                          "tests/test_uid_isolation.py", "tests/data/uid-isolation-preserved-baseline.json",
                          "commonwealth/participant_v1_1/store.py", "commonwealth/participant_v1_1/demo.py",
-                         "tests/test_participant_v1_1.py", "docs/PARTICIPANT_V1_1.md"):
+                         "tests/test_participant_v1_1.py", "docs/PARTICIPANT_V1_1.md",
+                         "commonwealth/client_outbox_v1/store.py", "docs/CLIENT_OUTBOX_V1.md",
+                         "tests/test_client_outbox_v1.py"):
             if not (source / relative).is_file():
                 raise RuntimeError(f"Source archive omitted {relative}")
         # Run the same checks on what downstream source users actually receive.
@@ -208,6 +210,10 @@ def main():
                 or participant_v11["restart_rollback_refused"] is not True
                 or participant_v11["attempts"] != 1):
             raise RuntimeError("Installed corrected participant clock gate failed")
+        client_outbox = json.loads(run([str(executable), "-m", "commonwealth.client_outbox_v1", "demo"], smoke))
+        if (client_outbox["version"] != "client-outbox-1.0.0" or client_outbox["verified"] is not True
+                or client_outbox["exact_retry"] != "RECORDED" or client_outbox["server_attempts"] != 1):
+            raise RuntimeError("Installed durable client recovery gate failed")
         readiness = json.loads(run([str(command), "readiness"], smoke, expected=2))
         if readiness["deployment_ready"] is not False:
             raise RuntimeError("Research-only readiness boundary changed")
@@ -228,6 +234,7 @@ def main():
             "authority_packet_review": authority_review, "authority_language": language,
             "participant_loopback": participant,
             "participant_v11_clock_and_loopback": participant_v11,
+            "client_outbox_recovery": client_outbox,
             "readiness_exit": 2, "model_calls": 0,
             "scope": "LOCAL_RESEARCH_ONLY",
         }
