@@ -112,7 +112,8 @@ def _copy(source, destination, *, restore, clock, timeout):
         if time.monotonic() >= deadline:
             raise TimeoutError('copy verification deadline exceeded')
         # SQLite handles are closed; synchronize bytes before atomic publication.
-        with staging.open('rb') as handle:
+        # Windows _commit requires a writable descriptor even with no pending writes.
+        with staging.open('r+b') as handle:
             os.fsync(handle.fileno())
         # No replace/rename: concurrent existing destinations must be preserved.
         os.link(staging, destination)

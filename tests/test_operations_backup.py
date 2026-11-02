@@ -131,6 +131,19 @@ class BackupTests(unittest.TestCase):
         self.assertFalse(self.destination.exists())
         self.assertEqual(list(self.root.glob('.commonwealth-copy-*')), [])
 
+    def test_staging_sync_uses_writable_descriptor_for_windows(self):
+        original = Path.open
+        observed = []
+        def checked(path, mode='r', *args, **kwargs):
+            if path.name.startswith('.commonwealth-copy-'):
+                observed.append(mode)
+                self.assertEqual(mode, 'r+b')
+            return original(path, mode, *args, **kwargs)
+        with patch.object(Path, 'open', checked):
+            backup_database(self.source, self.destination)
+        self.assertEqual(observed, ['r+b'])
+        self.assertTrue(inspect_database(self.destination)['verified'])
+
     def test_sync_failure_does_not_publish(self):
         with patch('commonwealth.operations_v1.backup.os.fsync', side_effect=OSError('injected')):
             with self.assertRaises(OSError):
