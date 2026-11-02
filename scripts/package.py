@@ -5,6 +5,9 @@ build dependencies from a network or overwrites an existing output directory.
 """
 
 import argparse
+import hashlib
+from importlib.metadata import version as distribution_version
+import platform
 import json
 import os
 from pathlib import Path
@@ -94,7 +97,9 @@ def main():
                          "tests/test_participant_v1_1.py", "docs/PARTICIPANT_V1_1.md",
                          "commonwealth/client_outbox_v1/store.py", "docs/CLIENT_OUTBOX_V1.md",
                          "tests/test_client_outbox_v1.py", "scripts/package_client.py",
-                         "client_dist/pyproject.toml", "client_dist/src/commonwealth_client_v2/store.py"):
+                         "client_dist/pyproject.toml", "client_dist/src/commonwealth_client_v2/store.py",
+                         "commonwealth/operations_v1/app.py", "commonwealth/operations_v1/backup.py",
+                         "docs/PRODUCTION_READINESS.md", "tests/test_operations_v1.py"):
             if not (source / relative).is_file():
                 raise RuntimeError(f"Source archive omitted {relative}")
         # Run the same checks on what downstream source users actually receive.
@@ -120,8 +125,8 @@ def main():
             "import json, commonwealth; from importlib.metadata import version; "
             "print(json.dumps({'module_version': commonwealth.__version__, "
             "'distribution_version': version('unfinished-commonwealth')}))"], smoke))
-        if installed["module_version"] != installed["distribution_version"]:
-            raise RuntimeError("Installed module and distribution versions disagree")
+        if installed["module_version"] != "0.1.3" or installed["distribution_version"] != "0.1.4rc1":
+            raise RuntimeError("Installed historical runtime or prerelease distribution version mismatch")
         fixtures = json.loads(run([str(command), "scenarios"], smoke))
         if set(fixtures) != {"missing", "signed", "flagged"}:
             raise RuntimeError("Installed package fixtures differ")
@@ -218,12 +223,22 @@ def main():
         readiness = json.loads(run([str(command), "readiness"], smoke, expected=2))
         if readiness["deployment_ready"] is not False:
             raise RuntimeError("Research-only readiness boundary changed")
+        operations = json.loads(run([str(executable), "-m", "commonwealth.operations_v1", "selfcheck"], smoke))
+        if operations["verified"] is not True or operations["production_ready"] is not False:
+            raise RuntimeError("Installed operational prerequisite boundary failed")
+        operational_readiness = json.loads(run([str(executable), "-m", "commonwealth.operations_v1", "readiness"], smoke, expected=2))
+        if operational_readiness["production_ready"] is not False or not operational_readiness["blockers"]:
+            raise RuntimeError("Operational release blockers disappeared")
         client_only = json.loads(run([sys.executable, "scripts/package_client.py",
             str(output / "client-only")], source))
         result = {
             "source_archive": sources[0].name, "wheel": wheels[0].name,
+            "artifact_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in (sources[0],wheels[0])},
+            "build_tools": {"python": platform.python_version(), "setuptools": distribution_version("setuptools"), "wheel": distribution_version("wheel")},
             "source_checks": "PASSED", "clean_install": "PASSED",
             "installed_version": installed["module_version"],
+            "distribution_version": installed["distribution_version"],
+            "operational_prerequisites": operations,
             "installed_entry_points": ["commonwealth", "python -m commonwealth"],
             "packaged_scenarios": sorted(fixtures), "demo_replay": replay,
             "comparison_runs": len(comparison["runs"]),

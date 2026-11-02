@@ -246,3 +246,12 @@ when a participant installation must omit keeper, evaluator and fixture code.
 It retains explicit C1 recovery semantics with a separate local outbox version;
 existing C1 databases are not silently migrated. Artifact separation does not
 make public references secret or establish OS isolation.
+
+### Operational prerequisite candidate (0.1.4rc1 / O1)
+
+The distribution now has an explicit prerelease version while the historical
+workshop runtime remains 0.1.3. [Production readiness](docs/PRODUCTION_READINESS.md)
+records strict local admission, a WSGI adapter and verified recovery tools.
+**Production remains blocked**: the real workflow, deployment gateway/access
+policy and operational acceptance have not been established. No deployment or
+package-index release is performed.

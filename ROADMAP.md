@@ -1,5 +1,13 @@
 # Roadmap
 
+## O1 operational prerequisites: production still blocked
+
+[Operational candidate](docs/PRODUCTION_READINESS.md) adds strict local
+configuration, read-only preflight, a gateway-independent WSGI adapter and
+verified backup/new-path restore with old capabilities revoked. The first real
+workflow and deployment acceptance remain unspecified; fixture-driven research
+cannot be relabelled production. No live deployment or access changes occur.
+
 ## C2 client-only artifact: separately verified packaging boundary
 
 [C2](docs/CLIENT_ONLY_V2.md) removes keeper/evaluator/fixture dependencies from a
