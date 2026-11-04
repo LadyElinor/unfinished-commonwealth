@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AP1 brief for an independently implemented decision process",
+  "type": "object",
+  "oneOf": [
+    {"$ref": "#/$defs/workshop"}, {"$ref": "#/$defs/research"}
+  ],
+  "$defs": {
+    "digest": {"type":"string","pattern":"^[0-9a-f]{64}$"},
+    "ref": {
+      "type":"object","additionalProperties":false,"required":["kind","checkpoint"],
+      "properties":{
+        "kind":{"const":"operator-supplied-checkpoint"},
+        "checkpoint":{
+          "type":"object","additionalProperties":false,"required":["registry","head","events"],
+          "properties":{"registry":{"$ref":"#/$defs/digest"},"head":{"$ref":"#/$defs/digest"},"events":{"type":"integer","minimum":0,"maximum":1024}}
+        }
+      }
+    },
+    "core": {
+      "type":"object","required":["profile","role","external_authority","brief_id"],
+      "properties":{"profile":{"const":"unfinished-commonwealth.agent-participation.v1"},"role":{"type":"string"},
+                    "external_authority":{"const":"NONE"},"brief_id":{"$ref":"#/$defs/digest"}}
+    },
+    "workshop":{
+      "allOf":[{"$ref":"#/$defs/core"}],"unevaluatedProperties":false,
+      "required":["instance","view_head","attempts_remaining","work","assembly_reference"],
+      "properties":{
+        "role":{"const":"workshop-proposer"},"instance":{"type":"string","pattern":"^[0-9a-f]{32}$"},
+        "view_head":{"$ref":"#/$defs/digest"},"attempts_remaining":{"type":"integer","minimum":0},
+        "assembly_reference":{"anyOf":[{"type":"null"},{"$ref":"#/$defs/ref"}]},
+        "work":{"type":"object","additionalProperties":false,
+          "required":["worker","generation","revision","scenario","contract","data","methods","peer_queue_length","recent_observations","testimony_data","counterstory_data","lessons","successor_observation_required","halted"],
+          "properties":{"worker":{"type":"string"},"generation":{"type":"integer"},"revision":{"type":"integer"},"scenario":{"type":"string"},"contract":{"type":"string"},"data":{"type":"object"},"methods":{"type":"object","minProperties":1},"peer_queue_length":{"type":"integer"},"recent_observations":{"type":"array"},"testimony_data":{"type":"object"},"counterstory_data":{"type":"array"},"lessons":{"type":"object"},"successor_observation_required":{"type":"boolean"},"halted":{"type":"boolean"}}
+        }
+      }
+    },
+    "research":{
+      "allOf":[{"$ref":"#/$defs/core"}],"unevaluatedProperties":false,
+      "required":["actor","job","assembly_reference","question","source_draft","draft_digest","due","terms","choices"],
+      "properties":{"role":{"const":"assembly-researcher"},"actor":{"type":"string"},"job":{"type":"string"},
+        "assembly_reference":{"$ref":"#/$defs/ref"},"question":{"type":"string"},"source_draft":{"type":"object"},
+        "draft_digest":{"$ref":"#/$defs/digest"},"due":{"type":"integer"},"terms":{"type":["string","null"]},
+        "choices":{"type":"array","minItems":1,"uniqueItems":true,"items":{"enum":["offer","deliver","decline"]}}
+      }
+    }
+  }
+}

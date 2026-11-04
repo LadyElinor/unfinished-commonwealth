@@ -1,0 +1,762 @@
+{
+  "registry": {
+    "protocol": "warranted-docket-0.2",
+    "instance": "e089f4c2e85145f4ba28c34dcf053985",
+    "polities": [
+      "Estuary",
+      "Upland"
+    ],
+    "members": [
+      "Estuary"
+    ],
+    "powers": {
+      "water-procurement": [
+        "ordinary",
+        "appropriation"
+      ],
+      "water-research": [
+        "ordinary",
+        "appropriation"
+      ]
+    },
+    "people": {
+      "C1": {
+        "role": "commons",
+        "controller": "C1",
+        "key": "eece10bf5dfbd18d9041a89380f91aedc55b0cbd4632fdf2e58bea116c77b200"
+      },
+      "C2": {
+        "role": "commons",
+        "controller": "C2",
+        "key": "f5cb5e1e270aa34a3d96aa778365a63a10cdc470e2d183a40196d2b7fdcac593"
+      },
+      "C3": {
+        "role": "commons",
+        "controller": "C3",
+        "key": "2512b2ee51bfe48eb51ff9117dce54f9bb58a7b03510bcf704ff1885f700ad0f"
+      },
+      "D1": {
+        "role": "duration",
+        "controller": "D1",
+        "key": "5edaed79da23d0bb50f859e92db4eb712fd39fa5215588b2da8d3bcf85ecdbac"
+      },
+      "D2": {
+        "role": "duration",
+        "controller": "D2",
+        "key": "f1ed919b4ffe2ada5d4f5a28bcbd41af2f8d9746cdcbfcd6f380f7cfaaf827b3"
+      },
+      "D3": {
+        "role": "duration",
+        "controller": "D3",
+        "key": "f0a36e99960ee124e5d57ad602d9dd0a7bd4660fa543851534d481c8d8191fc5"
+      },
+      "clerk": {
+        "role": "clerk",
+        "controller": "clerk",
+        "key": "9dfb67ddc4a8515095bae3abff1c40f8116452fdc3608dbaea99ef03d8162358"
+      },
+      "reviewer": {
+        "role": "reviewer",
+        "controller": "reviewer",
+        "key": "3b10baefb9589db87ee9b9e832a1f56326df57a8b0164b448bde89accd8c23d6"
+      },
+      "jury": {
+        "role": "jury",
+        "controller": "jury",
+        "key": "e0f6d2a3b5d951e8250013d19d9dc02015a2ed3413b5727002e79b5bdffb3e26"
+      },
+      "executive": {
+        "role": "executive",
+        "controller": "executive",
+        "key": "0539bb4fee615c6777333bbc05fe7d12fb73b72f81655d8e24b8c83b2f6ac425"
+      },
+      "court": {
+        "role": "court",
+        "controller": "court",
+        "key": "8af3dc9c0750b0cbf416918bec1fe11758330b0c3a61e4d6e2b0f7e7b034b011"
+      },
+      "advocate": {
+        "role": "advocate",
+        "controller": "advocate",
+        "key": "14f32aa870321b0d1c6169f4e287890a98a9b124abbdf591f1ec3ccf93b30d42"
+      },
+      "counter": {
+        "role": "counter",
+        "controller": "counter",
+        "key": "2b503e2fd049e7f4f50d3872c5a07af6cdf38337aeb4659ac40568f6b6c9e15b"
+      },
+      "observer": {
+        "role": "observer",
+        "controller": "observer",
+        "key": "8bce6f909e9c6c06ee831503d2eb2e78446579a718e729b4ae912c6d5cd0caf8"
+      },
+      "research-agent": {
+        "role": "agent",
+        "controller": "research-agent",
+        "key": "441cf80f5df91c986644532075721f9937dddb26461930146727db585a895c02"
+      },
+      "cost-agent": {
+        "role": "agent",
+        "controller": "cost-agent",
+        "key": "e71a5eae939449993d1e9514aea7483690b6419b19fd82251b8b52b91b9dbe90"
+      }
+    }
+  },
+  "entries": [
+    {
+      "body": {
+        "actor": "clerk",
+        "command": {
+          "args": {
+            "bill": "",
+            "packet": {
+              "budget": "Up to 100 fictional units.",
+              "dissent": "The minority prefers local purchasing and requires an independent review.",
+              "exit": "Twelve months notice and a funded return of duties under the proposed schedule.",
+              "instrument": "Schedule A: joint monitoring research only.",
+              "rights": "No compelled research participation. Complaints accepted by the public advocate."
+            },
+            "polity": "Estuary",
+            "question": "Adopt the published joint watershed research schedule?"
+          },
+          "type": "publish_poll"
+        },
+        "nonce": "7953304a69c04436be92273c1e61ccb2",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "f1ef2d5d29788c71c2a529a64f67b18f6468c6faa411522ca5ad947ff09aebc7ca8cb54d75dd21bda3b0f0cab9930570de1f6a10652bbbaf8edfd972bbb6870f"
+    },
+    {
+      "body": {
+        "actor": "clerk",
+        "command": {
+          "args": {
+            "bill": "",
+            "packet": {
+              "budget": "Up to 100 fictional units.",
+              "dissent": "The minority prefers local purchasing and requires an independent review.",
+              "exit": "Twelve months notice and a funded return of duties under the proposed schedule.",
+              "instrument": "Schedule A: joint monitoring research only.",
+              "rights": "No compelled research participation. Complaints accepted by the public advocate."
+            },
+            "polity": "Upland",
+            "question": "Adopt the published joint watershed research schedule?"
+          },
+          "type": "publish_poll"
+        },
+        "nonce": "f21dd099b16a4091bea08973ece31618",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "f03d79c7d693ef095053df32ca2bc5789b67876f1219ece18f52317f2919bb22b596dbca4427cf0c7772d28139b30603beb1439051db19fcc00bfbb662996f08"
+    },
+    {
+      "body": {
+        "actor": "clerk",
+        "command": {
+          "args": {
+            "draft": "f1c3b5d33728bf311a51d8861efb8904be7a6fe2f0d9d8217266d07d711b6898",
+            "due": 5,
+            "job": "J1",
+            "question": "Review privacy and replication costs."
+          },
+          "type": "call"
+        },
+        "nonce": "23d2ff133fb648aab516f5170503abcb",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "ae87c50e0995f0b7a4c54a28709595234b2d76c21c49584b3184721b729be68e3c42abd2e702b4a0de629a9cfb336f5e375862340af8f7a0ca42eb050b0aad0d"
+    },
+    {
+      "body": {
+        "actor": "research-agent",
+        "command": {
+          "args": {
+            "job": "J1",
+            "terms": "Return a scoped privacy review."
+          },
+          "type": "offer"
+        },
+        "nonce": "b8fade2a9c114660b21f6fd2db9c7a27",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "1ee0c109bd9cdeba7c373e873feac0d36c917c5b680935e0330fdca59e73f6e37a6fc9aaebd55e5bab6a4d9c370d7bdf482500f5ebd86a72819cb2bba0420b05"
+    },
+    {
+      "body": {
+        "actor": "cost-agent",
+        "command": {
+          "args": {
+            "job": "J1",
+            "terms": "Return a fiscal note."
+          },
+          "type": "offer"
+        },
+        "nonce": "de83153d1c2c43e196565e16b1bac147",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "1952b51f119dbdfeb03e726f22dfdface9f508330870635fe6296d2b93cc6d785b7ec9c65e83f52cb80609fc8cf4e6fa53bb6184ae44a42374595feca8255d0a"
+    },
+    {
+      "body": {
+        "actor": "clerk",
+        "command": {
+          "args": {
+            "agent": "research-agent",
+            "job": "J1",
+            "offer": "015b59c64ce199279d95a122268b64dacf2550608081fdbc4fc34b0bc4c8cf02"
+          },
+          "type": "award"
+        },
+        "nonce": "740b446fbae148389bd9774c4dbee283",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "d762a06dfa8b4c4d092bb7e8d80b995e1aff6290b0cd9e9eafed99bc647148f5fde3c822e45a5fa65ddf33948746b48e6c3d927be40c41dc3415c5b6ade49605"
+    },
+    {
+      "body": {
+        "actor": "research-agent",
+        "command": {
+          "args": {
+            "draft": "f1c3b5d33728bf311a51d8861efb8904be7a6fe2f0d9d8217266d07d711b6898",
+            "job": "J1",
+            "limits": "Word matching misses euphemisms and context. Human classification and substantive fiscal review are required.",
+            "report": "Review markers in the submitted text: none. Fiscal statement: No appropriation..",
+            "sources": "Submitted document JSON with SHA-256 f1c3b5d33728bf311a51d8861efb8904be7a6fe2f0d9d8217266d07d711b6898"
+          },
+          "type": "deliver"
+        },
+        "nonce": "22d8e5b5de314e7d8ba5ab37531e61a0",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "7ad71522e7b2624a365df0844d0184192c53369bd47c48c274a9cd734757ae2e9d7fcb56c3e1a992a5270e29ed9d33893b9910a3eebebe6f51dbebdb2d03920f"
+    },
+    {
+      "body": {
+        "actor": "C1",
+        "command": {
+          "args": {
+            "document": {
+              "authority": "Estuary research schedule, fixture only.",
+              "domain": "water-research",
+              "evidence": [
+                "7c0bd98f489d33a906014a70d815dc8ea0641631babecadf0bd72ed254519c32"
+              ],
+              "fiscal": "No appropriation.",
+              "implementer": "Publication office under a separate execution warrant.",
+              "interests": "Residents, researchers, small laboratories.",
+              "kind": "ordinary",
+              "purpose": "Allow independent replication.",
+              "review": "Exercise day 180.",
+              "rights": "Protect private participant data.",
+              "text": "Publish the methods record for funded sensor trials.",
+              "title": "Watershed methods disclosure"
+            }
+          },
+          "type": "file"
+        },
+        "nonce": "632dfc5673884e9787fca620a9d57b43",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "bd0cc9124550fcbbbbef419cba3268144a676c5452e6ab00f184435b8f0694d8ed70e687900b075df91dd9e42c46065ee7b43a7e65a1c7f430c9c3c5bcc97d07"
+    },
+    {
+      "body": {
+        "actor": "reviewer",
+        "command": {
+          "args": {
+            "hearing": "required",
+            "reason": "Original wording created a disclosure risk.",
+            "ref": "c36093fda9d776417e835f4bfdb373afeb62b45632546587c8426e8d06bdf25e"
+          },
+          "type": "classify"
+        },
+        "nonce": "0b0051792cea4a94ba7b3af2f94085be",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "a53eb09849482ddef3b379bd05ea09120ced16268f31446e82be75d8b17cd944d900487b9c59f19a25d020120463d3c2182681db6830f4524f6915fc6fad1c0b"
+    },
+    {
+      "body": {
+        "actor": "jury",
+        "command": {
+          "args": {
+            "decision": "remand",
+            "reason": "Narrow the disclosure obligation.",
+            "ref": "c36093fda9d776417e835f4bfdb373afeb62b45632546587c8426e8d06bdf25e"
+          },
+          "type": "jury"
+        },
+        "nonce": "80f6b770e50d495c85e3a0ccdef2c68e",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "50e69145c2ed8e59929ce56c42ca5bccda69cb6390dc05f2f4ed4a8c290b8821f4b39e6dd15244158e0f48c89cf18cf1f5585d270d500372e3c848c597222b0b"
+    },
+    {
+      "body": {
+        "actor": "C1",
+        "command": {
+          "args": {
+            "document": {
+              "authority": "Estuary research schedule, fixture only.",
+              "domain": "water-research",
+              "evidence": [
+                "7c0bd98f489d33a906014a70d815dc8ea0641631babecadf0bd72ed254519c32"
+              ],
+              "fiscal": "No appropriation.",
+              "implementer": "Publication office under a separate execution warrant.",
+              "interests": "Residents, researchers, small laboratories.",
+              "kind": "ordinary",
+              "purpose": "Allow independent replication.",
+              "review": "Exercise day 180.",
+              "rights": "Protect private participant data.",
+              "text": "Publish the methods record for funded sensor trials. Exclude identifiable samples.",
+              "title": "Watershed methods disclosure"
+            },
+            "ref": "c36093fda9d776417e835f4bfdb373afeb62b45632546587c8426e8d06bdf25e",
+            "response": "Added an express exception for identifiable samples."
+          },
+          "type": "revise"
+        },
+        "nonce": "f9fb0f5ef7824542ba710886c5063fd1",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "01ff97c0f82cb6df618cfa7ab83a069de6e93a13a1f0e25dd08b573ac5b50e3b868611bf4623c74e6ebf27dfa44cb6d9e0b813db6115a2e7bfc4ba368286c908"
+    },
+    {
+      "body": {
+        "actor": "reviewer",
+        "command": {
+          "args": {
+            "hearing": "required",
+            "reason": "Privacy consequences merit review.",
+            "ref": "fce770a6bb9950229f02419cf538f8888e9518edbfa0300fecc4804c370b131e"
+          },
+          "type": "classify"
+        },
+        "nonce": "173ecf12521f4378b26e3d16664297c6",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "fd1e1fcb0c7496391460532b036568e8a2996dbbeda65a3989cfd77920251dbc85b6cd5a85d62db0ffdccbc07066c6aa9cc29a974e09c1548afa11fd03863805"
+    },
+    {
+      "body": {
+        "actor": "jury",
+        "command": {
+          "args": {
+            "decision": "release",
+            "reason": "The exception addresses our objection.",
+            "ref": "fce770a6bb9950229f02419cf538f8888e9518edbfa0300fecc4804c370b131e"
+          },
+          "type": "jury"
+        },
+        "nonce": "412f16b8733840ff84f16dc72f6f2d2b",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "b3c28e5888c5e94de973cbc057e9a9a4cf5266a1f7db8fd74c3b56ea3f1f30f28b49f4015e7d43b6544e2fc9cce132a51a5d4422bd9a6b495174ae19bde1900d"
+    },
+    {
+      "body": {
+        "actor": "clerk",
+        "command": {
+          "args": {
+            "ref": "fce770a6bb9950229f02419cf538f8888e9518edbfa0300fecc4804c370b131e"
+          },
+          "type": "open"
+        },
+        "nonce": "f71f2ea01f3542f0bcfde8ff65635fd2",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "b96d9b156dfd7a49e35d242f9b73b4e0be745eee3af6e599e6e95ba635fb21f3651b2435b9fa3ddfaf41f49231b21f7b7e3bcc2a27a8e5521711c4109a48ea0e"
+    },
+    {
+      "body": {
+        "actor": "C1",
+        "command": {
+          "args": {
+            "choice": "yes",
+            "ref": "fce770a6bb9950229f02419cf538f8888e9518edbfa0300fecc4804c370b131e",
+            "round": 1
+          },
+          "type": "vote"
+        },
+        "nonce": "c099bd026da24002bb86b4cd9717ec8f",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "d708b6b1b0d12e145ad0084c1f5e9d68e9ce832b554d5d8e602795dfef9f8a24a23e5f23570fa4b79c6053e81ec61f934212d52f5dd3d8a1f5e1637a0d6dfb05"
+    },
+    {
+      "body": {
+        "actor": "C2",
+        "command": {
+          "args": {
+            "choice": "yes",
+            "ref": "fce770a6bb9950229f02419cf538f8888e9518edbfa0300fecc4804c370b131e",
+            "round": 1
+          },
+          "type": "vote"
+        },
+        "nonce": "fc86b6534b0341a1b908e254d74043f8",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "998994f5ff9817be62e5fbff8793ba1a81954a3d668aa65a241e2722127ba4136e215febc147f940551274c4b98d95bae09aab311b60e3c15fd9db9f45687a0b"
+    },
+    {
+      "body": {
+        "actor": "C3",
+        "command": {
+          "args": {
+            "choice": "no",
+            "ref": "fce770a6bb9950229f02419cf538f8888e9518edbfa0300fecc4804c370b131e",
+            "round": 1
+          },
+          "type": "vote"
+        },
+        "nonce": "68a8bd5737c04cd89ecdae29676f6191",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "0c89d831c8c2ef1f31c6e7d76ce0c299054b41ed5557e7e0b4beea6795089f9eaa036c1bae6487678175af1505bce531b3e19ad9ea07f3ce95af56c639aff206"
+    },
+    {
+      "body": {
+        "actor": "D1",
+        "command": {
+          "args": {
+            "choice": "yes",
+            "ref": "fce770a6bb9950229f02419cf538f8888e9518edbfa0300fecc4804c370b131e",
+            "round": 1
+          },
+          "type": "vote"
+        },
+        "nonce": "7526e60e47084c439adc4d5ff1fe650b",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "53a6fa69ba30d69b99291319a9187f074bfade412b7ed816e806e90ab8698f1916e5e21dfe3cd9e3e8c8fff4e42751be4cdc08ce9341d2158304206b81567d03"
+    },
+    {
+      "body": {
+        "actor": "D2",
+        "command": {
+          "args": {
+            "choice": "yes",
+            "ref": "fce770a6bb9950229f02419cf538f8888e9518edbfa0300fecc4804c370b131e",
+            "round": 1
+          },
+          "type": "vote"
+        },
+        "nonce": "11b4daf6fe7745b69353e26135a52aaf",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "19fe989de46d7074010c957d5033221c08770880c9992b4b211457b35df57e00c6109f8c8c817fcc3ae58f32bb9a6d11b6f8fa525d111bcd27b3f157171d490b"
+    },
+    {
+      "body": {
+        "actor": "D3",
+        "command": {
+          "args": {
+            "choice": "abstain",
+            "ref": "fce770a6bb9950229f02419cf538f8888e9518edbfa0300fecc4804c370b131e",
+            "round": 1
+          },
+          "type": "vote"
+        },
+        "nonce": "ce6580efaa424feb96c2370b91efb3a7",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "9e0a73935e13ed67b8756b55e8f5e89d4ccd829c54090a0882e689794e6fa950852eb1ed7f4326c42ee082e2ef6279a5fdf6113cf8928806b09f6337c9c9a708"
+    },
+    {
+      "body": {
+        "actor": "clerk",
+        "command": {
+          "args": {
+            "day": 2
+          },
+          "type": "tick"
+        },
+        "nonce": "464875852ad0463e9e196399366fe02b",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "706e718feb9e033b63eb4354cae6388ac909082db5074ea1676a7108ef0692a26dd8b4a3a5d4445b446f9e88c958ac9f562df1732ea62d6bf533add6fc4d520b"
+    },
+    {
+      "body": {
+        "actor": "executive",
+        "command": {
+          "args": {
+            "decision": "veto",
+            "reason": "Requests a broader exemption.",
+            "ref": "fce770a6bb9950229f02419cf538f8888e9518edbfa0300fecc4804c370b131e"
+          },
+          "type": "executive"
+        },
+        "nonce": "79d1d54fd51a42118af480c930d76140",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "fb49a86e2c00aff32ea25414dd25fe029326da04d1c5745cca63ce100084a48b76afa6cfab5bd31d9a5d651173018eb0fddf8b6732bcbe9af9c8de7cc5b3d70c"
+    },
+    {
+      "body": {
+        "actor": "C1",
+        "command": {
+          "args": {
+            "choice": "yes",
+            "ref": "fce770a6bb9950229f02419cf538f8888e9518edbfa0300fecc4804c370b131e",
+            "round": 2
+          },
+          "type": "vote"
+        },
+        "nonce": "c388085acffc4858b394e95c4287137c",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "0f94df4bfa84bf75cc48d4da1ba51cebfd5b102113bb2b7e20726f3e609ed5e94b41ef685bddbc843a11d3e11a395b6758ef13fe002893e5911f441fbf7d4703"
+    },
+    {
+      "body": {
+        "actor": "C2",
+        "command": {
+          "args": {
+            "choice": "yes",
+            "ref": "fce770a6bb9950229f02419cf538f8888e9518edbfa0300fecc4804c370b131e",
+            "round": 2
+          },
+          "type": "vote"
+        },
+        "nonce": "10540bb07554403e93787255af969f48",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "b89bbfc3eef175ecc0f74a750514b70813400c9622bfe9ff6687615daaa60cd38814f80a2635b3c610dd1ed13f4de573dd72a5b20f8b7a1ad745b429ff80d703"
+    },
+    {
+      "body": {
+        "actor": "C3",
+        "command": {
+          "args": {
+            "choice": "no",
+            "ref": "fce770a6bb9950229f02419cf538f8888e9518edbfa0300fecc4804c370b131e",
+            "round": 2
+          },
+          "type": "vote"
+        },
+        "nonce": "ae9fe045c2d24e44b2e8677404892e73",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "07160025fbc03ab38bce4323b6c7bd323ab3346ad0cc8eeb655fa9cf347b331d4a5a816b36601fe8b1487480881cf40518334ba54144dbe68329a75a44015d00"
+    },
+    {
+      "body": {
+        "actor": "D1",
+        "command": {
+          "args": {
+            "choice": "yes",
+            "ref": "fce770a6bb9950229f02419cf538f8888e9518edbfa0300fecc4804c370b131e",
+            "round": 2
+          },
+          "type": "vote"
+        },
+        "nonce": "3d9b1d27ae1843359f7f2d7959112795",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "1825269178596373b7fb6caa66d821d4c1a0f6b11928503633dd7e492d444f213587ec739987444fee54f4486ecfdb5d03930244b152c0887733cedb474b200f"
+    },
+    {
+      "body": {
+        "actor": "D2",
+        "command": {
+          "args": {
+            "choice": "yes",
+            "ref": "fce770a6bb9950229f02419cf538f8888e9518edbfa0300fecc4804c370b131e",
+            "round": 2
+          },
+          "type": "vote"
+        },
+        "nonce": "a9e3e0e794144423a82cb9f7c41000fa",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "2eb1ff9fad51e6582cac6cd3a16a1a79e51f2be423da3b868f93379850c198c7f8bca786015f2093da66352b7486a6338a9b0bd200a7638895c546b5674ec100"
+    },
+    {
+      "body": {
+        "actor": "D3",
+        "command": {
+          "args": {
+            "choice": "no",
+            "ref": "fce770a6bb9950229f02419cf538f8888e9518edbfa0300fecc4804c370b131e",
+            "round": 2
+          },
+          "type": "vote"
+        },
+        "nonce": "86b2887e1e2c4a088261e575e1575cd0",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "b64335dedf13bdb7676c019ac3dace552fd115374fb62e7c32f76eda66efe6b6c702ee55b665165bb21448bfac9b1e4046c51e306214432f0954375e87b55f0d"
+    },
+    {
+      "body": {
+        "actor": "clerk",
+        "command": {
+          "args": {
+            "day": 4
+          },
+          "type": "tick"
+        },
+        "nonce": "2bb129a833194ea6b8fdbbb9961160a3",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "0042cb77aaba02f74f056eeaae1be0a1ac4a01f2566cf020c6628569238033d19edbd7852574dad31acc39fdab9e0400e9527906dde3808a476df35ceaf01a0e"
+    },
+    {
+      "body": {
+        "actor": "advocate",
+        "command": {
+          "args": {
+            "reason": "Review the effect on participant privacy.",
+            "ref": "fce770a6bb9950229f02419cf538f8888e9518edbfa0300fecc4804c370b131e"
+          },
+          "type": "challenge"
+        },
+        "nonce": "590d206bfb5e45c898f3019d788e369a",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "74b6b333840d79928dd7dfe457bb7392de1c7d672225797a52d5aac5739530988a44e73febbba4df4dffd8fcfd22b62038b1eb211aa8df4cfb1e7acdeb4cd406"
+    },
+    {
+      "body": {
+        "actor": "clerk",
+        "command": {
+          "args": {
+            "day": 7
+          },
+          "type": "tick"
+        },
+        "nonce": "53dced5124884088ac533ac48f34caed",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "24ca6d32731f5c5e68bb628dee96c41945667f4bba8bb5a9bbe51c546e55d26ab9349a116ceed8ff96e480f93a0610647adb36aa1b88a7138fe65b50ba02e908"
+    },
+    {
+      "body": {
+        "actor": "court",
+        "command": {
+          "args": {
+            "disposition": "dismiss",
+            "reason": "The fixture's revised text excludes identifying samples.",
+            "ref": "fce770a6bb9950229f02419cf538f8888e9518edbfa0300fecc4804c370b131e"
+          },
+          "type": "rule"
+        },
+        "nonce": "94a6f57ffb464349a10825abaa2f900f",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "4ee621e940ec54ad22af37f1adf40ae65a5603aa5201e42ab482c0815312597a01da40dc27867a4d8da63861c23feea7faca85ca619cd0dd59442a124d800303"
+    },
+    {
+      "body": {
+        "actor": "clerk",
+        "command": {
+          "args": {
+            "day": 90
+          },
+          "type": "tick"
+        },
+        "nonce": "f3a9075a83eb4cf0aac2f953f3190aa8",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "ff1cb956cdc17614056b7d716c7dbaf77aeb0206414847c8eae80346387a6dede929e52ddc359bcd3ff2ff169dd7ca73d9ec80203bf97ba46df9ae6b652f8c06"
+    },
+    {
+      "body": {
+        "actor": "counter",
+        "command": {
+          "args": {
+            "cast": 11,
+            "invalid": 1,
+            "no": 4,
+            "poll": "5a99c8c06339144a5a95ddf98364ff341a92665990de8bbc11485e8f4433b2f1",
+            "round": 1,
+            "yes": 6
+          },
+          "type": "count"
+        },
+        "nonce": "8a3a3b89d36a4608a52502d288d9197e",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "890839ae473ff2751c6092cd3b93329a3973d1cc1e8dbd85aaa4c9e71a6ca6901b8affb89235109a27875cbfa80effebd8732df8a3d63f7678a63347e7c39301"
+    },
+    {
+      "body": {
+        "actor": "observer",
+        "command": {
+          "args": {
+            "cast": 11,
+            "invalid": 1,
+            "no": 4,
+            "poll": "5a99c8c06339144a5a95ddf98364ff341a92665990de8bbc11485e8f4433b2f1",
+            "round": 1,
+            "yes": 6
+          },
+          "type": "count"
+        },
+        "nonce": "a173e35621694569844157d26a58813d",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "377ddf7729a8da35f0038211eebc20846827a7a93c8bb90066026fd2ee98ecb6170973dd48d70ba54638039606dec4937ddd5b0d3b5d1404dbd5a63cab8a500f"
+    },
+    {
+      "body": {
+        "actor": "counter",
+        "command": {
+          "args": {
+            "cast": 11,
+            "invalid": 1,
+            "no": 6,
+            "poll": "eb9271e118c7028a6743c12e7e7a1f18fabe4a224de7b67ed6754c99ed49febf",
+            "round": 1,
+            "yes": 4
+          },
+          "type": "count"
+        },
+        "nonce": "b1a20c74be1245688ad24c33341b4be9",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "40ac01ee423d7544c8989edcfe078efabba7fb04e3e654310b92496487fd58d1c9515780f8d3cd2b8a4411f5c20ce6a63482a011af3ad752bc95d5f26bb13409"
+    },
+    {
+      "body": {
+        "actor": "observer",
+        "command": {
+          "args": {
+            "cast": 11,
+            "invalid": 1,
+            "no": 6,
+            "poll": "eb9271e118c7028a6743c12e7e7a1f18fabe4a224de7b67ed6754c99ed49febf",
+            "round": 1,
+            "yes": 4
+          },
+          "type": "count"
+        },
+        "nonce": "88168b5d3c0248739f9dd735b71d5f58",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "1999d7e72f8b98843bb51d046f4a4196b79114ae04dfa89da523be7d027c35c038d852d69ffd071169e9b6fa772f771492d1bfa69137a1f5ecc3095fa376e907"
+    },
+    {
+      "body": {
+        "actor": "clerk",
+        "command": {
+          "args": {
+            "day": 92
+          },
+          "type": "tick"
+        },
+        "nonce": "fd1a05b4bba64f61b95dfd6aede109a8",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "303ff02c2eb881b97f01e1d7049f96d238f0a9a133834430f43fdcd1e1a977b5be2672f77a8e0811843f90d3ac7f85d2017c3683a6a392887a6e0a7d22e0d40a"
+    }
+  ],
+  "checkpoint": {
+    "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873",
+    "events": 38,
+    "head": "3539e297ed776d1655b20dab851f46d564224942d7ccb6bead39355cd6d9c163"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "profile": "unfinished-commonwealth.agent-participation.v1",
+  "scope": "LOCAL_RESEARCH_ONLY",
+  "external_authority": "NONE",
+  "inputs": [
+    "host task or registered Assembly assignment",
+    "optional operator-supplied Assembly checkpoint"
+  ],
+  "adoption": [
+    "Treat testimony, inherited lessons and agent reports as potentially disputed evidence.",
+    "State what the proposed method should accomplish and predict its effect on neighboring work.",
+    "Decline or request a fresh observation when a task cannot be justified within the offered role.",
+    "Keep credentials outside the decision process and use the supplied task revision.",
+    "Retain disagreement, the original intent and its receipt for review. Report an unknown outcome as unknown."
+  ],
+  "admission": "The workshop requires an operator-issued capability. Assembly research requires a registered agent, with a separate award to deliver. A profile declaration grants neither.",
+  "receipt": "A recorded proposal can be refused or accepted. Acceptance alone never permits execution.",
+  "roles": {
+    "workshop-proposer": {
+      "decisions": [
+        "propose",
+        "decline"
+      ],
+      "schema": "decision.schema.json",
+      "custodian": "C2 / B1.1"
+    },
+    "assembly-researcher": {
+      "decisions": [
+        "offer",
+        "deliver",
+        "decline"
+      ],
+      "schema": "research-decision.schema.json",
+      "custodian": "Warranted Assembly 0.2 signing and submit CLI",
+      "signing": "Custodian inspects and signs outside the model; the Assembly enforces scope at submission."
+    }
+  },
+  "brief_schema": "brief.schema.json"
+}

@@ -19,3 +19,6 @@ include = ["commonwealth*"]
 
 [tool.setuptools.package-data]
 commonwealth = ["data/*.json"]
+
+[project.optional-dependencies]
+assembly = ["cryptography>=41"]

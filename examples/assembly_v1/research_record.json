@@ -1,0 +1,221 @@
+{
+  "registry": {
+    "protocol": "warranted-docket-0.2",
+    "instance": "e089f4c2e85145f4ba28c34dcf053985",
+    "polities": [
+      "Estuary",
+      "Upland"
+    ],
+    "members": [
+      "Estuary"
+    ],
+    "powers": {
+      "water-procurement": [
+        "ordinary",
+        "appropriation"
+      ],
+      "water-research": [
+        "ordinary",
+        "appropriation"
+      ]
+    },
+    "people": {
+      "C1": {
+        "role": "commons",
+        "controller": "C1",
+        "key": "eece10bf5dfbd18d9041a89380f91aedc55b0cbd4632fdf2e58bea116c77b200"
+      },
+      "C2": {
+        "role": "commons",
+        "controller": "C2",
+        "key": "f5cb5e1e270aa34a3d96aa778365a63a10cdc470e2d183a40196d2b7fdcac593"
+      },
+      "C3": {
+        "role": "commons",
+        "controller": "C3",
+        "key": "2512b2ee51bfe48eb51ff9117dce54f9bb58a7b03510bcf704ff1885f700ad0f"
+      },
+      "D1": {
+        "role": "duration",
+        "controller": "D1",
+        "key": "5edaed79da23d0bb50f859e92db4eb712fd39fa5215588b2da8d3bcf85ecdbac"
+      },
+      "D2": {
+        "role": "duration",
+        "controller": "D2",
+        "key": "f1ed919b4ffe2ada5d4f5a28bcbd41af2f8d9746cdcbfcd6f380f7cfaaf827b3"
+      },
+      "D3": {
+        "role": "duration",
+        "controller": "D3",
+        "key": "f0a36e99960ee124e5d57ad602d9dd0a7bd4660fa543851534d481c8d8191fc5"
+      },
+      "clerk": {
+        "role": "clerk",
+        "controller": "clerk",
+        "key": "9dfb67ddc4a8515095bae3abff1c40f8116452fdc3608dbaea99ef03d8162358"
+      },
+      "reviewer": {
+        "role": "reviewer",
+        "controller": "reviewer",
+        "key": "3b10baefb9589db87ee9b9e832a1f56326df57a8b0164b448bde89accd8c23d6"
+      },
+      "jury": {
+        "role": "jury",
+        "controller": "jury",
+        "key": "e0f6d2a3b5d951e8250013d19d9dc02015a2ed3413b5727002e79b5bdffb3e26"
+      },
+      "executive": {
+        "role": "executive",
+        "controller": "executive",
+        "key": "0539bb4fee615c6777333bbc05fe7d12fb73b72f81655d8e24b8c83b2f6ac425"
+      },
+      "court": {
+        "role": "court",
+        "controller": "court",
+        "key": "8af3dc9c0750b0cbf416918bec1fe11758330b0c3a61e4d6e2b0f7e7b034b011"
+      },
+      "advocate": {
+        "role": "advocate",
+        "controller": "advocate",
+        "key": "14f32aa870321b0d1c6169f4e287890a98a9b124abbdf591f1ec3ccf93b30d42"
+      },
+      "counter": {
+        "role": "counter",
+        "controller": "counter",
+        "key": "2b503e2fd049e7f4f50d3872c5a07af6cdf38337aeb4659ac40568f6b6c9e15b"
+      },
+      "observer": {
+        "role": "observer",
+        "controller": "observer",
+        "key": "8bce6f909e9c6c06ee831503d2eb2e78446579a718e729b4ae912c6d5cd0caf8"
+      },
+      "research-agent": {
+        "role": "agent",
+        "controller": "research-agent",
+        "key": "441cf80f5df91c986644532075721f9937dddb26461930146727db585a895c02"
+      },
+      "cost-agent": {
+        "role": "agent",
+        "controller": "cost-agent",
+        "key": "e71a5eae939449993d1e9514aea7483690b6419b19fd82251b8b52b91b9dbe90"
+      }
+    }
+  },
+  "entries": [
+    {
+      "body": {
+        "actor": "clerk",
+        "command": {
+          "args": {
+            "bill": "",
+            "packet": {
+              "budget": "Up to 100 fictional units.",
+              "dissent": "The minority prefers local purchasing and requires an independent review.",
+              "exit": "Twelve months notice and a funded return of duties under the proposed schedule.",
+              "instrument": "Schedule A: joint monitoring research only.",
+              "rights": "No compelled research participation. Complaints accepted by the public advocate."
+            },
+            "polity": "Estuary",
+            "question": "Adopt the published joint watershed research schedule?"
+          },
+          "type": "publish_poll"
+        },
+        "nonce": "7953304a69c04436be92273c1e61ccb2",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "f1ef2d5d29788c71c2a529a64f67b18f6468c6faa411522ca5ad947ff09aebc7ca8cb54d75dd21bda3b0f0cab9930570de1f6a10652bbbaf8edfd972bbb6870f"
+    },
+    {
+      "body": {
+        "actor": "clerk",
+        "command": {
+          "args": {
+            "bill": "",
+            "packet": {
+              "budget": "Up to 100 fictional units.",
+              "dissent": "The minority prefers local purchasing and requires an independent review.",
+              "exit": "Twelve months notice and a funded return of duties under the proposed schedule.",
+              "instrument": "Schedule A: joint monitoring research only.",
+              "rights": "No compelled research participation. Complaints accepted by the public advocate."
+            },
+            "polity": "Upland",
+            "question": "Adopt the published joint watershed research schedule?"
+          },
+          "type": "publish_poll"
+        },
+        "nonce": "f21dd099b16a4091bea08973ece31618",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "f03d79c7d693ef095053df32ca2bc5789b67876f1219ece18f52317f2919bb22b596dbca4427cf0c7772d28139b30603beb1439051db19fcc00bfbb662996f08"
+    },
+    {
+      "body": {
+        "actor": "clerk",
+        "command": {
+          "args": {
+            "draft": "f1c3b5d33728bf311a51d8861efb8904be7a6fe2f0d9d8217266d07d711b6898",
+            "due": 5,
+            "job": "J1",
+            "question": "Review privacy and replication costs."
+          },
+          "type": "call"
+        },
+        "nonce": "23d2ff133fb648aab516f5170503abcb",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "ae87c50e0995f0b7a4c54a28709595234b2d76c21c49584b3184721b729be68e3c42abd2e702b4a0de629a9cfb336f5e375862340af8f7a0ca42eb050b0aad0d"
+    },
+    {
+      "body": {
+        "actor": "research-agent",
+        "command": {
+          "args": {
+            "job": "J1",
+            "terms": "Return a scoped privacy review."
+          },
+          "type": "offer"
+        },
+        "nonce": "b8fade2a9c114660b21f6fd2db9c7a27",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "1ee0c109bd9cdeba7c373e873feac0d36c917c5b680935e0330fdca59e73f6e37a6fc9aaebd55e5bab6a4d9c370d7bdf482500f5ebd86a72819cb2bba0420b05"
+    },
+    {
+      "body": {
+        "actor": "cost-agent",
+        "command": {
+          "args": {
+            "job": "J1",
+            "terms": "Return a fiscal note."
+          },
+          "type": "offer"
+        },
+        "nonce": "de83153d1c2c43e196565e16b1bac147",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "1952b51f119dbdfeb03e726f22dfdface9f508330870635fe6296d2b93cc6d785b7ec9c65e83f52cb80609fc8cf4e6fa53bb6184ae44a42374595feca8255d0a"
+    },
+    {
+      "body": {
+        "actor": "clerk",
+        "command": {
+          "args": {
+            "agent": "research-agent",
+            "job": "J1",
+            "offer": "015b59c64ce199279d95a122268b64dacf2550608081fdbc4fc34b0bc4c8cf02"
+          },
+          "type": "award"
+        },
+        "nonce": "740b446fbae148389bd9774c4dbee283",
+        "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873"
+      },
+      "signature": "d762a06dfa8b4c4d092bb7e8d80b995e1aff6290b0cd9e9eafed99bc647148f5fde3c822e45a5fa65ddf33948746b48e6c3d927be40c41dc3415c5b6ade49605"
+    }
+  ],
+  "checkpoint": {
+    "registry": "dbb7d549f5f4d6bf7caf5e093c8589439a7375b4d2dbb539bbe24acb0db24873",
+    "events": 6,
+    "head": "46b2dd9bc88a53abb7323d6d3cd570e7fd932dbd9932800635e2af3e22936dbd"
+  }
+}

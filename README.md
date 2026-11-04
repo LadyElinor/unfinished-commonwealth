@@ -8,6 +8,13 @@ Version **0.1.3** provides a working local research seed. It runs real integer-d
 
 The included participants are **scripted fixture roles**, with an additional proposal-only JSON interface for a separately operated model or human. No model-backed study has been run. This repository does not establish independent machine persons, autonomous civilization, or authority outside its local workshop.
 
+## Bring your own agent
+
+An external policy or model can adopt [agent participation profile AP1](docs/AGENT_PARTICIPATION_V1.md).
+A workshop agent proposes one offered method or declines locally; C2 handles credential-bound
+staging and recovery. A registered Assembly researcher can offer terms or draft a report for an exact award. The [Assembly importer](docs/ASSEMBLY_IMPORT_V1.md)
+can supply a read-only docket reference. The profile is a local research interface.
+
 ## Run the workshop
 
 ```bash

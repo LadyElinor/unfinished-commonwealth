@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Unfinished Commonwealth agent participation profile v1 decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["profile", "brief_id", "choice"],
+  "properties": {
+    "profile": {"const": "unfinished-commonwealth.agent-participation.v1"},
+    "brief_id": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "choice": {"enum": ["propose", "decline"]},
+    "method": {"type": "string", "minLength": 1},
+    "purpose": {"$ref": "#/$defs/text"},
+    "reason": {"$ref": "#/$defs/text"},
+    "prediction": {
+      "type": "object", "additionalProperties": false,
+      "required": ["primary_correct", "peer_on_time"],
+      "properties": {
+        "primary_correct": {"type": "number", "minimum": 0, "maximum": 1},
+        "peer_on_time": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    }
+  },
+  "oneOf": [
+    {"properties": {"choice": {"const": "propose"}}, "required": ["method", "purpose", "prediction"], "not": {"required": ["reason"]}},
+    {"properties": {"choice": {"const": "decline"}}, "required": ["reason"], "not": {"anyOf": [{"required": ["method"]}, {"required": ["purpose"]}, {"required": ["prediction"]}]}}
+  ],
+  "$defs": {"text": {"type": "string", "minLength": 1, "maxLength": 4000, "pattern": "\\S"}}
+}
