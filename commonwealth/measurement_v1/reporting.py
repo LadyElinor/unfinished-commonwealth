@@ -14,6 +14,7 @@ def main(argv=None):
     argv = sys.argv[1:] if argv is None else argv
     if not argv or argv[0] not in ("evaluate", "readiness", "report"):
         return cli.main(argv)
+    parsed = cli.parser().parse_args(argv)  # Preserve help and usage output before capturing a report.
     capture = StringIO()
     with redirect_stdout(capture):
         status = cli.main(argv)
@@ -26,7 +27,7 @@ def main(argv=None):
         result = json.loads(original)
         result["operator_limit"] = OPERATOR_LIMIT
         if argv[0] == "evaluate":
-            directory = Path(cli.parser().parse_args(argv).directory)
+            directory = Path(parsed.directory)
             write_json(directory / "results.json", result)
         cli.emit(result)
     return status

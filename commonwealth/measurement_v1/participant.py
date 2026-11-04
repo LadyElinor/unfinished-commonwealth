@@ -1,8 +1,11 @@
 """Compare a JSON-only external fixture with the existing D1 evidence selector."""
+from hashlib import sha256
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
+import tempfile
 
 from ..engine import parse_json
 from ..study_v1.engine import CLOCKS, Episode, digest, replay
@@ -11,6 +14,7 @@ from ..study_v1.fixtures import development_cases
 from ..study_v1.policies import arms
 from . import OPERATOR_LIMIT
 
+FIXTURE_SHA256 = "ab517b7d863a1691292b25cef6428c46481bfd3fdb16a73465c433edf3b1db21"
 PROFILE = "unfinished-commonwealth.study-decision.v1"
 # Deliberately omit case ID, hidden labels, expected answers, scoring, keeper state and other accounts.
 VISIBLE = ("values", "valid", "contract", "evidence_available", "schedule", "clock",
@@ -45,8 +49,15 @@ def interpret(packet, reply):
 
 
 def ask(script, packet):
-    proc = subprocess.run([sys.executable, "-I", str(script)], input=json.dumps(packet),
-                          capture_output=True, text=True, encoding="utf-8", timeout=5, check=True)
+    with Path(script).open("rb") as reader:
+        source = reader.read(65537)
+    if len(source) > 65536 or sha256(source).hexdigest() != FIXTURE_SHA256:
+        raise ValueError("the frozen comparison accepts only the recorded fixture agent")
+    env = {"SystemRoot": os.environ["SystemRoot"]} if os.name == "nt" else {}
+    with tempfile.TemporaryDirectory() as isolated_cwd:
+        proc = subprocess.run([sys.executable, "-I", "-c", source.decode("utf-8")],
+                              input=json.dumps(packet), capture_output=True, text=True, encoding="utf-8",
+                              cwd=isolated_cwd, env=env, timeout=5, check=True)
     if len(proc.stdout) > 32768:
         raise ValueError("oversized fixture reply")
     return parse_json(proc.stdout)

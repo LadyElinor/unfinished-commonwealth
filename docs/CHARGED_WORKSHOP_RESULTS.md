@@ -45,4 +45,4 @@ node scripts/audit_measurement.mjs study .local/d1/journals
 node scripts/audit_measurement.mjs assembly examples/assembly_v1/public_record.json
 ```
 
-Compare the resulting D1 summary with `examples/study-v1-summary.json` and the charged report with `examples/charged-workshop-results.json`. The latter also regenerates and replays all original fifteen workshop SQLite journals. Use a trusted fixture script for this local process test. Python isolated mode is not a security sandbox.
+Compare the resulting D1 summary with `examples/study-v1-summary.json` and the charged report with `examples/charged-workshop-results.json`. The latter also regenerates and replays all original fifteen workshop SQLite journals. The frozen comparison accepts only the published fixture script’s SHA-256. The child receives the verified bytes, a temporary working directory and no inherited credentials; on Windows it also receives the system root path. Python isolated mode is not a security sandbox for arbitrary programs.

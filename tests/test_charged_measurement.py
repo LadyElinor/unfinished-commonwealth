@@ -62,6 +62,15 @@ class ChargedMeasurement(unittest.TestCase):
             participant.interpret(packet, dict(profile=participant.PROFILE, brief_id=packet["brief_id"],
                                                choice="approve", method="quality-stream"))
 
+    def test_unregistered_fixture_is_refused_without_execution(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "agent.py"
+            marker = Path(temp) / "executed"
+            path.write_text(f"open({str(marker)!r}, 'w').close()")
+            with self.assertRaisesRegex(ValueError, "recorded fixture"):
+                participant.ask(path, participant.brief(Episode(case()).view()))
+            self.assertFalse(marker.exists())
+
     def test_external_policy_reproduces_selector_on_ambiguous_case(self):
         c = case(declared=False)
         external, decisions = participant.episode(c, AGENT)
