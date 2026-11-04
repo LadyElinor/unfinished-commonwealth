@@ -103,6 +103,7 @@ def main():
                          "commonwealth/remediation_v1/review.py", "docs/REMEDIATION_V1.md",
                          "tests/test_remediation_v1.py", "examples/remediation-v1-packet.json",
                          "scripts/audit_measurement.mjs", "examples/charged-workshop-results.json",
+                         "examples/neighbor-timing-results.json", "commonwealth/measurement_v1/neighbor.py",
                          "examples/agent_profile_v1/python_agent.py"):
             if not (source / relative).is_file():
                 raise RuntimeError(f"Source archive omitted {relative}")
@@ -236,6 +237,9 @@ def main():
              "--fixture-agent", str(source / "examples/agent_profile_v1/python_agent.py")], smoke)
         if (smoke / "charged/results.json").read_bytes() != (source / "examples/charged-workshop-results.json").read_bytes():
             raise RuntimeError("Installed charged comparison differed from the published result")
+        run([str(executable), "-m", "commonwealth.measurement_v1", "neighbor", "neighbor"], smoke)
+        if (smoke / "neighbor/results.json").read_bytes() != (source / "examples/neighbor-timing-results.json").read_bytes():
+            raise RuntimeError("Installed neighbor comparison differed from the published result")
         readiness = json.loads(run([str(command), "readiness"], smoke, expected=2))
         if readiness["deployment_ready"] is not False or not readiness.get("operator_limit"):
             raise RuntimeError("Research-only readiness boundary changed")

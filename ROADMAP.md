@@ -2,7 +2,7 @@
 
 ## Measurement before additional protocol work
 
-The [fixed-trace timing comparison](docs/CHARGED_WORKSHOP_RESULTS.md) and the D1 external policy control now run alongside the historical evaluations. A measured benefit over the evidence selector and independently held-out cases remain open gates.
+The [fixed-trace timing comparison](docs/CHARGED_WORKSHOP_RESULTS.md) and the D1 external policy control now run alongside the historical evaluations. The [N1 warning study](docs/NEIGHBOR_TIMING_RESULTS.md) tests paid, fallible consultation against unconditional reservation, a coin and a matched instrument. A communal benefit beyond a fixed policy with equivalent information and independently held-out cases remain open gates.
 
 ## O1 operational prerequisites: production still blocked
 

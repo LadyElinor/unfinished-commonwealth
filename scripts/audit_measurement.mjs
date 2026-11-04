@@ -24,13 +24,9 @@ function reference(c) {
 }
 
 function answer(c, method) {
-  assert.equal(c.values.length, c.valid.length);
   assert(['quality-stream', 'zero-fill', 'positive-only'].includes(method));
   let total = 0n, count = 0n;
   c.values.forEach((v, i) => {
-    assert(v === null || Number.isSafeInteger(v));
-    assert.equal(typeof c.valid[i], 'boolean');
-    assert(!(c.valid[i] && v === null));
     if (method === 'zero-fill' || (method === 'quality-stream' ? c.valid[i] : v !== null && v > 0)) {
       total += BigInt(v ?? 0); count++;
     }
@@ -38,13 +34,117 @@ function answer(c, method) {
   return ratio(total, count);
 }
 
-function verifyStudy(dir) {
+function natural(value) {
+  assert(Number.isSafeInteger(value) && value >= 0, 'expected a nonnegative safe integer');
+  return value;
+}
+
+function validateCase(c) {
+  assert(Array.isArray(c.values) && Array.isArray(c.valid));
+  assert.equal(c.values.length, c.valid.length);
+  assert(['valid-reading-mean-v1', 'scheduled-slot-yield-v1'].includes(c.contract));
+  c.values.forEach((v, i) => {
+    assert(v === null || Number.isSafeInteger(v));
+    assert.equal(typeof c.valid[i], 'boolean');
+    assert(!(c.valid[i] && v === null));
+  });
+  natural(c.capacity); natural(c.deadline);
+}
+
+// Reconstruct FIFO service from the shared capacity and the recorded non-peer spend.
+function auditPeers(j) {
+  const c = j.genesis.case, m = j.terminal.measures;
+  const peers = c.peers.map(p => {
+    natural(p.arrival); natural(p.deadline); natural(p.work);
+    assert(typeof p.id === 'string' && p.id.length && p.deadline >= p.arrival);
+    return {...p, remaining:p.work, completed:null, missed:false};
+  }).sort((a,b) => a.arrival - b.arrival || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+  assert.equal(new Set(peers.map(p => p.id)).size, peers.length);
+  assert(['decision-slots-v1','observation-clock-v1'].includes(j.genesis.clock));
+  const limit = natural(j.genesis.budget.inspections);
+  let tick = 0, spent = 0, peerSpend = 0;
+  for (const e of j.events) {
+    const advances = j.genesis.clock === 'decision-slots-v1' ||
+      ['observe','inspect','request-evidence'].includes(e.command.action);
+    if (advances) tick++;
+    assert.equal(e.cost.decision_slots, 1);
+    assert.equal(e.clock_tick, tick);
+    assert.equal(e.cost.environment_ticks, Number(advances));
+    const prior = natural(e.cost.observation_inspections) + natural(e.cost.primary_inspections);
+    const available = advances ? Math.min(c.capacity, limit - spent) : 0;
+    assert(prior <= available);
+    let free = available - prior;
+    const closed = [];
+    if (advances) {
+      // A zero-work arrival completes immediately, even with no capacity.
+      for (const p of peers) {
+        if (p.arrival === tick && p.remaining === 0) { p.completed = tick; closed.push(p.id); }
+      }
+      for (const p of peers) {
+        if (p.completed !== null || p.arrival > tick) continue;
+        const used = Math.min(p.remaining, free);
+        free -= used; p.remaining -= used;
+        if (p.remaining === 0) { p.completed = tick; closed.push(p.id); }
+        else if (tick >= p.deadline) p.missed = true;
+      }
+    }
+    const service = available - prior - free;
+    assert.equal(e.cost.peer_inspections, service);
+    assert.equal(e.cost.inspections, prior + service);
+    assert.deepEqual(e.completed_peers, closed);
+    if (e.completed_primary !== null) {
+      assert(advances);
+      assert.equal(e.completed_primary.completed, tick);
+    }
+    spent += prior + service; peerSpend += service;
+  }
+  assert.equal(m.decision_slots, j.events.length);
+  assert.deepEqual(m.peers, peers);
+  assert.deepEqual(m.outstanding.filter(o => o.kind === 'peer'),
+    peers.filter(p => p.completed === null).map(p => (
+      {kind:'peer', id:p.id, remaining:p.remaining, arrived:p.arrival <= tick})));
+  assert.equal(m.peer_arrivals, peers.filter(p => p.arrival <= tick).length);
+  assert.equal(m.peer_completions, peers.filter(p => p.completed !== null).length);
+  assert.equal(m.peer_on_time, peers.filter(p => p.completed !== null && !p.missed).length);
+  assert.equal(m.peer_historical_misses, peers.filter(p => p.missed).length);
+  assert.equal(m.peer_inspections, peerSpend); assert.equal(m.inspections, spent);
+  assert.equal(m.environment_ticks, tick);
+  return m.peer_historical_misses;
+}
+
+function matrixRows(path, files) {
+  const matrix = read(path), rows = new Map();
+  assert.equal(matrix.design_revision, 'D1');
+  assert.equal(matrix.case_count, 12);
+  assert.equal(matrix.arm_count, 18);
+  assert.equal(matrix.runs.length, 2 * 12 * 18);
+  assert.equal(new Set(matrix.runs.map(r => r.case)).size, 12);
+  assert.equal(new Set(matrix.runs.map(r => r.arm)).size, 18);
+  for (const r of matrix.runs) {
+    assert(['decision-slots-v1','observation-clock-v1'].includes(r.clock));
+    assert.equal(r.id, [r.clock,r.case,r.arm].join('--'));
+    assert(!rows.has(r.id + '.json'), 'repeated matrix cell');
+    rows.set(r.id + '.json', r);
+  }
+  assert.deepEqual(files, [...rows.keys()].sort(), 'directory differs from full D1 matrix');
+  return rows;
+}
+
+function verifyStudy(dir, matrixPath) {
   const files = readdirSync(dir).filter(f => f.endsWith('.json')).sort();
   assert(files.length > 0);
-  let outputs = 0;
+  const rows = matrixPath ? matrixRows(matrixPath, files) : null;
+  let outputs = 0, peerMisses = 0;
   for (const file of files) {
     const j = read(join(dir, file)), c = j.genesis.case, m = j.terminal.measures;
-    assert(['valid-reading-mean-v1', 'scheduled-slot-yield-v1'].includes(c.contract));
+    if (rows) {
+      const r = rows.get(file);
+      assert.equal(c.name, r.case); assert.equal(j.genesis.clock, r.clock);
+      assert.equal(r.replay.head, j.terminal.head);
+      assert.deepEqual(r.budget, j.genesis.budget); assert.deepEqual(r.measures, m);
+    }
+    validateCase(c);
+    peerMisses += auditPeers(j);
     const expected = reference(c);
     assert.deepEqual(m.reference, expected, file);
     const completed = j.events.map(e => e.completed_primary).filter(Boolean);
@@ -56,9 +156,19 @@ function verifyStudy(dir) {
     });
     assert.equal(m.primary_correct, correct.at(-1) ?? false, file);
     assert.equal(m.primary_on_time, correct.some((v,i) => v && completed[i].completed <= c.deadline), file);
+    assert.equal(m.primary_historical_misses,
+      Number(m.environment_ticks > 0 && m.environment_ticks >= c.deadline && !m.primary_on_time), file);
+    const repairs = [];
+    completed.forEach((out,i) => {
+      if (correct[i]) return;
+      const next = completed.find((_,k) => k > i && correct[k]);
+      repairs.push({failed_at:out.completed, repaired_at:next?.completed ?? null,
+        latency:next ? next.completed - out.completed : null});
+    });
+    assert.deepEqual(m.repair_latency, repairs, file);
     outputs += completed.length;
   }
-  return {journals:files.length, completed_outputs:outputs, operator_limit:limit};
+  return {journals:files.length, completed_outputs:outputs, verified_peer_misses:peerMisses, full_matrix_checked:rows !== null, operator_limit:limit};
 }
 
 function recount(path) {
@@ -94,6 +204,7 @@ function recount(path) {
   return {closed_rounds:rounds, operator_limit:limit};
 }
 
-const [mode,path] = process.argv.slice(2);
-assert(path && ['study','assembly'].includes(mode), 'Usage: node audit_measurement.mjs study JOURNAL_DIR | assembly PUBLIC_RECORD');
-console.log(JSON.stringify(mode === 'study' ? verifyStudy(path) : recount(path), null, 2));
+const [mode,path,matrixPath,...extra] = process.argv.slice(2);
+assert(path && extra.length === 0 && (mode === 'study' || (mode === 'assembly' && !matrixPath)),
+  'Usage: node audit_measurement.mjs study JOURNAL_DIR [D1_RESULTS] | assembly PUBLIC_RECORD');
+console.log(JSON.stringify(mode === 'study' ? verifyStudy(path,matrixPath) : recount(path), null, 2));

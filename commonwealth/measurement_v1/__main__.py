@@ -4,13 +4,14 @@ import json
 from pathlib import Path
 
 from ..study_v1.experiment import write_json
-from . import OPERATOR_LIMIT, participant, workshop
+from . import OPERATOR_LIMIT, neighbor, participant, workshop
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="mode", required=True)
     sub.add_parser("readiness")
+    sub.add_parser("neighbor", help="run the frozen N1 warning comparison").add_argument("directory", type=Path)
     run = sub.add_parser("run")
     run.add_argument("directory", type=Path)
     run.add_argument("--fixture-agent", required=True, type=Path)
@@ -18,6 +19,10 @@ def main():
     if args.mode == "readiness":
         print(json.dumps({"status": "LOCAL_RESEARCH_ONLY", "deployment_ready": False, "operator_limit": OPERATOR_LIMIT}))
         return 2
+    if args.mode == "neighbor":
+        result = neighbor.run(args.directory)
+        print(json.dumps({k: result[k] for k in ("design", "episode_count", "episodes_sha256", "operator_limit")}))
+        return 0
     agent = args.fixture_agent.resolve(strict=True)
     args.directory.mkdir(parents=True, exist_ok=False)
     historical = workshop.run(args.directory / "historical")

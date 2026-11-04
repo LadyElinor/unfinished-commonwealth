@@ -93,6 +93,51 @@ class ChargedMeasurement(unittest.TestCase):
             self.assertNotEqual(subprocess.run(cmd, capture_output=True).returncode, 0)
 
     @unittest.skipUnless(shutil.which("node"), "requires Node for independent check")
+    def test_empty_output_journal_still_checks_input_peer_service_and_misses(self):
+        c = case(capacity=0)
+        selector = next(a for a in arms() if a["name"] == "evidence-selector")
+        original = reference_run(c, selector).journal()
+        self.assertFalse(original["terminal"]["measures"]["outputs"])
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp)/"no-output.json"
+            cmd = ["node", str(ROOT/"scripts/audit_measurement.mjs"), "study", tmp]
+            path.write_text(json.dumps(original))
+            verified = json.loads(subprocess.check_output(cmd))
+            self.assertEqual(verified["verified_peer_misses"], 2)
+            for change in ("flags", "length", "misses", "service", "tick"):
+                bad = copy.deepcopy(original)
+                if change == "flags":
+                    bad["genesis"]["case"]["valid"][0] = "true"
+                elif change == "length":
+                    bad["genesis"]["case"]["valid"].pop()
+                elif change == "misses":
+                    bad["terminal"]["measures"]["peer_historical_misses"] = 0
+                elif change == "service":
+                    bad["events"][0]["cost"]["peer_inspections"] = 1
+                else:
+                    bad["events"][0]["clock_tick"] += 1
+                path.write_text(json.dumps(bad))
+                with self.subTest(change=change):
+                    self.assertNotEqual(subprocess.run(cmd, capture_output=True).returncode, 0)
+
+    @unittest.skipUnless(shutil.which("node"), "requires Node for independent check")
+    def test_matrix_audit_refuses_missing_cell(self):
+        clocks = ("decision-slots-v1", "observation-clock-v1")
+        runs = [{"case":str(c), "arm":str(a), "clock":clock, "id":f"{clock}--{c}--{a}"}
+                for c in range(12) for a in range(18) for clock in clocks]
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            journals = root/"journals"
+            journals.mkdir()
+            (journals/(runs[0]["id"]+".json")).write_text("{}")
+            manifest = root/"matrix.json"
+            manifest.write_text(json.dumps({"design_revision":"D1", "case_count":12, "arm_count":18, "runs":runs}))
+            cmd = ["node", str(ROOT/"scripts/audit_measurement.mjs"), "study", str(journals), str(manifest)]
+            result = subprocess.run(cmd, capture_output=True, text=True)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("directory differs from full D1 matrix", result.stderr)
+
+    @unittest.skipUnless(shutil.which("node"), "requires Node for independent check")
     def test_recount_of_public_sample_and_duplicate_ballot(self):
         src = ROOT/"examples/assembly_v1/public_record.json"
         cmd = ["node", str(ROOT/"scripts/audit_measurement.mjs"), "assembly"]

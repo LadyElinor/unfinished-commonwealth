@@ -26,7 +26,7 @@ The [existing D1 results](STUDY_V1_RESULTS.md) reproduce byte-for-byte across al
 
 A second, standalone [Python fixture agent](../examples/agent_profile_v1/python_agent.py) received JSON briefs on the twelve charged D1 cases. Its externally made decisions and separately costed host follow-through produced journals identical to the evidence selector on all twelve. Totals were 19/29 peer arrivals on time, ten peer historical misses, 96 decision slots, 112 inspections, 22 observation grants, eight refused attempts and ten outstanding obligations. The policy intentionally used the same declared mapping; the comparison tests interoperability. It adds no evidence of learning or of a benefit from multiple parties.
 
-The [independent JavaScript audit](../scripts/audit_measurement.mjs) recomputed the D1 arithmetic for 432 journals and checked 345 completed primary outputs, including wrong results. It also recounted both chambers in both closed rounds of the published Assembly example. It uses exact integer ratios on these safe-integer fixtures. It checks published numbers; it does not verify signatures, the Python reducers, ballot truth or the operator's custody of checkpoints.
+The [independent JavaScript audit](../scripts/audit_measurement.mjs) recomputed the D1 arithmetic for 432 journals and checked 345 completed primary outputs, including wrong results. The checker also reconstructs peer FIFO service from each slot’s recorded primary and observation costs, checks every peer’s remaining work and deadline status, and reconciles the full directory against the D1 matrix. It recounted both chambers in both closed rounds of the published Assembly example. It uses exact integer ratios on these safe-integer fixtures. It checks published numbers; it does not verify signatures, the Python reducers, ballot truth or the operator's custody of checkpoints.
 
 ## Required machinery and optional surfaces
 
@@ -41,7 +41,7 @@ Use new output directories. No provider credentials are required.
 ```sh
 python -m commonwealth.study_v1 run .local/d1
 python -m commonwealth.measurement_v1 run .local/charged --fixture-agent examples/agent_profile_v1/python_agent.py
-node scripts/audit_measurement.mjs study .local/d1/journals
+node scripts/audit_measurement.mjs study .local/d1/journals .local/d1/results.json
 node scripts/audit_measurement.mjs assembly examples/assembly_v1/public_record.json
 ```
 
