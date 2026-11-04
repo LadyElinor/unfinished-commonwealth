@@ -131,6 +131,15 @@ In the included comparison, the single controller and coached controller produce
 | `docs/` | Design, casebook, trust boundary, provenance, and research plan |
 | `examples/` | Proposal schema, sample inputs, and a reproduced run record |
 
+## Relay-inspired corrective review (M1)
+
+The separate [M1 review helper](docs/REMEDIATION_V1.md) distinguishes protective
+advice from intent, preserves supplied warnings and exonerating material, and
+checks supplied outcome observations and declared reviewer independence before
+reporting support for a repair’s declared criterion. Paired fictional tests retain both the value of
+targeted inspection and the cost of an overbroad freeze. It grants no authority
+and does not change the research-only or production-readiness boundary.
+
 ## Growing the project
 
 A separate **study harness 1.0.0** now implements the deterministic portion of the

@@ -99,7 +99,9 @@ def main():
                          "tests/test_client_outbox_v1.py", "scripts/package_client.py",
                          "client_dist/pyproject.toml", "client_dist/src/commonwealth_client_v2/store.py",
                          "commonwealth/operations_v1/app.py", "commonwealth/operations_v1/backup.py",
-                         "docs/PRODUCTION_READINESS.md", "tests/test_operations_v1.py"):
+                         "docs/PRODUCTION_READINESS.md", "tests/test_operations_v1.py",
+                         "commonwealth/remediation_v1/review.py", "docs/REMEDIATION_V1.md",
+                         "tests/test_remediation_v1.py", "examples/remediation-v1-packet.json"):
             if not (source / relative).is_file():
                 raise RuntimeError(f"Source archive omitted {relative}")
         # Run the same checks on what downstream source users actually receive.
@@ -127,6 +129,14 @@ def main():
             "'distribution_version': version('unfinished-commonwealth')}))"], smoke))
         if installed["module_version"] != "0.1.3" or installed["distribution_version"] != "0.1.4rc1":
             raise RuntimeError("Installed historical runtime or prerelease distribution version mismatch")
+        remediation = json.loads(run([str(executable), "-m", "commonwealth.remediation_v1",
+            str(source / "examples/remediation-v1-packet.json"), "--as-of", "6"], smoke))
+        if (remediation["repair_status"] != "supplied-record-supports-declared-criterion"
+                or remediation["selected_option"] != "targeted-inspection"
+                or remediation["intent"] != "not-established"
+                or remediation["authority_granted"] is not False
+                or remediation["production_ready"] is not False):
+            raise RuntimeError("Installed remediation helper changed its advisory boundary")
         fixtures = json.loads(run([str(command), "scenarios"], smoke))
         if set(fixtures) != {"missing", "signed", "flagged"}:
             raise RuntimeError("Installed package fixtures differ")
