@@ -41,6 +41,14 @@ jobs:
         run: python scripts/reproduce.py .local/ci-reproduction
       - name: Reproduce separate deterministic contract harness
         run: python -m commonwealth.study_v1 run .local/ci-study-v1
+      - name: Reproduce charged comparison and independently check published numbers
+        if: matrix.os == 'ubuntu-latest' && matrix.python == '3.12'
+        run: |
+          python -m commonwealth.measurement_v1 run .local/ci-charged --fixture-agent examples/agent_profile_v1/python_agent.py
+          cmp .local/ci-charged/results.json examples/charged-workshop-results.json
+          cmp .local/ci-study-v1/summary.json examples/study-v1-summary.json
+          node scripts/audit_measurement.mjs study .local/ci-study-v1/journals
+          node scripts/audit_measurement.mjs assembly examples/assembly_v1/public_record.json
       - name: Reproduce procedural review traces
         run: python -m commonwealth.procedure_v1 run .local/ci-procedure-v1
       - name: Reproduce advisory fraud-discernment study

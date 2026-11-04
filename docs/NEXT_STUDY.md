@@ -6,7 +6,7 @@ proposal below is preserved as the design baseline. The separately versioned
 [development results](STUDY_V1_RESULTS.md) do not constitute a scored model study.
 A later change must be a named design revision, not an unreported adjustment
 after seeing favorable results.
-All current scenarios are already exposed; none can become a sealed holdout.
+All current scenarios are already exposed; none can become a sealed holdout. The [C1c comparison](CHARGED_WORKSHOP_RESULTS.md) separately charges the original fifteen traces and exercises an external fixture against D1.
 
 ## Frozen starting evidence
 

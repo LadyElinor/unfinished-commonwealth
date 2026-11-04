@@ -11,7 +11,7 @@ requires-python = ">=3.11"
 dependencies = []
 
 [project.scripts]
-commonwealth = "commonwealth.cli:main"
+commonwealth = "commonwealth.measurement_v1.reporting:main"
 commonwealth-operations = "commonwealth.operations_v1.__main__:main"
 
 [tool.setuptools.packages.find]

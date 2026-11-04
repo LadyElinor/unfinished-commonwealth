@@ -55,6 +55,56 @@ class ProfileTests(unittest.TestCase):
         self.addCleanup(stop)
         return server
 
+    def test_v11_wait_evidence_and_decline_are_local_and_version_bound(self):
+        packet = adapter.brief(self.task, profile=adapter.PROFILE_1_1)
+        t, r = self.root/"task.json", self.root/"decision.json"
+        t.write_text(json.dumps(self.task))
+        for choice, state in (("wait","WAITING_LOCALLY"), ("request-evidence","EVIDENCE_REQUESTED_LOCALLY"),
+                              ("decline","DECLINED_LOCALLY")):
+            reply = dict(profile=adapter.PROFILE_1_1, brief_id=packet["brief_id"], choice=choice, reason="Need the order.")
+            r.write_text(json.dumps(reply))
+            result = self.command("stage", t, r, self.root/"none.db", "http://127.0.0.1:1", self.root/"no-token",
+                                  "--profile", adapter.PROFILE_1_1)
+            self.assertEqual(json.loads(result.stdout)["state"], state)
+            self.assertFalse((self.root/"none.db").exists())
+            with self.assertRaises(ValueError):
+                adapter.interpret(self.packet, reply)
+        self.assertEqual(self.boundary.audit()["capabilities"][0]["used"], 0)
+
+    def test_v11_allowlist_withholds_unlisted_nested_fields(self):
+        t = copy.deepcopy(self.task)
+        v = t["task"]
+        v["data"]["reference"] = "PRIVATE"
+        v["methods"]["keeper-only"] = "PRIVATE"
+        v["recent_observations"] = [dict(tick=1,reference="PRIVATE",primary_correct=True)]
+        v["testimony_data"] = {"t1":{"actor":"neighbor","account":"Public account","private":"PRIVATE"}}
+        v["counterstory_data"] = [dict(account="Disputed",private="PRIVATE")]
+        v["lessons"] = {"l1":dict(guidance="Inspect again",internal="PRIVATE")}
+        packet = adapter.brief(t, profile=adapter.PROFILE_1_1)
+        text = json.dumps(packet)
+        self.assertNotIn("PRIVATE", text)
+        self.assertNotIn("primary_correct", packet["work"]["recent_observations"][0])
+        self.assertIn("Public account", text)
+        self.assertIn("Disputed", text)
+
+    def test_python_agent_lost_reply_recovers_and_stale_request_is_refused(self):
+        server = self.server()
+        packet = adapter.brief(self.task, profile=adapter.PROFILE_1_1)
+        command = [sys.executable, "-I", str(EXAMPLES/"python_agent.py")]
+        reply = json.loads(subprocess.check_output(command, input=json.dumps(packet), text=True))
+        raw = canonical(adapter.interpret(packet, reply)).encode()
+        path = self.root/"python.db"
+        Outbox.stage(path, server.url, self.token, self.task, raw)
+        self.assertEqual(request(server.url, self.token, "POST", "/proposals", raw)[0], 200)
+        self.assertEqual(Outbox(path).operate(self.token, "resolve")["state"], "UNRESOLVED")
+        self.assertEqual(Outbox(path).operate(self.token, "retry")["recorded"]["receipt"]["disposition"], "ACCEPTED")
+        self.assertEqual(self.boundary.audit()["capabilities"][0]["used"], 1)
+        stale = adapter.interpret(packet, {**reply, "purpose":"New decision on an old head"})
+        self.assertEqual(request(server.url, self.token, "POST", "/proposals", canonical(stale).encode())[1]["disposition"], "STALE_VIEW")
+        wrong = subprocess.run(command, input=json.dumps({**packet,"role":"legislative-seat"}),
+                               text=True,capture_output=True)
+        self.assertNotEqual(wrong.returncode, 0)
+
     def test_response_bound_to_context_and_offer(self):
         pin = {"head": "1"*64, "registry": "2"*64, "events": 38}
         review = {"schema": "unfinished-commonwealth.assembly-review.v1", "scope": "LOCAL_RESEARCH_ONLY",

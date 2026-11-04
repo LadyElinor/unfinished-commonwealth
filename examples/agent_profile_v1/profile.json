@@ -35,5 +35,18 @@
       "signing": "Custodian inspects and signs outside the model; the Assembly enforces scope at submission."
     }
   },
-  "brief_schema": "brief.schema.json"
+  "brief_schema": "brief.schema.json",
+  "optional_workshop_profile": {
+    "profile": "unfinished-commonwealth.agent-participation.v1.1",
+    "role": "workshop-proposer",
+    "brief_schema": "brief-v1_1.schema.json",
+    "decision_schema": "decision-v1_1.schema.json",
+    "decisions": [
+      "propose",
+      "decline",
+      "wait",
+      "request-evidence"
+    ],
+    "nonproposal_effect": "local-only"
+  }
 }

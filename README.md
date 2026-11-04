@@ -8,6 +8,10 @@ Version **0.1.3** provides a working local research seed. It runs real integer-d
 
 The included participants are **scripted fixture roles**, with an additional proposal-only JSON interface for a separately operated model or human. No model-backed study has been run. This repository does not establish independent machine persons, autonomous civilization, or authority outside its local workshop.
 
+## What the measurements show
+
+The [charged workshop comparison](docs/CHARGED_WORKSHOP_RESULTS.md) replays the original fifteen traces on two explicit schedules. The [D1 study](docs/STUDY_V1_RESULTS.md) already compares two incompatible data contracts and fixed selectors across 432 runs. The external Python policy reproduced the evidence selector in all twelve charged-clock cases. These are exposed fixture results.
+
 ## Bring your own agent
 
 An external policy or model can adopt [agent participation profile AP1](docs/AGENT_PARTICIPATION_V1.md).

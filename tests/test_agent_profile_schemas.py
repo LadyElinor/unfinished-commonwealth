@@ -20,6 +20,25 @@ from commonwealth.assembly_v1.importer import verify
 @unittest.skipUnless(importlib.util.find_spec("jsonschema") and importlib.util.find_spec("cryptography")
                      and shutil.which("node"), "schema conformance tools unavailable")
 class SchemaTests(unittest.TestCase):
+    def test_measurement_profiles_match_schema(self):
+        from jsonschema import Draft202012Validator
+        from commonwealth.measurement_v1.participant import brief as study_brief
+        from commonwealth.study_v1.fixtures import case
+        from commonwealth.study_v1.engine import Episode
+        load = lambda name: json.loads((AP/name).read_text())
+        work = adapter.brief(load("example_task.json"), profile=adapter.PROFILE_1_1)
+        Draft202012Validator(load("brief-v1_1.schema.json")).validate(work)
+        cases = [(work, "decision-v1_1.schema.json"),
+                 (study_brief(Episode(case(declared=False)).view()), "study-decision.schema.json")]
+        for packet, schema in cases:
+            response = subprocess.check_output([sys.executable, "-I", str(AP/"python_agent.py")],
+                                               input=json.dumps(packet), text=True)
+            validator = Draft202012Validator(load(schema))
+            validator.validate(json.loads(response))
+            for choice in ("wait", "request-evidence", "decline"):
+                validator.validate({"profile":packet["profile"], "brief_id":packet["brief_id"],
+                                    "choice":choice, "reason":"Evidence outstanding."})
+
     def test_javascript_roundtrip_under_published_schemas(self):
         from jsonschema import Draft202012Validator
         def load(path):

@@ -1,5 +1,9 @@
 # Roadmap
 
+## Measurement before additional protocol work
+
+The [fixed-trace timing comparison](docs/CHARGED_WORKSHOP_RESULTS.md) and the D1 external policy control now run alongside the historical evaluations. A measured benefit over the evidence selector and independently held-out cases remain open gates.
+
 ## O1 operational prerequisites: production still blocked
 
 [Operational candidate](docs/PRODUCTION_READINESS.md) adds strict local
