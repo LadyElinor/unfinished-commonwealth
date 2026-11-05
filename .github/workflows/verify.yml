@@ -33,7 +33,36 @@ jobs:
         run: python scripts/verify.py
       - name: Reproduce workshop and comparison
         run: python scripts/reproduce.py .local/ci-reproduction
+      - name: Reproduce separate deterministic contract harness
+        run: python -m commonwealth.study_v1 run .local/ci-study-v1
+      - name: Reproduce procedural review traces
+        run: python -m commonwealth.procedure_v1 run .local/ci-procedure-v1
+      - name: Reproduce advisory fraud-discernment study
+        run: python -m commonwealth.discernment_v1 run .local/ci-discernment-v1
+      - name: Reproduce commitment and issuer-integrity study
+        run: python -m commonwealth.integrity_v1 run .local/ci-integrity-v1
+      - name: Reproduce balanced review and reconsideration traces
+        run: python -m commonwealth.review_v1 run .local/ci-review-v1
+      - name: Reproduce authority, language and correction boundaries
+        run: python -m commonwealth.authority_v1 run .local/ci-authority-v1
+      - name: Verify local participant transport
+        run: python -m commonwealth.participant_v1 demo
       - name: Prepare package build tools
         run: python -m pip install "setuptools>=68" wheel
       - name: Verify source archive and clean wheel installation
         run: python scripts/package.py .local/ci-release
+
+  uid-isolation:
+    # Opt-in disposable runner only. No account/service/firewall changes.
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Observe proposal boundary across three unprivileged UIDs
+        run: sudo "$(command -v python)" scripts/uid_isolation.py --run .local/uid-isolation.json
+      - name: Preserve sanitized observation report in job log
+        if: always()
+        run: cat .local/uid-isolation.json

@@ -1,0 +1,28 @@
+{
+  "schema": "warranted-authority-review-1",
+  "answers": {
+    "case": "Synthetic: temporary repair of a local service",
+    "assessment": "A bounded service failure was observed.",
+    "legitimacy": "not applicable",
+    "stage": "proposal",
+    "source_record": "Synthetic incident log; not evidence about any real organization.",
+    "source_status": "primary record reviewed",
+    "counterevidence": "A restart may suffice; inspect the failed check before changing configuration.",
+    "action": "Prepare one configuration-file candidate; do not deploy.",
+    "proposer": "Assigned repair agent",
+    "decision_maker": "Local workspace operator",
+    "authority_basis": "Synthetic task contract, paths and acceptance checks; candidate preparation only.",
+    "authority_status": "supported by cited instrument",
+    "affected_people": "Workspace owner; service users if a later deployment occurs.",
+    "representation": "The owner delegates local candidate preparation. No broader public representation is claimed.",
+    "trigger": "Operator confirms the recorded check failure; a passing fresh observation defeats the premise.",
+    "scope": "One listed file; no external writes, deployments or permission changes.",
+    "expiry": "One-use warrant, maximum 15 minutes; fresh review on renewal.",
+    "dissent": "Agent may halt; operator reviews objections and seeks an independent reviewer before consequential deployment.",
+    "reversal": "Revoke unused warrant; discard candidate; original repository remains unchanged.",
+    "reviewer": "Synthetic reviewer; 2026-10-30; independence not established by this fixture.",
+    "public_language": "Synthetic fixture: no public political statement.",
+    "working_language": "Synthetic task proposal: prepare a repair candidate if failure persists.",
+    "analyst_language": "This complete fixture demonstrates form coverage only. It provides no genuine authority."
+  }
+}

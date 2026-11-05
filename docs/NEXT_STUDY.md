@@ -1,8 +1,11 @@
 # Proposed next study: distinguish a useful institution from a fixed solver
 
-Status: **PROPOSED, NOT IMPLEMENTED, NOT RUN.** This version fixes the design
-questions and gates before any new scored trial. A later change must be a named
-design revision, not an unreported adjustment after seeing favorable results.
+Status: **DETERMINISTIC PORTION IMPLEMENTED AS STUDY-V1 / D1.** The original
+proposal below is preserved as the design baseline. The separately versioned
+[D1 design](STUDY_V1_DESIGN.md) fixes scheduling and treatment rules; its
+[development results](STUDY_V1_RESULTS.md) do not constitute a scored model study.
+A later change must be a named design revision, not an unreported adjustment
+after seeing favorable results.
 All current scenarios are already exposed; none can become a sealed holdout.
 
 ## Frozen starting evidence
@@ -95,7 +98,7 @@ Keep at least two named resource models; do not combine them after the fact:
    listens, reflects, or waits. No background world should pause just because
    an agent narrates its intentions.
 
-The second model is a design requirement, not implemented semantics. Before
+At proposal time the second model was a design requirement, not implemented semantics. Before
 coding it, fix the scheduling order, work/inspection budget, cost of passive
 observation, and terminal accounting. Rejections must remain recorded and
 costed, rather than disappear from the attempt budget. Use the same choices

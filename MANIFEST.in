@@ -5,3 +5,8 @@ recursive-include scripts *.py
 recursive-include tests *.py *.json
 recursive-include commonwealth/data *.json
 exclude .local/*
+
+recursive-include client_dist/src *.py *.txt
+include client_dist/pyproject.toml client_dist/README.md
+prune client_dist/build
+prune client_dist/src/unfinished_commonwealth_client.egg-info

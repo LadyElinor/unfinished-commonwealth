@@ -1,0 +1,50 @@
+{
+  "public": {
+    "actor": "fictional-council",
+    "decision": "service-A",
+    "register": "public",
+    "stage": "proposal",
+    "legitimacy": "legal authority",
+    "position": "temporary-maintenance",
+    "condition": "confirmed-fault",
+    "event_at": 10,
+    "publication_at": 11,
+    "version": "v1",
+    "source_group": "record-public",
+    "source_status": "primary record reviewed",
+    "locator": "Synthetic record, paragraph 1",
+    "account": "Consider a temporary intervention if the fault is confirmed."
+  },
+  "working": {
+    "actor": "fictional-council",
+    "decision": "service-A",
+    "register": "working",
+    "stage": "proposal",
+    "legitimacy": "legal authority",
+    "position": "permanent-maintenance",
+    "condition": "confirmed-fault",
+    "event_at": 10,
+    "publication_at": 11,
+    "version": "v1",
+    "source_group": "record-working",
+    "source_status": "primary record reviewed",
+    "locator": "Synthetic record, paragraph 1",
+    "account": "Consider a temporary intervention if the fault is confirmed."
+  },
+  "analyst": {
+    "actor": "fictional-council",
+    "decision": "service-A",
+    "register": "analyst",
+    "stage": "proposal",
+    "legitimacy": "legal authority",
+    "position": "temporary-maintenance",
+    "condition": "confirmed-fault",
+    "event_at": 10,
+    "publication_at": 11,
+    "version": "v1",
+    "source_group": "record-analyst",
+    "source_status": "primary record reviewed",
+    "locator": "Synthetic record, paragraph 1",
+    "account": "Consider a temporary intervention if the fault is confirmed."
+  }
+}

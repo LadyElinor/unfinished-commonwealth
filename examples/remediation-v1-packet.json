@@ -1,0 +1,80 @@
+{
+  "scope": "failed-sensor-batch",
+  "decision_controller": "original-office",
+  "records": [
+    {
+      "id": "warning",
+      "at": 1,
+      "source": "test-log",
+      "kind": "warning",
+      "text": "Required test failed."
+    },
+    {
+      "id": "dissent",
+      "at": 2,
+      "source": "affected-service",
+      "kind": "dissent",
+      "text": "Do not freeze unrelated batches."
+    },
+    {
+      "id": "clear",
+      "at": 2,
+      "source": "separate-test",
+      "kind": "exonerating",
+      "text": "Other batches passed."
+    },
+    {
+      "id": "check",
+      "at": 5,
+      "source": "independent-test-log",
+      "kind": "observation",
+      "text": "One repaired batch passed required test."
+    }
+  ],
+  "finding": {
+    "status": "substantiated-defect",
+    "basis": [
+      "warning"
+    ]
+  },
+  "warning": {
+    "record": "warning",
+    "received_at": 2,
+    "response": null,
+    "opportunity": "open"
+  },
+  "options": [
+    {
+      "id": "targeted-inspection",
+      "scope": "failed-sensor-batch",
+      "authority_ref": "host-grant-1",
+      "duration": 1,
+      "prevented_loss": 8,
+      "restriction_loss": 1
+    },
+    {
+      "id": "freeze-everything",
+      "scope": "all-batches",
+      "authority_ref": "host-grant-1",
+      "duration": 3,
+      "prevented_loss": 8,
+      "restriction_loss": 12
+    }
+  ],
+  "repair": {
+    "id": "repair-1",
+    "scope": "failed-sensor-batch",
+    "implementer_controller": "repair-office",
+    "ordered_at": 3,
+    "implemented_at": 4,
+    "criterion": "required-test-on-batch",
+    "checks": [
+      {
+        "record": "check",
+        "reviewer_controller": "independent-office",
+        "criterion": "required-test-on-batch",
+        "result": "pass"
+      }
+    ]
+  }
+}
