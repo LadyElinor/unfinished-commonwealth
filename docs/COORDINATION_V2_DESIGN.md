@@ -1,8 +1,14 @@
 # G2: collective authority, reporting and modeled retaliation
 
-Status: **DESIGN FIXED BEFORE IMPLEMENTATION AND COMPARISON**, G2-1. This is a
-new bounded experiment. G1's preference-selection comparison and its results
-remain frozen. G1 did not model distributed authorization or retaliation.
+Status: **G2-2 DESIGN CORRECTION, FIXED BEFORE REIMPLEMENTATION AND RESCORING**.
+G1's preference-selection comparison and its results remain frozen. G1 did not
+model distributed authorization or retaliation. The first G2-1 development run
+incorrectly erased the reporter's knowledge when forwarding was suppressed.
+Its [code, design and 2,016-case result are retained at a separate commit](https://github.com/LadyElinor/unfinished-commonwealth/tree/8970bbc194cb328e7ea494c737251cd568b517e2).
+G2-2 corrects this information-flow error: the author always retains its own
+report. All scenarios, timings, budgets, voting rules and guard conditions stay
+fixed. This is a disclosed correction after exposed development, not a fresh
+holdout or an independently preregistered efficacy result.
 
 ## Four main arms and common boundaries
 
@@ -19,13 +25,18 @@ execution remain separate. Nothing grants authority over people or live systems.
 
 Direct delivery makes the report available to every role. The defective filtered
 channel withholds reports that disagree with the coordinator's initial preference.
-All submitted reports remain in the evaluator record; withheld reports never enter
-participant views. The filter sees submissions even when it suppresses forwarding.
+All submitted reports remain in the evaluator record. Withholding affects only
+forwarding: worker-b always retains its own report; coordinator and worker-a
+receive it only when forwarded. The filter can inspect a submission to route it,
+but its decision-policy view is deliberately separate. No participant reads the
+evaluator record. The filter sees submissions even when it suppresses forwarding.
 All three roles have identical access to the paid task-contract query. If any
-role's initial preference differs from a delivered report, one shared query is
+role's initial preference differs from the report available to that role, one shared query is
 requested before ballots, in BOTH authority conditions. The same evidence is then
 available to all three. This rule holds information acquisition fixed while the
-authority rule changes. Ballots follow verified contract evidence if available,
+authority rule changes. Exclusion in the adverse control removes a ballot
+opportunity only; it does not erase the reporter's memory or evidence-query access.
+Ballots follow verified contract evidence if available,
 otherwise each role's initial preference. A report or majority is not ground truth.
 
 Include three controls with the same costs and ceilings: constant-first
@@ -145,5 +156,6 @@ behavior unchanged relative to its matched no-request episode apart from the
 attempt/refusal record. Bypass with no reprisal must match the protected null.
 Preserve G1/D1/N1 source and published evidence. No tuning after the first full
 run; discrepancies require a recorded implementation correction or named design
-revision. The host can rewrite the simulator and every record. All outputs stay
+revision. G2-1 is explicitly superseded for the information-flow error above.
+The host can rewrite the simulator and every record. All outputs stay
 LOCAL_RESEARCH_ONLY with no external authority, actions or production readiness.
