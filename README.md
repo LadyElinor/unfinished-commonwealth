@@ -24,6 +24,15 @@ first-output correctness. All arms keep the same keeper approval boundary.
 procedural prescriptions from demonstrated effectiveness and retains autonomy,
 dissent, scoped authority and correction without inferred guilt.
 
+The separate [G2 comparison](docs/COORDINATION_V2_RESULTS.md) implements central
+selection versus a two-of-three collective rule, crossed with direct/filtered
+reporting. Its 2,016 episodes keep protected operation and a deliberate
+anti-retaliation-guard bypass separate. Actual denied ballots, restoration time,
+missing quorum, correctness and service delay are distinct measures. Report
+authors retain their own evidence even when forwarding is suppressed. This is
+a bounded in-process experiment, not distributed network consensus or observed
+institutional effectiveness; G1 remains unchanged.
+
 ## Bring your own agent
 
 An external policy or model can adopt [agent participation profile AP1](docs/AGENT_PARTICIPATION_V1.md).

@@ -107,6 +107,9 @@ def main():
                          "commonwealth/coordination_v1/experiment.py", "docs/COORDINATION_V1_DESIGN.md",
                          "docs/COORDINATION_V1_RESULTS.md", "docs/GOVERNANCE_PROCEDURE_REVIEW.md",
                          "tests/test_coordination_v1.py", "examples/coordination-v1-results.json",
+                         "commonwealth/coordination_v2/council.py", "commonwealth/coordination_v2/experiment.py",
+                         "docs/COORDINATION_V2_DESIGN.md", "docs/COORDINATION_V2_RESULTS.md",
+                         "tests/test_coordination_v2.py", "examples/coordination-v2-results.json",
                          "examples/agent_profile_v1/python_agent.py"):
             if not (source / relative).is_file():
                 raise RuntimeError(f"Source archive omitted {relative}")
@@ -250,6 +253,13 @@ def main():
             "coordination/episodes.jsonl", "--line", "672"], smoke))
         if coordination_replay["verified"] is not True or coordination_replay["authority_granted"] is not False:
             raise RuntimeError("Installed G1 replay or authority boundary failed")
+        run([str(executable), "-m", "commonwealth.coordination_v2", "run", "coordination-v2"], smoke)
+        if (smoke / "coordination-v2/results.json").read_bytes() != (source / "examples/coordination-v2-results.json").read_bytes():
+            raise RuntimeError("Installed G2 comparison differed from the published result")
+        coordination_v2_replay = json.loads(run([str(executable), "-m", "commonwealth.coordination_v2", "replay",
+            "coordination-v2/episodes.jsonl", "--line", "2016"], smoke))
+        if coordination_v2_replay["verified"] is not True or coordination_v2_replay["authority_granted"] is not False:
+            raise RuntimeError("Installed G2 replay or authority boundary failed")
         readiness = json.loads(run([str(command), "readiness"], smoke, expected=2))
         if readiness["deployment_ready"] is not False or not readiness.get("operator_limit"):
             raise RuntimeError("Research-only readiness boundary changed")
@@ -285,6 +295,7 @@ def main():
             "client_outbox_recovery": client_outbox,
             "client_only_artifact": client_only,
             "coordination_episodes": 672, "coordination_replay": coordination_replay,
+            "coordination_v2_episodes": 2016, "coordination_v2_replay": coordination_v2_replay,
             "readiness_exit": 2, "model_calls": 0,
             "scope": "LOCAL_RESEARCH_ONLY",
         }

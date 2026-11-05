@@ -12,7 +12,7 @@ from ..study_v1.contracts import VALID_MEAN, SLOT_YIELD
 from ..study_v1.engine import Episode, canonical, digest, replay as replay_d1
 from ..study_v1.experiment import write_json
 
-DESIGN_COMMIT = "b81b57668710b73c4fc4f50dc9508caa2101eb6b"
+DESIGN_COMMIT = "2f4c34bc985574946361866ccccce9896479eb95"
 METHOD_FOR = {VALID_MEAN: METHODS[0], SLOT_YIELD: METHODS[1]}
 ARMS = ("central-direct", "central-filtered", "distributed-direct", "distributed-filtered",
         "constant-first-quality-stream", "constant-first-zero-fill", "evidence-selector-first")
@@ -60,17 +60,17 @@ def specification(cell):
     return ((VALID_MEAN, SLOT_YIELD)[truth], dict(zip(ROLES, (METHODS[p] for p in preferences))), METHODS[report])
 
 
-def needs_evidence(arm, preferences, delivered_report):
+def needs_evidence(arm, preferences, report_views):
     """Pure information rule: no truth, score, case identifier or authority privilege."""
     if arm not in ARMS or set(preferences) != set(ROLES) or any(m not in METHODS for m in preferences.values()):
         raise ValueError("unsupported policy input")
-    if delivered_report is not None and delivered_report not in METHODS:
-        raise ValueError("unsupported report")
+    if set(report_views) != set(ROLES) or any(m is not None and m not in METHODS for m in report_views.values()):
+        raise ValueError("unsupported report views")
     if arm == "evidence-selector-first":
         return True
     if arm.startswith("constant-first-"):
         return False
-    return delivered_report is not None and any(m != delivered_report for m in preferences.values())
+    return any(report_views[role] is not None and method != report_views[role] for role, method in preferences.items())
 
 
 def episode(cell, arm, guard="protected", reporter="peer"):
@@ -84,7 +84,8 @@ def episode(cell, arm, guard="protected", reporter="peer"):
     council = Council(rule, guard)
     original = {"id": "report-1", "role": "worker-b", "label": reporter, "method": report_method}
     delivered = not (arm.endswith("-filtered") and report_method != preferences["coordinator"])
-    precheck = needs_evidence(arm, preferences, report_method if delivered else None)
+    report_views = {role: report_method if delivered or role == "worker-b" else None for role in ROLES}
+    precheck = needs_evidence(arm, preferences, report_views)
     case = {"name": "g2-public-development", "values": [10, None, 20], "valid": [True, False, True],
             "contract": contract, "declared": False, "capacity": 4, "deadline": cell["deadline"],
             "reviewer_at": 0, "peers": [{"id": "peer-batch", "arrival": 8, "deadline": 8, "work": cell["peer_work"]}]}
@@ -196,6 +197,7 @@ def episode(cell, arm, guard="protected", reporter="peer"):
         workshop_refusals=summary["refusals"], outstanding_obligations=len(summary["outstanding"]))
     return {"version": VERSION, "design_commit": DESIGN_COMMIT, "cell": cell, "arm": arm, "guard": guard,
             "routing": {"original": original, "delivered": delivered, "precheck": precheck,
+                        "report_views": report_views,
                         "receipt_slot": 1 if delivered else None},
             "decisions": decisions, "journal": journal, "measures": measures,
             "retaliation_status": "AUTHORED_MECHANISM_NOT_INFERRED_INTENT", "intent": "not-established",
@@ -240,7 +242,7 @@ def run(directory):
                     entry["totals"][metric] += record["measures"][metric]
             totals.append({"arm": arm, "guard": guard, "cells": len(cells()), "totals": total})
             strata.extend(groups[k] for k in sorted(groups))
-    result = {"version": VERSION, "design": "G2-1", "design_commit": DESIGN_COMMIT,
+    result = {"version": VERSION, "design": "G2-2", "design_commit": DESIGN_COMMIT,
               "status": "EXPOSED_DETERMINISTIC_ONLY", "episode_count": count,
               "episodes_sha256": rows_digest.hexdigest(), "all_records_replayed": True,
               "metric_groups": {k: list(v) for k, v in METRIC_GROUPS.items()}, "totals": totals, "strata": strata,

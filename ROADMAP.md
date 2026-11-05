@@ -14,6 +14,13 @@ reporting arms tie in aggregate. Next: independent arithmetic/schedule review
 and separately controlled evidence for any new efficacy claim. G1 does not
 authorize a governance deployment or alter individual-rights safeguards.
 
+[G2](docs/COORDINATION_V2_RESULTS.md) adds an actual two-of-three selection rule
+and explicitly modeled retaliation, closing two G1 omissions. Its G2-2 revision
+corrects a disclosed information-flow error from the first development run:
+filtering cannot erase the report author's own knowledge. The superseded run
+remains available in Git history. Outcomes still do not demonstrate an advantage
+over the evidence selector or an institutional efficacy result.
+
 ## O1 operational prerequisites: production still blocked
 
 [Operational candidate](docs/PRODUCTION_READINESS.md) adds strict local

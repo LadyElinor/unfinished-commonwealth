@@ -116,11 +116,12 @@ class G2Schedules(unittest.TestCase):
             self.assertEqual(m["ballot_slots"], 3)
             self.assertEqual(m["peer_on_time"], 1)
         filtered = g2.episode(cell("false-warning"), "central-filtered")
-        self.assertTrue(filtered["measures"]["primary_on_time"])
+        self.assertFalse(filtered["measures"]["primary_on_time"])
+        self.assertEqual(filtered["routing"]["report_views"]["worker-b"], "zero-fill")
         self.assertIsNone(filtered["journal"]["genesis"]["lesson"])
 
     def test_wrong_output_repair_preserves_first_error_and_eight_slot_latency(self):
-        row = g2.episode(cell("mistaken-consensus"), "central-filtered")
+        row = g2.episode(cell("mistaken-coordinator"), "central-filtered")
         summary = row["journal"]["terminal"]["measures"]
         self.assertEqual([o["answer"]["value"]["numerator"] for o in summary["outputs"]], [15, 10])
         self.assertEqual([o["completed"] for o in summary["outputs"]], [8, 16])
@@ -214,15 +215,26 @@ class RetaliationControls(unittest.TestCase):
 
 
 class G2RecordBoundaries(unittest.TestCase):
+    def test_filter_and_exclusion_cannot_erase_report_authors_knowledge(self):
+        for guard in g2.GUARDS:
+            row = g2.episode(cell("mistaken-consensus", reprisal=True), "distributed-filtered", guard)
+            self.assertFalse(row["routing"]["delivered"])
+            self.assertEqual(row["routing"]["report_views"], {
+                "coordinator": None, "worker-a": None, "worker-b": "zero-fill"})
+            self.assertTrue(row["routing"]["precheck"])
+            self.assertTrue(row["measures"]["first_correct"])
+            self.assertEqual(row["measures"]["consultation_slots"], 2)
+
     def test_hidden_truth_does_not_enter_information_policy(self):
         prefs = {role: "quality-stream" for role in ROLES}
         for route in (None, "quality-stream", "zero-fill"):
-            self.assertEqual(g2.needs_evidence("central-direct", prefs, route),
-                             g2.needs_evidence("distributed-direct", prefs, route))
+            views = dict.fromkeys(ROLES, route)
+            self.assertEqual(g2.needs_evidence("central-direct", prefs, views),
+                             g2.needs_evidence("distributed-direct", prefs, views))
         with self.assertRaises(TypeError):
-            g2.needs_evidence("central-direct", prefs, None, truth="yield")
+            g2.needs_evidence("central-direct", prefs, dict.fromkeys(ROLES), truth="yield")
         with self.assertRaises(ValueError):
-            g2.needs_evidence("invented", prefs, None)
+            g2.needs_evidence("invented", prefs, dict.fromkeys(ROLES))
 
     def test_replay_rejects_ballot_delivery_retaliation_and_authority_changes(self):
         original = g2.episode(cell("mistaken-coordinator", reprisal=True), "distributed-filtered", "bypassed")

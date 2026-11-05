@@ -58,6 +58,11 @@ jobs:
           python -m commonwealth.coordination_v1 run .local/ci-coordination-v1
           python -c "from pathlib import Path; assert Path('.local/ci-coordination-v1/results.json').read_bytes() == Path('examples/coordination-v1-results.json').read_bytes()"
           python -m commonwealth.coordination_v1 replay .local/ci-coordination-v1/episodes.jsonl --line 672
+      - name: Reproduce collective authority and retaliation comparison
+        run: |
+          python -m commonwealth.coordination_v2 run .local/ci-coordination-v2
+          python -c "from pathlib import Path; assert Path('.local/ci-coordination-v2/results.json').read_bytes() == Path('examples/coordination-v2-results.json').read_bytes()"
+          python -m commonwealth.coordination_v2 replay .local/ci-coordination-v2/episodes.jsonl --line 2016
       - name: Reproduce advisory fraud-discernment study
         run: python -m commonwealth.discernment_v1 run .local/ci-discernment-v1
       - name: Reproduce commitment and issuer-integrity study
