@@ -1,0 +1,4075 @@
+{
+  "design": "C1c-1",
+  "design_commit": "2a23d1fecd25445e5fd9f6ae08648ed4f0efe400",
+  "external_study": {
+    "cases": [
+      {
+        "briefs_sent": 1,
+        "case": "mean-clear",
+        "different_measures": [],
+        "identical_journal": true,
+        "measures": {
+          "actual_costs": "NOT_MEASURED",
+          "attempts": 8,
+          "decision_slots": 8,
+          "environment_ticks": 8,
+          "inspections": 11,
+          "model_calls": 0,
+          "observation_grants": 2,
+          "observation_inspections": 2,
+          "observation_requests": 2,
+          "outputs": [
+            {
+              "answer": {
+                "status": "defined",
+                "value": {
+                  "denominator": 1,
+                  "numerator": 15
+                }
+              },
+              "completed": 3,
+              "method": "quality-stream"
+            }
+          ],
+          "outstanding": [],
+          "peer_arrivals": 2,
+          "peer_completions": 2,
+          "peer_historical_misses": 0,
+          "peer_inspections": 6,
+          "peer_on_time": 2,
+          "peers": [
+            {
+              "arrival": 1,
+              "completed": 1,
+              "deadline": 3,
+              "id": "peer-1",
+              "missed": false,
+              "remaining": 0,
+              "work": 3
+            },
+            {
+              "arrival": 3,
+              "completed": 3,
+              "deadline": 6,
+              "id": "peer-2",
+              "missed": false,
+              "remaining": 0,
+              "work": 3
+            }
+          ],
+          "primary_correct": true,
+          "primary_historical_misses": 0,
+          "primary_inspections": 3,
+          "primary_on_time": true,
+          "reference": {
+            "status": "defined",
+            "value": {
+              "denominator": 1,
+              "numerator": 15
+            }
+          },
+          "refusals": 0,
+          "repair_latency": []
+        }
+      },
+      {
+        "briefs_sent": 1,
+        "case": "mean-urgent",
+        "different_measures": [],
+        "identical_journal": true,
+        "measures": {
+          "actual_costs": "NOT_MEASURED",
+          "attempts": 8,
+          "decision_slots": 8,
+          "environment_ticks": 8,
+          "inspections": 11,
+          "model_calls": 0,
+          "observation_grants": 2,
+          "observation_inspections": 2,
+          "observation_requests": 2,
+          "outputs": [
+            {
+              "answer": {
+                "status": "defined",
+                "value": {
+                  "denominator": 1,
+                  "numerator": 15
+                }
+              },
+              "completed": 3,
+              "method": "quality-stream"
+            }
+          ],
+          "outstanding": [],
+          "peer_arrivals": 2,
+          "peer_completions": 2,
+          "peer_historical_misses": 0,
+          "peer_inspections": 6,
+          "peer_on_time": 2,
+          "peers": [
+            {
+              "arrival": 1,
+              "completed": 1,
+              "deadline": 3,
+              "id": "peer-1",
+              "missed": false,
+              "remaining": 0,
+              "work": 3
+            },
+            {
+              "arrival": 3,
+              "completed": 3,
+              "deadline": 6,
+              "id": "peer-2",
+              "missed": false,
+              "remaining": 0,
+              "work": 3
+            }
+          ],
+          "primary_correct": true,
+          "primary_historical_misses": 0,
+          "primary_inspections": 3,
+          "primary_on_time": true,
+          "reference": {
+            "status": "defined",
+            "value": {
+              "denominator": 1,
+              "numerator": 15
+            }
+          },
+          "refusals": 0,
+          "repair_latency": []
+        }
+      },
+      {
+        "briefs_sent": 2,
+        "case": "mean-uncertain",
+        "different_measures": [],
+        "identical_journal": true,
+        "measures": {
+          "actual_costs": "NOT_MEASURED",
+          "attempts": 8,
+          "decision_slots": 8,
+          "environment_ticks": 8,
+          "inspections": 11,
+          "model_calls": 0,
+          "observation_grants": 2,
+          "observation_inspections": 2,
+          "observation_requests": 2,
+          "outputs": [
+            {
+              "answer": {
+                "status": "defined",
+                "value": {
+                  "denominator": 1,
+                  "numerator": 15
+                }
+              },
+              "completed": 4,
+              "method": "quality-stream"
+            }
+          ],
+          "outstanding": [],
+          "peer_arrivals": 2,
+          "peer_completions": 2,
+          "peer_historical_misses": 0,
+          "peer_inspections": 6,
+          "peer_on_time": 2,
+          "peers": [
+            {
+              "arrival": 1,
+              "completed": 1,
+              "deadline": 3,
+              "id": "peer-1",
+              "missed": false,
+              "remaining": 0,
+              "work": 3
+            },
+            {
+              "arrival": 3,
+              "completed": 3,
+              "deadline": 6,
+              "id": "peer-2",
+              "missed": false,
+              "remaining": 0,
+              "work": 3
+            }
+          ],
+          "primary_correct": true,
+          "primary_historical_misses": 0,
+          "primary_inspections": 3,
+          "primary_on_time": true,
+          "reference": {
+            "status": "defined",
+            "value": {
+              "denominator": 1,
+              "numerator": 15
+            }
+          },
+          "refusals": 0,
+          "repair_latency": []
+        }
+      },
+      {
+        "briefs_sent": 1,
+        "case": "mean-signed",
+        "different_measures": [],
+        "identical_journal": true,
+        "measures": {
+          "actual_costs": "NOT_MEASURED",
+          "attempts": 8,
+          "decision_slots": 8,
+          "environment_ticks": 8,
+          "inspections": 11,
+          "model_calls": 0,
+          "observation_grants": 2,
+          "observation_inspections": 2,
+          "observation_requests": 2,
+          "outputs": [
+            {
+              "answer": {
+                "status": "defined",
+                "value": {
+                  "denominator": 1,
+                  "numerator": 3
+                }
+              },
+              "completed": 3,
+              "method": "quality-stream"
+            }
+          ],
+          "outstanding": [],
+          "peer_arrivals": 2,
+          "peer_completions": 2,
+          "peer_historical_misses": 0,
+          "peer_inspections": 6,
+          "peer_on_time": 2,
+          "peers": [
+            {
+              "arrival": 1,
+              "completed": 1,
+              "deadline": 3,
+              "id": "peer-1",
+              "missed": false,
+              "remaining": 0,
+              "work": 3
+            },
+            {
+              "arrival": 3,
+              "completed": 3,
+              "deadline": 6,
+              "id": "peer-2",
+              "missed": false,
+              "remaining": 0,
+              "work": 3
+            }
+          ],
+          "primary_correct": true,
+          "primary_historical_misses": 0,
+          "primary_inspections": 3,
+          "primary_on_time": true,
+          "reference": {
+            "status": "defined",
+            "value": {
+              "denominator": 1,
+              "numerator": 3
+            }
+          },
+          "refusals": 0,
+          "repair_latency": []
+        }
+      },
+      {
+        "briefs_sent": 1,
+        "case": "yield-clear",
+        "different_measures": [],
+        "identical_journal": true,
+        "measures": {
+          "actual_costs": "NOT_MEASURED",
+          "attempts": 8,
+          "decision_slots": 8,
+          "environment_ticks": 8,
+          "inspections": 11,
+          "model_calls": 0,
+          "observation_grants": 2,
+          "observation_inspections": 2,
+          "observation_requests": 2,
+          "outputs": [
+            {
+              "answer": {
+                "status": "defined",
+                "value": {
+                  "denominator": 1,
+                  "numerator": 10
+                }
+              },
+              "completed": 3,
+              "method": "zero-fill"
+            }
+          ],
+          "outstanding": [],
+          "peer_arrivals": 2,
+          "peer_completions": 2,
+          "peer_historical_misses": 0,
+          "peer_inspections": 6,
+          "peer_on_time": 2,
+          "peers": [
+            {
+              "arrival": 1,
+              "completed": 1,
+              "deadline": 3,
+              "id": "peer-1",
+              "missed": false,
+              "remaining": 0,
+              "work": 3
+            },
+            {
+              "arrival": 3,
+              "completed": 3,
+              "deadline": 6,
+              "id": "peer-2",
+              "missed": false,
+              "remaining": 0,
+              "work": 3
+            }
+          ],
+          "primary_correct": true,
+          "primary_historical_misses": 0,
+          "primary_inspections": 3,
+          "primary_on_time": true,
+          "reference": {
+            "status": "defined",
+            "value": {
+              "denominator": 1,
+              "numerator": 10
+            }
+          },
+          "refusals": 0,
+          "repair_latency": []
+        }
+      },
+      {
+        "briefs_sent": 1,
+        "case": "yield-urgent",
+        "different_measures": [],
+        "identical_journal": true,
+        "measures": {
+          "actual_costs": "NOT_MEASURED",
+          "attempts": 8,
+          "decision_slots": 8,
+          "environment_ticks": 8,
+          "inspections": 11,
+          "model_calls": 0,
+          "observation_grants": 2,
+          "observation_inspections": 2,
+          "observation_requests": 2,
+          "outputs": [
+            {
+              "answer": {
+                "status": "defined",
+                "value": {
+                  "denominator": 1,
+                  "numerator": 10
+                }
+              },
+              "completed": 3,
+              "method": "zero-fill"
+            }
+          ],
+          "outstanding": [],
+          "peer_arrivals": 2,
+          "peer_completions": 2,
+          "peer_historical_misses": 0,
+          "peer_inspections": 6,
+          "peer_on_time": 2,
+          "peers": [
+            {
+              "arrival": 1,
+              "completed": 1,
+              "deadline": 3,
+              "id": "peer-1",
+              "missed": false,
+              "remaining": 0,
+              "work": 3
+            },
+            {
+              "arrival": 3,
+              "completed": 3,
+              "deadline": 6,
+              "id": "peer-2",
+              "missed": false,
+              "remaining": 0,
+              "work": 3
+            }
+          ],
+          "primary_correct": true,
+          "primary_historical_misses": 0,
+          "primary_inspections": 3,
+          "primary_on_time": true,
+          "reference": {
+            "status": "defined",
+            "value": {
+              "denominator": 1,
+              "numerator": 10
+            }
+          },
+          "refusals": 0,
+          "repair_latency": []
+        }
+      },
+      {
+        "briefs_sent": 2,
+        "case": "yield-uncertain",
+        "different_measures": [],
+        "identical_journal": true,
+        "measures": {
+          "actual_costs": "NOT_MEASURED",
+          "attempts": 8,
+          "decision_slots": 8,
+          "environment_ticks": 8,
+          "inspections": 11,
+          "model_calls": 0,
+          "observation_grants": 2,
+          "observation_inspections": 2,
+          "observation_requests": 2,
+          "outputs": [
+            {
+              "answer": {
+                "status": "defined",
+                "value": {
+                  "denominator": 1,
+                  "numerator": 10
+                }
+              },
+              "completed": 4,
+              "method": "zero-fill"
+            }
+          ],
+          "outstanding": [],
+          "peer_arrivals": 2,
+          "peer_completions": 2,
+          "peer_historical_misses": 0,
+          "peer_inspections": 6,
+          "peer_on_time": 2,
+          "peers": [
+            {
+              "arrival": 1,
+              "completed": 1,
+              "deadline": 3,
+              "id": "peer-1",
+              "missed": false,
+              "remaining": 0,
+              "work": 3
+            },
+            {
+              "arrival": 3,
+              "completed": 3,
+              "deadline": 6,
+              "id": "peer-2",
+              "missed": false,
+              "remaining": 0,
+              "work": 3
+            }
+          ],
+          "primary_correct": true,
+          "primary_historical_misses": 0,
+          "primary_inspections": 3,
+          "primary_on_time": true,
+          "reference": {
+            "status": "defined",
+            "value": {
+              "denominator": 1,
+              "numerator": 10
+            }
+          },
+          "refusals": 0,
+          "repair_latency": []
+        }
+      },
+      {
+        "briefs_sent": 1,
+        "case": "yield-signed",
+        "different_measures": [],
+        "identical_journal": true,
+        "measures": {
+          "actual_costs": "NOT_MEASURED",
+          "attempts": 8,
+          "decision_slots": 8,
+          "environment_ticks": 8,
+          "inspections": 11,
+          "model_calls": 0,
+          "observation_grants": 2,
+          "observation_inspections": 2,
+          "observation_requests": 2,
+          "outputs": [
+            {
+              "answer": {
+                "status": "defined",
+                "value": {
+                  "denominator": 1,
+                  "numerator": 2
+                }
+              },
+              "completed": 3,
+              "method": "zero-fill"
+            }
+          ],
+          "outstanding": [],
+          "peer_arrivals": 2,
+          "peer_completions": 2,
+          "peer_historical_misses": 0,
+          "peer_inspections": 6,
+          "peer_on_time": 2,
+          "peers": [
+            {
+              "arrival": 1,
+              "completed": 1,
+              "deadline": 3,
+              "id": "peer-1",
+              "missed": false,
+              "remaining": 0,
+              "work": 3
+            },
+            {
+              "arrival": 3,
+              "completed": 3,
+              "deadline": 6,
+              "id": "peer-2",
+              "missed": false,
+              "remaining": 0,
+              "work": 3
+            }
+          ],
+          "primary_correct": true,
+          "primary_historical_misses": 0,
+          "primary_inspections": 3,
+          "primary_on_time": true,
+          "reference": {
+            "status": "defined",
+            "value": {
+              "denominator": 1,
+              "numerator": 2
+            }
+          },
+          "refusals": 0,
+          "repair_latency": []
+        }
+      },
+      {
+        "briefs_sent": 1,
+        "case": "yield-review-pending",
+        "different_measures": [],
+        "identical_journal": true,
+        "measures": {
+          "actual_costs": "NOT_MEASURED",
+          "attempts": 8,
+          "decision_slots": 8,
+          "environment_ticks": 8,
+          "inspections": 11,
+          "model_calls": 0,
+          "observation_grants": 2,
+          "observation_inspections": 2,
+          "observation_requests": 2,
+          "outputs": [
+            {
+              "answer": {
+                "status": "defined",
+                "value": {
+                  "denominator": 1,
+                  "numerator": 10
+                }
+              },
+              "completed": 6,
+              "method": "zero-fill"
+            }
+          ],
+          "outstanding": [],
+          "peer_arrivals": 2,
+          "peer_completions": 2,
+          "peer_historical_misses": 0,
+          "peer_inspections": 6,
+          "peer_on_time": 2,
+          "peers": [
+            {
+              "arrival": 1,
+              "completed": 1,
+              "deadline": 3,
+              "id": "peer-1",
+              "missed": false,
+              "remaining": 0,
+              "work": 3
+            },
+            {
+              "arrival": 3,
+              "completed": 3,
+              "deadline": 6,
+              "id": "peer-2",
+              "missed": false,
+              "remaining": 0,
+              "work": 3
+            }
+          ],
+          "primary_correct": true,
+          "primary_historical_misses": 0,
+          "primary_inspections": 3,
+          "primary_on_time": true,
+          "reference": {
+            "status": "defined",
+            "value": {
+              "denominator": 1,
+              "numerator": 10
+            }
+          },
+          "refusals": 3,
+          "repair_latency": []
+        }
+      },
+      {
+        "briefs_sent": 1,
+        "case": "yield-zero-work-peers",
+        "different_measures": [],
+        "identical_journal": true,
+        "measures": {
+          "actual_costs": "NOT_MEASURED",
+          "attempts": 8,
+          "decision_slots": 8,
+          "environment_ticks": 8,
+          "inspections": 5,
+          "model_calls": 0,
+          "observation_grants": 2,
+          "observation_inspections": 2,
+          "observation_requests": 2,
+          "outputs": [
+            {
+              "answer": {
+                "status": "defined",
+                "value": {
+                  "denominator": 1,
+                  "numerator": 10
+                }
+              },
+              "completed": 3,
+              "method": "zero-fill"
+            }
+          ],
+          "outstanding": [],
+          "peer_arrivals": 1,
+          "peer_completions": 1,
+          "peer_historical_misses": 0,
+          "peer_inspections": 0,
+          "peer_on_time": 1,
+          "peers": [
+            {
+              "arrival": 1,
+              "completed": 1,
+              "deadline": 1,
+              "id": "empty",
+              "missed": false,
+              "remaining": 0,
+              "work": 0
+            }
+          ],
+          "primary_correct": true,
+          "primary_historical_misses": 0,
+          "primary_inspections": 3,
+          "primary_on_time": true,
+          "reference": {
+            "status": "defined",
+            "value": {
+              "denominator": 1,
+              "numerator": 10
+            }
+          },
+          "refusals": 0,
+          "repair_latency": []
+        }
+      },
+      {
+        "briefs_sent": 1,
+        "case": "yield-no-capacity",
+        "different_measures": [],
+        "identical_journal": true,
+        "measures": {
+          "actual_costs": "NOT_MEASURED",
+          "attempts": 8,
+          "decision_slots": 8,
+          "environment_ticks": 8,
+          "inspections": 0,
+          "model_calls": 0,
+          "observation_grants": 0,
+          "observation_inspections": 0,
+          "observation_requests": 5,
+          "outputs": [],
+          "outstanding": [
+            {
+              "kind": "primary",
+              "pending_work": {
+                "answer": {
+                  "status": "defined",
+                  "value": {
+                    "denominator": 1,
+                    "numerator": 10
+                  }
+                },
+                "method": "zero-fill",
+                "remaining": 3
+              }
+            },
+            {
+              "arrived": true,
+              "id": "peer-1",
+              "kind": "peer",
+              "remaining": 3
+            },
+            {
+              "arrived": true,
+              "id": "peer-2",
+              "kind": "peer",
+              "remaining": 3
+            }
+          ],
+          "peer_arrivals": 2,
+          "peer_completions": 0,
+          "peer_historical_misses": 2,
+          "peer_inspections": 0,
+          "peer_on_time": 0,
+          "peers": [
+            {
+              "arrival": 1,
+              "completed": null,
+              "deadline": 3,
+              "id": "peer-1",
+              "missed": true,
+              "remaining": 3,
+              "work": 3
+            },
+            {
+              "arrival": 3,
+              "completed": null,
+              "deadline": 6,
+              "id": "peer-2",
+              "missed": true,
+              "remaining": 3,
+              "work": 3
+            }
+          ],
+          "primary_correct": false,
+          "primary_historical_misses": 1,
+          "primary_inspections": 0,
+          "primary_on_time": false,
+          "reference": {
+            "status": "defined",
+            "value": {
+              "denominator": 1,
+              "numerator": 10
+            }
+          },
+          "refusals": 5,
+          "repair_latency": []
+        }
+      },
+      {
+        "briefs_sent": 1,
+        "case": "yield-overload",
+        "different_measures": [],
+        "identical_journal": true,
+        "measures": {
+          "actual_costs": "NOT_MEASURED",
+          "attempts": 8,
+          "decision_slots": 8,
+          "environment_ticks": 8,
+          "inspections": 8,
+          "model_calls": 0,
+          "observation_grants": 2,
+          "observation_inspections": 2,
+          "observation_requests": 2,
+          "outputs": [
+            {
+              "answer": {
+                "status": "defined",
+                "value": {
+                  "denominator": 1,
+                  "numerator": 10
+                }
+              },
+              "completed": 7,
+              "method": "zero-fill"
+            }
+          ],
+          "outstanding": [
+            {
+              "arrived": true,
+              "id": "peer-2",
+              "kind": "peer",
+              "remaining": 3
+            },
+            {
+              "arrived": true,
+              "id": "peer-3",
+              "kind": "peer",
+              "remaining": 3
+            },
+            {
+              "arrived": true,
+              "id": "peer-4",
+              "kind": "peer",
+              "remaining": 3
+            },
+            {
+              "arrived": true,
+              "id": "peer-5",
+              "kind": "peer",
+              "remaining": 3
+            },
+            {
+              "arrived": true,
+              "id": "peer-6",
+              "kind": "peer",
+              "remaining": 3
+            },
+            {
+              "arrived": true,
+              "id": "peer-7",
+              "kind": "peer",
+              "remaining": 3
+            },
+            {
+              "arrived": true,
+              "id": "peer-8",
+              "kind": "peer",
+              "remaining": 3
+            }
+          ],
+          "peer_arrivals": 8,
+          "peer_completions": 1,
+          "peer_historical_misses": 8,
+          "peer_inspections": 3,
+          "peer_on_time": 0,
+          "peers": [
+            {
+              "arrival": 1,
+              "completed": 8,
+              "deadline": 1,
+              "id": "peer-1",
+              "missed": true,
+              "remaining": 0,
+              "work": 3
+            },
+            {
+              "arrival": 2,
+              "completed": null,
+              "deadline": 2,
+              "id": "peer-2",
+              "missed": true,
+              "remaining": 3,
+              "work": 3
+            },
+            {
+              "arrival": 3,
+              "completed": null,
+              "deadline": 3,
+              "id": "peer-3",
+              "missed": true,
+              "remaining": 3,
+              "work": 3
+            },
+            {
+              "arrival": 4,
+              "completed": null,
+              "deadline": 4,
+              "id": "peer-4",
+              "missed": true,
+              "remaining": 3,
+              "work": 3
+            },
+            {
+              "arrival": 5,
+              "completed": null,
+              "deadline": 5,
+              "id": "peer-5",
+              "missed": true,
+              "remaining": 3,
+              "work": 3
+            },
+            {
+              "arrival": 6,
+              "completed": null,
+              "deadline": 6,
+              "id": "peer-6",
+              "missed": true,
+              "remaining": 3,
+              "work": 3
+            },
+            {
+              "arrival": 7,
+              "completed": null,
+              "deadline": 7,
+              "id": "peer-7",
+              "missed": true,
+              "remaining": 3,
+              "work": 3
+            },
+            {
+              "arrival": 8,
+              "completed": null,
+              "deadline": 8,
+              "id": "peer-8",
+              "missed": true,
+              "remaining": 3,
+              "work": 3
+            }
+          ],
+          "primary_correct": true,
+          "primary_historical_misses": 1,
+          "primary_inspections": 3,
+          "primary_on_time": false,
+          "reference": {
+            "status": "defined",
+            "value": {
+              "denominator": 1,
+              "numerator": 10
+            }
+          },
+          "refusals": 0,
+          "repair_latency": []
+        }
+      }
+    ],
+    "matched_control": "evidence-selector",
+    "model_calls": 0,
+    "operator_limit": "The operator can rewrite the verifier, fixtures, journals, results and hashes together. Replay establishes consistency with retained inputs, not independent authenticity.",
+    "status": "EXPOSED_PROCESS_INTERCHANGE_CONTROL"
+  },
+  "fixture_agent_sha256": "ab517b7d863a1691292b25cef6428c46481bfd3fdb16a73465c433edf3b1db21",
+  "model_calls": 0,
+  "operator_limit": "The operator can rewrite the verifier, fixtures, journals, results and hashes together. Replay establishes consistency with retained inputs, not independent authenticity.",
+  "workshop": {
+    "design": "C1c-1",
+    "model_calls": 0,
+    "operator_limit": "The operator can rewrite the verifier, fixtures, journals, results and hashes together. Replay establishes consistency with retained inputs, not independent authenticity.",
+    "runs": [
+      {
+        "arm": "single",
+        "charged": [
+          {
+            "action_counts": {
+              "approve": 2,
+              "execute": 2,
+              "observe": 4,
+              "propose": 2
+            },
+            "decision_slots": 10,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 1,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 8,
+                "missed": true,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 3,
+            "primary_correct": 3,
+            "primary_correct_by_target": 3,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": true,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 9,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 10,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 4,
+                "wrong_at": 1
+              }
+            ],
+            "schedule": "shared-lane",
+            "unresolved_wrong_observations": 0
+          },
+          {
+            "action_counts": {
+              "approve": 2,
+              "execute": 2,
+              "observe": 4,
+              "propose": 2
+            },
+            "decision_slots": 10,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 0,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 6,
+                "due": 8,
+                "missed": false,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 4,
+            "primary_correct": 3,
+            "primary_correct_by_target": 3,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": true,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 9,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 10,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 4,
+                "wrong_at": 1
+              }
+            ],
+            "schedule": "independent-worker",
+            "unresolved_wrong_observations": 0
+          }
+        ],
+        "historical_replay": {
+          "assurance": "local deterministic replay; not authenticated history",
+          "events": 11,
+          "external_authority": "NONE",
+          "generation": 1,
+          "head": "ada60f5313679b3dafe30d6a82367e3d0b708432bc6f34df16e3f5fd8eb14349",
+          "verified": true
+        },
+        "observation_clock": {
+          "accepted_lessons": 0,
+          "command_count": 10,
+          "command_limit": 256,
+          "counterstories": 0,
+          "executed_unscored_predictions": 0,
+          "listening_records": 0,
+          "mean_peer_brier": 0.5,
+          "mean_primary_brier": 0.0,
+          "observed_ticks": 4,
+          "peer_arrivals": 4,
+          "peer_completions": 4,
+          "peer_missed_deadlines": 1,
+          "peer_on_time_arrivals": 3,
+          "peer_pending_jobs": 0,
+          "peer_total_completed_lateness": 1,
+          "post_budget_review_count": 0,
+          "post_budget_review_limit": 32,
+          "primary_correct_ticks": 3,
+          "record_inspections": 72,
+          "reflections": 0,
+          "scored_predictions": 2,
+          "terminal_controls_used": [],
+          "testimonies": 0
+        },
+        "scenario": "missing"
+      },
+      {
+        "arm": "team-primary-only",
+        "charged": [
+          {
+            "action_counts": {
+              "approve": 1,
+              "execute": 1,
+              "observe": 4,
+              "propose": 1
+            },
+            "decision_slots": 7,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 0,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 6,
+                "due": 8,
+                "missed": false,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 4,
+            "primary_correct": 3,
+            "primary_correct_by_target": 3,
+            "primary_inspections": 56,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": true,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "positive-only",
+                "slot": 6,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "positive-only",
+                "slot": 7,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 4,
+                "wrong_at": 1
+              }
+            ],
+            "schedule": "shared-lane",
+            "unresolved_wrong_observations": 0
+          },
+          {
+            "action_counts": {
+              "approve": 1,
+              "execute": 1,
+              "observe": 4,
+              "propose": 1
+            },
+            "decision_slots": 7,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 0,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 6,
+                "due": 8,
+                "missed": false,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 4,
+            "primary_correct": 3,
+            "primary_correct_by_target": 3,
+            "primary_inspections": 56,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": true,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "positive-only",
+                "slot": 6,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "positive-only",
+                "slot": 7,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 4,
+                "wrong_at": 1
+              }
+            ],
+            "schedule": "independent-worker",
+            "unresolved_wrong_observations": 0
+          }
+        ],
+        "historical_replay": {
+          "assurance": "local deterministic replay; not authenticated history",
+          "events": 8,
+          "external_authority": "NONE",
+          "generation": 1,
+          "head": "c83cacbff88a4456ac908eed2734c434e11c1fef92256d2344aad63b040013cf",
+          "verified": true
+        },
+        "observation_clock": {
+          "accepted_lessons": 0,
+          "command_count": 7,
+          "command_limit": 256,
+          "counterstories": 0,
+          "executed_unscored_predictions": 0,
+          "listening_records": 0,
+          "mean_peer_brier": 1.0,
+          "mean_primary_brier": 0.0,
+          "observed_ticks": 4,
+          "peer_arrivals": 4,
+          "peer_completions": 2,
+          "peer_missed_deadlines": 3,
+          "peer_on_time_arrivals": 1,
+          "peer_pending_jobs": 2,
+          "peer_total_completed_lateness": 1,
+          "post_budget_review_count": 0,
+          "post_budget_review_limit": 32,
+          "primary_correct_ticks": 3,
+          "record_inspections": 76,
+          "reflections": 0,
+          "scored_predictions": 1,
+          "terminal_controls_used": [],
+          "testimonies": 0
+        },
+        "scenario": "missing"
+      },
+      {
+        "arm": "coached",
+        "charged": [
+          {
+            "action_counts": {
+              "approve": 2,
+              "execute": 2,
+              "listen": 1,
+              "observe": 4,
+              "propose": 2,
+              "reflect": 1,
+              "testify": 1
+            },
+            "decision_slots": 13,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 1,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 12,
+                "due": 8,
+                "missed": true,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 12,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 3,
+            "primary_correct": 3,
+            "primary_correct_by_target": 3,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": true,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 12,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 13,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 4,
+                "wrong_at": 1
+              }
+            ],
+            "schedule": "shared-lane",
+            "unresolved_wrong_observations": 0
+          },
+          {
+            "action_counts": {
+              "approve": 2,
+              "execute": 2,
+              "listen": 1,
+              "observe": 4,
+              "propose": 2,
+              "reflect": 1,
+              "testify": 1
+            },
+            "decision_slots": 13,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 0,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 6,
+                "due": 8,
+                "missed": false,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 4,
+            "primary_correct": 3,
+            "primary_correct_by_target": 3,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": true,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 12,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 13,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 4,
+                "wrong_at": 1
+              }
+            ],
+            "schedule": "independent-worker",
+            "unresolved_wrong_observations": 0
+          }
+        ],
+        "historical_replay": {
+          "assurance": "local deterministic replay; not authenticated history",
+          "events": 14,
+          "external_authority": "NONE",
+          "generation": 1,
+          "head": "9ea8f276cfd6d9a0aec66e2af5bdb41f8789f5194586b9145628b7dddd998a03",
+          "verified": true
+        },
+        "observation_clock": {
+          "accepted_lessons": 0,
+          "command_count": 13,
+          "command_limit": 256,
+          "counterstories": 0,
+          "executed_unscored_predictions": 0,
+          "listening_records": 1,
+          "mean_peer_brier": 0.5,
+          "mean_primary_brier": 0.0,
+          "observed_ticks": 4,
+          "peer_arrivals": 4,
+          "peer_completions": 4,
+          "peer_missed_deadlines": 1,
+          "peer_on_time_arrivals": 3,
+          "peer_pending_jobs": 0,
+          "peer_total_completed_lateness": 1,
+          "post_budget_review_count": 0,
+          "post_budget_review_limit": 32,
+          "primary_correct_ticks": 3,
+          "record_inspections": 72,
+          "reflections": 1,
+          "scored_predictions": 2,
+          "terminal_controls_used": [],
+          "testimonies": 1
+        },
+        "scenario": "missing"
+      },
+      {
+        "arm": "coached+casebook",
+        "charged": [
+          {
+            "action_counts": {
+              "approve": 2,
+              "consult": 1,
+              "execute": 2,
+              "listen": 1,
+              "observe": 4,
+              "propose": 2,
+              "reflect": 1,
+              "testify": 1
+            },
+            "decision_slots": 14,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 2,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 8,
+                "missed": true,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 12,
+                "missed": true,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 14,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 2,
+            "primary_correct": 3,
+            "primary_correct_by_target": 2,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": true,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 13,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 14,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 4,
+                "wrong_at": 1
+              }
+            ],
+            "schedule": "shared-lane",
+            "unresolved_wrong_observations": 0
+          },
+          {
+            "action_counts": {
+              "approve": 2,
+              "consult": 1,
+              "execute": 2,
+              "listen": 1,
+              "observe": 4,
+              "propose": 2,
+              "reflect": 1,
+              "testify": 1
+            },
+            "decision_slots": 14,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 0,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 6,
+                "due": 8,
+                "missed": false,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 4,
+            "primary_correct": 3,
+            "primary_correct_by_target": 2,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": true,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 13,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 14,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 4,
+                "wrong_at": 1
+              }
+            ],
+            "schedule": "independent-worker",
+            "unresolved_wrong_observations": 0
+          }
+        ],
+        "historical_replay": {
+          "assurance": "local deterministic replay; not authenticated history",
+          "events": 15,
+          "external_authority": "NONE",
+          "generation": 1,
+          "head": "5224cfa0c5b2b17bfa9481a2444a11c0f551e459688bb5fd824c232ab96fc5ad",
+          "verified": true
+        },
+        "observation_clock": {
+          "accepted_lessons": 0,
+          "command_count": 14,
+          "command_limit": 256,
+          "counterstories": 0,
+          "executed_unscored_predictions": 0,
+          "listening_records": 1,
+          "mean_peer_brier": 0.5,
+          "mean_primary_brier": 0.0,
+          "observed_ticks": 4,
+          "peer_arrivals": 4,
+          "peer_completions": 4,
+          "peer_missed_deadlines": 1,
+          "peer_on_time_arrivals": 3,
+          "peer_pending_jobs": 0,
+          "peer_total_completed_lateness": 1,
+          "post_budget_review_count": 0,
+          "post_budget_review_limit": 32,
+          "primary_correct_ticks": 3,
+          "record_inspections": 72,
+          "reflections": 1,
+          "scored_predictions": 2,
+          "terminal_controls_used": [],
+          "testimonies": 1
+        },
+        "scenario": "missing"
+      },
+      {
+        "arm": "constant-quality-stream",
+        "charged": [
+          {
+            "action_counts": {
+              "approve": 1,
+              "execute": 1,
+              "observe": 4,
+              "propose": 1
+            },
+            "decision_slots": 7,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 0,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 4,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 5,
+                "due": 8,
+                "missed": false,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 4,
+            "primary_correct": 4,
+            "primary_correct_by_target": 4,
+            "primary_inspections": 32,
+            "primary_observations": [
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 4,
+                "target": 4
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 6,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 7,
+                "target": 16
+              }
+            ],
+            "repair_latency": [],
+            "schedule": "shared-lane",
+            "unresolved_wrong_observations": 0
+          },
+          {
+            "action_counts": {
+              "approve": 1,
+              "execute": 1,
+              "observe": 4,
+              "propose": 1
+            },
+            "decision_slots": 7,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 0,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 5,
+                "due": 8,
+                "missed": false,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 4,
+            "primary_correct": 4,
+            "primary_correct_by_target": 4,
+            "primary_inspections": 32,
+            "primary_observations": [
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 4,
+                "target": 4
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 6,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 7,
+                "target": 16
+              }
+            ],
+            "repair_latency": [],
+            "schedule": "independent-worker",
+            "unresolved_wrong_observations": 0
+          }
+        ],
+        "historical_replay": {
+          "assurance": "local deterministic replay; not authenticated history",
+          "events": 8,
+          "external_authority": "NONE",
+          "generation": 1,
+          "head": "af0c8e9b9abbf97e42662500824d0e3c41cb5ce2a895f09cf1fe87c9ff8bb83b",
+          "verified": true
+        },
+        "observation_clock": {
+          "accepted_lessons": 0,
+          "command_count": 7,
+          "command_limit": 256,
+          "counterstories": 0,
+          "executed_unscored_predictions": 0,
+          "listening_records": 0,
+          "mean_peer_brier": 0.0,
+          "mean_primary_brier": 0.0,
+          "observed_ticks": 4,
+          "peer_arrivals": 4,
+          "peer_completions": 4,
+          "peer_missed_deadlines": 0,
+          "peer_on_time_arrivals": 4,
+          "peer_pending_jobs": 0,
+          "peer_total_completed_lateness": 0,
+          "post_budget_review_count": 0,
+          "post_budget_review_limit": 32,
+          "primary_correct_ticks": 4,
+          "record_inspections": 64,
+          "reflections": 0,
+          "scored_predictions": 1,
+          "terminal_controls_used": [],
+          "testimonies": 0
+        },
+        "scenario": "missing"
+      },
+      {
+        "arm": "single",
+        "charged": [
+          {
+            "action_counts": {
+              "approve": 2,
+              "execute": 2,
+              "observe": 4,
+              "propose": 2
+            },
+            "decision_slots": 10,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 1,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 8,
+                "missed": true,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 3,
+            "primary_correct": 2,
+            "primary_correct_by_target": 2,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": false,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 9,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 10,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 8,
+                "wrong_at": 1
+              },
+              {
+                "slots_until_correct": 4,
+                "wrong_at": 5
+              }
+            ],
+            "schedule": "shared-lane",
+            "unresolved_wrong_observations": 0
+          },
+          {
+            "action_counts": {
+              "approve": 2,
+              "execute": 2,
+              "observe": 4,
+              "propose": 2
+            },
+            "decision_slots": 10,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 0,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 6,
+                "due": 8,
+                "missed": false,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 4,
+            "primary_correct": 2,
+            "primary_correct_by_target": 2,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": false,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 9,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 10,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 8,
+                "wrong_at": 1
+              },
+              {
+                "slots_until_correct": 4,
+                "wrong_at": 5
+              }
+            ],
+            "schedule": "independent-worker",
+            "unresolved_wrong_observations": 0
+          }
+        ],
+        "historical_replay": {
+          "assurance": "local deterministic replay; not authenticated history",
+          "events": 11,
+          "external_authority": "NONE",
+          "generation": 1,
+          "head": "cd18abece9394b5997a270a609c68f04401fc8ef5c0c92ad95f939fefaff1129",
+          "verified": true
+        },
+        "observation_clock": {
+          "accepted_lessons": 0,
+          "command_count": 10,
+          "command_limit": 256,
+          "counterstories": 0,
+          "executed_unscored_predictions": 0,
+          "listening_records": 0,
+          "mean_peer_brier": 0.5,
+          "mean_primary_brier": 0.5,
+          "observed_ticks": 4,
+          "peer_arrivals": 4,
+          "peer_completions": 4,
+          "peer_missed_deadlines": 1,
+          "peer_on_time_arrivals": 3,
+          "peer_pending_jobs": 0,
+          "peer_total_completed_lateness": 1,
+          "post_budget_review_count": 0,
+          "post_budget_review_limit": 32,
+          "primary_correct_ticks": 2,
+          "record_inspections": 72,
+          "reflections": 0,
+          "scored_predictions": 2,
+          "terminal_controls_used": [],
+          "testimonies": 0
+        },
+        "scenario": "signed"
+      },
+      {
+        "arm": "team-primary-only",
+        "charged": [
+          {
+            "action_counts": {
+              "approve": 2,
+              "execute": 2,
+              "observe": 4,
+              "propose": 2
+            },
+            "decision_slots": 10,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 1,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 8,
+                "missed": true,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 3,
+            "primary_correct": 2,
+            "primary_correct_by_target": 2,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": false,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 9,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 10,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 8,
+                "wrong_at": 1
+              },
+              {
+                "slots_until_correct": 4,
+                "wrong_at": 5
+              }
+            ],
+            "schedule": "shared-lane",
+            "unresolved_wrong_observations": 0
+          },
+          {
+            "action_counts": {
+              "approve": 2,
+              "execute": 2,
+              "observe": 4,
+              "propose": 2
+            },
+            "decision_slots": 10,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 0,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 6,
+                "due": 8,
+                "missed": false,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 4,
+            "primary_correct": 2,
+            "primary_correct_by_target": 2,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": false,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 9,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 10,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 8,
+                "wrong_at": 1
+              },
+              {
+                "slots_until_correct": 4,
+                "wrong_at": 5
+              }
+            ],
+            "schedule": "independent-worker",
+            "unresolved_wrong_observations": 0
+          }
+        ],
+        "historical_replay": {
+          "assurance": "local deterministic replay; not authenticated history",
+          "events": 11,
+          "external_authority": "NONE",
+          "generation": 1,
+          "head": "cd18abece9394b5997a270a609c68f04401fc8ef5c0c92ad95f939fefaff1129",
+          "verified": true
+        },
+        "observation_clock": {
+          "accepted_lessons": 0,
+          "command_count": 10,
+          "command_limit": 256,
+          "counterstories": 0,
+          "executed_unscored_predictions": 0,
+          "listening_records": 0,
+          "mean_peer_brier": 0.5,
+          "mean_primary_brier": 0.5,
+          "observed_ticks": 4,
+          "peer_arrivals": 4,
+          "peer_completions": 4,
+          "peer_missed_deadlines": 1,
+          "peer_on_time_arrivals": 3,
+          "peer_pending_jobs": 0,
+          "peer_total_completed_lateness": 1,
+          "post_budget_review_count": 0,
+          "post_budget_review_limit": 32,
+          "primary_correct_ticks": 2,
+          "record_inspections": 72,
+          "reflections": 0,
+          "scored_predictions": 2,
+          "terminal_controls_used": [],
+          "testimonies": 0
+        },
+        "scenario": "signed"
+      },
+      {
+        "arm": "coached",
+        "charged": [
+          {
+            "action_counts": {
+              "approve": 2,
+              "execute": 2,
+              "listen": 1,
+              "observe": 4,
+              "propose": 2,
+              "reflect": 1,
+              "testify": 1
+            },
+            "decision_slots": 13,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 1,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 12,
+                "due": 8,
+                "missed": true,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 12,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 3,
+            "primary_correct": 2,
+            "primary_correct_by_target": 2,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": false,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 12,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 13,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 11,
+                "wrong_at": 1
+              },
+              {
+                "slots_until_correct": 7,
+                "wrong_at": 5
+              }
+            ],
+            "schedule": "shared-lane",
+            "unresolved_wrong_observations": 0
+          },
+          {
+            "action_counts": {
+              "approve": 2,
+              "execute": 2,
+              "listen": 1,
+              "observe": 4,
+              "propose": 2,
+              "reflect": 1,
+              "testify": 1
+            },
+            "decision_slots": 13,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 0,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 6,
+                "due": 8,
+                "missed": false,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 4,
+            "primary_correct": 2,
+            "primary_correct_by_target": 2,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": false,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 12,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 13,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 11,
+                "wrong_at": 1
+              },
+              {
+                "slots_until_correct": 7,
+                "wrong_at": 5
+              }
+            ],
+            "schedule": "independent-worker",
+            "unresolved_wrong_observations": 0
+          }
+        ],
+        "historical_replay": {
+          "assurance": "local deterministic replay; not authenticated history",
+          "events": 14,
+          "external_authority": "NONE",
+          "generation": 1,
+          "head": "b0d4f7fe1715a52c7717b5d65801de45f1ba5e9438928a1e4d987539dde3b525",
+          "verified": true
+        },
+        "observation_clock": {
+          "accepted_lessons": 0,
+          "command_count": 13,
+          "command_limit": 256,
+          "counterstories": 0,
+          "executed_unscored_predictions": 0,
+          "listening_records": 1,
+          "mean_peer_brier": 0.5,
+          "mean_primary_brier": 0.5,
+          "observed_ticks": 4,
+          "peer_arrivals": 4,
+          "peer_completions": 4,
+          "peer_missed_deadlines": 1,
+          "peer_on_time_arrivals": 3,
+          "peer_pending_jobs": 0,
+          "peer_total_completed_lateness": 1,
+          "post_budget_review_count": 0,
+          "post_budget_review_limit": 32,
+          "primary_correct_ticks": 2,
+          "record_inspections": 72,
+          "reflections": 1,
+          "scored_predictions": 2,
+          "terminal_controls_used": [],
+          "testimonies": 1
+        },
+        "scenario": "signed"
+      },
+      {
+        "arm": "coached+casebook",
+        "charged": [
+          {
+            "action_counts": {
+              "approve": 2,
+              "consult": 1,
+              "execute": 2,
+              "listen": 1,
+              "observe": 4,
+              "propose": 2,
+              "reflect": 1,
+              "testify": 1
+            },
+            "decision_slots": 14,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 2,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 8,
+                "missed": true,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 12,
+                "missed": true,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 14,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 2,
+            "primary_correct": 2,
+            "primary_correct_by_target": 1,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": false,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 13,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 14,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 12,
+                "wrong_at": 1
+              },
+              {
+                "slots_until_correct": 8,
+                "wrong_at": 5
+              }
+            ],
+            "schedule": "shared-lane",
+            "unresolved_wrong_observations": 0
+          },
+          {
+            "action_counts": {
+              "approve": 2,
+              "consult": 1,
+              "execute": 2,
+              "listen": 1,
+              "observe": 4,
+              "propose": 2,
+              "reflect": 1,
+              "testify": 1
+            },
+            "decision_slots": 14,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 0,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 6,
+                "due": 8,
+                "missed": false,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 4,
+            "primary_correct": 2,
+            "primary_correct_by_target": 1,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": false,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 13,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 14,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 12,
+                "wrong_at": 1
+              },
+              {
+                "slots_until_correct": 8,
+                "wrong_at": 5
+              }
+            ],
+            "schedule": "independent-worker",
+            "unresolved_wrong_observations": 0
+          }
+        ],
+        "historical_replay": {
+          "assurance": "local deterministic replay; not authenticated history",
+          "events": 15,
+          "external_authority": "NONE",
+          "generation": 1,
+          "head": "85f940fff091f5b85c70a7c302509794e1655d0b702b4a2de342b63b09e64b9f",
+          "verified": true
+        },
+        "observation_clock": {
+          "accepted_lessons": 0,
+          "command_count": 14,
+          "command_limit": 256,
+          "counterstories": 0,
+          "executed_unscored_predictions": 0,
+          "listening_records": 1,
+          "mean_peer_brier": 0.5,
+          "mean_primary_brier": 0.5,
+          "observed_ticks": 4,
+          "peer_arrivals": 4,
+          "peer_completions": 4,
+          "peer_missed_deadlines": 1,
+          "peer_on_time_arrivals": 3,
+          "peer_pending_jobs": 0,
+          "peer_total_completed_lateness": 1,
+          "post_budget_review_count": 0,
+          "post_budget_review_limit": 32,
+          "primary_correct_ticks": 2,
+          "record_inspections": 72,
+          "reflections": 1,
+          "scored_predictions": 2,
+          "terminal_controls_used": [],
+          "testimonies": 1
+        },
+        "scenario": "signed"
+      },
+      {
+        "arm": "constant-quality-stream",
+        "charged": [
+          {
+            "action_counts": {
+              "approve": 1,
+              "execute": 1,
+              "observe": 4,
+              "propose": 1
+            },
+            "decision_slots": 7,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 0,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 4,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 5,
+                "due": 8,
+                "missed": false,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 4,
+            "primary_correct": 4,
+            "primary_correct_by_target": 4,
+            "primary_inspections": 32,
+            "primary_observations": [
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 4,
+                "target": 4
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 6,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 7,
+                "target": 16
+              }
+            ],
+            "repair_latency": [],
+            "schedule": "shared-lane",
+            "unresolved_wrong_observations": 0
+          },
+          {
+            "action_counts": {
+              "approve": 1,
+              "execute": 1,
+              "observe": 4,
+              "propose": 1
+            },
+            "decision_slots": 7,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 0,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 5,
+                "due": 8,
+                "missed": false,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 4,
+            "primary_correct": 4,
+            "primary_correct_by_target": 4,
+            "primary_inspections": 32,
+            "primary_observations": [
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 4,
+                "target": 4
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 6,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 7,
+                "target": 16
+              }
+            ],
+            "repair_latency": [],
+            "schedule": "independent-worker",
+            "unresolved_wrong_observations": 0
+          }
+        ],
+        "historical_replay": {
+          "assurance": "local deterministic replay; not authenticated history",
+          "events": 8,
+          "external_authority": "NONE",
+          "generation": 1,
+          "head": "aaa241e63f7999b3268da352bab09153d3edc7dcbab68d1bf6f8280d4d0fb723",
+          "verified": true
+        },
+        "observation_clock": {
+          "accepted_lessons": 0,
+          "command_count": 7,
+          "command_limit": 256,
+          "counterstories": 0,
+          "executed_unscored_predictions": 0,
+          "listening_records": 0,
+          "mean_peer_brier": 0.0,
+          "mean_primary_brier": 0.0,
+          "observed_ticks": 4,
+          "peer_arrivals": 4,
+          "peer_completions": 4,
+          "peer_missed_deadlines": 0,
+          "peer_on_time_arrivals": 4,
+          "peer_pending_jobs": 0,
+          "peer_total_completed_lateness": 0,
+          "post_budget_review_count": 0,
+          "post_budget_review_limit": 32,
+          "primary_correct_ticks": 4,
+          "record_inspections": 64,
+          "reflections": 0,
+          "scored_predictions": 1,
+          "terminal_controls_used": [],
+          "testimonies": 0
+        },
+        "scenario": "signed"
+      },
+      {
+        "arm": "single",
+        "charged": [
+          {
+            "action_counts": {
+              "approve": 2,
+              "execute": 2,
+              "observe": 4,
+              "propose": 2
+            },
+            "decision_slots": 10,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 1,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 8,
+                "missed": true,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 3,
+            "primary_correct": 2,
+            "primary_correct_by_target": 2,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": false,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 9,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 10,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 8,
+                "wrong_at": 1
+              },
+              {
+                "slots_until_correct": 4,
+                "wrong_at": 5
+              }
+            ],
+            "schedule": "shared-lane",
+            "unresolved_wrong_observations": 0
+          },
+          {
+            "action_counts": {
+              "approve": 2,
+              "execute": 2,
+              "observe": 4,
+              "propose": 2
+            },
+            "decision_slots": 10,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 0,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 6,
+                "due": 8,
+                "missed": false,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 4,
+            "primary_correct": 2,
+            "primary_correct_by_target": 2,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": false,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 9,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 10,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 8,
+                "wrong_at": 1
+              },
+              {
+                "slots_until_correct": 4,
+                "wrong_at": 5
+              }
+            ],
+            "schedule": "independent-worker",
+            "unresolved_wrong_observations": 0
+          }
+        ],
+        "historical_replay": {
+          "assurance": "local deterministic replay; not authenticated history",
+          "events": 11,
+          "external_authority": "NONE",
+          "generation": 1,
+          "head": "d577e6ab249885227f01d5ff180f6cfad31f0f41c152fcc6c6bd85b6700466d0",
+          "verified": true
+        },
+        "observation_clock": {
+          "accepted_lessons": 0,
+          "command_count": 10,
+          "command_limit": 256,
+          "counterstories": 0,
+          "executed_unscored_predictions": 0,
+          "listening_records": 0,
+          "mean_peer_brier": 0.5,
+          "mean_primary_brier": 0.5,
+          "observed_ticks": 4,
+          "peer_arrivals": 4,
+          "peer_completions": 4,
+          "peer_missed_deadlines": 1,
+          "peer_on_time_arrivals": 3,
+          "peer_pending_jobs": 0,
+          "peer_total_completed_lateness": 1,
+          "post_budget_review_count": 0,
+          "post_budget_review_limit": 32,
+          "primary_correct_ticks": 2,
+          "record_inspections": 72,
+          "reflections": 0,
+          "scored_predictions": 2,
+          "terminal_controls_used": [],
+          "testimonies": 0
+        },
+        "scenario": "flagged"
+      },
+      {
+        "arm": "team-primary-only",
+        "charged": [
+          {
+            "action_counts": {
+              "approve": 2,
+              "execute": 2,
+              "observe": 4,
+              "propose": 2
+            },
+            "decision_slots": 10,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 1,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 8,
+                "missed": true,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 3,
+            "primary_correct": 2,
+            "primary_correct_by_target": 2,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": false,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 9,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 10,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 8,
+                "wrong_at": 1
+              },
+              {
+                "slots_until_correct": 4,
+                "wrong_at": 5
+              }
+            ],
+            "schedule": "shared-lane",
+            "unresolved_wrong_observations": 0
+          },
+          {
+            "action_counts": {
+              "approve": 2,
+              "execute": 2,
+              "observe": 4,
+              "propose": 2
+            },
+            "decision_slots": 10,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 0,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 6,
+                "due": 8,
+                "missed": false,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 4,
+            "primary_correct": 2,
+            "primary_correct_by_target": 2,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": false,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 9,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 10,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 8,
+                "wrong_at": 1
+              },
+              {
+                "slots_until_correct": 4,
+                "wrong_at": 5
+              }
+            ],
+            "schedule": "independent-worker",
+            "unresolved_wrong_observations": 0
+          }
+        ],
+        "historical_replay": {
+          "assurance": "local deterministic replay; not authenticated history",
+          "events": 11,
+          "external_authority": "NONE",
+          "generation": 1,
+          "head": "d577e6ab249885227f01d5ff180f6cfad31f0f41c152fcc6c6bd85b6700466d0",
+          "verified": true
+        },
+        "observation_clock": {
+          "accepted_lessons": 0,
+          "command_count": 10,
+          "command_limit": 256,
+          "counterstories": 0,
+          "executed_unscored_predictions": 0,
+          "listening_records": 0,
+          "mean_peer_brier": 0.5,
+          "mean_primary_brier": 0.5,
+          "observed_ticks": 4,
+          "peer_arrivals": 4,
+          "peer_completions": 4,
+          "peer_missed_deadlines": 1,
+          "peer_on_time_arrivals": 3,
+          "peer_pending_jobs": 0,
+          "peer_total_completed_lateness": 1,
+          "post_budget_review_count": 0,
+          "post_budget_review_limit": 32,
+          "primary_correct_ticks": 2,
+          "record_inspections": 72,
+          "reflections": 0,
+          "scored_predictions": 2,
+          "terminal_controls_used": [],
+          "testimonies": 0
+        },
+        "scenario": "flagged"
+      },
+      {
+        "arm": "coached",
+        "charged": [
+          {
+            "action_counts": {
+              "approve": 2,
+              "execute": 2,
+              "listen": 1,
+              "observe": 4,
+              "propose": 2,
+              "reflect": 1,
+              "testify": 1
+            },
+            "decision_slots": 13,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 1,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 12,
+                "due": 8,
+                "missed": true,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 12,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 3,
+            "primary_correct": 2,
+            "primary_correct_by_target": 2,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": false,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 12,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 13,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 11,
+                "wrong_at": 1
+              },
+              {
+                "slots_until_correct": 7,
+                "wrong_at": 5
+              }
+            ],
+            "schedule": "shared-lane",
+            "unresolved_wrong_observations": 0
+          },
+          {
+            "action_counts": {
+              "approve": 2,
+              "execute": 2,
+              "listen": 1,
+              "observe": 4,
+              "propose": 2,
+              "reflect": 1,
+              "testify": 1
+            },
+            "decision_slots": 13,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 0,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 6,
+                "due": 8,
+                "missed": false,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 4,
+            "primary_correct": 2,
+            "primary_correct_by_target": 2,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": false,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 12,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 13,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 11,
+                "wrong_at": 1
+              },
+              {
+                "slots_until_correct": 7,
+                "wrong_at": 5
+              }
+            ],
+            "schedule": "independent-worker",
+            "unresolved_wrong_observations": 0
+          }
+        ],
+        "historical_replay": {
+          "assurance": "local deterministic replay; not authenticated history",
+          "events": 14,
+          "external_authority": "NONE",
+          "generation": 1,
+          "head": "f7f525c0ac4dbc5c79ebca7ef36f8005e4d614c0a48022dcc7aab76718855d96",
+          "verified": true
+        },
+        "observation_clock": {
+          "accepted_lessons": 0,
+          "command_count": 13,
+          "command_limit": 256,
+          "counterstories": 0,
+          "executed_unscored_predictions": 0,
+          "listening_records": 1,
+          "mean_peer_brier": 0.5,
+          "mean_primary_brier": 0.5,
+          "observed_ticks": 4,
+          "peer_arrivals": 4,
+          "peer_completions": 4,
+          "peer_missed_deadlines": 1,
+          "peer_on_time_arrivals": 3,
+          "peer_pending_jobs": 0,
+          "peer_total_completed_lateness": 1,
+          "post_budget_review_count": 0,
+          "post_budget_review_limit": 32,
+          "primary_correct_ticks": 2,
+          "record_inspections": 72,
+          "reflections": 1,
+          "scored_predictions": 2,
+          "terminal_controls_used": [],
+          "testimonies": 1
+        },
+        "scenario": "flagged"
+      },
+      {
+        "arm": "coached+casebook",
+        "charged": [
+          {
+            "action_counts": {
+              "approve": 2,
+              "consult": 1,
+              "execute": 2,
+              "listen": 1,
+              "observe": 4,
+              "propose": 2,
+              "reflect": 1,
+              "testify": 1
+            },
+            "decision_slots": 14,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 2,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 8,
+                "missed": true,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 12,
+                "missed": true,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 14,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 2,
+            "primary_correct": 2,
+            "primary_correct_by_target": 1,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": false,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 13,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 14,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 12,
+                "wrong_at": 1
+              },
+              {
+                "slots_until_correct": 8,
+                "wrong_at": 5
+              }
+            ],
+            "schedule": "shared-lane",
+            "unresolved_wrong_observations": 0
+          },
+          {
+            "action_counts": {
+              "approve": 2,
+              "consult": 1,
+              "execute": 2,
+              "listen": 1,
+              "observe": 4,
+              "propose": 2,
+              "reflect": 1,
+              "testify": 1
+            },
+            "decision_slots": 14,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 0,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 6,
+                "due": 8,
+                "missed": false,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 4,
+            "primary_correct": 2,
+            "primary_correct_by_target": 1,
+            "primary_inspections": 40,
+            "primary_observations": [
+              {
+                "correct": false,
+                "method": "zero-fill",
+                "slot": 1,
+                "target": 4
+              },
+              {
+                "correct": false,
+                "method": "positive-only",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 13,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 14,
+                "target": 16
+              }
+            ],
+            "repair_latency": [
+              {
+                "slots_until_correct": 12,
+                "wrong_at": 1
+              },
+              {
+                "slots_until_correct": 8,
+                "wrong_at": 5
+              }
+            ],
+            "schedule": "independent-worker",
+            "unresolved_wrong_observations": 0
+          }
+        ],
+        "historical_replay": {
+          "assurance": "local deterministic replay; not authenticated history",
+          "events": 15,
+          "external_authority": "NONE",
+          "generation": 1,
+          "head": "82504697065a749ef3478210794c266a51ce5af460105da6898e26795dccc0ad",
+          "verified": true
+        },
+        "observation_clock": {
+          "accepted_lessons": 0,
+          "command_count": 14,
+          "command_limit": 256,
+          "counterstories": 0,
+          "executed_unscored_predictions": 0,
+          "listening_records": 1,
+          "mean_peer_brier": 0.5,
+          "mean_primary_brier": 0.5,
+          "observed_ticks": 4,
+          "peer_arrivals": 4,
+          "peer_completions": 4,
+          "peer_missed_deadlines": 1,
+          "peer_on_time_arrivals": 3,
+          "peer_pending_jobs": 0,
+          "peer_total_completed_lateness": 1,
+          "post_budget_review_count": 0,
+          "post_budget_review_limit": 32,
+          "primary_correct_ticks": 2,
+          "record_inspections": 72,
+          "reflections": 1,
+          "scored_predictions": 2,
+          "terminal_controls_used": [],
+          "testimonies": 1
+        },
+        "scenario": "flagged"
+      },
+      {
+        "arm": "constant-quality-stream",
+        "charged": [
+          {
+            "action_counts": {
+              "approve": 1,
+              "execute": 1,
+              "observe": 4,
+              "propose": 1
+            },
+            "decision_slots": 7,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 0,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 4,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 5,
+                "due": 8,
+                "missed": false,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 4,
+            "primary_correct": 4,
+            "primary_correct_by_target": 4,
+            "primary_inspections": 32,
+            "primary_observations": [
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 4,
+                "target": 4
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 6,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 7,
+                "target": 16
+              }
+            ],
+            "repair_latency": [],
+            "schedule": "shared-lane",
+            "unresolved_wrong_observations": 0
+          },
+          {
+            "action_counts": {
+              "approve": 1,
+              "execute": 1,
+              "observe": 4,
+              "propose": 1
+            },
+            "decision_slots": 7,
+            "horizon": 20,
+            "outstanding_peer_inspections": 0,
+            "peer_arrivals": 4,
+            "peer_historical_misses": 0,
+            "peer_inspections": 32,
+            "peer_jobs": [
+              {
+                "completed": 1,
+                "due": 4,
+                "missed": false,
+                "release": 1,
+                "remaining": 0
+              },
+              {
+                "completed": 5,
+                "due": 8,
+                "missed": false,
+                "release": 5,
+                "remaining": 0
+              },
+              {
+                "completed": 9,
+                "due": 12,
+                "missed": false,
+                "release": 9,
+                "remaining": 0
+              },
+              {
+                "completed": 13,
+                "due": 16,
+                "missed": false,
+                "release": 13,
+                "remaining": 0
+              }
+            ],
+            "peer_on_time": 4,
+            "primary_correct": 4,
+            "primary_correct_by_target": 4,
+            "primary_inspections": 32,
+            "primary_observations": [
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 4,
+                "target": 4
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 5,
+                "target": 8
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 6,
+                "target": 12
+              },
+              {
+                "correct": true,
+                "method": "quality-stream",
+                "slot": 7,
+                "target": 16
+              }
+            ],
+            "repair_latency": [],
+            "schedule": "independent-worker",
+            "unresolved_wrong_observations": 0
+          }
+        ],
+        "historical_replay": {
+          "assurance": "local deterministic replay; not authenticated history",
+          "events": 8,
+          "external_authority": "NONE",
+          "generation": 1,
+          "head": "26f2996f457cf8590f7d9c826467f833c5c0e0e3714cd6ae85d25b9513c407d1",
+          "verified": true
+        },
+        "observation_clock": {
+          "accepted_lessons": 0,
+          "command_count": 7,
+          "command_limit": 256,
+          "counterstories": 0,
+          "executed_unscored_predictions": 0,
+          "listening_records": 0,
+          "mean_peer_brier": 0.0,
+          "mean_primary_brier": 0.0,
+          "observed_ticks": 4,
+          "peer_arrivals": 4,
+          "peer_completions": 4,
+          "peer_missed_deadlines": 0,
+          "peer_on_time_arrivals": 4,
+          "peer_pending_jobs": 0,
+          "peer_total_completed_lateness": 0,
+          "post_budget_review_count": 0,
+          "post_budget_review_limit": 32,
+          "primary_correct_ticks": 4,
+          "record_inspections": 64,
+          "reflections": 0,
+          "scored_predictions": 1,
+          "terminal_controls_used": [],
+          "testimonies": 0
+        },
+        "scenario": "flagged"
+      }
+    ],
+    "status": "EXPOSED_FIXED_TRACE_ONLY"
+  }
+}

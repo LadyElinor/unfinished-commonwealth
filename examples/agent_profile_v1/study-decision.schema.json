@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "D1 public policy decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile",
+    "brief_id",
+    "choice"
+  ],
+  "properties": {
+    "profile": {
+      "const": "unfinished-commonwealth.study-decision.v1"
+    },
+    "brief_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "choice": {
+      "enum": [
+        "propose",
+        "decline",
+        "wait",
+        "request-evidence"
+      ]
+    },
+    "method": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reason": {
+      "$ref": "#/$defs/text"
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "choice": {
+          "const": "propose"
+        }
+      },
+      "required": [
+        "method"
+      ],
+      "not": {
+        "required": [
+          "reason"
+        ]
+      }
+    },
+    {
+      "properties": {
+        "choice": {
+          "enum": [
+            "decline",
+            "wait",
+            "request-evidence"
+          ]
+        }
+      },
+      "required": [
+        "reason"
+      ],
+      "not": {
+        "required": [
+          "method"
+        ]
+      }
+    }
+  ],
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000,
+      "pattern": "\\S"
+    }
+  }
+}

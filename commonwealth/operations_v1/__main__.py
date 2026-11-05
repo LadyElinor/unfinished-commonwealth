@@ -3,6 +3,7 @@ import argparse
 import sqlite3
 import sys
 from ..engine import canonical
+from ..measurement_v1 import OPERATOR_LIMIT
 from . import VERSION
 from .config import BLOCKERS, inspect, load
 from .backup import backup_database, restore_database
@@ -21,7 +22,7 @@ def main(argv=None):
     args = parser.parse_args(argv)
     try:
         if args.command == 'readiness':
-            result = {'version': VERSION, 'production_ready': False, 'blockers': list(BLOCKERS), 'external_authority': 'NONE'}
+            result = {'version': VERSION, 'production_ready': False, 'blockers': list(BLOCKERS), 'external_authority': 'NONE', 'operator_limit': OPERATOR_LIMIT}
             code = 2
         elif args.command == 'preflight':
             result = inspect(load(args.config))

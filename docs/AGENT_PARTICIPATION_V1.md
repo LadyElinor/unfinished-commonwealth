@@ -71,3 +71,16 @@ python "$AP/research_adapter.py" review.json J1 research-agent "$A/research_draf
 ```
 
 The final file is an unsigned Assembly 0.2 action, or a local decline. In a matching live *exercise*, the registered actor’s custodian inspects the action, signs with the existing Assembly CLI and submits to its original docket. The Assembly rechecks actor, award, deadline, prior delivery and source digest at submission. A stale, exported or fabricated review cannot make the host accept an unauthorized report. For the bundled public example there are no private keys or writable ledger. Create a fresh synthetic docket with the [original Assembly kit](https://chatgpt.com/library?file_id=libfile_a0d0602ef210819190dcd0d724d7f6b2&account_id=personal) to run the signing step. Agents keep their existing architecture; only the brief-to-decision exchange needs implementing.
+
+## Optional workshop decisions and the D1 external control
+
+The v1 workshop and Assembly decisions remain available. For an opt-in workshop v1.1 brief pass `--profile unfinished-commonwealth.agent-participation.v1.1` to `brief`, `check` and `stage`. A response binds that exact version and brief ID. The [v1.1 decision schema](../examples/agent_profile_v1/decision-v1_1.schema.json) adds `wait` and `request-evidence` alongside propose and decline. Each non-proposal carries a reason and returns a distinct local disposition. A custodian can receive that reason. There is no B1.1 endpoint to send it: these three choices make no network request, spend no workshop attempt, create no outbox and deliver no new evidence.
+
+| Interface | Visible to the fixture | Withheld by the adapter |
+| --- | --- | --- |
+| AP1.1 workshop [brief](../examples/agent_profile_v1/brief-v1_1.schema.json) | Own worker/generation, task contract, input values and validity, allowed methods, deadlines reflected in the public peer outcomes, selected public testimony/counterstories and lesson guidance/status; optional operator-supplied checkpoint | Bearer and keys, hidden reference, correctness score fields, unselected nested observation/lesson data, other participants' private context and arbitrary new host fields |
+| D1 decision brief | Current visible contract (null when ambiguous), public readings/flags, timing, capacity, public peer schedule and common resource budgets | Case identifier, undisclosed order, expected arithmetic, scoring labels, private role data and host-owned approval/execute actions |
+
+A participant's publicly supplied prose can itself disclose information. This field projection cannot establish confidentiality against malicious participants, an untrusted host or an agent with filesystem access to public fixtures.
+
+The separate [study decision schema](../examples/agent_profile_v1/study-decision.schema.json) uses the same four choices on D1. There, waiting advances the clock; requesting evidence spends an attempt and can return the declared task order under the study budget; declining stops the episode with open obligations visible. Review and execution follow the frozen D1 transitions, not agent-provided authority. The second Python agent also submits a real workshop proposal, recovers after a reply is discarded, and refuses unsupported roles. See the [measurement results](CHARGED_WORKSHOP_RESULTS.md).

@@ -7,6 +7,7 @@ import sqlite3
 import stat
 import time
 
+from ..measurement_v1 import OPERATOR_LIMIT
 from ..engine import exact, parse_json
 from ..participant_v1_1 import VERSION as BOUNDARY_VERSION
 from ..participant_v1_1.store import Boundary
@@ -75,7 +76,7 @@ class ReadOnlyBoundary(Boundary):
 def inspect(value, clock=time.time):
     """Operational prerequisites only; production readiness remains blocked."""
     result = {'version': VERSION, 'operational_admission': False, 'production_ready': False,
-              'blockers': list(BLOCKERS), 'external_authority': 'NONE'}
+              'blockers': list(BLOCKERS), 'external_authority': 'NONE', 'operator_limit': OPERATOR_LIMIT}
     try:
         value = config(value)
         path = private_database(value['database'])

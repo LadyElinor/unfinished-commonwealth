@@ -101,7 +101,10 @@ def main():
                          "commonwealth/operations_v1/app.py", "commonwealth/operations_v1/backup.py",
                          "docs/PRODUCTION_READINESS.md", "tests/test_operations_v1.py",
                          "commonwealth/remediation_v1/review.py", "docs/REMEDIATION_V1.md",
-                         "tests/test_remediation_v1.py", "examples/remediation-v1-packet.json"):
+                         "tests/test_remediation_v1.py", "examples/remediation-v1-packet.json",
+                         "scripts/audit_measurement.mjs", "examples/charged-workshop-results.json",
+                         "examples/neighbor-timing-results.json", "commonwealth/measurement_v1/neighbor.py",
+                         "examples/agent_profile_v1/python_agent.py"):
             if not (source / relative).is_file():
                 raise RuntimeError(f"Source archive omitted {relative}")
         # Run the same checks on what downstream source users actually receive.
@@ -230,8 +233,15 @@ def main():
         if (client_outbox["version"] != "client-outbox-1.0.0" or client_outbox["verified"] is not True
                 or client_outbox["exact_retry"] != "RECORDED" or client_outbox["server_attempts"] != 1):
             raise RuntimeError("Installed durable client recovery gate failed")
+        run([str(executable), "-m", "commonwealth.measurement_v1", "run", "charged",
+             "--fixture-agent", str(source / "examples/agent_profile_v1/python_agent.py")], smoke)
+        if (smoke / "charged/results.json").read_bytes() != (source / "examples/charged-workshop-results.json").read_bytes():
+            raise RuntimeError("Installed charged comparison differed from the published result")
+        run([str(executable), "-m", "commonwealth.measurement_v1", "neighbor", "neighbor"], smoke)
+        if (smoke / "neighbor/results.json").read_bytes() != (source / "examples/neighbor-timing-results.json").read_bytes():
+            raise RuntimeError("Installed neighbor comparison differed from the published result")
         readiness = json.loads(run([str(command), "readiness"], smoke, expected=2))
-        if readiness["deployment_ready"] is not False:
+        if readiness["deployment_ready"] is not False or not readiness.get("operator_limit"):
             raise RuntimeError("Research-only readiness boundary changed")
         operations = json.loads(run([str(executable), "-m", "commonwealth.operations_v1", "selfcheck"], smoke))
         if operations["verified"] is not True or operations["production_ready"] is not False:

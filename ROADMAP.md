@@ -1,5 +1,11 @@
 # Roadmap
 
+For the implemented components, reproduction commands and bounded contribution tasks, see [Start here](docs/START_HERE.md). The original workshop remains frozen at 0.1.3; the current distribution is an unpublished 0.1.4rc1 research candidate.
+
+## Measurement before additional protocol work
+
+The [fixed-trace timing comparison](docs/CHARGED_WORKSHOP_RESULTS.md) and the D1 external policy control now run alongside the historical evaluations. The [N1 warning study](docs/NEIGHBOR_TIMING_RESULTS.md) tests paid, fallible consultation against unconditional reservation, a coin and a matched instrument. A communal benefit beyond a fixed policy with equivalent information and independently held-out cases remain open gates.
+
 ## O1 operational prerequisites: production still blocked
 
 [Operational candidate](docs/PRODUCTION_READINESS.md) adds strict local
@@ -124,7 +130,7 @@ authentic evidence, substantive fairness and live recovery remain unproven.
 - Independently construct evaluation cases after policies and analysis are fixed. The original workshop's quality-stream fixtures and all study-v1 development cases are already exposed.
 - Validate any timing model against the intended task. Study-v1 charges synthetic decision slots; the original workshop still advances only on observation. Neither measures real model latency.
 - Pin provider, model, prompt, adapter, sampling settings, and resource budgets for each run.
-- Use B1 as the local proposal transport, then demonstrate external OS/filesystem restrictions preventing participant access to keeper tools, evaluation references or other participants' private context. B1 alone cannot enforce those restrictions.
+- Use corrected B1.1 as the local proposal transport with the separately packaged C2 client. U1 demonstrates access restrictions for historical B1 on a disposable Linux runner; verify the actual selected service/client environment separately. A transport alone cannot prevent filesystem access to keeper tools, evaluation references or other participants' private context.
 - Record transport failures and unknown outcomes explicitly. Never retry an uncertain external effect blindly.
 - Compare the same model with matched information and budgets: single planner, role-separated team, coaching intervention, and coaching plus casebook. Separate narrative exposure from extra evidence.
 - Freeze the evaluation protocol before collecting scored results. Obtain withheld cases from a separately controlled process. Count all attempts and costs.

@@ -32,10 +32,7 @@ tokens, model latency, energy, nor independently arriving background work is
 measured. Equal ceilings do not mean equal actual spending. Counts from records
 are descriptive, not evidence that extra reflection was costless in reality.
 
-The next experiment is specified separately in the [proposed next-study
-design](NEXT_STUDY.md). That design has not been implemented or run. It must not
-be used to relabel these exposed fixtures as a holdout or an adaptive-learning
-result.
+The separately versioned [D1 harness](STUDY_V1_RESULTS.md) implements the deterministic portion of the [next-study design](NEXT_STUDY.md). Its 432 exposed runs include contrasting contracts, both selector controls and a charged decision clock. The [charged workshop comparison](CHARGED_WORKSHOP_RESULTS.md) applies a separate accounting stream to these fifteen historical traces. Neither study used withheld cases. The operator can rewrite fixtures, the verifier, journals, hashes and reports together.
 
 Scripted testimony now derives its factual outcome clauses from the referenced observation. Operator-supplied testimony remains an unadjudicated account, which may be mistaken; no general truth-checking capability is claimed.
 

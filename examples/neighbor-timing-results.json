@@ -1,0 +1,1082 @@
+{
+  "design": "N1-1",
+  "design_commit": "c22ebe6a2942d40eaef6f5ec0b7dbb6a4a3b7df9",
+  "episode_count": 1008,
+  "episodes_sha256": "acc4fc7d39d698bb5ed8ecc47ec1c1f3a932f9c24eb73492a4273fd77eb60773",
+  "model_calls": 0,
+  "operator_limit": "The operator can rewrite the verifier, fixtures, journals, results and hashes together. Replay establishes consistency with retained inputs, not independent authenticity.",
+  "status": "EXPOSED_DETERMINISTIC_ONLY",
+  "strata": [
+    {
+      "cells": 16,
+      "policy": "start",
+      "primary_due": 2,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 48,
+        "peer_late_slots": 8,
+        "peer_misses": 8,
+        "primary_completed": 32,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "start",
+      "primary_due": 2,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 48,
+        "peer_late_slots": 8,
+        "peer_misses": 8,
+        "primary_completed": 32,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "start",
+      "primary_due": 2,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 48,
+        "peer_late_slots": 8,
+        "peer_misses": 8,
+        "primary_completed": 32,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "start",
+      "primary_due": 3,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 48,
+        "peer_late_slots": 8,
+        "peer_misses": 8,
+        "primary_completed": 32,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "start",
+      "primary_due": 3,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 48,
+        "peer_late_slots": 8,
+        "peer_misses": 8,
+        "primary_completed": 32,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "start",
+      "primary_due": 3,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 48,
+        "peer_late_slots": 8,
+        "peer_misses": 8,
+        "primary_completed": 32,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "start",
+      "primary_due": 4,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 48,
+        "peer_late_slots": 8,
+        "peer_misses": 8,
+        "primary_completed": 32,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "start",
+      "primary_due": 4,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 48,
+        "peer_late_slots": 8,
+        "peer_misses": 8,
+        "primary_completed": 32,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "start",
+      "primary_due": 4,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 48,
+        "peer_late_slots": 8,
+        "peer_misses": 8,
+        "primary_completed": 32,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "reserve",
+      "primary_due": 2,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 32,
+        "peer_late_slots": 0,
+        "peer_misses": 0,
+        "primary_completed": 64,
+        "primary_late_slots": 32,
+        "primary_misses": 16,
+        "reservations": 16,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "reserve",
+      "primary_due": 2,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 32,
+        "peer_late_slots": 0,
+        "peer_misses": 0,
+        "primary_completed": 64,
+        "primary_late_slots": 32,
+        "primary_misses": 16,
+        "reservations": 16,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "reserve",
+      "primary_due": 2,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 32,
+        "peer_late_slots": 0,
+        "peer_misses": 0,
+        "primary_completed": 64,
+        "primary_late_slots": 32,
+        "primary_misses": 16,
+        "reservations": 16,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "reserve",
+      "primary_due": 3,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 32,
+        "peer_late_slots": 0,
+        "peer_misses": 0,
+        "primary_completed": 64,
+        "primary_late_slots": 16,
+        "primary_misses": 16,
+        "reservations": 16,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "reserve",
+      "primary_due": 3,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 32,
+        "peer_late_slots": 0,
+        "peer_misses": 0,
+        "primary_completed": 64,
+        "primary_late_slots": 16,
+        "primary_misses": 16,
+        "reservations": 16,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "reserve",
+      "primary_due": 3,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 32,
+        "peer_late_slots": 0,
+        "peer_misses": 0,
+        "primary_completed": 64,
+        "primary_late_slots": 16,
+        "primary_misses": 16,
+        "reservations": 16,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "reserve",
+      "primary_due": 4,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 32,
+        "peer_late_slots": 0,
+        "peer_misses": 0,
+        "primary_completed": 64,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 16,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "reserve",
+      "primary_due": 4,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 32,
+        "peer_late_slots": 0,
+        "peer_misses": 0,
+        "primary_completed": 64,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 16,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "reserve",
+      "primary_due": 4,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 32,
+        "peer_late_slots": 0,
+        "peer_misses": 0,
+        "primary_completed": 64,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 16,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "coin",
+      "primary_due": 2,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 40,
+        "peer_late_slots": 4,
+        "peer_misses": 4,
+        "primary_completed": 48,
+        "primary_late_slots": 16,
+        "primary_misses": 8,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "coin",
+      "primary_due": 2,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 40,
+        "peer_late_slots": 4,
+        "peer_misses": 4,
+        "primary_completed": 48,
+        "primary_late_slots": 16,
+        "primary_misses": 8,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "coin",
+      "primary_due": 2,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 40,
+        "peer_late_slots": 4,
+        "peer_misses": 4,
+        "primary_completed": 48,
+        "primary_late_slots": 16,
+        "primary_misses": 8,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "coin",
+      "primary_due": 3,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 40,
+        "peer_late_slots": 4,
+        "peer_misses": 4,
+        "primary_completed": 48,
+        "primary_late_slots": 8,
+        "primary_misses": 8,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "coin",
+      "primary_due": 3,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 40,
+        "peer_late_slots": 4,
+        "peer_misses": 4,
+        "primary_completed": 48,
+        "primary_late_slots": 8,
+        "primary_misses": 8,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "coin",
+      "primary_due": 3,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 40,
+        "peer_late_slots": 4,
+        "peer_misses": 4,
+        "primary_completed": 48,
+        "primary_late_slots": 8,
+        "primary_misses": 8,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "coin",
+      "primary_due": 4,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 40,
+        "peer_late_slots": 4,
+        "peer_misses": 4,
+        "primary_completed": 48,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "coin",
+      "primary_due": 4,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 40,
+        "peer_late_slots": 4,
+        "peer_misses": 4,
+        "primary_completed": 48,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "coin",
+      "primary_due": 4,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 40,
+        "peer_late_slots": 4,
+        "peer_misses": 4,
+        "primary_completed": 48,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "wait-start",
+      "primary_due": 2,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 64,
+        "peer_late_slots": 16,
+        "peer_misses": 8,
+        "primary_completed": 48,
+        "primary_late_slots": 16,
+        "primary_misses": 16,
+        "reservations": 0,
+        "wait_slots": 16
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "wait-start",
+      "primary_due": 2,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 64,
+        "peer_late_slots": 16,
+        "peer_misses": 8,
+        "primary_completed": 48,
+        "primary_late_slots": 16,
+        "primary_misses": 16,
+        "reservations": 0,
+        "wait_slots": 16
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "wait-start",
+      "primary_due": 2,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 64,
+        "peer_late_slots": 16,
+        "peer_misses": 8,
+        "primary_completed": 48,
+        "primary_late_slots": 16,
+        "primary_misses": 16,
+        "reservations": 0,
+        "wait_slots": 16
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "wait-start",
+      "primary_due": 3,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 64,
+        "peer_late_slots": 16,
+        "peer_misses": 8,
+        "primary_completed": 48,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 16
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "wait-start",
+      "primary_due": 3,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 64,
+        "peer_late_slots": 16,
+        "peer_misses": 8,
+        "primary_completed": 48,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 16
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "wait-start",
+      "primary_due": 3,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 64,
+        "peer_late_slots": 16,
+        "peer_misses": 8,
+        "primary_completed": 48,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 16
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "wait-start",
+      "primary_due": 4,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 64,
+        "peer_late_slots": 16,
+        "peer_misses": 8,
+        "primary_completed": 48,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 16
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "wait-start",
+      "primary_due": 4,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 64,
+        "peer_late_slots": 16,
+        "peer_misses": 8,
+        "primary_completed": 48,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 16
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "wait-start",
+      "primary_due": 4,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 64,
+        "peer_late_slots": 16,
+        "peer_misses": 8,
+        "primary_completed": 48,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 16
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "ask-peer",
+      "primary_due": 2,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 16,
+        "peer_completed": 48,
+        "peer_late_slots": 8,
+        "peer_misses": 4,
+        "primary_completed": 56,
+        "primary_late_slots": 24,
+        "primary_misses": 16,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "ask-peer",
+      "primary_due": 2,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 16,
+        "peer_completed": 48,
+        "peer_late_slots": 4,
+        "peer_misses": 2,
+        "primary_completed": 56,
+        "primary_late_slots": 24,
+        "primary_misses": 16,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "ask-peer",
+      "primary_due": 2,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 16,
+        "peer_completed": 48,
+        "peer_late_slots": 0,
+        "peer_misses": 0,
+        "primary_completed": 56,
+        "primary_late_slots": 24,
+        "primary_misses": 16,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "ask-peer",
+      "primary_due": 3,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 16,
+        "peer_completed": 48,
+        "peer_late_slots": 8,
+        "peer_misses": 4,
+        "primary_completed": 56,
+        "primary_late_slots": 8,
+        "primary_misses": 8,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "ask-peer",
+      "primary_due": 3,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 16,
+        "peer_completed": 48,
+        "peer_late_slots": 4,
+        "peer_misses": 2,
+        "primary_completed": 56,
+        "primary_late_slots": 8,
+        "primary_misses": 8,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "ask-peer",
+      "primary_due": 3,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 16,
+        "peer_completed": 48,
+        "peer_late_slots": 0,
+        "peer_misses": 0,
+        "primary_completed": 56,
+        "primary_late_slots": 8,
+        "primary_misses": 8,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "ask-peer",
+      "primary_due": 4,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 16,
+        "peer_completed": 48,
+        "peer_late_slots": 8,
+        "peer_misses": 4,
+        "primary_completed": 56,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "ask-peer",
+      "primary_due": 4,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 16,
+        "peer_completed": 48,
+        "peer_late_slots": 4,
+        "peer_misses": 2,
+        "primary_completed": 56,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "ask-peer",
+      "primary_due": 4,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 16,
+        "peer_completed": 48,
+        "peer_late_slots": 0,
+        "peer_misses": 0,
+        "primary_completed": 56,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "select-peer",
+      "primary_due": 2,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 48,
+        "peer_late_slots": 8,
+        "peer_misses": 8,
+        "primary_completed": 32,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "select-peer",
+      "primary_due": 2,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 48,
+        "peer_late_slots": 8,
+        "peer_misses": 8,
+        "primary_completed": 32,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "select-peer",
+      "primary_due": 2,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 48,
+        "peer_late_slots": 8,
+        "peer_misses": 8,
+        "primary_completed": 32,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "select-peer",
+      "primary_due": 3,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 48,
+        "peer_late_slots": 8,
+        "peer_misses": 8,
+        "primary_completed": 32,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "select-peer",
+      "primary_due": 3,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 16,
+        "peer_completed": 48,
+        "peer_late_slots": 4,
+        "peer_misses": 2,
+        "primary_completed": 56,
+        "primary_late_slots": 8,
+        "primary_misses": 8,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "select-peer",
+      "primary_due": 3,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 16,
+        "peer_completed": 48,
+        "peer_late_slots": 0,
+        "peer_misses": 0,
+        "primary_completed": 56,
+        "primary_late_slots": 8,
+        "primary_misses": 8,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "select-peer",
+      "primary_due": 4,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 32,
+        "peer_late_slots": 0,
+        "peer_misses": 0,
+        "primary_completed": 64,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 16,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "select-peer",
+      "primary_due": 4,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 32,
+        "peer_late_slots": 0,
+        "peer_misses": 0,
+        "primary_completed": 64,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 16,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "select-peer",
+      "primary_due": 4,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 32,
+        "peer_late_slots": 0,
+        "peer_misses": 0,
+        "primary_completed": 64,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 16,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "select-instrument",
+      "primary_due": 2,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 48,
+        "peer_late_slots": 8,
+        "peer_misses": 8,
+        "primary_completed": 32,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "select-instrument",
+      "primary_due": 2,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 48,
+        "peer_late_slots": 8,
+        "peer_misses": 8,
+        "primary_completed": 32,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "select-instrument",
+      "primary_due": 2,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 48,
+        "peer_late_slots": 8,
+        "peer_misses": 8,
+        "primary_completed": 32,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "select-instrument",
+      "primary_due": 3,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 48,
+        "peer_late_slots": 8,
+        "peer_misses": 8,
+        "primary_completed": 32,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 0,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "select-instrument",
+      "primary_due": 3,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 16,
+        "peer_completed": 48,
+        "peer_late_slots": 4,
+        "peer_misses": 2,
+        "primary_completed": 56,
+        "primary_late_slots": 8,
+        "primary_misses": 8,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "select-instrument",
+      "primary_due": 3,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 16,
+        "peer_completed": 48,
+        "peer_late_slots": 0,
+        "peer_misses": 0,
+        "primary_completed": 56,
+        "primary_late_slots": 8,
+        "primary_misses": 8,
+        "reservations": 8,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "select-instrument",
+      "primary_due": 4,
+      "reliable_variants": 2,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 32,
+        "peer_late_slots": 0,
+        "peer_misses": 0,
+        "primary_completed": 64,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 16,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "select-instrument",
+      "primary_due": 4,
+      "reliable_variants": 3,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 32,
+        "peer_late_slots": 0,
+        "peer_misses": 0,
+        "primary_completed": 64,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 16,
+        "wait_slots": 0
+      }
+    },
+    {
+      "cells": 16,
+      "policy": "select-instrument",
+      "primary_due": 4,
+      "reliable_variants": 4,
+      "totals": {
+        "consultation_slots": 0,
+        "peer_completed": 32,
+        "peer_late_slots": 0,
+        "peer_misses": 0,
+        "primary_completed": 64,
+        "primary_late_slots": 0,
+        "primary_misses": 0,
+        "reservations": 16,
+        "wait_slots": 0
+      }
+    }
+  ]
+}
