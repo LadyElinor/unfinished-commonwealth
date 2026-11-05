@@ -4,9 +4,11 @@
 
 The research question is practical: can a community improve its cooperation as its participants, circumstances, and procedures change?
 
-Version **0.1.3** provides a working local research seed. It runs real integer-data transformations inside a bounded workshop, shares a record-inspection budget between two jobs, records testimony and predictions, and passes a tested practice to a successor working on different data. Python 3.11 or later is sufficient. Runtime and tests use the standard library.
+The frozen workshop runtime is **0.1.3**. This checkout also includes separately versioned research harnesses and participant tooling, packaged as the unpublished **0.1.4rc1** candidate. It runs real integer-data transformations inside a bounded workshop, shares a record-inspection budget between two jobs, records testimony and predictions, and passes a tested practice to a successor working on different data. Python 3.11 or later is sufficient for the core runtime and tests. Optional Assembly, JSON-schema and JavaScript checks have additional dependencies.
 
 The included participants are **scripted fixture roles**, with an additional proposal-only JSON interface for a separately operated model or human. No model-backed study has been run. This repository does not establish independent machine persons, autonomous civilization, or authority outside its local workshop.
+
+**New here? [Start with one reproducible result](docs/START_HERE.md).** The guide distinguishes the historical workshop from the current studies, gives exact reproduction commands, and offers three bounded contributor tasks. The project remains `LOCAL_RESEARCH_ONLY`.
 
 ## What the measurements show
 
