@@ -12,6 +12,8 @@ python -m commonwealth verify .local/reproduction/demo.sqlite
 python -m commonwealth.study_v1 run .local/study-v1
 python -m commonwealth.coordination_v1 run .local/coordination-v1
 python -m commonwealth.coordination_v2 run .local/coordination-v2
+python -m commonwealth.uncertainty_v1 run .local/uncertainty-v1
+node scripts/audit_uncertainty.mjs .local/uncertainty-v1/episodes.jsonl .local/uncertainty-v1/results.json
 python -m commonwealth.procedure_v1 run .local/procedure-v1
 python -m commonwealth.discernment_v1 run .local/discernment-v1
 python -m commonwealth.integrity_v1 run .local/integrity-v1
@@ -127,3 +129,8 @@ Do not edit the legacy reducer to change live behavior. Unknown versions,
 protocol downgrades, malformed JSON, and type-substituted records are refused.
 See [protocol compatibility](PROTOCOL.md). Older packages cannot read v2
 events; back up an old database before continuing it with the new version.
+
+E1 writes 3,840 exposed records. Its independent Node checker verifies arithmetic,
+scheduling and all summary counters, while Python replay also reconstructs policy
+choices. Use `python -m commonwealth.uncertainty_v1 replay .local/uncertainty-v1/episodes.jsonl --line 3840`.
+The source/wheel verification also reproduces E1 from the installed package.

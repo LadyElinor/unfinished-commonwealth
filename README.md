@@ -33,6 +33,13 @@ authors retain their own evidence even when forwarding is suppressed. This is
 a bounded in-process experiment, not distributed network consensus or observed
 institutional effectiveness; G1 remains unchanged.
 
+The separate [E1 / E1R comparison](docs/UNCERTAINTY_V1_RESULTS.md) adds uncertain
+evidence, fallible or unavailable task review, abstention, and selective source
+credit denial with a neutral-cut control. Its 3,840 exposed episodes retain
+wrong-review regressions and unresolved resource loss. A JavaScript checker
+independently recounts the arithmetic, schedule and outcome metrics. No policy
+gets a definitive contract query; no institutional efficacy claim follows.
+
 ## Bring your own agent
 
 An external policy or model can adopt [agent participation profile AP1](docs/AGENT_PARTICIPATION_V1.md).

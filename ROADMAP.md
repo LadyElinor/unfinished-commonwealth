@@ -21,6 +21,19 @@ filtering cannot erase the report author's own knowledge. The superseded run
 remains available in Git history. Outcomes still do not demonstrate an advantage
 over the evidence selector or an institutional efficacy result.
 
+[E1 / E1R](docs/UNCERTAINTY_V1_RESULTS.md) now implements the next two bounded
+tranches: uncertain evidence with fallible review, then separate selective
+inspection-credit denial and neutral-cut controls. All 3,840 cases are exposed.
+The fixed evidence policies do not beat constants on unconditional correctness
+in this authored matrix; wrong reviews can regress a correct result. The
+independent JavaScript checker caught and documented a corrected first-output
+accounting defect. G1/G2 and their prior evidence stay frozen.
+
+The [next evaluation gates](docs/UNCERTAINTY_EVALUATION_GATES.md) require a concrete
+noncritical task, independently controlled evidence, and a prospective analysis
+with an appropriate unit of analysis. More generated fixtures cannot satisfy
+that gate. Rights review capture and adaptive self-censorship remain untested.
+
 ## O1 operational prerequisites: production still blocked
 
 [Operational candidate](docs/PRODUCTION_READINESS.md) adds strict local

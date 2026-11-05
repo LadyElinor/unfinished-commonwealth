@@ -118,6 +118,7 @@ class EvidenceClock(unittest.TestCase):
         row = e1.episode(cell("silent"), "source-majority")
         m = row["measures"]
         self.assertEqual((m["first_absent"], m["recoveries_after_abstention"], m["repaired_errors"]), (1,1,0))
+        self.assertEqual((m["first_correct"],m["first_wrong"],m["first_absent"]),(0,0,1))
         self.assertEqual(m["recovery_latency_slots"], 5)
         self.assertEqual(m["matched_execution_waits"], 3)
         self.assertEqual(m["keeper_reviews"], 1)
@@ -208,6 +209,10 @@ class EvidenceReproduction(unittest.TestCase):
             result=e1.run(out)
             self.assertEqual(result,json.loads((ROOT/"examples/uncertainty-v1-results.json").read_text()))
             self.assertEqual(result["episode_count"],3840)
+            for raw in (out/"episodes.jsonl").read_text().splitlines():
+                m=json.loads(raw)["measures"]
+                self.assertEqual(m["first_correct"]+m["first_wrong"]+m["first_absent"],1)
+                self.assertEqual(m["final_correct"]+m["final_wrong"]+m["final_absent"],1)
             self.assertEqual([len(result[k]) for k in ("totals","by_review","by_pattern")],[20,80,160])
             self.assertEqual(sha256((out/"episodes.jsonl").read_bytes()).hexdigest(),result["episodes_sha256"])
             self.assertTrue(e1.replay(load_record(out/"episodes.jsonl",3840))["verified"])

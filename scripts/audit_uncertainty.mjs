@@ -24,7 +24,7 @@ for await (const line of readline.createInterface({input:fs.createReadStream(inp
   check(Buffer.byteLength(line)<=1024*1024,'oversized row');
   hash.update(line+'\n');
   const r=JSON.parse(line), m=r.measures, j=r.journal, c=j.genesis.case, events=j.events;
-  check(r.version==='uncertainty-1.0.0' && r.authority_granted===false && r.external_actions===0 && r.production_ready===false,'scope');
+  check(r.version==='uncertainty-1.0.1' && r.authority_granted===false && r.external_actions===0 && r.production_ready===false,'scope');
   check(events.length===20 && c.declared===false && c.capacity===4 && c.deadline===6,'clock or declaration');
   same(c.values,[10,null,20],'readings'); same(c.valid,[true,false,true],'validity');
   check(c.contract === (r.evaluation.truth==='M'?'valid-reading-mean-v1':'scheduled-slot-yield-v1'),'truth/contract');

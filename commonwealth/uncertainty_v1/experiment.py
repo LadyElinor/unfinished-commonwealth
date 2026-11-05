@@ -112,7 +112,7 @@ def episode(cell, policy, facet="no-request"):
     duration = ((restoration_slot if restoration_slot is not None else 20) - 1) if reserve.removed else 0
     m = {k: s[k] for k in COUNTERS if k in s}
     m.update(
-        first_correct=int(bool(correct) and correct[0]), first_wrong=int(bool(correct) and not correct[0]),
+        first_correct=int(first_output is not None and correct[0]), first_wrong=int(first_output is not None and not correct[0]),
         first_absent=int(first_output is None), final_correct=int(bool(correct) and correct[-1]),
         final_wrong=int(bool(correct) and not correct[-1]), final_absent=int(not correct),
         review_regressions=int(bool(correct) and correct[0] and not correct[-1]),

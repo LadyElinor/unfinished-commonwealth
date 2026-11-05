@@ -110,6 +110,10 @@ def main():
                          "commonwealth/coordination_v2/council.py", "commonwealth/coordination_v2/experiment.py",
                          "docs/COORDINATION_V2_DESIGN.md", "docs/COORDINATION_V2_RESULTS.md",
                          "tests/test_coordination_v2.py", "examples/coordination-v2-results.json",
+                         "commonwealth/uncertainty_v1/experiment.py", "commonwealth/uncertainty_v1/policies.py",
+                         "docs/UNCERTAINTY_V1_DESIGN.md", "docs/UNCERTAINTY_V1_RESULTS.md",
+                         "docs/UNCERTAINTY_EVALUATION_GATES.md", "tests/test_uncertainty_v1.py",
+                         "scripts/audit_uncertainty.mjs", "examples/uncertainty-v1-results.json",
                          "examples/agent_profile_v1/python_agent.py"):
             if not (source / relative).is_file():
                 raise RuntimeError(f"Source archive omitted {relative}")
@@ -260,6 +264,13 @@ def main():
             "coordination-v2/episodes.jsonl", "--line", "2016"], smoke))
         if coordination_v2_replay["verified"] is not True or coordination_v2_replay["authority_granted"] is not False:
             raise RuntimeError("Installed G2 replay or authority boundary failed")
+        run([str(executable), "-m", "commonwealth.uncertainty_v1", "run", "uncertainty-v1"], smoke)
+        if (smoke / "uncertainty-v1/results.json").read_bytes() != (source / "examples/uncertainty-v1-results.json").read_bytes():
+            raise RuntimeError("Installed E1 comparison differed from published result")
+        uncertainty_replay = json.loads(run([str(executable), "-m", "commonwealth.uncertainty_v1", "replay",
+            "uncertainty-v1/episodes.jsonl", "--line", "3840"], smoke))
+        if uncertainty_replay["verified"] is not True or uncertainty_replay["authority_granted"] is not False:
+            raise RuntimeError("Installed E1 replay or authority boundary failed")
         readiness = json.loads(run([str(command), "readiness"], smoke, expected=2))
         if readiness["deployment_ready"] is not False or not readiness.get("operator_limit"):
             raise RuntimeError("Research-only readiness boundary changed")
@@ -296,6 +307,7 @@ def main():
             "client_only_artifact": client_only,
             "coordination_episodes": 672, "coordination_replay": coordination_replay,
             "coordination_v2_episodes": 2016, "coordination_v2_replay": coordination_v2_replay,
+            "uncertainty_episodes": 3840, "uncertainty_replay": uncertainty_replay,
             "readiness_exit": 2, "model_calls": 0,
             "scope": "LOCAL_RESEARCH_ONLY",
         }
