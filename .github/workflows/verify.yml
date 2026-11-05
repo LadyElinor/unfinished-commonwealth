@@ -53,6 +53,11 @@ jobs:
           cmp .local/ci-neighbor/results.json examples/neighbor-timing-results.json
       - name: Reproduce procedural review traces
         run: python -m commonwealth.procedure_v1 run .local/ci-procedure-v1
+      - name: Reproduce decision authority and evidence routing comparison
+        run: |
+          python -m commonwealth.coordination_v1 run .local/ci-coordination-v1
+          python -c "from pathlib import Path; assert Path('.local/ci-coordination-v1/results.json').read_bytes() == Path('examples/coordination-v1-results.json').read_bytes()"
+          python -m commonwealth.coordination_v1 replay .local/ci-coordination-v1/episodes.jsonl --line 672
       - name: Reproduce advisory fraud-discernment study
         run: python -m commonwealth.discernment_v1 run .local/ci-discernment-v1
       - name: Reproduce commitment and issuer-integrity study

@@ -14,6 +14,16 @@ The included participants are **scripted fixture roles**, with an additional pro
 
 The [charged workshop comparison](docs/CHARGED_WORKSHOP_RESULTS.md) replays the original fifteen traces on two explicit schedules. The [D1 study](docs/STUDY_V1_RESULTS.md) already compares two incompatible data contracts and fixed selectors across 432 runs. The external Python policy reproduced the evidence selector in all twelve charged-clock cases. These are exposed fixture results. The [neighbor-warning study](docs/NEIGHBOR_TIMING_RESULTS.md) tests when buying one observation changes peer deadline misses and total lateness.
 
+The [G1 decision/routing comparison](docs/COORDINATION_V1_RESULTS.md) separates
+central or delegated method selection from direct or coordinator-filtered
+reports across 672 exposed episodes. Direct reporting can preserve useful
+warnings; false warnings can add delay. Central and delegated selection tie
+with direct reporting, and the simple evidence selector has the best aggregate
+first-output correctness. All arms keep the same keeper approval boundary.
+[The source review](docs/GOVERNANCE_PROCEDURE_REVIEW.md) distinguishes official
+procedural prescriptions from demonstrated effectiveness and retains autonomy,
+dissent, scoped authority and correction without inferred guilt.
+
 ## Bring your own agent
 
 An external policy or model can adopt [agent participation profile AP1](docs/AGENT_PARTICIPATION_V1.md).

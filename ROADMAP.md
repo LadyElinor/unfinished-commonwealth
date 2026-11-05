@@ -6,6 +6,14 @@ For the implemented components, reproduction commands and bounded contribution t
 
 The [fixed-trace timing comparison](docs/CHARGED_WORKSHOP_RESULTS.md) and the D1 external policy control now run alongside the historical evaluations. The [N1 warning study](docs/NEIGHBOR_TIMING_RESULTS.md) tests paid, fallible consultation against unconditional reservation, a coin and a matched instrument. A communal benefit beyond a fixed policy with equivalent information and independently held-out cases remain open gates.
 
+The separately frozen [G1 comparison](docs/COORDINATION_V1_RESULTS.md) tests
+method-selection authority and report routing on the existing D1 scheduler.
+All 672 episodes retain false-warning delays, suppressed warnings, repairs and
+prior misses. A simple evidence selector suffices; central/delegated direct
+reporting arms tie in aggregate. Next: independent arithmetic/schedule review
+and separately controlled evidence for any new efficacy claim. G1 does not
+authorize a governance deployment or alter individual-rights safeguards.
+
 ## O1 operational prerequisites: production still blocked
 
 [Operational candidate](docs/PRODUCTION_READINESS.md) adds strict local

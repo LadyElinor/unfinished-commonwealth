@@ -10,6 +10,7 @@ python scripts/verify.py
 python scripts/reproduce.py .local/reproduction
 python -m commonwealth verify .local/reproduction/demo.sqlite
 python -m commonwealth.study_v1 run .local/study-v1
+python -m commonwealth.coordination_v1 run .local/coordination-v1
 python -m commonwealth.procedure_v1 run .local/procedure-v1
 python -m commonwealth.discernment_v1 run .local/discernment-v1
 python -m commonwealth.integrity_v1 run .local/integrity-v1
@@ -30,6 +31,11 @@ The separate study command creates 432 complete journals, a detailed result
 matrix and a compact summary. Replay uses `python -m commonwealth.study_v1 replay
 PATH_TO_JOURNAL`. The last-written `results.json` marks a complete run; files
 left before that marker are partial artifacts. All study fixtures are exposed.
+
+G1 creates 672 complete JSONL episodes and a digest-bound summary. Replay a line
+with `python -m commonwealth.coordination_v1 replay .local/coordination-v1/episodes.jsonl --line 1`.
+Packaging reproduces the committed G1 summary and replays an installed-wheel
+episode, in addition to the historical study checks.
 
 I1 writes 112 advisory comparisons. R1 writes 14 review traces. R1 reconsideration
 requires the exact original journal at replay:
