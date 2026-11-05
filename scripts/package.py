@@ -113,7 +113,9 @@ def main():
                          "commonwealth/uncertainty_v1/experiment.py", "commonwealth/uncertainty_v1/policies.py",
                          "docs/UNCERTAINTY_V1_DESIGN.md", "docs/UNCERTAINTY_V1_RESULTS.md",
                          "docs/UNCERTAINTY_EVALUATION_GATES.md", "tests/test_uncertainty_v1.py",
-                         "scripts/audit_uncertainty.mjs", "examples/uncertainty-v1-results.json",
+                         "scripts/audit_uncertainty.mjs", "scripts/audit_uncertainty_input.mjs",
+                         "docs/UNCERTAINTY_CHECKER_CONTRACT.md", "tests/test_uncertainty_audit.py",
+                         "tests/uncertainty_audit_support.py", "examples/uncertainty-v1-results.json",
                          "examples/agent_profile_v1/python_agent.py"):
             if not (source / relative).is_file():
                 raise RuntimeError(f"Source archive omitted {relative}")

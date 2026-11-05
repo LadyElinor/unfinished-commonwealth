@@ -39,6 +39,9 @@ credit denial with a neutral-cut control. Its 3,840 exposed episodes retain
 wrong-review regressions and unresolved resource loss. A JavaScript checker
 independently recounts the arithmetic, schedule and outcome metrics. No policy
 gets a definitive contract query; no institutional efficacy claim follows.
+The [checker contract audit](docs/UNCERTAINTY_CHECKER_CONTRACT.md) maps guarantees
+to counterexamples and remaining assumptions; accounting verification does not
+verify policy execution or authenticate evidence.
 
 ## Bring your own agent
 

@@ -134,3 +134,7 @@ E1 writes 3,840 exposed records. Its independent Node checker verifies arithmeti
 scheduling and all summary counters, while Python replay also reconstructs policy
 choices. Use `python -m commonwealth.uncertainty_v1 replay .local/uncertainty-v1/episodes.jsonl --line 3840`.
 The source/wheel verification also reproduces E1 from the installed package.
+
+The [E1 checker contract](UNCERTAINTY_CHECKER_CONTRACT.md) documents strict input
+limits, raw byte hashes, initial/final outcome partitions, and explicit scope
+flags. `--partial` does not verify complete matrix coverage or policy execution.

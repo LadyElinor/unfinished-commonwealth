@@ -84,3 +84,7 @@ Use the reproduction-report template when opening an issue. English and Chinese 
 The D1 evidence selector ties the uncoached participant. Coaching and inheritance do not demonstrate an advantage. C1c replays fixed decisions rather than testing agents responding to new deadlines. N1's peer and matched instrument give identical results with identical information and costs. None of these cases is a holdout, and a synthetic slot is not a measured second, token or joule.
 
 The next experimental advance needs a prospectively specified question and controls, followed by independently controlled evidence where the claim requires it. See [NEXT_STUDY](NEXT_STUDY.md), [the roadmap](../ROADMAP.md) and [production blockers](PRODUCTION_READINESS.md).
+
+For the E1 verifier, read the [accounting-checker contract](UNCERTAINTY_CHECKER_CONTRACT.md):
+it separates independently recomputed accounting, full Python policy replay, and
+external authenticity that neither establishes.
