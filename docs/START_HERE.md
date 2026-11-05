@@ -10,6 +10,9 @@ The Unfinished Commonwealth studies whether bounded cooperation practices change
 | D1 contrasting-contract harness | Different contracts require different answers; consultation and refusals consume synthetic time | `commonwealth/study_v1/`, [design](STUDY_V1_DESIGN.md), [results](STUDY_V1_RESULTS.md) |
 | C1c charged comparison | The same fifteen historical traces have different timing consequences under two declared schedules | `commonwealth/measurement_v1/workshop.py`, [results](CHARGED_WORKSHOP_RESULTS.md) |
 | N1 neighbor warning | Paid information can reduce deadline misses without reducing total lateness | `commonwealth/measurement_v1/neighbor.py`, [design](NEIGHBOR_TIMING_DESIGN.md), [results](NEIGHBOR_TIMING_RESULTS.md) |
+| G1 decision and routing | Keeping evidence access separate from method-selection authority preserves warnings; false warnings still cost time | `commonwealth/coordination_v1/`, [design](COORDINATION_V1_DESIGN.md), [results](COORDINATION_V1_RESULTS.md) |
+| G2 collective authority and retaliation | Central/two-of-three decisions cross report routing; lost participation and restoration are reported separately from task outcomes | `commonwealth/coordination_v2/`, [design](COORDINATION_V2_DESIGN.md), [results](COORDINATION_V2_RESULTS.md) |
+| E1 / E1R uncertainty and resources | Fallible evidence/review, abstention and selective credit denial with neutral-cut controls | `commonwealth/uncertainty_v1/`, [design](UNCERTAINTY_V1_DESIGN.md), [results](UNCERTAINTY_V1_RESULTS.md) |
 | AP1 participation | Independently written programs can exchange bounded JSON briefs and decisions | [profile and roles](AGENT_PARTICIPATION_V1.md), [C2 client](CLIENT_ONLY_V2.md) |
 
 The historical runtime still reports 0.1.3. The package metadata says 0.1.4rc1 for the unpublished candidate containing these additions. The earlier [0.1.3 release](RELEASE_0_1_3.md) describes its frozen baseline. New measurements live in separate modules; reading only `pipeline.py` and `experiment.py` will not show D1 or N1.
@@ -41,6 +44,19 @@ For all behavioral, compatibility and local documentation checks:
 python scripts/verify.py
 ```
 
+For the separate 672-episode G1 supplement, run
+`python -m commonwealth.coordination_v1 run .local/first-reproduction/g1`.
+Compare its `results.json` to `examples/coordination-v1-results.json` and inspect
+a complete episode with
+`python -m commonwealth.coordination_v1 replay .local/first-reproduction/g1/episodes.jsonl --line 1`.
+It reuses the D1 scheduler and keeper boundary; it does not supply new authority.
+
+Run the separate 2,016-episode G2 comparison with
+`python -m commonwealth.coordination_v2 run .local/first-reproduction/g2`.
+Compare its `results.json` to `examples/coordination-v2-results.json`. Read the
+disclosed G2-1 information-flow failure before interpreting the corrected G2-2
+results; neither is a holdout or a population sample.
+
 The base suite uses the standard library. Some conformance checks are explicitly skipped without optional dependencies. To exercise those checks too, install the Assembly and schema libraries in your test environment and make Node.js available:
 
 ```sh
@@ -68,3 +84,7 @@ Use the reproduction-report template when opening an issue. English and Chinese 
 The D1 evidence selector ties the uncoached participant. Coaching and inheritance do not demonstrate an advantage. C1c replays fixed decisions rather than testing agents responding to new deadlines. N1's peer and matched instrument give identical results with identical information and costs. None of these cases is a holdout, and a synthetic slot is not a measured second, token or joule.
 
 The next experimental advance needs a prospectively specified question and controls, followed by independently controlled evidence where the claim requires it. See [NEXT_STUDY](NEXT_STUDY.md), [the roadmap](../ROADMAP.md) and [production blockers](PRODUCTION_READINESS.md).
+
+For the E1 verifier, read the [accounting-checker contract](UNCERTAINTY_CHECKER_CONTRACT.md):
+it separates independently recomputed accounting, full Python policy replay, and
+external authenticity that neither establishes.

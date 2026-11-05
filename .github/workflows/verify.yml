@@ -23,7 +23,7 @@ jobs:
           - os: windows-latest
             python: '3.12'
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
@@ -53,6 +53,24 @@ jobs:
           cmp .local/ci-neighbor/results.json examples/neighbor-timing-results.json
       - name: Reproduce procedural review traces
         run: python -m commonwealth.procedure_v1 run .local/ci-procedure-v1
+      - name: Reproduce decision authority and evidence routing comparison
+        run: |
+          python -m commonwealth.coordination_v1 run .local/ci-coordination-v1
+          python -c "from pathlib import Path; assert Path('.local/ci-coordination-v1/results.json').read_bytes() == Path('examples/coordination-v1-results.json').read_bytes()"
+          python -m commonwealth.coordination_v1 replay .local/ci-coordination-v1/episodes.jsonl --line 672
+      - name: Reproduce collective authority and retaliation comparison
+        run: |
+          python -m commonwealth.coordination_v2 run .local/ci-coordination-v2
+          python -c "from pathlib import Path; assert Path('.local/ci-coordination-v2/results.json').read_bytes() == Path('examples/coordination-v2-results.json').read_bytes()"
+          python -m commonwealth.coordination_v2 replay .local/ci-coordination-v2/episodes.jsonl --line 2016
+      - name: Reproduce uncertain evidence and selective resource denial
+        run: |
+          python -m commonwealth.uncertainty_v1 run .local/ci-uncertainty-v1
+          python -c "from pathlib import Path; assert Path('.local/ci-uncertainty-v1/results.json').read_bytes() == Path('examples/uncertainty-v1-results.json').read_bytes()"
+          python -m commonwealth.uncertainty_v1 replay .local/ci-uncertainty-v1/episodes.jsonl --line 3840
+      - name: Independently recount uncertain-evidence traces
+        if: matrix.os == 'ubuntu-latest' && matrix.python == '3.12'
+        run: node scripts/audit_uncertainty.mjs .local/ci-uncertainty-v1/episodes.jsonl .local/ci-uncertainty-v1/results.json
       - name: Reproduce advisory fraud-discernment study
         run: python -m commonwealth.discernment_v1 run .local/ci-discernment-v1
       - name: Reproduce commitment and issuer-integrity study

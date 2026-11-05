@@ -104,6 +104,18 @@ def main():
                          "tests/test_remediation_v1.py", "examples/remediation-v1-packet.json",
                          "scripts/audit_measurement.mjs", "examples/charged-workshop-results.json",
                          "examples/neighbor-timing-results.json", "commonwealth/measurement_v1/neighbor.py",
+                         "commonwealth/coordination_v1/experiment.py", "docs/COORDINATION_V1_DESIGN.md",
+                         "docs/COORDINATION_V1_RESULTS.md", "docs/GOVERNANCE_PROCEDURE_REVIEW.md",
+                         "tests/test_coordination_v1.py", "examples/coordination-v1-results.json",
+                         "commonwealth/coordination_v2/council.py", "commonwealth/coordination_v2/experiment.py",
+                         "docs/COORDINATION_V2_DESIGN.md", "docs/COORDINATION_V2_RESULTS.md",
+                         "tests/test_coordination_v2.py", "examples/coordination-v2-results.json",
+                         "commonwealth/uncertainty_v1/experiment.py", "commonwealth/uncertainty_v1/policies.py",
+                         "docs/UNCERTAINTY_V1_DESIGN.md", "docs/UNCERTAINTY_V1_RESULTS.md",
+                         "docs/UNCERTAINTY_EVALUATION_GATES.md", "tests/test_uncertainty_v1.py",
+                         "scripts/audit_uncertainty.mjs", "scripts/audit_uncertainty_input.mjs",
+                         "docs/UNCERTAINTY_CHECKER_CONTRACT.md", "tests/test_uncertainty_audit.py",
+                         "tests/uncertainty_audit_support.py", "examples/uncertainty-v1-results.json",
                          "examples/agent_profile_v1/python_agent.py"):
             if not (source / relative).is_file():
                 raise RuntimeError(f"Source archive omitted {relative}")
@@ -240,6 +252,27 @@ def main():
         run([str(executable), "-m", "commonwealth.measurement_v1", "neighbor", "neighbor"], smoke)
         if (smoke / "neighbor/results.json").read_bytes() != (source / "examples/neighbor-timing-results.json").read_bytes():
             raise RuntimeError("Installed neighbor comparison differed from the published result")
+        run([str(executable), "-m", "commonwealth.coordination_v1", "run", "coordination"], smoke)
+        if (smoke / "coordination/results.json").read_bytes() != (source / "examples/coordination-v1-results.json").read_bytes():
+            raise RuntimeError("Installed G1 comparison differed from the published result")
+        coordination_replay = json.loads(run([str(executable), "-m", "commonwealth.coordination_v1", "replay",
+            "coordination/episodes.jsonl", "--line", "672"], smoke))
+        if coordination_replay["verified"] is not True or coordination_replay["authority_granted"] is not False:
+            raise RuntimeError("Installed G1 replay or authority boundary failed")
+        run([str(executable), "-m", "commonwealth.coordination_v2", "run", "coordination-v2"], smoke)
+        if (smoke / "coordination-v2/results.json").read_bytes() != (source / "examples/coordination-v2-results.json").read_bytes():
+            raise RuntimeError("Installed G2 comparison differed from the published result")
+        coordination_v2_replay = json.loads(run([str(executable), "-m", "commonwealth.coordination_v2", "replay",
+            "coordination-v2/episodes.jsonl", "--line", "2016"], smoke))
+        if coordination_v2_replay["verified"] is not True or coordination_v2_replay["authority_granted"] is not False:
+            raise RuntimeError("Installed G2 replay or authority boundary failed")
+        run([str(executable), "-m", "commonwealth.uncertainty_v1", "run", "uncertainty-v1"], smoke)
+        if (smoke / "uncertainty-v1/results.json").read_bytes() != (source / "examples/uncertainty-v1-results.json").read_bytes():
+            raise RuntimeError("Installed E1 comparison differed from published result")
+        uncertainty_replay = json.loads(run([str(executable), "-m", "commonwealth.uncertainty_v1", "replay",
+            "uncertainty-v1/episodes.jsonl", "--line", "3840"], smoke))
+        if uncertainty_replay["verified"] is not True or uncertainty_replay["authority_granted"] is not False:
+            raise RuntimeError("Installed E1 replay or authority boundary failed")
         readiness = json.loads(run([str(command), "readiness"], smoke, expected=2))
         if readiness["deployment_ready"] is not False or not readiness.get("operator_limit"):
             raise RuntimeError("Research-only readiness boundary changed")
@@ -274,6 +307,9 @@ def main():
             "participant_v11_clock_and_loopback": participant_v11,
             "client_outbox_recovery": client_outbox,
             "client_only_artifact": client_only,
+            "coordination_episodes": 672, "coordination_replay": coordination_replay,
+            "coordination_v2_episodes": 2016, "coordination_v2_replay": coordination_v2_replay,
+            "uncertainty_episodes": 3840, "uncertainty_replay": uncertainty_replay,
             "readiness_exit": 2, "model_calls": 0,
             "scope": "LOCAL_RESEARCH_ONLY",
         }

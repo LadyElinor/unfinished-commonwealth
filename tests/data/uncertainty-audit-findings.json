@@ -1,0 +1,44 @@
+{
+  "baseline_commit": "0a31b64cbf43c37f76feb2d51a6b68ca358dd6ba",
+  "baseline_checker": "scripts/audit_uncertainty.mjs",
+  "checker_version": "e1-accounting-1.1.0",
+  "status": "CONSTRUCTED_LOCAL_COUNTEREXAMPLES_NOT_POPULATION_EVIDENCE",
+  "observations": [
+    {
+      "counterexample": "unknown-policy",
+      "old_checker_exit": 0,
+      "current_checker_exit": 1
+    },
+    {
+      "counterexample": "string-counter",
+      "old_checker_exit": 0,
+      "current_checker_exit": 1
+    },
+    {
+      "counterexample": "peer-genesis-contradiction",
+      "old_checker_exit": 0,
+      "current_checker_exit": 1
+    },
+    {
+      "counterexample": "terminal-outcome-contradiction",
+      "old_checker_exit": 0,
+      "current_checker_exit": 1
+    },
+    {
+      "counterexample": "unverified-event-hash",
+      "old_checker_exit": 0,
+      "current_checker_exit": 1
+    },
+    {
+      "counterexample": "late-output-relabelled-first",
+      "old_checker_exit": 0,
+      "current_checker_exit": 1
+    },
+    {
+      "counterexample": "duplicate-key",
+      "old_checker_exit": 0,
+      "current_checker_exit": 1
+    }
+  ],
+  "baseline_checker_sha256": "6b9a28c7882387995a70e8ec257d4b730d763d937df79d3ce5506bda006dfac8"
+}
