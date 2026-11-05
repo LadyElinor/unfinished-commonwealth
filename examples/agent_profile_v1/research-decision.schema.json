@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["profile", "brief_id", "choice"],
+  "properties": {
+    "profile": {"const": "unfinished-commonwealth.agent-participation.v1"},
+    "brief_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "choice": {"enum": ["offer", "deliver", "decline"]},
+    "terms": {"$ref": "#/$defs/text"}, "reason": {"$ref": "#/$defs/text"},
+    "report": {"$ref": "#/$defs/text"}, "sources": {"$ref": "#/$defs/text"}, "limits": {"$ref": "#/$defs/text"}
+  },
+  "oneOf": [
+    {"properties":{"choice":{"const":"offer"},"reason":false,"report":false,"sources":false,"limits":false},"required":["terms"]},
+    {"properties":{"choice":{"const":"deliver"},"terms":false,"reason":false},"required":["report","sources","limits"]},
+    {"properties":{"choice":{"const":"decline"},"terms":false,"report":false,"sources":false,"limits":false},"required":["reason"]}
+  ],
+  "$defs":{"text":{"type":"string","minLength":1,"maxLength":16000,"pattern":"\\S"}}
+}
