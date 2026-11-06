@@ -1,0 +1,18 @@
+[
+  {
+    "id": "historical-preservation",
+    "commitment": "Preserve frozen runtime, clients, studies, existing tests and published results."
+  },
+  {
+    "id": "coverage-honesty",
+    "commitment": "Do not report wholly skipped or absent testing as behavioral success; retain failure and partial coverage."
+  },
+  {
+    "id": "authority-separation",
+    "commitment": "No workshop or CORTAC receipt can authorize repository mutation or merge."
+  },
+  {
+    "id": "independent-review",
+    "commitment": "Do not present a single-operator review as independently controlled review."
+  }
+]

@@ -1,5 +1,32 @@
 # Validation evidence
 
+## Current verification receipts
+
+Historical counts below describe their named revisions. For this checkout, run
+`python scripts/verify.py --report .local/verification.json` and read the actual
+test counts and skip reasons. The destination must be new. Tests run in a child
+process; their unittest result objects supply counts, not text printed by tests.
+An all-skipped or empty discovery fails. A mixed run is `PASSED_WITH_SKIPS` by
+default; `--require-no-skips` makes any skip fail. The dependency-enabled
+Ubuntu/Python 3.12 CI job requires no skips.
+
+Receipts separate test results, JSON/link checks, elapsed verification nanoseconds,
+and source commit/dirty observations at the start. They retain failure and error
+IDs, expected failures, unexpected successes, and skip reasons. Class/module and
+subtest skips need not have one-to-one correspondence with started test cases;
+`tests_not_skipped` excludes skipped whole started cases. Artifact checks are
+`NOT_RUN` after a failed coverage/test gate. `all_tests_executed` concerns only
+discovered tests and absence of reported skips, not whether the suite is adequate
+or whether all assertions succeeded. Source observations are not a stable snapshot
+of every input. An interruption can leave an incomplete receipt, never a success
+record; failure to create/write a requested receipt exits 2. Other failed checks
+exit 1, and passing or explicitly partial runs exit 0.
+
+The operator can rewrite the tool, tests, inputs and receipt together. A receipt
+does not authenticate evidence, measure agent efficacy, or confer authority.
+See the [CORTAC maintenance pilot](MAINTENANCE_PILOT.md) for the bounded application
+and its retained limitations.
+
 ## Deterministic research extensions, 2026-10-24
 
 The current review stage passes **304 tests** locally: 96 workshop baseline,

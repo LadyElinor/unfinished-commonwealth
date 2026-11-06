@@ -1,0 +1,117 @@
+{
+  "schema": "cortac.decision.record.v1",
+  "affected_parties": [
+    {
+      "id": "repository-maintainers",
+      "interests": "Accurate verification evidence and control over merges.",
+      "benefits": "Explicit test coverage and retained failure receipts.",
+      "burdens": "Additional verifier code and a strict coverage gate in one CI job.",
+      "representation": "User authorized maintenance; no vote or consent by other maintainers is inferred."
+    },
+    {
+      "id": "contributors-and-readers",
+      "interests": "Reproducible checks with visible limits on optional coverage.",
+      "benefits": "Mixed skips remain usable but are labeled; existing receipts are not overwritten.",
+      "burdens": "New receipt paths must be chosen for repeated runs; wholly skipped runs fail.",
+      "representation": "No separately controlled contributor representative participated in this pilot."
+    }
+  ],
+  "alternatives": [
+    {
+      "option": "Retain the current verifier.",
+      "less_harmful_analysis": "Avoids new tooling but leaves a demonstrated all-skipped success claim.",
+      "rejection_or_selection_reason": "Reject because the retained baseline reports behavioral success without an executed test.",
+      "evidence_refs": [
+        "baseline"
+      ]
+    },
+    {
+      "option": "Require no skips on every platform.",
+      "less_harmful_analysis": "Stronger coverage gate, but unsupported platform/dependency checks can legitimately be skipped.",
+      "rejection_or_selection_reason": "Reject universal enforcement; retain visible mixed coverage and enable strict mode only in the existing full-dependency CI job.",
+      "evidence_refs": [
+        "candidate",
+        "regressions"
+      ]
+    },
+    {
+      "option": "Add bounded receipts and explicit coverage gates.",
+      "less_harmful_analysis": "Preserves optional runs, all historical study behavior and failure evidence.",
+      "rejection_or_selection_reason": "Select for an ordinary maintainer PR, subject to regression tests and review.",
+      "evidence_refs": [
+        "candidate",
+        "regressions"
+      ]
+    }
+  ],
+  "protected_limit_assessments": [
+    {
+      "limit_id": "historical-preservation",
+      "status": "PASS",
+      "reasons": "Supplied assessment, conditional on the binding checker retaining all baseline files outside the three named tooling/documentation/CI edits.",
+      "evidence_refs": [
+        "candidate"
+      ]
+    },
+    {
+      "limit_id": "coverage-honesty",
+      "status": "PASS",
+      "reasons": "Focused regression tests exercise actual unittest runs; expected outcomes are fixed in the pilot plan. This is an implementation judgment, not authenticated evidence.",
+      "evidence_refs": [
+        "baseline",
+        "regressions"
+      ]
+    },
+    {
+      "limit_id": "authority-separation",
+      "status": "PASS",
+      "reasons": "The general review is advisory; unsupported repository actions are refused by AP1. No S1 acceptance or S2 repository reservation is manufactured.",
+      "evidence_refs": [
+        "plan",
+        "candidate"
+      ]
+    },
+    {
+      "limit_id": "independent-review",
+      "status": "UNKNOWN",
+      "reasons": "The same assistant/operator selected, implemented and reviewed this patch. No independent reviewer or evidence custodian has participated.",
+      "evidence_refs": [
+        "plan"
+      ]
+    }
+  ],
+  "burden_justification": "The added tooling is limited to making observed verification coverage contestable. Optional dependencies remain optional except in the pre-existing full-dependency CI lane. Unknown independent review is retained rather than asserted away.",
+  "dissent": [
+    "Same-operator authorship and review cannot establish independent scrutiny or a causal benefit of the governance scaffold. A complete form could still contain false PASS assertions."
+  ],
+  "dissent_status": "RECORDED",
+  "predictions": [
+    "The all-skipped fixture will be refused by the candidate while mixed coverage remains explicit.",
+    "Runtime/client/study bytes and existing tests will remain unchanged. These are engineering predictions, not agent-efficacy hypotheses."
+  ],
+  "review_triggers": [
+    {
+      "condition": "A legitimate platform run is mislabeled or fails because of the new coverage accounting.",
+      "review_authority": "Repository maintainers through normal issue/PR review."
+    },
+    {
+      "condition": "Any bound historical file changes, or the review is treated as merge authority.",
+      "review_authority": "Repository maintainers; halt this pilot and inspect the evidence."
+    }
+  ],
+  "remedy_plan": {
+    "authority": "User-authorized ordinary maintainer workflow only; no authority supplied by CORTAC.",
+    "resources": "Local verification plus existing CI; no tokens or money accounting is claimed.",
+    "steps": "Retain failing receipts and logs, correct the bounded tool or revert it, and rerun the affected checks without rewriting historical results.",
+    "evidence_refs": [
+      "plan",
+      "candidate"
+    ]
+  },
+  "evidence_refs": [
+    "baseline",
+    "candidate",
+    "plan",
+    "regressions"
+  ]
+}
