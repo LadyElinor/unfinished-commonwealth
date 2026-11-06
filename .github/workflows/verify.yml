@@ -18,6 +18,7 @@ jobs:
             python: '3.11'
           - os: ubuntu-latest
             python: '3.12'
+            no_skips: --require-no-skips
           - os: ubuntu-latest
             python: '3.13'
           - os: windows-latest
@@ -36,7 +37,10 @@ jobs:
           python -c "from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey"
           node --version
       - name: Behavioral and integrity checks
-        run: python scripts/verify.py
+        run: python scripts/verify.py --report .local/verification.json ${{ matrix.no_skips }}
+      - name: Retain actual verification coverage in job log
+        if: always()
+        run: python -c "from pathlib import Path; p=Path('.local/verification.json'); print(p.read_text() if p.exists() else 'No verification receipt was produced')"
       - name: Reproduce workshop and comparison
         run: python scripts/reproduce.py .local/ci-reproduction
       - name: Reproduce separate deterministic contract harness

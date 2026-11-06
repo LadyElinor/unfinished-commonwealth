@@ -1,0 +1,33 @@
+{
+  "all_tests_executed": true,
+  "artifacts": {
+    "documentation_links": 206,
+    "json_files": 52,
+    "status": "PASSED"
+  },
+  "elapsed_ns": 75319175827,
+  "external_authority": "NONE",
+  "operator_limit": "The operator can rewrite code, tests, inputs and receipts together.",
+  "problems": [],
+  "python": "3.12.14",
+  "require_no_skips": false,
+  "schema": "unfinished-commonwealth.verification.v1",
+  "scope": "LOCAL_RESEARCH_ONLY",
+  "source": {
+    "authenticated": false,
+    "commit": "33dbb823bc950a307bae030e9f202327f5a90813",
+    "dirty": true
+  },
+  "started_utc": "2026-11-06T16:44:27.494463+00:00",
+  "status": "PASSED",
+  "tests": {
+    "errors": [],
+    "expected_failures": [],
+    "failures": [],
+    "skipped": [],
+    "successful": true,
+    "tests_not_skipped": 635,
+    "tests_run": 635,
+    "unexpected_successes": []
+  }
+}
