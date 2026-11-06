@@ -16,6 +16,8 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           path: commonwealth
+          # Reproduce the exposed pilot snapshot; do not freeze future HEAD.
+          ref: 7d06de1ceb314879e5db5529db632a267581982d
           fetch-depth: 0
           persist-credentials: false
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262

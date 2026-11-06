@@ -33,11 +33,15 @@ count. See [verification details](VALIDATION.md).
 
 ## Reproduce the pilot
 
-From a Git checkout containing the original baseline and an unmodified checkout
-of the pinned CORTAC commit:
+The pilot is frozen at `7d06de1ceb314879e5db5529db632a267581982d`.
+Its binding describes that maintenance candidate, not a permanent prohibition on
+future repository changes. The dedicated CI job checks out this exact snapshot;
+ordinary verification checks current code. From a Git checkout containing that
+commit and an unmodified checkout of the pinned CORTAC commit:
 
 ```sh
-python scripts/maintenance_pilot.py /path/to/CORTAC .local/maintenance-pilot
+git worktree add --detach .local/m1-source 7d06de1ceb314879e5db5529db632a267581982d
+python .local/m1-source/scripts/maintenance_pilot.py /path/to/CORTAC .local/maintenance-pilot
 python scripts/verify.py --report .local/maintenance-verification.json
 ```
 
@@ -63,7 +67,8 @@ boundary checks and eleven verifier subprocess probes. The [local verification
 receipt](../examples/maintenance_v1/verification.json) records 635 tests with zero
 skips. Its source was a working tree, not a sealed or independently held snapshot.
 Both files are outputs, deliberately excluded from the candidate input binding
-to avoid circular hashes. Hosted CI produces fresh observations on its checkout.
+to avoid circular hashes. The dedicated hosted job produces fresh observations
+of the pinned pilot; the ordinary CI jobs verify the current checkout separately.
 
 ## What this tests and what it does not
 
