@@ -98,11 +98,11 @@ of scope. See [production limits](PRODUCTION_READINESS.md) and
 Run the [wrongful-denial example](../examples/owed-assistance.json) from the repository root.
 
 ```sh
-python -m commonwealth.remediation_v1 examples/owed-assistance.json --as-of 6
+python -m commonwealth.remediation_v1.assistance examples/owed-assistance.json --as-of 6
 python -m unittest discover -s tests -p test_owed_assistance.py -v
 ```
 
-The `owed-assistance-1` packet starts after the institution has recognized a particular person's award. The original account also warns about a rule affecting other people. Keep the private account in its original wording. The person may decline public reconciliation, publicity, repeat testimony and further contact, or leave any preference unanswered. The review reads payment evidence and institutional files without scoring the person's demeanor or requiring another response. The CLI emits the two assessments, recorded burdens, record references and packet digest. The private Python `review(packet, as_of=...)` result also retains the full input. Keep both the source file and any identifying output within the intended audience.
+The `owed-assistance-1` packet starts after the institution has recognized a particular person's award. The original account also warns about a rule affecting other people. Keep the private account in its original wording. The person may decline public reconciliation, publicity, repeat testimony and further contact, or leave any preference unanswered. The review reads payment evidence and institutional files without scoring the person's demeanor or requiring another response. The CLI emits the two assessments, recorded burdens, record references and packet digest. The private Python `review_assistance(packet, as_of=...)` result also retains the full input. Keep both the source file and any identifying output within the intended audience.
 
 | What the record shows | Who owns the next action |
 | --- | --- |

@@ -1,4 +1,4 @@
-"""Public wrongful-denial case through the ordinary remediation review."""
+"""Public wrongful-denial case through the assistance review."""
 from copy import deepcopy
 import json
 from pathlib import Path
@@ -6,7 +6,7 @@ import subprocess
 import sys
 import unittest
 
-from commonwealth.remediation_v1.review import review
+from commonwealth.remediation_v1.assistance import review_assistance as review
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -176,8 +176,8 @@ class OwedAssistanceTests(unittest.TestCase):
         self.packet["warning"]["account"] = "replacement"
         self.assertNotEqual(report["packet"]["warning"]["account"], "replacement")
 
-    def test_existing_cli_reviews_public_case_without_external_action(self):
-        result = subprocess.run([sys.executable, "-m", "commonwealth.remediation_v1", str(EXAMPLE), "--as-of", "6"],
+    def test_cli_reviews_public_case_without_external_action(self):
+        result = subprocess.run([sys.executable, "-m", "commonwealth.remediation_v1.assistance", str(EXAMPLE), "--as-of", "6"],
                                 cwd=ROOT, text=True, capture_output=True, check=True)
         r = json.loads(result.stdout)
         self.assertEqual(r["version"], "owed-assistance-1")

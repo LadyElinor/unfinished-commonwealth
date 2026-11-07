@@ -1,8 +1,12 @@
 """Read-only review of an established fictional award and a continuing rule warning."""
+import argparse
 from copy import deepcopy
+import json
+from pathlib import Path
 
 from commonwealth.discernment_v1.engine import fields, integer, require, text
 from commonwealth.study_v1.engine import digest
+from .__main__ import load_packet
 
 SCHEMA = "owed-assistance-1"
 MAX_TICK = 10**12
@@ -183,3 +187,21 @@ def review_assistance(packet, *, as_of):
             "participation_review": participation, "packet": deepcopy(packet), "packet_digest": digest(packet),
             "assurance": "unverified-host-supplied-records", "authority_granted": False,
             "external_actions": 0, "production_ready": False}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("packet", type=Path)
+    parser.add_argument("--as-of", type=int, required=True, help="inclusive observation time in fixture units")
+    args = parser.parse_args()
+    try:
+        result = review_assistance(load_packet(args.packet), as_of=args.as_of)
+    except (OSError, ValueError) as error:
+        parser.exit(2, f"Invalid assistance record: {error}\n")
+    # Retain the private account locally. Routine output needs only the reference and digest.
+    del result["packet"]
+    print(json.dumps(result, indent=2, sort_keys=True))
+
+
+if __name__ == "__main__":
+    main()

@@ -142,7 +142,7 @@ def main():
                 or remediation["authority_granted"] is not False
                 or remediation["production_ready"] is not False):
             raise RuntimeError("Installed remediation helper changed its advisory boundary")
-        assistance = json.loads(run([str(executable), "-m", "commonwealth.remediation_v1",
+        assistance = json.loads(run([str(executable), "-m", "commonwealth.remediation_v1.assistance",
             str(source / "examples/owed-assistance.json"), "--as-of", "6"], smoke))
         if (assistance["payment"]["status"] != "delivery-supported"
                 or assistance["rule_inquiry"]["other_cases_owed_correction"] != ["other-8"]

@@ -9,7 +9,6 @@ from copy import deepcopy
 from commonwealth.discernment_v1.engine import fields, integer, require, text
 from commonwealth.study_v1.engine import canonical, digest
 from . import VERSION
-from .assistance import SCHEMA as ASSISTANCE_SCHEMA, review_assistance
 
 
 def _items(value):
@@ -23,9 +22,6 @@ def review(packet, *, as_of):
     by the host. Different strings never establish real-world independence.
     Costs are fictional service units, not weights for rights or human lives.
     """
-    if isinstance(packet, dict) and packet.get("schema") == ASSISTANCE_SCHEMA:
-        return review_assistance(packet, as_of=as_of)
-
     integer(as_of, 0, 10**12)
     fields(packet, "scope decision_controller records finding warning options repair")
     text(packet["scope"])
