@@ -5,6 +5,7 @@ build dependencies from a network or overwrites an existing output directory.
 """
 
 import argparse
+import gzip
 import hashlib
 from importlib.metadata import version as distribution_version
 import platform
@@ -103,7 +104,9 @@ def main():
                          "commonwealth/remediation_v1/review.py", "docs/REMEDIATION_V1.md",
                          "tests/test_remediation_v1.py", "examples/remediation-v1-packet.json",
                          "commonwealth/remediation_v1/assistance.py", "tests/test_owed_assistance.py",
-                         "examples/owed-assistance.json",
+                         "examples/owed-assistance.json", "commonwealth/remediation_v1/role_history.py",
+                         "examples/role-history-traces.jsonl.gz", "scripts/recount_role_history.mjs",
+                         "docs/ROLE_HISTORY_DESIGN.md", "docs/ROLE_HISTORY_RESULTS.md",
                          "scripts/audit_measurement.mjs", "examples/charged-workshop-results.json",
                          "examples/neighbor-timing-results.json", "commonwealth/measurement_v1/neighbor.py",
                          "examples/agent_profile_v1/python_agent.py"):
@@ -142,6 +145,11 @@ def main():
                 or remediation["authority_granted"] is not False
                 or remediation["production_ready"] is not False):
             raise RuntimeError("Installed remediation helper changed its advisory boundary")
+        role_stream = run([str(executable), "-m", "commonwealth.remediation_v1.role_history",
+                          str(source / "examples/owed-assistance.json")], smoke)
+        with gzip.open(source / "examples/role-history-traces.jsonl.gz", "rt", encoding="utf-8") as archive:
+            if role_stream != archive.read():
+                raise RuntimeError("Installed role-history rehearsal differs from the archived run")
         assistance = json.loads(run([str(executable), "-m", "commonwealth.remediation_v1.assistance",
             str(source / "examples/owed-assistance.json"), "--as-of", "6"], smoke))
         if (assistance["payment"]["status"] != "delivery-supported"

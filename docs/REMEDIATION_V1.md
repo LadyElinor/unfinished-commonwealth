@@ -118,3 +118,5 @@ The `owed-assistance-1` packet starts after the institution has recognized a par
 Record time and other burdens in fictional work units by who bore them. A required act by the affected person is flagged even at zero recorded cost, for example when someone declines a demand to tell the story again. Optional contributions are distinguished from demands, and unknown costs are counted separately. No entries means no work was recorded. These measures leave any institutional demand visible after payment.
 
 The sample ends with 100 units credited, four work units recorded against the institution, and another case (`other-8`) still owed correction. All entries are fictional. The host can omit other denials, invent a settlement or label one controller as two. This local review cannot authenticate consent, establish the completeness of a search, move money or enforce a remedy.
+
+The [role-history rehearsal](ROLE_HISTORY_RESULTS.md) checks who selected the files, briefed the panel and voted. It compares office-name screening and case-linked history under matched budgets and reserve availability.
