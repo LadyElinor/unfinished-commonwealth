@@ -1,5 +1,6 @@
 """Exercise the custodian's CLI entirely with public, constructed records."""
 import copy
+from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 from hashlib import sha256
 import json
@@ -54,7 +55,12 @@ class CustodyHandoff(unittest.TestCase):
             self.assertEqual(result.stdout, "")
         return result.stdout.strip() if valid else result.stderr
 
-    def lock_public_example(self):
+    def lock_public_example(self, *, with_observer=False):
+        if with_observer:
+            self.freeze_data["schema"] = custody.FREEZE_V2
+            self.common[4] = save(self.freeze, self.freeze_data)
+            self.roster_data["freeze_sha256"] = self.common[4]
+            self.common[6] = save(self.roster, self.roster_data)
         self.manifest_hash = self.cli("assign", *self.common)
         self.assertEqual(self.manifest_hash, raw_digest(self.manifest))
         tasks = {t["id"]: t for t in json.loads(self.manifest.read_bytes())["tasks"]}
@@ -72,7 +78,13 @@ class CustodyHandoff(unittest.TestCase):
                 self.map_data["entries"].append(dict(common, task=run["task"], arm=run["arm"], submission=n))
                 self.grade_data["entries"].append(dict(common, grade=candidate["grade"]))
         self.grade_data["entries"].reverse()
-        return [*self.common, self.outcomes, self.mapping, self.grades, "--manifest-sha256", self.manifest_hash,
+        extra = []
+        if with_observer:
+            self.observer = self.roster.parent / "observer"
+            self.observer_data = json.loads((PUBLIC / "observer.json").read_bytes())
+            self.observer_data["manifest_sha256"] = self.manifest_hash
+            extra = ["--observer-ledger", self.observer, "--observer-sha256", save(self.observer, self.observer_data)]
+        return [*self.common, self.outcomes, self.mapping, self.grades, *extra, "--manifest-sha256", self.manifest_hash,
                 "--map-sha256", save(self.mapping, self.map_data), "--grades-sha256", save(self.grades, self.grade_data),
                 "--outcomes-sha256", save(self.outcomes, self.outcome_data)]
 
@@ -82,6 +94,7 @@ class CustodyHandoff(unittest.TestCase):
         self.assertEqual(report["difference_bounds"], [0, .25])
         self.assertEqual(report["blind_grade_replay"]["matched_submissions"], 10)
         self.assertEqual(report["outcome_checkpoint"], "matched")
+        self.assertEqual(report["observer_replay"], {"status": "not_supplied"})
         self.assertEqual(report["assignment_replay"]["custody_authentication"], "external_review_required")
         self.assertEqual(self.cli("assign", *self.common), self.manifest_hash)
         self.outcome_data["runs"][0]["candidates"][0]["grade"] = "correct"
@@ -145,6 +158,132 @@ class CustodyHandoff(unittest.TestCase):
         entry["patch_sha256"] = same_patch
         next(g for g in self.grade_data["entries"] if g["blind_id"] == entry["blind_id"])["patch_sha256"] = same_patch
         custody.check_blind_grades(self.map_data, self.grade_data, self.manifest_hash, self.outcome_data)
+
+    def test_v2_requires_the_observer_checkpoint_and_matches_complete_roster(self):
+        args = self.lock_public_example(with_observer=True)
+        report = json.loads(self.cli("recount", *args))
+        self.assertEqual(report["difference_bounds"], [0, .25])
+        observed = report["observer_replay"]
+        self.assertEqual((observed["status"], observed["sessions"], observed["billing_allocations"]), ("matched", 8, 14))
+        self.assertEqual(observed["ledger_sha256"], raw_digest(self.observer))
+        self.assertEqual(observed["billing_line_coverage"]["governed"],
+                         {"known_lines": 5, "unknown_lines": 1, "sessions_with_incomplete_billing": 0, "observed_net_micro_usd": 370})
+        self.assertEqual(report["arms"]["governed"]["usage"]["cost_micro_usd"], {"known_sum": 300, "known": 3, "unknown": 1})
+        offset = args.index("--observer-ledger")
+        self.assertIn("v2 freeze requires", self.cli("recount", *args[:offset], *args[offset+4:], valid=False))
+        self.assertIn("supply both", self.cli("recount", *args[:offset], *args[offset+2:], valid=False))
+        self.observer.write_bytes(self.observer.read_bytes() + b" ")
+        self.assertIn("observer ledger checkpoint", self.cli("recount", *args, valid=False))
+
+    def test_rehashed_export_rejects_each_meter_charge_and_submission_time_change(self):
+        args = self.lock_public_example(with_observer=True)
+        for run in self.outcome_data["runs"]:
+            changes = [(run["usage"], key) for key in study.METERS]
+            changes.extend((candidate, "elapsed_ms") for candidate in run["candidates"])
+            for values, key in changes:
+                with self.subTest(task=run["task"], arm=run["arm"], key=key):
+                    original = values[key]
+                    values[key] = 0 if original is None else original + 1
+                    args[-1] = save(self.outcomes, self.outcome_data)
+                    self.assertIn("observer", self.cli("recount", *args, valid=False))
+                    values[key] = original
+        self.outcome_data["runs"][0]["usage"]["cost_micro_usd"] += 1
+        self.outcome_data["runs"][2]["usage"]["cost_micro_usd"] -= 1
+        args[-1] = save(self.outcomes, self.outcome_data)
+        self.assertIn("observer disagrees with cost", self.cli("recount", *args, valid=False))
+
+    def test_deadline_crossing_rejected_under_locked_grades_and_session_time(self):
+        args = self.lock_public_example(with_observer=True)
+        run = self.outcome_data["runs"][1]
+        session = self.observer_data["sessions"][1]
+        run["candidates"][-1]["elapsed_ms"] = session["submissions"][-1]["elapsed_ms"] = study.DEADLINE
+        run["usage"]["elapsed_ms"] = session["meters"]["elapsed_ms"] = study.DEADLINE + 1
+        args[args.index("--observer-sha256") + 1] = save(self.observer, self.observer_data)
+        args[-1] = save(self.outcomes, self.outcome_data)
+        self.assertEqual(json.loads(self.cli("recount", *args))["difference_bounds"], [0, .25])
+        run["candidates"][-1]["elapsed_ms"] += 1
+        args[-1] = save(self.outcomes, self.outcome_data)
+        self.assertIn("submission differs from observer", self.cli("recount", *args, valid=False))
+
+    def test_observer_rejects_missing_repeated_and_mismatched_evidence(self):
+        self.lock_public_example(with_observer=True)
+        for variant in ("manifest", "missing", "duplicate", "extra", "reused allocation", "reordered",
+                        "bool meter", "bool time", "partial subtotal"):
+            ledger = copy.deepcopy(self.observer_data)
+            sessions = ledger["sessions"]
+            with self.subTest(variant=variant):
+                if variant == "manifest":
+                    ledger["manifest_sha256"] = "a" * 64
+                elif variant == "missing":
+                    sessions.pop()
+                elif variant == "duplicate":
+                    sessions.append(sessions[0])
+                elif variant == "extra":
+                    sessions[0]["task"] = "unassigned"
+                elif variant == "reused allocation":
+                    sessions[-1]["charges"]["lines"][0]["id"] = sessions[0]["charges"]["lines"][0]["id"]
+                elif variant == "reordered":
+                    sessions[1]["submissions"].reverse()
+                elif variant == "bool meter":
+                    sessions[0]["meters"]["public_checks"] = True
+                elif variant == "bool time":
+                    sessions[0]["submissions"][0]["elapsed_ms"] = True
+                else:
+                    sessions[5]["charges"]["lines"].pop()
+                with self.assertRaises(ValueError):
+                    custody.check_observer_ledger(ledger, self.manifest_hash, self.outcome_data)
+
+    def test_nonstarts_missing_ledgers_and_confirmed_zero_stay_distinct(self):
+        args = self.lock_public_example(with_observer=True)
+        for run in self.outcome_data["runs"]:
+            run.update(closure="not_started", disposition="unresolved", candidates=[])
+            run["usage"] = dict.fromkeys(study.METERS)
+            if run["arm"] == "plain":
+                run["usage"]["cost_micro_usd"] = 0
+        for session in self.observer_data["sessions"]:
+            session.update(meters=dict.fromkeys(custody.OBSERVER_METERS), submissions=[])
+            session["charges"] = {"complete": session["arm"] == "plain", "lines": []}
+        self.map_data["entries"] = []
+        self.grade_data["entries"] = []
+        for flag, path, data in (("--map-sha256", self.mapping, self.map_data),
+                                 ("--grades-sha256", self.grades, self.grade_data),
+                                 ("--observer-sha256", self.observer, self.observer_data),
+                                 ("--outcomes-sha256", self.outcomes, self.outcome_data)):
+            args[args.index(flag) + 1] = save(path, data)
+        report = json.loads(self.cli("recount", *args))
+        self.assertEqual(report["pair_counts"]["neither_correct"], 4)
+        self.assertEqual(report["arms"]["plain"]["usage"]["cost_micro_usd"], {"known_sum": 0, "known": 4, "unknown": 0})
+        self.assertEqual(report["arms"]["governed"]["usage"]["cost_micro_usd"], {"known_sum": None, "known": 0, "unknown": 4})
+        coverage = report["observer_replay"]["billing_line_coverage"]
+        self.assertEqual(coverage["plain"]["sessions_with_incomplete_billing"], 0)
+        self.assertEqual(coverage["governed"]["sessions_with_incomplete_billing"], 4)
+        self.assertIsNone(coverage["governed"]["observed_net_micro_usd"])
+
+    def test_charge_arithmetic_missing_zero_credits_and_invalid_amounts(self):
+        def charge(*amounts, complete=True):
+            lines = [{"id": str(i), "micro_usd": value} for i, value in enumerate(amounts)]
+            return custody.session_charge({"complete": complete, "lines": lines}, set(), Counter())
+        self.assertEqual(charge(), 0)
+        self.assertIsNone(charge(complete=False))
+        self.assertIsNone(charge(0, None))
+        self.assertEqual(charge(8, -8), 0)
+        for amounts in ((-1,), (True,), (1.5,), (None, "0")):
+            with self.subTest(amounts=amounts), self.assertRaises(ValueError):
+                charge(*amounts)
+        with self.assertRaises(ValueError):
+            charge(complete=1)
+
+    def test_partial_billing_keeps_known_lines_without_asserting_a_session_net(self):
+        args = self.lock_public_example(with_observer=True)
+        charges = self.observer_data["sessions"][5]["charges"]
+        charges["lines"].pop()  # Only the observed charge for 70 is available.
+        charges["complete"] = False
+        args[args.index("--observer-sha256") + 1] = save(self.observer, self.observer_data)
+        report = json.loads(self.cli("recount", *args))
+        coverage = report["observer_replay"]["billing_line_coverage"]["governed"]
+        self.assertEqual(coverage, {"known_lines": 5, "unknown_lines": 0, "sessions_with_incomplete_billing": 1,
+                                    "observed_net_micro_usd": 370})
+        self.assertEqual(report["arms"]["governed"]["usage"]["cost_micro_usd"], {"known_sum": 300, "known": 3, "unknown": 1})
 
     def test_independent_assignment_vectors_and_concurrent_publication(self):
         # Independently computed using Node's crypto.createHash and uint32 BE encoding.

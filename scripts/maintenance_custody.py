@@ -12,6 +12,9 @@ from . import analyze_maintenance_pairs as study
 
 # The counter is the zero-based index in the witnessed intake order.
 DOMAIN = b"unfinished-commonwealth/maintenance-assignment/v1\x00"
+FREEZE_V1 = "maintenance-custody-freeze-v1"
+FREEZE_V2 = "maintenance-custody-freeze-v2"
+OBSERVER_METERS = tuple(key for key in study.METERS if key != "cost_micro_usd")
 PRE_INTAKE_PINS = ("agent", "environment", "reviewer_pool", "plain", "governed")
 
 
@@ -39,7 +42,7 @@ def prepare(freeze_raw, roster_raw, freeze_digest, roster_digest, seed):
     roster = checked_packet(roster_raw, roster_digest, "roster")
     study.fields(freeze, ("schema", "kind", "protocol_sha256", "analyzer_sha256", "assignment_tool_sha256",
                           "custody_plan_sha256", "grading_procedure_sha256", "pins"), "freeze")
-    study.require(freeze["schema"] == "maintenance-custody-freeze-v1", "unsupported freeze")
+    study.require(freeze["schema"] in (FREEZE_V1, FREEZE_V2), "unsupported freeze")
     for field, observed in code_pins().items():
         study.require(freeze[field] == observed, f"frozen file mismatch: {field}")
     for field in ("custody_plan_sha256", "grading_procedure_sha256"):
@@ -93,6 +96,75 @@ def check_blind_grades(mapping, grades, manifest_digest, outcomes):
     study.require(not candidates and not by_id, "incomplete mapping or unused blind grades")
 
 
+def session_charge(charges, seen, coverage):
+    study.fields(charges, ("complete", "lines"), "observer charge list")
+    complete, lines = charges["complete"], charges["lines"]
+    study.require(type(complete) is bool and isinstance(lines, list), "invalid observer charge list")
+    if not complete:
+        coverage["sessions_with_incomplete_billing"] += 1
+    total = 0
+    for line in lines:
+        study.fields(line, ("id", "micro_usd"), "billing line")
+        key, amount = line["id"], line["micro_usd"]
+        study.require(study.label(key) and key not in seen, "invalid or repeated billing allocation ID")
+        seen.add(key)
+        if amount is None:
+            coverage["unknown_lines"] += 1
+            complete = False
+        else:
+            study.require(type(amount) is int, "charge must be integer micro-USD or null")
+            coverage["known_lines"] += 1
+            total += amount
+    coverage["observed_net_micro_usd"] += total
+    if not complete:
+        return None
+    study.require(total >= 0, "negative session net is outside the study cost format")
+    return total
+
+
+def check_observer_ledger(ledger, manifest_digest, outcomes):
+    study.fields(ledger, ("schema", "manifest_sha256", "sessions"), "observer ledger")
+    study.require(ledger["schema"] == "maintenance-observer-ledger-v1" and
+                  ledger["manifest_sha256"] == manifest_digest, "wrong observer ledger")
+    study.require(isinstance(ledger["sessions"], list), "expected observer sessions")
+    # The outcome rows have already passed the analyzer's roster and type checks.
+    pending = {(row["task"], row["arm"]): row for row in outcomes["runs"]}
+    billing_ids = set()
+    coverage = {arm: {"known_lines": 0, "unknown_lines": 0, "sessions_with_incomplete_billing": 0,
+                      "observed_net_micro_usd": 0} for arm in study.ARMS}
+    for session in ledger["sessions"]:
+        study.fields(session, ("task", "arm", "meters", "charges", "submissions"), "observer session")
+        task, arm = session["task"], session["arm"]
+        study.require(study.label(task) and arm in study.ARMS, "invalid observer session address")
+        study.require((task, arm) in pending, "extra or repeated observer session")
+        run = pending.pop((task, arm))
+        meters = session["meters"]
+        study.fields(meters, OBSERVER_METERS, "observer meters")
+        for key in OBSERVER_METERS:
+            value = meters[key]
+            study.require(value is None or study.nonnegative(value), f"invalid observer meter {key}")
+            study.require(value == run["usage"][key], f"{task}/{arm}: observer disagrees with {key}")
+        net = session_charge(session["charges"], billing_ids, coverage[arm])
+        study.require(net == run["usage"]["cost_micro_usd"], f"{task}/{arm}: observer disagrees with cost_micro_usd")
+
+        submissions = session["submissions"]
+        candidates = run["candidates"]
+        study.require(isinstance(submissions, list) and len(submissions) == len(candidates),
+                      f"{task}/{arm}: submission count differs from observer")
+        for observed, candidate in zip(submissions, candidates):
+            study.fields(observed, ("sha256", "elapsed_ms"), "observer submission")
+            ms = observed["elapsed_ms"]
+            study.require(ms is None or study.nonnegative(ms), "invalid observer submission time")
+            study.require(observed["sha256"] == candidate["sha256"] and ms == candidate["elapsed_ms"],
+                          f"{task}/{arm}: submission differs from observer")
+    study.require(not pending, "missing observer sessions")
+    for arm_coverage in coverage.values():
+        if arm_coverage["known_lines"] == 0:
+            arm_coverage["observed_net_micro_usd"] = None
+    return {"status": "matched", "sessions": len(ledger["sessions"]),
+            "billing_allocations": len(billing_ids), "billing_line_coverage": coverage}
+
+
 def publish_manifest(path, raw):
     # Publish complete bytes without replacing a prior checkpoint, including on concurrent retries.
     staging = tempfile.NamedTemporaryFile(dir=path.parent, delete=False)
@@ -120,7 +192,7 @@ def main(argv=None):
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("code-pins", help="print raw file digests for the pre-intake checkpoint")
     commands.add_parser("assign", parents=[shared], help="prepare the manifest before the first session")
-    recount = commands.add_parser("recount", parents=[shared], help="verify the assignment and both subsequent locks")
+    recount = commands.add_parser("recount", parents=[shared], help="verify the assignment and locked study records")
     recount.add_argument("outcomes", type=Path)
     recount.add_argument("blinding_map", type=Path)
     recount.add_argument("grades", type=Path)
@@ -128,12 +200,15 @@ def main(argv=None):
     recount.add_argument("--grades-sha256", required=True, help="grading lead's checkpoint before unblinding")
     recount.add_argument("--manifest-sha256", required=True, help="witnessed before either arm ran")
     recount.add_argument("--outcomes-sha256", required=True, help="witnessed final export after the locked grades and costs were joined")
+    recount.add_argument("--observer-ledger", type=Path, help="observer's session and billing records")
+    recount.add_argument("--observer-sha256", help="observer's checkpoint retained before unblinding")
     args = parser.parse_args(argv)
     try:
         if args.command == "code-pins":
             print(json.dumps(code_pins(), indent=2))
             return
-        expected = prepare(args.freeze.read_bytes(), args.roster.read_bytes(), args.freeze_sha256, args.roster_sha256, args.seed)
+        freeze_raw = args.freeze.read_bytes()
+        expected = prepare(freeze_raw, args.roster.read_bytes(), args.freeze_sha256, args.roster_sha256, args.seed)
         if args.command == "assign":
             publish_manifest(args.manifest, expected)
             print(sha256(expected).hexdigest())
@@ -144,7 +219,18 @@ def main(argv=None):
         report = study.analyze(manifest, outcome_raw, args.manifest_sha256, args.outcomes_sha256)
         mapping = checked_packet(args.blinding_map.read_bytes(), args.map_sha256, "blinding map")
         grades = checked_packet(args.grades.read_bytes(), args.grades_sha256, "blind grades")
-        check_blind_grades(mapping, grades, args.manifest_sha256, study.read_packet(outcome_raw))
+        outcomes = study.read_packet(outcome_raw)
+        check_blind_grades(mapping, grades, args.manifest_sha256, outcomes)
+        required = study.read_packet(freeze_raw)["schema"] == FREEZE_V2
+        if args.observer_ledger is None and args.observer_sha256 is None:
+            study.require(not required, "v2 freeze requires the observer ledger and its checkpoint")
+            report["observer_replay"] = {"status": "not_supplied"}
+        else:
+            study.require(args.observer_ledger is not None and study.digest(args.observer_sha256),
+                          "supply both observer ledger and checkpoint")
+            ledger = checked_packet(args.observer_ledger.read_bytes(), args.observer_sha256, "observer ledger")
+            matched = check_observer_ledger(ledger, args.manifest_sha256, outcomes)
+            report["observer_replay"] = {**matched, "ledger_sha256": args.observer_sha256}
         report["blind_grade_replay"] = {"matched_submissions": len(grades["entries"]), "map_sha256": args.map_sha256,
                                        "grades_sha256": args.grades_sha256}
         report["assignment_replay"] = {"algorithm": "maintenance-assignment-v1", "freeze_sha256": args.freeze_sha256,
