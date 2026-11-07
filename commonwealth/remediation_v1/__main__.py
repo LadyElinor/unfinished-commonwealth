@@ -4,6 +4,7 @@ import argparse
 import json
 from pathlib import Path
 
+from .assistance import SCHEMA as ASSISTANCE_SCHEMA
 from .review import review
 
 
@@ -31,6 +32,9 @@ def main():
     parser.add_argument("--as-of", type=int, required=True, help="inclusive observation time in fixture units")
     args = parser.parse_args()
     result = review(load_packet(args.packet), as_of=args.as_of)
+    if result["version"] == ASSISTANCE_SCHEMA:
+        # The local input retains the person's account. Keep it out of routine CLI output.
+        del result["packet"]
     print(json.dumps(result, sort_keys=True, indent=2))
 
 
