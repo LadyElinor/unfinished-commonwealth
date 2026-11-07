@@ -153,6 +153,10 @@ reporting support for a repair’s declared criterion. Paired fictional tests re
 targeted inspection and the cost of an overbroad freeze. It grants no authority
 and does not change the research-only or production-readiness boundary.
 
+The [owed-assistance review](docs/REMEDIATION_V1.md#owed-assistance) follows a fictional wrongful denial.
+The person can leave after giving their account. The paying office still owes delivery,
+and a separate reviewer examines other denials under the same rule.
+
 ## Growing the project
 
 A separate **study harness 1.0.0** now implements the deterministic portion of the
