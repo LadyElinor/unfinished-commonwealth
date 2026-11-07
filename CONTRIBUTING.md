@@ -27,3 +27,8 @@ At the same time, do not make a predelegated safety halt depend on completing an
 ordinary review form. Test both blocked unwarranted action and delayed or
 unavailable legitimate correction. Apply these requirements to our maintainers
 and synthetic agents as well as to institutions being studied.
+
+An independent custodian can contribute to the [paired repository-maintenance study](docs/MAINTENANCE_STUDY_PROTOCOL.md).
+The protocol describes eligibility, sealed intake, matched reviewer access, and blind grading.
+Keep private cases and answers out of issues, pull requests, and development checkouts.
+Anyone can reproduce the [four public arithmetic examples](examples/maintenance_pairs/README.md).
