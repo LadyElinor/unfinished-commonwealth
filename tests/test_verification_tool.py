@@ -101,6 +101,20 @@ class VerificationToolTests(unittest.TestCase):
         self.assertEqual(r["artifacts"]["status"], "FAILED")
         self.assertTrue(r["all_tests_executed"])
 
+    def test_duplicate_grade_fails_artifact_check(self):
+        (self.root / "grades.json").write_text('{"entry":{"grade":"incorrect","grade":"correct"}}', encoding="utf-8")
+        run, report = self.run_case()
+        self.assertEqual(run.returncode, 1)
+        self.assertEqual(report["artifacts"]["status"], "FAILED")
+        self.assertIn("grades.json", report["problems"][0])
+        self.assertIn("duplicate JSON field", report["problems"][0])
+
+    def test_nonstandard_numeric_literal_fails_artifact_check(self):
+        (self.root / "cost.json").write_text('{"amount":NaN}', encoding="utf-8")
+        run, report = self.run_case()
+        self.assertEqual(run.returncode, 1)
+        self.assertIn("invalid JSON constant NaN", report["problems"][0])
+
     def test_broken_link_is_still_refused(self):
         (self.root / "README.md").write_text("[missing](absent.txt)", encoding="utf-8")
         run, r = self.run_case()

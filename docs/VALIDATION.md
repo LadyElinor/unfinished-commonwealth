@@ -179,3 +179,5 @@ installed-package results. To reproduce checks, follow [BUILD.md](BUILD.md).
 - This is a bounded correctness review, not a comprehensive security audit.
 - All included comparisons remain scripted, exposed, and synthetic. They do not
   establish causal benefits from coaching, stories, or decentralization.
+
+The repository verifier rejects duplicate object names, including nested names, and nonstandard JSON literals such as `NaN`. Its receipt identifies the affected artifact.
