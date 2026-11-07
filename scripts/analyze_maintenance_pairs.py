@@ -11,6 +11,7 @@ import sys
 
 PROTOCOL = Path(__file__).resolve().parents[1] / "docs/MAINTENANCE_STUDY_PROTOCOL.md"
 PUBLIC_MANIFEST = PROTOCOL.parents[1] / "examples/maintenance_pairs/manifest.json"
+PUBLIC_MANIFEST_SHA256 = "61912572098a9e07dafe143f0efe8f3fd3ac98b4fefada1f3ad1322f6593e7a9"
 ARMS = ("plain", "governed")
 PINS = ("agent", "environment", "reviewer_pool", "rubric", *ARMS)
 CLOSURES = ("completed", "declined", "timeout", "tool_error", "unknown", "not_started")
@@ -75,7 +76,9 @@ def validate_manifest(plan):
         require(len({task[key] for task in tasks}) == count, f"reused assignment {key}")
     require(sum(task["first_arm"] == "plain" for task in tasks) == count // 2, "unbalanced assignment")
     if plan["kind"] == "prospective":
-        exposed = {task["packet_sha256"] for task in read_packet(PUBLIC_MANIFEST.read_bytes())["tasks"]}
+        public_raw = PUBLIC_MANIFEST.read_bytes()
+        require(sha256(public_raw).hexdigest() == PUBLIC_MANIFEST_SHA256, "public rehearsal manifest checkpoint mismatch")
+        exposed = {task["packet_sha256"] for task in read_packet(public_raw)["tasks"]}
         require(all(task["packet_sha256"] not in exposed for task in tasks), "public rehearsal packet in prospective roster")
     return {task["id"]: task for task in tasks}
 

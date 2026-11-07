@@ -6,9 +6,11 @@ import math
 from pathlib import Path
 import subprocess
 import sys
+import tempfile
 import unittest
+from unittest.mock import patch
 
-from scripts.analyze_maintenance_pairs import analyze, DEADLINE
+from scripts.analyze_maintenance_pairs import analyze, DEADLINE, validate_manifest
 
 ROOT = Path(__file__).resolve().parents[1]
 EXAMPLE = ROOT / "examples/maintenance_pairs"
@@ -185,6 +187,24 @@ class MaintenanceStudyTests(unittest.TestCase):
         plan["tasks"][1]["lineage"] = plan["tasks"][0]["lineage"]
         with self.assertRaisesRegex(ValueError, "reused assignment lineage"):
             evaluate()
+
+    def test_prospective_roster_checks_the_published_exposure_list_before_using_it(self):
+        public = json.loads(MANIFEST)
+        plan = dict(public, kind="prospective", tasks=[])
+        for i in range(24):
+            packet = sha256(f"public roster test {i}".encode()).hexdigest()
+            plan["tasks"].append(dict(id=str(i), lineage=str(i), packet_sha256=packet,
+                                      first_arm="plain" if i % 2 else "governed"))
+        plan["tasks"][0]["packet_sha256"] = public["tasks"][0]["packet_sha256"]
+        with self.assertRaisesRegex(ValueError, "public rehearsal packet"):
+            validate_manifest(plan)
+        public["tasks"][0]["packet_sha256"] = "f" * 64
+        with tempfile.TemporaryDirectory() as tmp:
+            replacement = Path(tmp) / "manifest.json"
+            replacement.write_text(json.dumps(public), encoding="utf-8")
+            with patch("scripts.analyze_maintenance_pairs.PUBLIC_MANIFEST", replacement):
+                with self.assertRaisesRegex(ValueError, "public rehearsal manifest checkpoint mismatch"):
+                    validate_manifest(plan)
 
     def test_cli(self):
         args = [sys.executable, str(ROOT / "scripts/analyze_maintenance_pairs.py"),

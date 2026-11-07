@@ -21,4 +21,4 @@ For a prospective run, supply the manifest digest from the external custodian's 
 
 A missing submission timestamp is JSON null. Submission order and known session bounds can still establish timeliness. If several last-on-time candidates remain possible, the analyzer carries all their possible grades into the primary bounds. The output counts confirmed late submissions and submissions of unresolved timeliness separately. An observed repair can have unknown latency.
 
-Prospective rosters containing an exact public rehearsal packet digest are rejected. The custodian checks case provenance, prior exposure and derivatives that a digest comparison cannot recognize.
+For a prospective roster, the analyzer checks this public manifest against its published digest before excluding its packet hashes. A changed exposure list stops the check. The custodian checks case provenance, prior exposure and derivatives that a digest comparison cannot recognize.
