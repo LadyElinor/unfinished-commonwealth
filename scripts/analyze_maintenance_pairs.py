@@ -196,9 +196,12 @@ def summarize_arm(runs):
     }
 
 
-def analyze(manifest_bytes, outcome_bytes, expected_digest):
+def analyze(manifest_bytes, outcome_bytes, expected_digest, expected_outcomes_digest=None):
     actual_digest = sha256(manifest_bytes).hexdigest()
     require(actual_digest == expected_digest, "manifest does not match expected checkpoint")
+    outcomes_digest = sha256(outcome_bytes).hexdigest()
+    if expected_outcomes_digest is not None:
+        require(outcomes_digest == expected_outcomes_digest, "outcomes do not match final outcome checkpoint")
     plan, outcomes = read_packet(manifest_bytes), read_packet(outcome_bytes)
     tasks = validate_manifest(plan)
     fields(outcomes, ("schema", "manifest_sha256", "lineage_assessment", "runs"), "outcomes")
@@ -243,6 +246,8 @@ def analyze(manifest_bytes, outcome_bytes, expected_digest):
     return {"schema": "maintenance-pairs-analysis-v1", "scope": "LOCAL_RESEARCH_ONLY",
             "operator_limit": "The host can rewrite the analyzer, packets and receipts. Independent custody requires external evidence.",
             "kind": plan["kind"], "manifest_sha256": actual_digest, "assigned_pairs": n,
+            "outcomes_sha256": outcomes_digest,
+            "outcome_checkpoint": "matched" if expected_outcomes_digest is not None else "not_supplied",
             "lineage_assessment": assessment, "pair_counts": pair_counts, "difference_bounds": [lower, upper],
             "point_difference": lower if low == high else None, "conditional_95_interval": interval,
             "arms": summaries, "deviations": deviations}
@@ -253,9 +258,10 @@ def main():
     parser.add_argument("manifest", type=Path)
     parser.add_argument("outcomes", type=Path)
     parser.add_argument("--manifest-sha256", required=True, help="digest independently retained before execution")
+    parser.add_argument("--outcomes-sha256", help="digest independently retained for the joined outcome export")
     args = parser.parse_args()
     try:
-        result = analyze(args.manifest.read_bytes(), args.outcomes.read_bytes(), args.manifest_sha256)
+        result = analyze(args.manifest.read_bytes(), args.outcomes.read_bytes(), args.manifest_sha256, args.outcomes_sha256)
     except (ValueError, OSError) as error:
         parser.exit(2, f"Invalid study export: {error}\n")
     json.dump(result, sys.stdout, indent=2, allow_nan=False)

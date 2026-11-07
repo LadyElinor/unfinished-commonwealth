@@ -32,3 +32,5 @@ An independent custodian can contribute to the [paired repository-maintenance st
 The protocol describes eligibility, sealed intake, matched reviewer access, and blind grading.
 Keep private cases and answers out of issues, pull requests, and development checkouts.
 Anyone can reproduce the [four public arithmetic examples](examples/maintenance_pairs/README.md).
+
+The [custodian handoff](docs/MAINTENANCE_CUSTODY_HANDOFF.md) gives the independent custodian, witness and grading lead a public rehearsal and the commands for the private study.
