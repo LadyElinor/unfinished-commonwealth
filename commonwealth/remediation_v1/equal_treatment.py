@@ -45,6 +45,9 @@ def validate_access(row):
 
 
 def compare_access(person, peer):
+    if peer is None:
+        return {"status": "comparison-inconclusive", "different_facts": [], "missing_facts": ["comparator"],
+                "equal_recorded_penalties": None}
     require(person["person"] != peer["person"], "comparison requires two people")
     differences = [key for key in MATCH_FIELDS if person[key] != peer[key]]
     missing = [key for key in MATCH_FIELDS if None in (person[key], peer[key])]
@@ -194,13 +197,14 @@ def review(packet, *, as_of):
         return available
 
     claimant = packet["claimant"]
-    for row in (claimant, packet["comparator"]):
+    comparator = packet["comparator"]
+    for row in ([claimant] if comparator is None else [claimant, comparator]):
         validate_access(row)
         ref = row["record"]
         evidence_at_decision(ref)
         if row["access"] != "unknown" or row["penalty"] is not None:
             require(records[ref]["kind"] == "observation", "recorded access or penalty needs an observation")
-    comparison = compare_access(claimant, packet["comparator"])
+    comparison = compare_access(claimant, comparator)
     reasons = examine_reasons(packet["reasoning"], evidence_at_decision)
     decision = packet["decision"]
     fields(decision, "claim_issue mandate_record delegated_issues merits_issues disposition")

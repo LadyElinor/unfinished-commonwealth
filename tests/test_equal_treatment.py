@@ -50,6 +50,18 @@ class EqualTreatmentTests(unittest.TestCase):
         self.assertTrue(report["followup_overdue"])
         self.assertEqual(self.packet, before)
 
+    def test_missing_comparator_leaves_remedy_and_scope_review_available(self):
+        self.packet["comparator"] = None
+        before = self.report()
+        self.assertEqual(before["comparison"]["missing_facts"], ["comparator"])
+        self.assertIsNone(before["comparison"]["equal_recorded_penalties"])
+        self.assertEqual(before["merits_outside_mandate"], ["hearing-admission"])
+        self.source["repair"]["checks"].clear()
+        self.add_access_check()
+        after = self.report()
+        self.assertEqual(after["comparison"]["status"], "comparison-inconclusive")
+        self.assertEqual(after["personal_relief"], "supplied-record-supports-personal-access")
+
     def test_mismatch_and_missing_facts_prevent_comparison(self):
         for field in ("rule_version", "conduct", "qualifications", "requested_access"):
             with self.subTest(field=field):
