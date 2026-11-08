@@ -30,6 +30,8 @@ python -m unittest discover -s tests -p test_equal_treatment.py -v
 
 Two members make the same timely application under the same rule. Both incur zero penalty. The affiliate is denied the open hearing. An earlier affiliate admission contradicts the office's historical claim. The intake office could have confined its ruling or sent the matter for a new hearing. Directly restoring admission belonged to another office. At time 7 an independent-controller label accompanies a successful check of the posted notice. The member's access remains unverified, the follow-up date has passed, and the supplied register contains another matched denial. The tests also exercise a successful access remedy, an ordinary eligibility difference, unknown observations, a later-only precedent and a reopened hearing with relief still pending.
 
+The [panel opinion review](OPINION_REVIEW.md) follows the same petition through a divided appeal. It records the effect of a later receipt on one stated objection.
+
 ## Packet and interpretation
 
 The [complete example](../examples/equal-treatment-review.json) is the input contract for `equal-treatment-review-1`. The Python API is `commonwealth.remediation_v1.equal_treatment.review(packet, as_of=...)`. The CLI reads bounded strict JSON. Reference the saved input by its packet digest to re-examine testimony. Routine output contains IDs, declared labels and findings. Keep identifying records out of public packets.

@@ -156,6 +156,9 @@ and does not change the research-only or production-readiness boundary.
 The [equal-treatment review](docs/EQUAL_TREATMENT_REVIEW.md) compares access before
 penalties, checks historical counterexamples and the deciding office's scope,
 and follows the requested remedy through to the person's observed access.
+The [panel opinion review](docs/OPINION_REVIEW.md) shows which delegates joined
+each reason, which evidence could reopen a question and how far an office's
+remedial authority extends.
 
 ## Growing the project
 
