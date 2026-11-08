@@ -140,6 +140,11 @@ def main():
                 or remediation["authority_granted"] is not False
                 or remediation["production_ready"] is not False):
             raise RuntimeError("Installed remediation helper changed its advisory boundary")
+        equality = json.loads(run([str(executable), "-m", "commonwealth.remediation_v1.equal_treatment",
+            str(source / "examples/equal-treatment-review.json"), "--as-of", "7"], smoke))
+        if (equality["comparison"]["status"] != "different-access-on-matched-facts"
+                or equality["personal_relief"] != "access-unverified" or equality["authority_granted"]):
+            raise RuntimeError("Installed equal-treatment review lost the unresolved access claim")
         fixtures = json.loads(run([str(command), "scenarios"], smoke))
         if set(fixtures) != {"missing", "signed", "flagged"}:
             raise RuntimeError("Installed package fixtures differ")
