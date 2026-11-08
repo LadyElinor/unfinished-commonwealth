@@ -55,9 +55,9 @@ class CustodyHandoff(unittest.TestCase):
             self.assertEqual(result.stdout, "")
         return result.stdout.strip() if valid else result.stderr
 
-    def lock_public_example(self, *, with_observer=False):
-        if with_observer:
-            self.freeze_data["schema"] = custody.FREEZE_V2
+    def lock_public_example(self, *, freeze_schema=custody.FREEZE_V1):
+        if freeze_schema != custody.FREEZE_V1:
+            self.freeze_data["schema"] = freeze_schema
             self.common[4] = save(self.freeze, self.freeze_data)
             self.roster_data["freeze_sha256"] = self.common[4]
             self.common[6] = save(self.roster, self.roster_data)
@@ -79,10 +79,22 @@ class CustodyHandoff(unittest.TestCase):
                 self.grade_data["entries"].append(dict(common, grade=candidate["grade"]))
         self.grade_data["entries"].reverse()
         extra = []
-        if with_observer:
+        if freeze_schema != custody.FREEZE_V1:
             self.observer = self.roster.parent / "observer"
             self.observer_data = json.loads((PUBLIC / "observer.json").read_bytes())
             self.observer_data["manifest_sha256"] = self.manifest_hash
+            if freeze_schema == custody.FREEZE_V3:
+                # Hand-authored observations, keyed independently of the export's row order.
+                closeouts = {
+                    "demo-1": {"plain": ("completed", "accept"), "governed": ("completed", "accept")},
+                    "demo-2": {"plain": ("completed", "accept"), "governed": ("completed", "decline")},
+                    "demo-3": {"plain": ("timeout", "unresolved"), "governed": ("unknown", "unresolved")},
+                    "demo-4": {"plain": ("completed", "decline"), "governed": ("completed", "accept")},
+                }
+                self.observer_data["schema"] = custody.OBSERVER_V2
+                for session in self.observer_data["sessions"]:
+                    closure, disposition = closeouts[session["task"]][session["arm"]]
+                    session.update(closure=closure, disposition=disposition, deviations=[])
             extra = ["--observer-ledger", self.observer, "--observer-sha256", save(self.observer, self.observer_data)]
         return [*self.common, self.outcomes, self.mapping, self.grades, *extra, "--manifest-sha256", self.manifest_hash,
                 "--map-sha256", save(self.mapping, self.map_data), "--grades-sha256", save(self.grades, self.grade_data),
@@ -160,7 +172,7 @@ class CustodyHandoff(unittest.TestCase):
         custody.check_blind_grades(self.map_data, self.grade_data, self.manifest_hash, self.outcome_data)
 
     def test_v2_requires_the_observer_checkpoint_and_matches_complete_roster(self):
-        args = self.lock_public_example(with_observer=True)
+        args = self.lock_public_example(freeze_schema=custody.FREEZE_V2)
         report = json.loads(self.cli("recount", *args))
         self.assertEqual(report["difference_bounds"], [0, .25])
         observed = report["observer_replay"]
@@ -176,7 +188,7 @@ class CustodyHandoff(unittest.TestCase):
         self.assertIn("observer ledger checkpoint", self.cli("recount", *args, valid=False))
 
     def test_rehashed_export_rejects_each_meter_charge_and_submission_time_change(self):
-        args = self.lock_public_example(with_observer=True)
+        args = self.lock_public_example(freeze_schema=custody.FREEZE_V2)
         for run in self.outcome_data["runs"]:
             changes = [(run["usage"], key) for key in study.METERS]
             changes.extend((candidate, "elapsed_ms") for candidate in run["candidates"])
@@ -193,7 +205,7 @@ class CustodyHandoff(unittest.TestCase):
         self.assertIn("observer disagrees with cost", self.cli("recount", *args, valid=False))
 
     def test_deadline_crossing_rejected_under_locked_grades_and_session_time(self):
-        args = self.lock_public_example(with_observer=True)
+        args = self.lock_public_example(freeze_schema=custody.FREEZE_V2)
         run = self.outcome_data["runs"][1]
         session = self.observer_data["sessions"][1]
         run["candidates"][-1]["elapsed_ms"] = session["submissions"][-1]["elapsed_ms"] = study.DEADLINE
@@ -205,8 +217,70 @@ class CustodyHandoff(unittest.TestCase):
         args[-1] = save(self.outcomes, self.outcome_data)
         self.assertIn("submission differs from observer", self.cli("recount", *args, valid=False))
 
+    def test_v2_rehearsal_can_relabel_an_incorrect_acceptance(self):
+        args = self.lock_public_example(freeze_schema=custody.FREEZE_V2)
+        before = json.loads(self.cli("recount", *args))
+        self.outcome_data["runs"][0]["disposition"] = "decline"
+        args[-1] = save(self.outcomes, self.outcome_data)
+        after = json.loads(self.cli("recount", *args))
+        self.assertEqual(before["difference_bounds"], after["difference_bounds"])
+        for report, denominator, fraction in ((before, 2, .5), (after, 1, 0)):
+            plain = report["arms"]["plain"]
+            self.assertEqual((plain["accepted_count"], plain["false_acceptance_bounds"]),
+                             (denominator, [fraction, fraction]))
+            self.assertNotIn("matched_closeouts", report["observer_replay"])
+
+    def test_v3_rejects_rehashed_edits_to_every_sessions_closeout(self):
+        args = self.lock_public_example(freeze_schema=custody.FREEZE_V3)
+        baseline = json.loads(self.cli("recount", *args))
+        self.assertEqual(baseline["observer_replay"]["matched_closeouts"], 8)
+        self.assertEqual(baseline["difference_bounds"], [0, .25])
+        for run in self.outcome_data["runs"]:
+            changes = {"disposition": "accept" if run["disposition"] == "decline" else "decline",
+                       "closure": "unknown" if run["closure"] == "completed" else "completed",
+                       "deviations": ["unmatched reviewer"]}
+            for key, changed in changes.items():
+                with self.subTest(task=run["task"], arm=run["arm"], field=key):
+                    original = run[key]
+                    run[key] = changed
+                    args[-1] = save(self.outcomes, self.outcome_data)
+                    self.assertIn(f"observer disagrees with {key}", self.cli("recount", *args, valid=False))
+                    run[key] = original
+
+    def test_v3_requires_closeouts_even_with_a_new_observer_checkpoint(self):
+        args = self.lock_public_example(freeze_schema=custody.FREEZE_V3)
+        offset = args.index("--observer-ledger")
+        self.assertIn("v3 freeze requires", self.cli("recount", *args[:offset], *args[offset+4:], valid=False))
+        digest_index = args.index("--observer-sha256") + 1
+        for key in custody.CLOSEOUT_FIELDS:
+            ledger = copy.deepcopy(self.observer_data)
+            del ledger["sessions"][0][key]
+            args[digest_index] = save(self.observer, ledger)
+            self.assertIn("observer session: expected fields", self.cli("recount", *args, valid=False))
+        legacy = json.loads((PUBLIC / "observer.json").read_bytes())
+        legacy["manifest_sha256"] = self.manifest_hash
+        args[digest_index] = save(self.observer, legacy)
+        self.assertIn("expected observer ledger schema", self.cli("recount", *args, valid=False))
+
+    def test_v3_keeps_nonstarts_and_contemporaneous_deviations(self):
+        args = self.lock_public_example(freeze_schema=custody.FREEZE_V3)
+        run = next(row for row in self.outcome_data["runs"] if not row["candidates"])
+        session = next(s for s in self.observer_data["sessions"] if (s["task"], s["arm"]) == (run["task"], run["arm"]))
+        for record in (session, run):
+            record.update(closure="not_started", deviations=["missing access", "reviewer unavailable"])
+        self.observer_data["sessions"].reverse()
+        args[args.index("--observer-sha256") + 1] = save(self.observer, self.observer_data)
+        args[-1] = save(self.outcomes, self.outcome_data)
+        report = json.loads(self.cli("recount", *args))
+        self.assertEqual(report["arms"]["plain"]["closures"]["not_started"], 1)
+        self.assertIn(run["deviations"], [d["reported"] for d in report["deviations"]])
+        for revised in ([], ["missing access"], list(reversed(run["deviations"]))):
+            run["deviations"] = revised
+            args[-1] = save(self.outcomes, self.outcome_data)
+            self.assertIn("observer disagrees with deviations", self.cli("recount", *args, valid=False))
+
     def test_observer_rejects_missing_repeated_and_mismatched_evidence(self):
-        self.lock_public_example(with_observer=True)
+        self.lock_public_example(freeze_schema=custody.FREEZE_V2)
         for variant in ("manifest", "missing", "duplicate", "extra", "reused allocation", "reordered",
                         "bool meter", "bool time", "partial subtotal"):
             ledger = copy.deepcopy(self.observer_data)
@@ -234,7 +308,7 @@ class CustodyHandoff(unittest.TestCase):
                     custody.check_observer_ledger(ledger, self.manifest_hash, self.outcome_data)
 
     def test_nonstarts_missing_ledgers_and_confirmed_zero_stay_distinct(self):
-        args = self.lock_public_example(with_observer=True)
+        args = self.lock_public_example(freeze_schema=custody.FREEZE_V2)
         for run in self.outcome_data["runs"]:
             run.update(closure="not_started", disposition="unresolved", candidates=[])
             run["usage"] = dict.fromkeys(study.METERS)
@@ -274,7 +348,7 @@ class CustodyHandoff(unittest.TestCase):
             charge(complete=1)
 
     def test_partial_billing_keeps_known_lines_without_asserting_a_session_net(self):
-        args = self.lock_public_example(with_observer=True)
+        args = self.lock_public_example(freeze_schema=custody.FREEZE_V2)
         charges = self.observer_data["sessions"][5]["charges"]
         charges["lines"].pop()  # Only the observed charge for 70 is available.
         charges["complete"] = False

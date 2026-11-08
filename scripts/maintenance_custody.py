@@ -14,6 +14,10 @@ from . import analyze_maintenance_pairs as study
 DOMAIN = b"unfinished-commonwealth/maintenance-assignment/v1\x00"
 FREEZE_V1 = "maintenance-custody-freeze-v1"
 FREEZE_V2 = "maintenance-custody-freeze-v2"
+FREEZE_V3 = "maintenance-custody-freeze-v3"
+OBSERVER_V1 = "maintenance-observer-ledger-v1"
+OBSERVER_V2 = "maintenance-observer-ledger-v2"
+CLOSEOUT_FIELDS = ("disposition", "closure", "deviations")
 OBSERVER_METERS = tuple(key for key in study.METERS if key != "cost_micro_usd")
 PRE_INTAKE_PINS = ("agent", "environment", "reviewer_pool", "plain", "governed")
 
@@ -42,7 +46,7 @@ def prepare(freeze_raw, roster_raw, freeze_digest, roster_digest, seed):
     roster = checked_packet(roster_raw, roster_digest, "roster")
     study.fields(freeze, ("schema", "kind", "protocol_sha256", "analyzer_sha256", "assignment_tool_sha256",
                           "custody_plan_sha256", "grading_procedure_sha256", "pins"), "freeze")
-    study.require(freeze["schema"] in (FREEZE_V1, FREEZE_V2), "unsupported freeze")
+    study.require(freeze["schema"] in (FREEZE_V1, FREEZE_V2, FREEZE_V3), "unsupported freeze")
     for field, observed in code_pins().items():
         study.require(freeze[field] == observed, f"frozen file mismatch: {field}")
     for field in ("custody_plan_sha256", "grading_procedure_sha256"):
@@ -122,22 +126,29 @@ def session_charge(charges, seen, coverage):
     return total
 
 
-def check_observer_ledger(ledger, manifest_digest, outcomes):
+def check_observer_ledger(ledger, manifest_digest, outcomes, *, expected_schema=OBSERVER_V1):
     study.fields(ledger, ("schema", "manifest_sha256", "sessions"), "observer ledger")
-    study.require(ledger["schema"] == "maintenance-observer-ledger-v1" and
-                  ledger["manifest_sha256"] == manifest_digest, "wrong observer ledger")
+    study.require(expected_schema in (OBSERVER_V1, OBSERVER_V2) and ledger["schema"] == expected_schema,
+                  f"expected observer ledger schema {expected_schema}")
+    study.require(ledger["manifest_sha256"] == manifest_digest, "observer ledger belongs to a different manifest")
     study.require(isinstance(ledger["sessions"], list), "expected observer sessions")
+    session_fields = ("task", "arm", "meters", "charges", "submissions")
+    if expected_schema == OBSERVER_V2:
+        session_fields += CLOSEOUT_FIELDS
     # The outcome rows have already passed the analyzer's roster and type checks.
     pending = {(row["task"], row["arm"]): row for row in outcomes["runs"]}
     billing_ids = set()
     coverage = {arm: {"known_lines": 0, "unknown_lines": 0, "sessions_with_incomplete_billing": 0,
                       "observed_net_micro_usd": 0} for arm in study.ARMS}
     for session in ledger["sessions"]:
-        study.fields(session, ("task", "arm", "meters", "charges", "submissions"), "observer session")
+        study.fields(session, session_fields, "observer session")
         task, arm = session["task"], session["arm"]
         study.require(study.label(task) and arm in study.ARMS, "invalid observer session address")
         study.require((task, arm) in pending, "extra or repeated observer session")
         run = pending.pop((task, arm))
+        if expected_schema == OBSERVER_V2:
+            for field in CLOSEOUT_FIELDS:
+                study.require(session[field] == run[field], f"{task}/{arm}: observer disagrees with {field}")
         meters = session["meters"]
         study.fields(meters, OBSERVER_METERS, "observer meters")
         for key in OBSERVER_METERS:
@@ -161,8 +172,11 @@ def check_observer_ledger(ledger, manifest_digest, outcomes):
     for arm_coverage in coverage.values():
         if arm_coverage["known_lines"] == 0:
             arm_coverage["observed_net_micro_usd"] = None
-    return {"status": "matched", "sessions": len(ledger["sessions"]),
-            "billing_allocations": len(billing_ids), "billing_line_coverage": coverage}
+    result = {"status": "matched", "sessions": len(ledger["sessions"]),
+              "billing_allocations": len(billing_ids), "billing_line_coverage": coverage}
+    if expected_schema == OBSERVER_V2:
+        result["matched_closeouts"] = len(ledger["sessions"])
+    return result
 
 
 def publish_manifest(path, raw):
@@ -221,15 +235,17 @@ def main(argv=None):
         grades = checked_packet(args.grades.read_bytes(), args.grades_sha256, "blind grades")
         outcomes = study.read_packet(outcome_raw)
         check_blind_grades(mapping, grades, args.manifest_sha256, outcomes)
-        required = study.read_packet(freeze_raw)["schema"] == FREEZE_V2
+        freeze_schema = study.read_packet(freeze_raw)["schema"]
         if args.observer_ledger is None and args.observer_sha256 is None:
-            study.require(not required, "v2 freeze requires the observer ledger and its checkpoint")
+            version = freeze_schema.rsplit("-", 1)[-1]
+            study.require(freeze_schema == FREEZE_V1, f"{version} freeze requires the observer ledger and its checkpoint")
             report["observer_replay"] = {"status": "not_supplied"}
         else:
             study.require(args.observer_ledger is not None and study.digest(args.observer_sha256),
                           "supply both observer ledger and checkpoint")
             ledger = checked_packet(args.observer_ledger.read_bytes(), args.observer_sha256, "observer ledger")
-            matched = check_observer_ledger(ledger, args.manifest_sha256, outcomes)
+            expected_schema = OBSERVER_V2 if freeze_schema == FREEZE_V3 else OBSERVER_V1
+            matched = check_observer_ledger(ledger, args.manifest_sha256, outcomes, expected_schema=expected_schema)
             report["observer_replay"] = {**matched, "ledger_sha256": args.observer_sha256}
         report["blind_grade_replay"] = {"matched_submissions": len(grades["entries"]), "map_sha256": args.map_sha256,
                                        "grades_sha256": args.grades_sha256}
