@@ -143,15 +143,6 @@ def main():
                 or remediation["authority_granted"] is not False
                 or remediation["production_ready"] is not False):
             raise RuntimeError("Installed remediation helper changed its advisory boundary")
-        premise_inputs = source / "examples" / "decision_premises"
-        premises = json.loads(run([str(executable), "-m", "commonwealth.decision_premises",
-                                   str(premise_inputs / "decision.json"),
-                                   str(premise_inputs / "supplement.json")], smoke))
-        questions = {q["id"]: q for q in premises["questions"]}
-        if (questions["effect"]["historical_followup"] != "reconsider-finding"
-                or questions["personal-relief"]["subsequent_followup"] != "verify-individual-relief"
-                or premises["authority_granted"] is not False):
-            raise RuntimeError("Installed premise review lost a finding or crossed its authority boundary")
         fixtures = json.loads(run([str(command), "scenarios"], smoke))
         if set(fixtures) != {"missing", "signed", "flagged"}:
             raise RuntimeError("Installed package fixtures differ")
@@ -221,6 +212,15 @@ def main():
             "authority-v1/journals/false-but-complete-host.json"], smoke))
         if authority_replay["verified"] is not True:
             raise RuntimeError("Installed false-host failure did not replay")
+        premise_inputs = source / "examples" / "decision_premises"
+        premises = json.loads(run([str(executable), "-m", "commonwealth.decision_premises",
+                                   str(premise_inputs / "decision.json"),
+                                   str(premise_inputs / "supplement.json")], smoke))
+        questions = {q["id"]: q for q in premises["questions"]}
+        if (questions["effect"]["historical_followup"] != "reconsider-finding"
+                or questions["personal-relief"]["subsequent_followup"] != "verify-individual-relief"
+                or premises["authority_granted"] is not False):
+            raise RuntimeError("Installed premise review lost a finding or crossed its authority boundary")
         authority_review = json.loads(run([str(executable), "-m", "commonwealth.authority_v1", "review",
             str(source / "examples/authority-review-packet.json")], smoke))
         if authority_review["authority_granted"] is not False or authority_review["permits_execution"] is not False:
@@ -280,6 +280,7 @@ def main():
             "discernment_runs": discernment["runs"], "discernment_replay": discernment_replay,
             "integrity_runs": integrity["runs"], "integrity_replay": integrity_replay,
             "review_traces": review["traces"], "review_replay": review_replay,
+            "premise_review_questions": sorted(questions),
             "authority_traces": authority["traces"], "authority_replay": authority_replay,
             "authority_packet_review": authority_review, "authority_language": language,
             "participant_loopback": participant,
