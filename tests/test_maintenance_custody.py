@@ -230,22 +230,58 @@ class CustodyHandoff(unittest.TestCase):
                              (denominator, [fraction, fraction]))
             self.assertNotIn("matched_closeouts", report["observer_replay"])
 
+    def rehashed_closeout_edits(self, args):
+        digest_arg = args.index("--outcomes-sha256") + 1
+        counts = Counter()
+        for index, run in enumerate(self.outcome_data["runs"]):
+            choices = {"closure": study.CLOSURES, "disposition": study.DISPOSITIONS,
+                       "deviations": (["missing access"],)}
+            for field, values in choices.items():
+                for value in values:
+                    if value == run[field]:
+                        continue
+                    revised = {**run, field: value}
+                    if revised["disposition"] == "accept" and not revised["candidates"]:
+                        continue
+                    if revised["closure"] == "not_started" and (
+                            revised["candidates"] or revised["disposition"] != "unresolved"):
+                        continue
+                    # Every trial starts with the original rows and retains every independent checkpoint.
+                    rows = self.outcome_data["runs"].copy()
+                    rows[index] = revised
+                    trial = args.copy()
+                    trial[digest_arg] = save(self.outcomes, dict(self.outcome_data, runs=rows))
+                    counts[field] += 1
+                    yield run["task"], run["arm"], field, value, trial
+        self.assertEqual(counts, {"closure": 33, "disposition": 15, "deviations": 8})
+
+    def test_v2_closeout_edits_preserve_primary_but_change_acceptance_statistics(self):
+        args = self.lock_public_example(freeze_schema=custody.FREEZE_V2)
+        baseline = json.loads(self.cli("recount", *args))
+        self.assertEqual(baseline["difference_bounds"], [0, .25])
+        changed_counts, changed_bounds = Counter(), Counter()
+        for task, arm, field, value, trial in self.rehashed_closeout_edits(args):
+            with self.subTest(task=task, arm=arm, field=field, value=value):
+                report = json.loads(self.cli("recount", *trial))
+                self.assertEqual(report["difference_bounds"], baseline["difference_bounds"])
+                before, after = baseline["arms"][arm], report["arms"][arm]
+                if before["accepted_count"] != after["accepted_count"]:
+                    changed_counts[arm] += 1
+                if before["false_acceptance_bounds"] != after["false_acceptance_bounds"]:
+                    self.assertEqual(field, "disposition")
+                    self.assertNotEqual(before["accepted_count"], after["accepted_count"])
+                    changed_bounds[arm] += 1
+        self.assertEqual(changed_counts, {"plain": 5, "governed": 6})
+        self.assertEqual(changed_bounds, {"plain": 5, "governed": 2})
+
     def test_v3_rejects_rehashed_edits_to_every_sessions_closeout(self):
         args = self.lock_public_example(freeze_schema=custody.FREEZE_V3)
         baseline = json.loads(self.cli("recount", *args))
         self.assertEqual(baseline["observer_replay"]["matched_closeouts"], 8)
         self.assertEqual(baseline["difference_bounds"], [0, .25])
-        for run in self.outcome_data["runs"]:
-            changes = {"disposition": "accept" if run["disposition"] == "decline" else "decline",
-                       "closure": "unknown" if run["closure"] == "completed" else "completed",
-                       "deviations": ["unmatched reviewer"]}
-            for key, changed in changes.items():
-                with self.subTest(task=run["task"], arm=run["arm"], field=key):
-                    original = run[key]
-                    run[key] = changed
-                    args[-1] = save(self.outcomes, self.outcome_data)
-                    self.assertIn(f"observer disagrees with {key}", self.cli("recount", *args, valid=False))
-                    run[key] = original
+        for task, arm, field, value, trial in self.rehashed_closeout_edits(args):
+            with self.subTest(task=task, arm=arm, field=field, value=value):
+                self.assertIn(f"{task}/{arm}: observer disagrees with {field}", self.cli("recount", *trial, valid=False))
 
     def test_v3_requires_closeouts_even_with_a_new_observer_checkpoint(self):
         args = self.lock_public_example(freeze_schema=custody.FREEZE_V3)

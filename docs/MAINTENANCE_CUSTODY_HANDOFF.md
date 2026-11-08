@@ -15,6 +15,10 @@ python -m scripts.maintenance_custody code-pins
 
 The test builds a disposable freeze, roster, blinding map, grade export and observer checkpoint from public examples. It exercises assignment, recount, a changed grade, and a balanced substitution of both arm orders. In the v2 rehearsal, relabeling one incorrect acceptance as a decline and rehashing the final export changed the plain arm's incorrect acceptances from 1 of 2 to 0 of 1. Its primary difference bounds stayed at [0, +25] percentage points. The v3 rehearsal rejects this edit against the observer's locked decision. The historical public rehearsal remains available at its [original checkpoint](../examples/maintenance_pairs/README.md).
 
+At [`c532350`](https://github.com/LadyElinor/unfinished-commonwealth/commit/c532350ef10185e35ca26b838f1b0c0164e34af8), a contributor reported 17 custody tests passing in 5.606 seconds from a detached checkout and 30 passing when the maintenance-pair tests were included. The timed log covers the 17 custody tests.
+
+The current custody suite also runs the same 56 single-field edits against both freeze versions across eight public sessions. Each edit changes one closure reason (33 cases), reviewer decision (15 cases), or deviation list (8 cases), then recomputes only the final export checksum. V2 accepts all 56 and gives the same primary difference bounds each time. Eleven edits change the number of accepted patches. Seven of those also change the false-acceptance bounds, five in the plain arm and two in the governed arm. V3 rejects every edit at the affected session and field while the observer's checkpoint is held fixed.
+
 ## Four handoffs
 
 | When | Who holds the evidence | What is retained |
