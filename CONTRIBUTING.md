@@ -27,3 +27,11 @@ At the same time, do not make a predelegated safety halt depend on completing an
 ordinary review form. Test both blocked unwarranted action and delayed or
 unavailable legitimate correction. Apply these requirements to our maintainers
 and synthetic agents as well as to institutions being studied.
+
+When proposing or reviewing a rule that changes access, identify who could use
+the same opportunity under the same material conditions. Look for a contemporaneous
+counterexample or dissent, report what you found, explain the office's authority over each issue, and
+distinguish a narrower ruling or new hearing from relief the person could use.
+Name who owns verification, when it is due, and which other denials remain.
+The [equal-treatment review](docs/EQUAL_TREATMENT_REVIEW.md) applies these questions
+to our own intake decisions and includes a runnable example.

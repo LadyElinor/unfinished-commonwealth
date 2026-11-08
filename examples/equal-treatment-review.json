@@ -1,0 +1,55 @@
+{
+  "schema": "equal-treatment-review-1",
+  "case_id": "petition-17",
+  "decision_at": 4,
+  "claimant": {
+    "person": "member-17", "group": "affiliate", "record": "register",
+    "rule_version": "intake-3", "conduct": "request-hearing", "qualifications": "complete-on-time",
+    "requested_access": "open-hearing", "access": "denied", "penalty": 0
+  },
+  "comparator": {
+    "person": "member-42", "group": "founder", "record": "register",
+    "rule_version": "intake-3", "conduct": "request-hearing", "qualifications": "complete-on-time",
+    "requested_access": "open-hearing", "access": "admitted", "penalty": 0
+  },
+  "reasoning": {
+    "grounds": ["custom", "institutional-reputation", "equal-penalties"],
+    "historical_claim": {"record": "opinion", "practice": "hearing-membership", "group": "affiliate", "always": "denied"},
+    "precedents": [{"record": "old-minutes", "practice": "hearing-membership", "group": "affiliate", "access": "admitted"}],
+    "alternatives": [
+      {"record": "limited-order", "issue": "intake", "effect": "limit-broader-ruling"},
+      {"record": "dissent", "issue": "intake", "effect": "new-hearing"},
+      {"record": "old-minutes", "issue": "hearing-admission", "effect": "restore-access"}
+    ]
+  },
+  "decision": {
+    "claim_issue": "hearing-admission", "mandate_record": "mandate", "delegated_issues": ["intake"],
+    "merits_issues": ["hearing-admission"], "disposition": "dismiss"
+  },
+  "followup": {"owner": "hearing-office", "due_at": 6, "access_checks": [], "other_cases": [
+    {"person":"member-58","group":"affiliate","record":"later-register","rule_version":"intake-3",
+     "conduct":"request-hearing","qualifications":"complete-on-time","requested_access":"open-hearing","access":"denied","penalty":0}
+  ]},
+  "remediation": {
+    "scope": "petition-17", "decision_controller": "intake-office",
+    "records": [
+      {"id":"mandate","at":0,"source":"charter","kind":"support","text":"The intake office can remit a petition for a fresh hearing. Admission belongs to the hearing office."},
+      {"id":"old-minutes","at":1,"source":"public-register","kind":"support","text":"An affiliate member previously received admission from the hearing office under the same membership practice."},
+      {"id":"register","at":3,"source":"intake-log","kind":"observation","text":"Both applicants filed complete petitions on time. Only member-42 could use the open hearing. Neither incurred a fine."},
+      {"id":"dissent","at":3,"source":"delegate","kind":"dissent","text":"I ask the intake office to remit the petition. The earlier admission contradicts the claimed universal exclusion."},
+      {"id":"limited-order","at":3,"source":"clerk","kind":"support","text":"The intake office can decline to decide admission without making a general membership ruling."},
+      {"id":"warning","at":3,"source":"claimant","kind":"warning","text":"A private appointment has the same equipment. It does not let me speak in the open hearing."},
+      {"id":"opinion","at":4,"source":"intake-office","kind":"response","text":"We have always excluded affiliates. Both groups pay the same penalty. We dismiss and declare affiliates ineligible."},
+      {"id":"later-register","at":7,"source":"registry-check","kind":"observation","text":"The next affiliate applicant met the same conditions and was denied the open hearing under intake-3."},
+      {"id":"posted","at":6,"source":"registry-check","kind":"observation","text":"A reviewer observed the revised hearing notice on the office door. The register contains no subsequent hearing for this claimant."}
+    ],
+    "finding": {"status":"substantiated-defect","basis":["register","warning"]},
+    "warning": {"record":"warning","received_at":3,"response":"opinion","opportunity":"responded"},
+    "options": [],
+    "repair": {
+      "id":"revision","scope":"petition-17","implementer_controller":"hearing-office",
+      "ordered_at":4,"implemented_at":5,"criterion":"revised-notice-posted",
+      "checks":[{"record":"posted","reviewer_controller":"audit-office","criterion":"revised-notice-posted","result":"pass"}]
+    }
+  }
+}

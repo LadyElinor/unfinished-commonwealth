@@ -153,6 +153,10 @@ reporting support for a repair’s declared criterion. Paired fictional tests re
 targeted inspection and the cost of an overbroad freeze. It grants no authority
 and does not change the research-only or production-readiness boundary.
 
+The [equal-treatment review](docs/EQUAL_TREATMENT_REVIEW.md) compares access before
+penalties, checks historical counterexamples and the deciding office's scope,
+and follows the requested remedy through to the person's observed access.
+
 ## Growing the project
 
 A separate **study harness 1.0.0** now implements the deterministic portion of the
