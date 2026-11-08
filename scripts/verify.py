@@ -13,6 +13,19 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def unique_fields(pairs):
+    fields = {}
+    for key, value in pairs:
+        if key in fields:
+            raise ValueError(f"duplicate JSON field {key!r}")
+        fields[key] = value
+    return fields
+
+
+def invalid_constant(token):
+    raise ValueError(f"invalid JSON constant {token}")
+
+
 def source_state(root):
     try:
         head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, stderr=subprocess.DEVNULL, text=True).strip()
@@ -38,7 +51,7 @@ def verify(root=ROOT, *, require_no_skips=False, report_path=None):
     try:
         run = subprocess.run([sys.executable, str(Path(__file__).with_name("verification_tests.py")), str(root)],
                              cwd=root, stdout=subprocess.PIPE, text=True, encoding="utf-8", timeout=600)
-        tests = json.loads(run.stdout)
+        tests = json.loads(run.stdout, object_pairs_hook=unique_fields, parse_constant=invalid_constant)
         # A missing/crashed result channel is not a zero-test success.
         fields = {"tests_run", "tests_not_skipped", "skipped", "failures", "errors", "expected_failures", "unexpected_successes", "successful"}
         if (type(tests) is not dict or set(tests) != fields or type(tests["tests_run"]) is not int
@@ -67,7 +80,10 @@ def verify(root=ROOT, *, require_no_skips=False, report_path=None):
                     continue
                 if report_path is not None and path.resolve() == Path(report_path).resolve():
                     continue
-                json.loads(path.read_text(encoding="utf-8"))
+                try:
+                    json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=unique_fields, parse_constant=invalid_constant)
+                except ValueError as exc:
+                    raise ValueError(f"{path.relative_to(root)}: {exc}") from exc
                 checks["json_files"] += 1
             for path in [root / "README.md", root / "ROADMAP.md", root / "CONTRIBUTING.md", *sorted((root / "docs").glob("*.md"))]:
                 for target in re.findall(r"\]\(([^)]+)\)", path.read_text(encoding="utf-8")):
