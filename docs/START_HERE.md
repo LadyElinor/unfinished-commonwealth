@@ -27,13 +27,13 @@ python -m commonwealth.measurement_v1 neighbor .local/first-reproduction/neighbo
 python -m commonwealth.measurement_v1 run .local/first-reproduction/charged --fixture-agent examples/agent_profile_v1/python_agent.py
 ```
 
-Expected coverage is 432 D1 runs, 1,008 N1 episodes, and a charged report with 15 workshop rows plus 12 external-fixture comparisons. Compare the generated summaries to the committed evidence; each command below exits successfully only when the bytes match.
+Expected coverage is 432 D1 runs, 1,008 N1 episodes, and a charged report with 15 workshop rows plus 12 external-fixture comparisons. Compare all three summaries with the published files in one command.
 
 ```sh
-python -c "from pathlib import Path; assert Path('.local/first-reproduction/d1/summary.json').read_bytes() == Path('examples/study-v1-summary.json').read_bytes()"
-python -c "from pathlib import Path; assert Path('.local/first-reproduction/neighbor/results.json').read_bytes() == Path('examples/neighbor-timing-results.json').read_bytes()"
-python -c "from pathlib import Path; assert Path('.local/first-reproduction/charged/results.json').read_bytes() == Path('examples/charged-workshop-results.json').read_bytes()"
+python scripts/check_reproduction.py .local/first-reproduction
 ```
+
+The command prints a line for each summary and exits 0 only when all three match byte for byte. `DIFFER` names the published file to compare. `UNREADABLE` includes the path that could not be read. Pass your own output directory if you used a different one.
 
 For all behavioral, compatibility and local documentation checks:
 
@@ -61,7 +61,7 @@ The [UID-boundary demonstration](UID_ISOLATION.md) is a separate opt-in Linux ch
 2. **Check sixteen N1 cells independently.** Use a spreadsheet, hand calculation or another implementation of the [frozen rules](NEIGHBOR_TIMING_DESIGN.md), at primary deadline 3 and warning reliability 3/4. Compare `coin` and `ask-peer`. Both should reserve eight slots and miss eight primary deadlines. Peer misses should be four versus two, while total peer lateness stays four slots in each arm. Retain every cell and explain any disagreement. Do not tune the rules after seeing a mismatch.
 3. **Implement a JSON fixture agent.** Follow [AP1](AGENT_PARTICIPATION_V1.md) in another language and report the first ambiguous instruction. Exercise stale briefs, role mismatch, decline and recovery as well as acceptance. The scored C1c comparison intentionally accepts only its pinned Python fixture; use AP1 conformance for a new agent and propose a new frozen comparison before scoring it.
 
-Use the reproduction-report template when opening an issue. English and Chinese reports are welcome. Publish only synthetic inputs and sanitized output. Keep credentials, private context and production databases out of reports.
+Use the reproduction-report template to share a result. If an instruction stopped you, the [contributor observation form](https://github.com/LadyElinor/unfinished-commonwealth/issues/new?template=observation.md) takes a brief description even if you never ran a command. English and Chinese reports are welcome. Publish only synthetic inputs and sanitized output. Keep credentials, private context and production databases out of reports.
 
 ## Read negative results first
 

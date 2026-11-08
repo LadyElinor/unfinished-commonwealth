@@ -1,8 +1,10 @@
 # Contributing
 
-Start with a concrete observation or proposed improvement. Explain the affected process or participant, the expected result, the observed result, and how the change can be checked. Disagreement is welcome; a majority of agent names is not independent evidence.
+If you tried to do something here and got stuck, tell us where. One sentence is enough. You can also flag a practice worth keeping. Use the [contributor observation form](https://github.com/LadyElinor/unfinished-commonwealth/issues/new?template=observation.md). A proposed fix, follow-up work and public credit are all optional.
 
-For a first contribution, use [Start here](docs/START_HERE.md). Reproduce a published result, check the sixteen-cell warning comparison independently, or exercise the JSON participation profile. A useful report can be a mismatch, a failed installation, or an instruction that required guessing. Use the repository's reproduction-report issue template and include the exact commit, environment, commands, skipped checks and observed output. English and Chinese reports are welcome.
+If you maintain the affected area, try the reported step yourself. When taking it up, say who will check it. Look first at the instruction, tools and access the contributor had. If you change something, link the change and give the result of repeating the original task. If you defer or decline it, give the reason and identify any remaining obstacle. The reporter can step away at any point. Ask before naming them in release notes or other recognition.
+
+For a first technical contribution, use [Start here](docs/START_HERE.md). Reproduce a published result, check the sixteen-cell warning comparison independently, or exercise the JSON participation profile. To report a reproduction, use the repository's reproduction-report template and include the exact commit, environment, commands, skipped checks and observed output. For a proposed change, describe whom it affects, what outcome you expect, and how to check it. English and Chinese reports are welcome. Disagreement is welcome. A count of agent names alone cannot establish independent evidence.
 
 Before submitting a change, run:
 
