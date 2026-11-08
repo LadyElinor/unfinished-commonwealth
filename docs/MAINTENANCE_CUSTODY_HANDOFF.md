@@ -19,6 +19,13 @@ At [`c532350`](https://github.com/LadyElinor/unfinished-commonwealth/commit/c532
 
 The current custody suite also runs the same 56 single-field edits against both freeze versions across eight public sessions. Each edit changes one closure reason (33 cases), reviewer decision (15 cases), or deviation list (8 cases), then recomputes only the final export checksum. V2 accepts all 56 and gives the same primary difference bounds each time. Eleven edits change the number of accepted patches. Seven of those also change the false-acceptance bounds, five in the plain arm and two in the governed arm. V3 rejects every edit at the affected session and field while the observer's checkpoint is held fixed.
 
+For each v2 edit, a hand-counted oracle checks both arms' exact accepted counts,
+grade counts and false-acceptance bounds, including unchanged results. Its 15
+reviewer-decision cases are keyed by task, arm and new decision. Expected bounds
+are specified as rational values and converted only for comparison with the
+report's JSON numbers. This checks the public rehearsal's arithmetic, not
+independent custody or performance on private cases.
+
 ## Four handoffs
 
 | When | Who holds the evidence | What is retained |

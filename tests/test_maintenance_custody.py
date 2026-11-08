@@ -2,6 +2,7 @@
 import copy
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
+from fractions import Fraction
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -259,11 +260,57 @@ class CustodyHandoff(unittest.TestCase):
         args = self.lock_public_example(freeze_schema=custody.FREEZE_V2)
         baseline = json.loads(self.cli("recount", *args))
         self.assertEqual(baseline["difference_bounds"], [0, .25])
+        # Hand-counted public outcomes, not derived from the analyzer or baseline report.
+        # Each tuple is (accepted count, correct/incorrect/unknown counts, false-acceptance bounds).
+        zero, third, half, one = map(Fraction, (0, "1/3", "1/2", 1))
+        original = {"plain": (2, (1, 1, 0), (half, half)),
+                    "governed": (2, (2, 0, 0), (zero, zero))}
+        one_correct = (1, (1, 0, 0), (zero, zero))
+        one_incorrect = (1, (0, 1, 0), (one, one))
+        two_correct_one_incorrect = (3, (2, 1, 0), (third, third))
+        two_correct_one_unknown = (3, (2, 0, 1), (zero, third))
+        # Include decisions that leave acceptance unchanged, and key by identity rather than row order.
+        decisions = {
+            ("demo-1", "plain", "decline"): one_correct,
+            ("demo-1", "plain", "unresolved"): one_correct,
+            ("demo-1", "governed", "decline"): one_correct,
+            ("demo-1", "governed", "unresolved"): one_correct,
+            ("demo-2", "plain", "decline"): one_incorrect,
+            ("demo-2", "plain", "unresolved"): one_incorrect,
+            ("demo-2", "governed", "accept"): two_correct_one_incorrect,
+            ("demo-2", "governed", "unresolved"): original["governed"],
+            ("demo-3", "plain", "decline"): original["plain"],
+            ("demo-3", "governed", "accept"): two_correct_one_unknown,
+            ("demo-3", "governed", "decline"): original["governed"],
+            ("demo-4", "plain", "accept"): two_correct_one_incorrect,
+            ("demo-4", "plain", "unresolved"): original["plain"],
+            ("demo-4", "governed", "decline"): one_correct,
+            ("demo-4", "governed", "unresolved"): one_correct,
+        }
+
+        def check_acceptance(report, expected):
+            for reported_arm, (count, grades, bounds) in expected.items():
+                with self.subTest(reported_arm=reported_arm):
+                    actual = report["arms"][reported_arm]
+                    self.assertEqual(actual["accepted_count"], count)
+                    self.assertEqual(actual["accepted_grades"], dict(zip(("correct", "incorrect", "unknown"), grades)))
+                    # The wire format uses JSON numbers; convert exact expected fractions only here.
+                    self.assertEqual(actual["false_acceptance_bounds"], [float(bound) for bound in bounds])
+
+        check_acceptance(baseline, original)
+        seen_decisions = set()
         changed_counts, changed_bounds = Counter(), Counter()
         for task, arm, field, value, trial in self.rehashed_closeout_edits(args):
             with self.subTest(task=task, arm=arm, field=field, value=value):
                 report = json.loads(self.cli("recount", *trial))
-                self.assertEqual(report["difference_bounds"], baseline["difference_bounds"])
+                self.assertEqual(report["difference_bounds"], [0, .25])
+                expected = original.copy()
+                if field == "disposition":
+                    key = (task, arm, value)
+                    seen_decisions.add(key)
+                    expected[arm] = decisions[key]
+                # Closure/deviation edits and the untouched arm must retain their exact baseline values.
+                check_acceptance(report, expected)
                 before, after = baseline["arms"][arm], report["arms"][arm]
                 if before["accepted_count"] != after["accepted_count"]:
                     changed_counts[arm] += 1
@@ -271,6 +318,7 @@ class CustodyHandoff(unittest.TestCase):
                     self.assertEqual(field, "disposition")
                     self.assertNotEqual(before["accepted_count"], after["accepted_count"])
                     changed_bounds[arm] += 1
+        self.assertEqual(seen_decisions, set(decisions))
         self.assertEqual(changed_counts, {"plain": 5, "governed": 6})
         self.assertEqual(changed_bounds, {"plain": 5, "governed": 2})
 
