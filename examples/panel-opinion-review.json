@@ -1,0 +1,42 @@
+{
+  "schema": "opinion-review-1",
+  "case_digest": "36d342baf0f5cd02afe7117e699492e2093ce7773cffa6e55a5c3bb6ffd24a56",
+  "panel_at": 5,
+  "sources": [
+    {"id":"clerk-log","kind":"observation","topic":"claimant-testimony","at":5,"locator":"Panel log, petition-17. The panel refused to receive the applicant's statement about the dated receipt."},
+    {"id":"fee-schedule","kind":"rule","topic":"panel-compensation","at":1,"locator":"Fictional panel fee schedule, section 2. Arden receives 10 workshop units for dismissal and 5 for remand."},
+    {"id":"minutes","kind":"opinion","topic":"disposition","at":5,"locator":"Fictional panel minutes, petition-17, judgment and separate reasons A, B and C."},
+    {"id":"digest","kind":"summary","topic":"disposition","at":5,"locator":"Editorial synopsis of petition-17, opening paragraph."},
+    {"id":"dated-application","kind":"observation","topic":"member-17/request","at":6,"locator":"Desk archive, dated receipt discovered at slot 6. The receipt identifies the applicant and requested open hearing."},
+    {"id":"queue-model","kind":"analysis","topic":"delay-limit","at":4,"locator":"Queue study, matched applications. The applicant delay exceeds every simulated delay. The study defines no permissible delay."},
+    {"id":"desk-charter","kind":"mandate","topic":"restore-admission","at":2,"locator":"Hearing charter section 3. The hearing office may restore the petitioner's admission by individual order."},
+    {"id":"panel-charter","kind":"mandate","topic":"remand","at":2,"locator":"Hearing charter section 4. The panel may return a petition to intake for rehearing by recorded decision."}
+  ],
+  "panel": {
+    "record":"minutes", "members":["arden","lee","ravi"],
+    "ballots":{"arden":"dismiss","lee":"dismiss","ravi":"remand"}
+  },
+  "hearing": {
+    "opportunity":"excluded","record":"clerk-log",
+    "compensation":[{"member":"arden","record":"fee-schedule","amounts":{"dismiss":10,"remand":5}}]
+  },
+  "passages": [
+    {"id":"headnote","record":"digest","pinpoint":"editorial synopsis","proposition":"The denial was lawful for every affiliate.","form":"syllabus","part":"body","for_result":null,"joined_by":[]},
+    {"id":"receipt","record":"minutes","pinpoint":"A, paragraph 2","proposition":"The register lacks the personally dated receipt I would require to proceed.","form":"signed","part":"body","for_result":"dismiss","joined_by":["arden"]},
+    {"id":"limit","record":"minutes","pinpoint":"B, paragraph 1","proposition":"A delay outlier alone supplies no governing standard for overturning the denial.","form":"concurrence","part":"body","for_result":"dismiss","joined_by":["lee"]},
+    {"id":"rehearing","record":"minutes","pinpoint":"C, footnote 1","proposition":"The original denial warrants a new hearing under section 4.","form":"dissent","part":"footnote","for_result":"remand","joined_by":["ravi"]}
+  ],
+  "premises": [
+    {"id":"identified-request","passage":"receipt","stage":"standing","kind":"fact","topic":"member-17/request","test_origin":"passage","criterion":"A dated receipt identifying this applicant and their requested open hearing would answer my objection.","next_step":"Reconsider whether this applicant may proceed.","evidence":[{"record":"dated-application","bearing":"challenges"}]},
+    {"id":"rule-for-delay","passage":"limit","stage":"justiciability","kind":"governing-standard","topic":"delay-limit","test_origin":"reviewer-proposal","criterion":"Identify an applicable charter rule defining a prohibited delay.","next_step":"Test the delay against that rule if one is supplied.","evidence":[{"record":"queue-model","bearing":"challenges"}]},
+    {"id":"power-to-remand","passage":"rehearing","stage":"remedy","kind":"institutional-authority","topic":"remand","test_origin":"passage","criterion":"Check whether the hearing charter assigns remand to the panel.","next_step":"Consider a remand under the documented procedure.","evidence":[{"record":"panel-charter","bearing":"supports"}]}
+  ],
+  "mandates": [
+    {"id":"individual-order","record":"desk-charter","office":"hearing-office","act":"restore-admission","procedure":"individual-order","reach":"petitioner","position":"permits"},
+    {"id":"panel-remand","record":"panel-charter","office":"review-panel","act":"remand","procedure":"recorded-decision","reach":"petitioner","position":"permits"}
+  ],
+  "proposals": [
+    {"id":"remit","office":"review-panel","act":"remand","procedure":"recorded-decision","reach":"petitioner"},
+    {"id":"admit-all","office":"review-panel","act":"restore-admission","procedure":"recorded-decision","reach":"all-affiliates"}
+  ]
+}

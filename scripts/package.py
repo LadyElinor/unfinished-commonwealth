@@ -101,6 +101,8 @@ def main():
                          "commonwealth/operations_v1/app.py", "commonwealth/operations_v1/backup.py",
                          "docs/PRODUCTION_READINESS.md", "tests/test_operations_v1.py",
                          "commonwealth/remediation_v1/review.py", "docs/REMEDIATION_V1.md",
+                         "docs/OPINION_REVIEW.md", "tests/test_opinion_review.py",
+                         "commonwealth/remediation_v1/opinion_review.py", "examples/panel-opinion-review.json",
                          "tests/test_remediation_v1.py", "examples/remediation-v1-packet.json",
                          "scripts/audit_measurement.mjs", "examples/charged-workshop-results.json",
                          "examples/neighbor-timing-results.json", "commonwealth/measurement_v1/neighbor.py",
@@ -145,6 +147,14 @@ def main():
         if (equality["comparison"]["status"] != "different-access-on-matched-facts"
                 or equality["personal_relief"] != "access-unverified" or equality["authority_granted"]):
             raise RuntimeError("Installed equal-treatment review lost the unresolved access claim")
+        opinion = json.loads(run([str(executable), "-m", "commonwealth.remediation_v1.opinion_review",
+            str(source / "examples/equal-treatment-review.json"), str(source / "examples/panel-opinion-review.json"),
+            "--as-of", "7"], smoke))
+        if (opinion["panel"]["judgment"] != "dismiss" or opinion["panel"]["majority_reasons"]
+                or opinion["premises"]["identified-request"]["as_of"] != "challenge-recorded"
+                or opinion["proposals"]["admit-all"]["at_decision"] != "no-matching-term"
+                or opinion["original_decision"]["personal_relief"] != "access-unverified"):
+            raise RuntimeError("Installed opinion review changed the panel or remedial finding")
         fixtures = json.loads(run([str(command), "scenarios"], smoke))
         if set(fixtures) != {"missing", "signed", "flagged"}:
             raise RuntimeError("Installed package fixtures differ")
