@@ -14,6 +14,12 @@ Keep the runtime dependency-free unless a new dependency has a clear purpose. Ad
 
 The original three scenarios, all D1 cases, all N1 cells and example reports are exposed development material. Never relabel them as withheld evaluation data. Report failed cases and resource costs alongside successes. If a comparison changes the observations or resources available to different arms, disclose that difference. Record whether a check reran the supplied implementation, independently reimplemented arithmetic, or used independently controlled evidence; these establish different things.
 
+When proposing a consequential restriction or reviewing an adverse result, identify the precise
+finding that would change your recommendation. Name the affected person or group, the competing
+explanation, the evidence available at the time, and who could act on a changed finding.
+The [worked review](docs/DECISION_PREMISES.md) shows how to preserve a dissent and test a later
+observation without rewriting the decision. Apply the same questions to maintainers' own rules.
+
 Protocol changes need a schema/version decision and replay compatibility analysis. Changes to the reference result, validity contract, budget, evaluator, or authority rules require an explicit review of the claims they affect. The verifier cannot certify the legitimacy of a new policy.
 
 This first release uses ordinary repository maintainers as its actual decision makers. It does not delegate repository control to workshop roles. Contributors may propose changes through pull requests; no agent-generated record automatically merges code or changes a GitHub ruleset.

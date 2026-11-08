@@ -1,0 +1,169 @@
+{
+  "schema": "premise-evidence-1",
+  "decision_digest": "2625098ba006c43758b3a83bb7cc4077dcdad1a5088786a73cfe857d7ff4cf9c",
+  "previous_digest": null,
+  "as_of": 9,
+  "records": [
+    {
+      "scope": "licensed-east",
+      "criterion": "on-time-admissions-per-eligible-application",
+      "stage": "merits",
+      "id": "paired-returns",
+      "rule": "effect",
+      "kind": "relative-rate",
+      "event_at": 5,
+      "available_at": 8,
+      "source": "joint-register-extract",
+      "account": "For the same periods and criterion, the other district rose from forty to sixty-five among one hundred eligible applications.",
+      "data": {
+        "comparison": "unlicensed-west",
+        "before": 2,
+        "after": 5,
+        "treated_before": [
+          50,
+          100
+        ],
+        "treated_after": [
+          60,
+          100
+        ],
+        "comparison_before": [
+          40,
+          100
+        ],
+        "comparison_after": [
+          65,
+          100
+        ]
+      }
+    },
+    {
+      "scope": "provider-fees",
+      "criterion": "identified-rivals-received-and-acted-on-conditional-invitation",
+      "stage": "inquiry",
+      "id": "meeting-record",
+      "rule": "agreement",
+      "kind": "observation",
+      "event_at": 4,
+      "available_at": 8,
+      "source": "dated-meeting-record",
+      "account": "The message named the recipients, conditioned adoption on their participation, and recorded their subsequent acceptances.",
+      "data": {
+        "value": true
+      }
+    },
+    {
+      "scope": "hearing-A/recording-2",
+      "criterion": "member-could-enter-unassisted",
+      "stage": "procedure",
+      "id": "second-reader",
+      "rule": "disputed-reading",
+      "kind": "observation",
+      "event_at": 4,
+      "available_at": 6,
+      "source": "member-viewer",
+      "account": "I saw the clerk release it from behind the screen.",
+      "data": {
+        "value": false
+      }
+    },
+    {
+      "scope": "appeal-17/paragraph-4",
+      "criterion": "licence-required-before-hearing",
+      "stage": "merits",
+      "id": "paragraph-vote",
+      "rule": "earlier-ruling",
+      "kind": "joined-reason",
+      "event_at": 2,
+      "available_at": 7,
+      "source": "original-joinder-sheet",
+      "account": "Two panel members joined this paragraph.",
+      "data": {
+        "part": "reasons",
+        "joined": [
+          "alder",
+          "birch"
+        ]
+      }
+    },
+    {
+      "scope": "exchange-east",
+      "criterion": "compulsory-licensing",
+      "stage": "authority",
+      "id": "later-instrument",
+      "rule": "mandate",
+      "kind": "mandate",
+      "event_at": 7,
+      "available_at": 8,
+      "source": "assembly-register",
+      "account": "The instrument was issued after the decision and lists an earlier start date.",
+      "data": {
+        "issuer": "assembly",
+        "actor": "exchange-desk",
+        "action": "compel-licence",
+        "starts": 3,
+        "ends": 12
+      }
+    },
+    {
+      "scope": "member-A/open-hearing",
+      "criterion": "corrected-notice-posted",
+      "stage": "remedy",
+      "id": "new-notice",
+      "rule": "personal-relief",
+      "kind": "observation",
+      "event_at": 7,
+      "available_at": 7,
+      "source": "notice-board",
+      "account": "A corrected notice is on display.",
+      "data": {
+        "value": true
+      }
+    },
+    {
+      "scope": "member-A/open-hearing",
+      "criterion": "member-can-use-original-hearing-opportunity",
+      "stage": "remedy",
+      "id": "door-check",
+      "rule": "personal-relief",
+      "kind": "observation",
+      "event_at": 8,
+      "available_at": 9,
+      "source": "access-observer",
+      "account": "The member still cannot enter through the stated route.",
+      "data": {
+        "value": false
+      }
+    },
+    {
+      "scope": "member-A/licence-application",
+      "criterion": "extra-work-attributable-to-this-request",
+      "stage": "merits",
+      "id": "work-study",
+      "rule": "licence-charge",
+      "kind": "impact-cap",
+      "event_at": 4,
+      "available_at": 8,
+      "source": "case-accounting",
+      "account": "The request required ten additional clerk-minutes. The other twenty belonged to all-service maintenance.",
+      "data": {
+        "unit": "clerk-minutes",
+        "imposed": 30,
+        "attributable": 10
+      }
+    },
+    {
+      "scope": "exchange-east/plan",
+      "criterion": "dated-private-commitment-predates-public-plan",
+      "stage": "merits",
+      "id": "missed-forecast",
+      "rule": "purpose",
+      "kind": "context",
+      "event_at": 7,
+      "available_at": 8,
+      "source": "service-report",
+      "account": "Registrations later fell below the prediction in the plan.",
+      "data": {}
+    }
+  ]
+}
