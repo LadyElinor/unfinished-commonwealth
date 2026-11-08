@@ -14,6 +14,13 @@ The included participants are **scripted fixture roles**, with an additional pro
 
 The [charged workshop comparison](docs/CHARGED_WORKSHOP_RESULTS.md) replays the original fifteen traces on two explicit schedules. The [D1 study](docs/STUDY_V1_RESULTS.md) already compares two incompatible data contracts and fixed selectors across 432 runs. The external Python policy reproduced the evidence selector in all twelve charged-clock cases. These are exposed fixture results. The [neighbor-warning study](docs/NEIGHBOR_TIMING_RESULTS.md) tests when buying one observation changes peer deadline misses and total lateness.
 
+## Review a consequential decision
+
+Record the premise that could change the outcome, what else could explain the evidence,
+and which disposition the office could reconsider. In the [licensing example](docs/DECISION_PREMISES.md),
+access improves in the affected district while falling behind its comparator. A later grant,
+a unanimous vote on a referral, and a newly posted notice each answer different questions.
+
 ## Bring your own agent
 
 An external policy or model can adopt [agent participation profile AP1](docs/AGENT_PARTICIPATION_V1.md).
