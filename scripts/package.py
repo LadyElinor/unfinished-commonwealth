@@ -5,6 +5,7 @@ build dependencies from a network or overwrites an existing output directory.
 """
 
 import argparse
+import gzip
 import hashlib
 from importlib.metadata import version as distribution_version
 import platform
@@ -70,7 +71,8 @@ def main():
             raise RuntimeError("Expected one source root")
         source = roots[0]
         for relative in ("README.md", "LICENSE", "docs/PROTOCOL.md",
-                         "scripts/verify.py", "tests/test_workshop.py",
+                         "scripts/verify.py", "scripts/check_reproduction.py", "tests/test_workshop.py",
+                         "docs/RELEASE_0_1_4_RC2.md", "docs/MAINTENANCE_CUSTODY_HANDOFF.md",
                          "commonwealth/data/scenarios.json", "docs/STUDY_V1_DESIGN.md",
                          "commonwealth/study_v1/engine.py", "tests/test_study_scheduler.py",
                          "examples/study-v1-summary.json", "commonwealth/procedure_v1/engine.py",
@@ -80,6 +82,9 @@ def main():
                          "commonwealth/integrity_v1/harness.py", "commonwealth/integrity_v1/claims.py",
                          "docs/INTEGRITY_V1.md", "docs/INTEGRITY_SOURCE_REVIEW.md",
                          "examples/integrity-v1-summary.json", "tests/test_integrity_v1.py",
+                         "commonwealth/decision_premises.py", "docs/DECISION_PREMISES.md",
+                         "tests/test_decision_premises.py", "examples/decision_premises/decision.json",
+                         "examples/decision_premises/supplement.json",
                          "commonwealth/review_v1/engine.py", "docs/REVIEW_V1.md",
                          "examples/review-v1-summary.json", "tests/test_review_v1.py",
                          "commonwealth/authority_v1/engine.py", "commonwealth/authority_v1/records.py",
@@ -101,9 +106,27 @@ def main():
                          "commonwealth/operations_v1/app.py", "commonwealth/operations_v1/backup.py",
                          "docs/PRODUCTION_READINESS.md", "tests/test_operations_v1.py",
                          "commonwealth/remediation_v1/review.py", "docs/REMEDIATION_V1.md",
+                         "docs/OPINION_REVIEW.md", "tests/test_opinion_review.py",
+                         "commonwealth/remediation_v1/opinion_review.py", "examples/panel-opinion-review.json",
                          "tests/test_remediation_v1.py", "examples/remediation-v1-packet.json",
+                         "commonwealth/remediation_v1/assistance.py", "tests/test_owed_assistance.py",
+                         "examples/owed-assistance.json", "commonwealth/remediation_v1/role_history.py",
+                         "examples/role-history-traces.jsonl.gz", "scripts/recount_role_history.mjs",
+                         "docs/ROLE_HISTORY_DESIGN.md", "docs/ROLE_HISTORY_RESULTS.md",
                          "scripts/audit_measurement.mjs", "examples/charged-workshop-results.json",
                          "examples/neighbor-timing-results.json", "commonwealth/measurement_v1/neighbor.py",
+                         "commonwealth/coordination_v1/experiment.py", "docs/COORDINATION_V1_DESIGN.md",
+                         "docs/COORDINATION_V1_RESULTS.md", "docs/GOVERNANCE_PROCEDURE_REVIEW.md",
+                         "tests/test_coordination_v1.py", "examples/coordination-v1-results.json",
+                         "commonwealth/coordination_v2/council.py", "commonwealth/coordination_v2/experiment.py",
+                         "docs/COORDINATION_V2_DESIGN.md", "docs/COORDINATION_V2_RESULTS.md",
+                         "tests/test_coordination_v2.py", "examples/coordination-v2-results.json",
+                         "commonwealth/uncertainty_v1/experiment.py", "commonwealth/uncertainty_v1/policies.py",
+                         "docs/UNCERTAINTY_V1_DESIGN.md", "docs/UNCERTAINTY_V1_RESULTS.md",
+                         "docs/UNCERTAINTY_EVALUATION_GATES.md", "tests/test_uncertainty_v1.py",
+                         "scripts/audit_uncertainty.mjs", "scripts/audit_uncertainty_input.mjs",
+                         "docs/UNCERTAINTY_CHECKER_CONTRACT.md", "tests/test_uncertainty_audit.py",
+                         "tests/uncertainty_audit_support.py", "examples/uncertainty-v1-results.json",
                          "examples/agent_profile_v1/python_agent.py"):
             if not (source / relative).is_file():
                 raise RuntimeError(f"Source archive omitted {relative}")
@@ -130,7 +153,7 @@ def main():
             "import json, commonwealth; from importlib.metadata import version; "
             "print(json.dumps({'module_version': commonwealth.__version__, "
             "'distribution_version': version('unfinished-commonwealth')}))"], smoke))
-        if installed["module_version"] != "0.1.3" or installed["distribution_version"] != "0.1.4rc1":
+        if installed["module_version"] != "0.1.3" or installed["distribution_version"] != "0.1.4rc2":
             raise RuntimeError("Installed historical runtime or prerelease distribution version mismatch")
         remediation = json.loads(run([str(executable), "-m", "commonwealth.remediation_v1",
             str(source / "examples/remediation-v1-packet.json"), "--as-of", "6"], smoke))
@@ -140,6 +163,31 @@ def main():
                 or remediation["authority_granted"] is not False
                 or remediation["production_ready"] is not False):
             raise RuntimeError("Installed remediation helper changed its advisory boundary")
+        role_stream = run([str(executable), "-m", "commonwealth.remediation_v1.role_history",
+                          str(source / "examples/owed-assistance.json")], smoke)
+        with gzip.open(source / "examples/role-history-traces.jsonl.gz", "rt", encoding="utf-8") as archive:
+            if role_stream != archive.read():
+                raise RuntimeError("Installed role-history rehearsal differs from the archived run")
+        assistance = json.loads(run([str(executable), "-m", "commonwealth.remediation_v1.assistance",
+            str(source / "examples/owed-assistance.json"), "--as-of", "6"], smoke))
+        if (assistance["payment"]["status"] != "delivery-supported"
+                or assistance["rule_inquiry"]["other_cases_owed_correction"] != ["other-8"]
+                or assistance["external_actions"] != 0 or "packet" in assistance):
+            raise RuntimeError("Installed assistance review lost an obligation or exposed its private packet")
+
+        equality = json.loads(run([str(executable), "-m", "commonwealth.remediation_v1.equal_treatment",
+            str(source / "examples/equal-treatment-review.json"), "--as-of", "7"], smoke))
+        if (equality["comparison"]["status"] != "different-access-on-matched-facts"
+                or equality["personal_relief"] != "access-unverified" or equality["authority_granted"]):
+            raise RuntimeError("Installed equal-treatment review lost the unresolved access claim")
+        opinion = json.loads(run([str(executable), "-m", "commonwealth.remediation_v1.opinion_review",
+            str(source / "examples/equal-treatment-review.json"), str(source / "examples/panel-opinion-review.json"),
+            "--as-of", "7"], smoke))
+        if (opinion["panel"]["judgment"] != "dismiss" or opinion["panel"]["majority_reasons"]
+                or opinion["premises"]["identified-request"]["as_of"] != "challenge-recorded"
+                or opinion["proposals"]["admit-all"]["at_decision"] != "no-matching-term"
+                or opinion["original_decision"]["personal_relief"] != "access-unverified"):
+            raise RuntimeError("Installed opinion review changed the panel or remedial finding")
         fixtures = json.loads(run([str(command), "scenarios"], smoke))
         if set(fixtures) != {"missing", "signed", "flagged"}:
             raise RuntimeError("Installed package fixtures differ")
@@ -160,6 +208,8 @@ def main():
                                "run", "study-v1"], smoke))
         if study["runs"] != 432 or study["model_calls"] != 0:
             raise RuntimeError("Installed study harness omitted its deterministic matrix")
+        if (smoke / "study-v1/summary.json").read_bytes() != (source / "examples/study-v1-summary.json").read_bytes():
+            raise RuntimeError("Installed D1 summary differed from the published result")
         study_replay = json.loads(run([str(executable), "-m", "commonwealth.study_v1",
             "replay", "study-v1/journals/decision-slots-v1--yield-urgent--always-inspect.json"], smoke))
         if study_replay["verified"] is not True or study_replay["events"] != 8:
@@ -209,6 +259,15 @@ def main():
             "authority-v1/journals/false-but-complete-host.json"], smoke))
         if authority_replay["verified"] is not True:
             raise RuntimeError("Installed false-host failure did not replay")
+        premise_inputs = source / "examples" / "decision_premises"
+        premises = json.loads(run([str(executable), "-m", "commonwealth.decision_premises",
+                                   str(premise_inputs / "decision.json"),
+                                   str(premise_inputs / "supplement.json")], smoke))
+        questions = {q["id"]: q for q in premises["questions"]}
+        if (questions["effect"]["historical_followup"] != "reconsider-finding"
+                or questions["personal-relief"]["subsequent_followup"] != "verify-individual-relief"
+                or premises["authority_granted"] is not False):
+            raise RuntimeError("Installed premise review lost a finding or crossed its authority boundary")
         authority_review = json.loads(run([str(executable), "-m", "commonwealth.authority_v1", "review",
             str(source / "examples/authority-review-packet.json")], smoke))
         if authority_review["authority_granted"] is not False or authority_review["permits_execution"] is not False:
@@ -240,6 +299,27 @@ def main():
         run([str(executable), "-m", "commonwealth.measurement_v1", "neighbor", "neighbor"], smoke)
         if (smoke / "neighbor/results.json").read_bytes() != (source / "examples/neighbor-timing-results.json").read_bytes():
             raise RuntimeError("Installed neighbor comparison differed from the published result")
+        run([str(executable), "-m", "commonwealth.coordination_v1", "run", "coordination"], smoke)
+        if (smoke / "coordination/results.json").read_bytes() != (source / "examples/coordination-v1-results.json").read_bytes():
+            raise RuntimeError("Installed G1 comparison differed from the published result")
+        coordination_replay = json.loads(run([str(executable), "-m", "commonwealth.coordination_v1", "replay",
+            "coordination/episodes.jsonl", "--line", "672"], smoke))
+        if coordination_replay["verified"] is not True or coordination_replay["authority_granted"] is not False:
+            raise RuntimeError("Installed G1 replay or authority boundary failed")
+        run([str(executable), "-m", "commonwealth.coordination_v2", "run", "coordination-v2"], smoke)
+        if (smoke / "coordination-v2/results.json").read_bytes() != (source / "examples/coordination-v2-results.json").read_bytes():
+            raise RuntimeError("Installed G2 comparison differed from the published result")
+        coordination_v2_replay = json.loads(run([str(executable), "-m", "commonwealth.coordination_v2", "replay",
+            "coordination-v2/episodes.jsonl", "--line", "2016"], smoke))
+        if coordination_v2_replay["verified"] is not True or coordination_v2_replay["authority_granted"] is not False:
+            raise RuntimeError("Installed G2 replay or authority boundary failed")
+        run([str(executable), "-m", "commonwealth.uncertainty_v1", "run", "uncertainty-v1"], smoke)
+        if (smoke / "uncertainty-v1/results.json").read_bytes() != (source / "examples/uncertainty-v1-results.json").read_bytes():
+            raise RuntimeError("Installed E1 comparison differed from published result")
+        uncertainty_replay = json.loads(run([str(executable), "-m", "commonwealth.uncertainty_v1", "replay",
+            "uncertainty-v1/episodes.jsonl", "--line", "3840"], smoke))
+        if uncertainty_replay["verified"] is not True or uncertainty_replay["authority_granted"] is not False:
+            raise RuntimeError("Installed E1 replay or authority boundary failed")
         readiness = json.loads(run([str(command), "readiness"], smoke, expected=2))
         if readiness["deployment_ready"] is not False or not readiness.get("operator_limit"):
             raise RuntimeError("Research-only readiness boundary changed")
@@ -268,12 +348,16 @@ def main():
             "discernment_runs": discernment["runs"], "discernment_replay": discernment_replay,
             "integrity_runs": integrity["runs"], "integrity_replay": integrity_replay,
             "review_traces": review["traces"], "review_replay": review_replay,
+            "premise_review_questions": sorted(questions),
             "authority_traces": authority["traces"], "authority_replay": authority_replay,
             "authority_packet_review": authority_review, "authority_language": language,
             "participant_loopback": participant,
             "participant_v11_clock_and_loopback": participant_v11,
             "client_outbox_recovery": client_outbox,
             "client_only_artifact": client_only,
+            "coordination_episodes": 672, "coordination_replay": coordination_replay,
+            "coordination_v2_episodes": 2016, "coordination_v2_replay": coordination_v2_replay,
+            "uncertainty_episodes": 3840, "uncertainty_replay": uncertainty_replay,
             "readiness_exit": 2, "model_calls": 0,
             "scope": "LOCAL_RESEARCH_ONLY",
         }

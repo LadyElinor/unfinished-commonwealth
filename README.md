@@ -4,15 +4,55 @@
 
 The research question is practical: can a community improve its cooperation as its participants, circumstances, and procedures change?
 
-The frozen workshop runtime is **0.1.3**. This checkout also includes separately versioned research harnesses and participant tooling, packaged as the unpublished **0.1.4rc1** candidate. It runs real integer-data transformations inside a bounded workshop, shares a record-inspection budget between two jobs, records testimony and predictions, and passes a tested practice to a successor working on different data. Python 3.11 or later is sufficient for the core runtime and tests. Optional Assembly, JSON-schema and JavaScript checks have additional dependencies.
+The frozen workshop runtime is **0.1.3**. This checkout also includes separately versioned research harnesses and participant tooling, packaged as the unpublished **0.1.4rc2** candidate. It runs real integer-data transformations inside a bounded workshop, shares a record-inspection budget between two jobs, records testimony and predictions, and passes a tested practice to a successor working on different data. Python 3.11 or later is sufficient for the core runtime and tests. Optional Assembly, JSON-schema and JavaScript checks have additional dependencies.
 
 The included participants are **scripted fixture roles**, with an additional proposal-only JSON interface for a separately operated model or human. No model-backed study has been run. This repository does not establish independent machine persons, autonomous civilization, or authority outside its local workshop.
 
 **New here? [Start with one reproducible result](docs/START_HERE.md).** The guide distinguishes the historical workshop from the current studies, gives exact reproduction commands, and offers three bounded contributor tasks. The project remains `LOCAL_RESEARCH_ONLY`.
 
+**Release candidate.** [Reproduce 0.1.4rc2](docs/RELEASE_0_1_4_RC2.md) from one checkout, including the installed wheel and client.
+
+**Two volunteer roles are open for the paired maintenance study.** An independent custodian controls private defect intake. A separate grading lead organizes blinded patch evaluation. Role descriptions, workload and the public sign-up are in [Issue #7](https://github.com/LadyElinor/unfinished-commonwealth/issues/7). Please post only your role interest and availability there. Case material belongs in the custodian’s private channel after the witnessed freeze.
+
 ## What the measurements show
 
 The [charged workshop comparison](docs/CHARGED_WORKSHOP_RESULTS.md) replays the original fifteen traces on two explicit schedules. The [D1 study](docs/STUDY_V1_RESULTS.md) already compares two incompatible data contracts and fixed selectors across 432 runs. The external Python policy reproduced the evidence selector in all twelve charged-clock cases. These are exposed fixture results. The [neighbor-warning study](docs/NEIGHBOR_TIMING_RESULTS.md) tests when buying one observation changes peer deadline misses and total lateness.
+
+The [G1 decision/routing comparison](docs/COORDINATION_V1_RESULTS.md) separates
+central or delegated method selection from direct or coordinator-filtered
+reports across 672 exposed episodes. Direct reporting can preserve useful
+warnings; false warnings can add delay. Central and delegated selection tie
+with direct reporting, and the simple evidence selector has the best aggregate
+first-output correctness. All arms keep the same keeper approval boundary.
+[The source review](docs/GOVERNANCE_PROCEDURE_REVIEW.md) distinguishes official
+procedural prescriptions from demonstrated effectiveness and retains autonomy,
+dissent, scoped authority and correction without inferred guilt.
+
+The separate [G2 comparison](docs/COORDINATION_V2_RESULTS.md) implements central
+selection versus a two-of-three collective rule, crossed with direct/filtered
+reporting. Its 2,016 episodes keep protected operation and a deliberate
+anti-retaliation-guard bypass separate. Actual denied ballots, restoration time,
+missing quorum, correctness and service delay are distinct measures. Report
+authors retain their own evidence even when forwarding is suppressed. This is
+a bounded in-process experiment, not distributed network consensus or observed
+institutional effectiveness; G1 remains unchanged.
+
+The separate [E1 / E1R comparison](docs/UNCERTAINTY_V1_RESULTS.md) adds uncertain
+evidence, fallible or unavailable task review, abstention, and selective source
+credit denial with a neutral-cut control. Its 3,840 exposed episodes retain
+wrong-review regressions and unresolved resource loss. A JavaScript checker
+independently recounts the arithmetic, schedule and outcome metrics. No policy
+gets a definitive contract query; no institutional efficacy claim follows.
+The [checker contract audit](docs/UNCERTAINTY_CHECKER_CONTRACT.md) maps guarantees
+to counterexamples and remaining assumptions; accounting verification does not
+verify policy execution or authenticate evidence.
+
+## Review a consequential decision
+
+Record the premise that could change the outcome, what else could explain the evidence,
+and which disposition the office could reconsider. In the [licensing example](docs/DECISION_PREMISES.md),
+access improves in the affected district while falling behind its comparator. A later grant,
+a unanimous vote on a referral, and a newly posted notice each answer different questions.
 
 ## Bring your own agent
 
@@ -153,6 +193,17 @@ reporting support for a repair’s declared criterion. Paired fictional tests re
 targeted inspection and the cost of an overbroad freeze. It grants no authority
 and does not change the research-only or production-readiness boundary.
 
+The [owed-assistance review](docs/REMEDIATION_V1.md#owed-assistance) follows a fictional wrongful denial.
+The person can leave after giving their account. The paying office still owes delivery,
+and a separate reviewer examines other denials under the same rule.
+
+The [equal-treatment review](docs/EQUAL_TREATMENT_REVIEW.md) compares access before
+penalties, checks historical counterexamples and the deciding office's scope,
+and follows the requested remedy through to the person's observed access.
+The [panel opinion review](docs/OPINION_REVIEW.md) shows which delegates joined
+each reason, which evidence could reopen a question and how far an office's
+remedial authority extends.
+
 ## Growing the project
 
 A separate **study harness 1.0.0** now implements the deterministic portion of the
@@ -269,7 +320,7 @@ It retains explicit C1 recovery semantics with a separate local outbox version;
 existing C1 databases are not silently migrated. Artifact separation does not
 make public references secret or establish OS isolation.
 
-### Operational prerequisite candidate (0.1.4rc1 / O1)
+### Operational prerequisite candidate (0.1.4rc2 / O1)
 
 The distribution now has an explicit prerelease version while the historical
 workshop runtime remains 0.1.3. [Production readiness](docs/PRODUCTION_READINESS.md)

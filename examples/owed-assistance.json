@@ -1,0 +1,31 @@
+{
+  "schema": "owed-assistance-1",
+  "institution": "assistance-service",
+  "award": {
+    "record": "award-17", "at": 1, "case": "case-17", "recipient": "person-17", "units": 100,
+    "decision_office": "eligibility-office", "paying_office": "payments-office"
+  },
+  "warning": {
+    "record": "original-account", "at": 2, "rule": "eligibility-rule-4",
+    "account": "I accept what you owe. I am angry. I decline the public meeting. This rule is still hurting other people.",
+    "acknowledged_at": 3
+  },
+  "participation": {"public-reconciliation": "declined", "further-contact": "declined"},
+  "transfers": [
+    {"record": "settlement-entry", "at": 5, "transfer": "transfer-17", "award": "award-17",
+     "recipient": "person-17", "units": 100, "status": "credited", "controller": "settlement-register"}
+  ],
+  "inquiry": {
+    "assignment": {"record": "review-assignment", "at": 3, "controller": "review-office"},
+    "inventory": {"record": "denial-register-search", "at": 4, "controller": "review-office",
+                  "rule": "eligibility-rule-4", "complete": true, "cases": ["other-2", "other-8"]},
+    "findings": [
+      {"record": "file-2-review", "at": 6, "controller": "review-office", "case": "other-2", "result": "no-correction-found"},
+      {"record": "file-8-review", "at": 6, "controller": "review-office", "case": "other-8", "result": "correction-owed"}
+    ]
+  },
+  "work": [
+    {"record": "check-credit", "at": 5, "obligation": "payment", "bearer": "institution", "activity": "Reconcile the settlement register.", "required": true, "units": 1},
+    {"record": "check-other-files", "at": 6, "obligation": "rule-inquiry", "bearer": "institution", "activity": "Read the original account and both files.", "required": true, "units": 3}
+  ]
+}

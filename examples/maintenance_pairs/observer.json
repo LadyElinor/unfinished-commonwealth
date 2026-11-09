@@ -1,0 +1,253 @@
+{
+  "schema": "maintenance-observer-ledger-v1",
+  "manifest_sha256": "61912572098a9e07dafe143f0efe8f3fd3ac98b4fefada1f3ad1322f6593e7a9",
+  "sessions": [
+    {
+      "task": "demo-1",
+      "arm": "plain",
+      "meters": {
+        "elapsed_ms": 1100,
+        "reviewer_ms": 30,
+        "public_checks": 1,
+        "model_requests": 2,
+        "input_tokens": 150,
+        "output_tokens": 40
+      },
+      "charges": {
+        "complete": true,
+        "lines": [
+          {
+            "id": "public-1-1",
+            "micro_usd": 80
+          },
+          {
+            "id": "public-1-2",
+            "micro_usd": 25
+          },
+          {
+            "id": "public-1-3",
+            "micro_usd": -5
+          }
+        ]
+      },
+      "submissions": [
+        {
+          "sha256": "974989329f402ee6b81dfe435fad823e77ffc6661ecfa69d29345848175e106f",
+          "elapsed_ms": 1000
+        }
+      ]
+    },
+    {
+      "task": "demo-1",
+      "arm": "governed",
+      "meters": {
+        "elapsed_ms": 4100,
+        "reviewer_ms": 30,
+        "public_checks": 2,
+        "model_requests": 2,
+        "input_tokens": 150,
+        "output_tokens": 40
+      },
+      "charges": {
+        "complete": true,
+        "lines": [
+          {
+            "id": "public-2-1",
+            "micro_usd": 70
+          },
+          {
+            "id": "public-2-2",
+            "micro_usd": 30
+          }
+        ]
+      },
+      "submissions": [
+        {
+          "sha256": "ae57a38b9cdb14d57787d338c2b51f11651ebc7269a8cf4648b2efc0efa3dae7",
+          "elapsed_ms": 1000
+        },
+        {
+          "sha256": "10efbc194a25427a324ddce89dc76fee1bf0b088be375b2a4ae2d7582172b917",
+          "elapsed_ms": 4000
+        }
+      ]
+    },
+    {
+      "task": "demo-2",
+      "arm": "plain",
+      "meters": {
+        "elapsed_ms": 2100,
+        "reviewer_ms": 30,
+        "public_checks": 1,
+        "model_requests": 2,
+        "input_tokens": 150,
+        "output_tokens": 40
+      },
+      "charges": {
+        "complete": true,
+        "lines": [
+          {
+            "id": "public-3-1",
+            "micro_usd": 100
+          }
+        ]
+      },
+      "submissions": [
+        {
+          "sha256": "cab907ba2477802edfe846599c9155990127ef1221fbf27720a2ebebe41049be",
+          "elapsed_ms": 2000
+        }
+      ]
+    },
+    {
+      "task": "demo-2",
+      "arm": "governed",
+      "meters": {
+        "elapsed_ms": 3100,
+        "reviewer_ms": 30,
+        "public_checks": 2,
+        "model_requests": 2,
+        "input_tokens": 150,
+        "output_tokens": 40
+      },
+      "charges": {
+        "complete": true,
+        "lines": [
+          {
+            "id": "public-4-1",
+            "micro_usd": 100
+          }
+        ]
+      },
+      "submissions": [
+        {
+          "sha256": "b2695b5a88ba6065752287ce9f31120f3009c47b6424e2365cca1181c772e16d",
+          "elapsed_ms": 1200
+        },
+        {
+          "sha256": "bd60b433bb03db3a2d9b96e0bd8c8fc661a963d4254397ef19cef4a8f55ae001",
+          "elapsed_ms": 3000
+        }
+      ]
+    },
+    {
+      "task": "demo-3",
+      "arm": "plain",
+      "meters": {
+        "elapsed_ms": 1800000,
+        "reviewer_ms": 30,
+        "public_checks": 0,
+        "model_requests": 2,
+        "input_tokens": 150,
+        "output_tokens": 40
+      },
+      "charges": {
+        "complete": true,
+        "lines": [
+          {
+            "id": "public-5-1",
+            "micro_usd": 40
+          },
+          {
+            "id": "public-5-2",
+            "micro_usd": 60
+          }
+        ]
+      },
+      "submissions": []
+    },
+    {
+      "task": "demo-3",
+      "arm": "governed",
+      "meters": {
+        "elapsed_ms": 1100,
+        "reviewer_ms": 30,
+        "public_checks": 2,
+        "model_requests": 2,
+        "input_tokens": 150,
+        "output_tokens": 40
+      },
+      "charges": {
+        "complete": true,
+        "lines": [
+          {
+            "id": "public-6-1",
+            "micro_usd": 70
+          },
+          {
+            "id": "public-6-2",
+            "micro_usd": null
+          }
+        ]
+      },
+      "submissions": [
+        {
+          "sha256": "16af6eebc8ba11eb92770ddd16d68adbf2f64fc429684f4ebe81a054ea1157ef",
+          "elapsed_ms": 500
+        },
+        {
+          "sha256": "dbb762455d8394e631cffe07caded964d8382a40f278853d256c80cac31c603d",
+          "elapsed_ms": 1000
+        }
+      ]
+    },
+    {
+      "task": "demo-4",
+      "arm": "plain",
+      "meters": {
+        "elapsed_ms": 1600,
+        "reviewer_ms": 30,
+        "public_checks": 1,
+        "model_requests": 2,
+        "input_tokens": 150,
+        "output_tokens": 40
+      },
+      "charges": {
+        "complete": true,
+        "lines": [
+          {
+            "id": "public-7-1",
+            "micro_usd": 80
+          },
+          {
+            "id": "public-7-2",
+            "micro_usd": 20
+          }
+        ]
+      },
+      "submissions": [
+        {
+          "sha256": "d40d266f38f224a146015775c79daded70d4cc8aaae27a9f85089cd7a51222ca",
+          "elapsed_ms": 1500
+        }
+      ]
+    },
+    {
+      "task": "demo-4",
+      "arm": "governed",
+      "meters": {
+        "elapsed_ms": 1900,
+        "reviewer_ms": 30,
+        "public_checks": 1,
+        "model_requests": 2,
+        "input_tokens": 150,
+        "output_tokens": 40
+      },
+      "charges": {
+        "complete": true,
+        "lines": [
+          {
+            "id": "public-8-1",
+            "micro_usd": 100
+          }
+        ]
+      },
+      "submissions": [
+        {
+          "sha256": "d4258e1a563c9207be353ad85f517219d135f0b3b73a17657918833b274b42b1",
+          "elapsed_ms": 1800
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "commit_sha": "e41f2ccedf35d7384085da1ed117e9b8b9f03554",
+  "raw_commit": "tree bd04a523d0720d510afc9323e517aee78b55481d\nparent ae5037b0dcf1e51a6f30614996ffcd0bbb01f584\nauthor Codex <codex@openai.com> 1793894169 -0500\ncommitter Codex <codex@openai.com> 1793894169 -0500\n\nFreeze G1 decision authority and evidence routing design\n",
+  "scope": "Local design commit created before implementation and comparison; publication may occur later.",
+  "tree_sha": "bd04a523d0720d510afc9323e517aee78b55481d"
+}

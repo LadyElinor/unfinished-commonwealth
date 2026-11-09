@@ -1,0 +1,290 @@
+{
+  "schema": "decision-premises-1",
+  "case": "fictional-exchange-licence",
+  "decided_at": 6,
+  "disposition": "The exchange retained its compulsory licensing condition and closed the member's hearing request.",
+  "rules": [
+    {
+      "id": "effect",
+      "premise": "The licensing condition improved on-time access.",
+      "rival": "Both districts experienced a rise in demand and service capacity.",
+      "scope": "licensed-east",
+      "stage": "merits",
+      "criterion": "on-time-admissions-per-eligible-application",
+      "method": "relative-rate",
+      "parameters": {
+        "comparison": "unlicensed-west",
+        "before": 2,
+        "after": 5
+      },
+      "change_when": false,
+      "on_change": "reconsider-finding"
+    },
+    {
+      "id": "agreement",
+      "premise": "There is no reason to investigate coordinated fees.",
+      "rival": "The providers may have accepted one another's invitation, or each may have responded to its own costs.",
+      "scope": "provider-fees",
+      "stage": "inquiry",
+      "criterion": "identified-rivals-received-and-acted-on-conditional-invitation",
+      "method": "observation",
+      "parameters": {},
+      "change_when": true,
+      "on_change": "open-inquiry"
+    },
+    {
+      "id": "notice",
+      "premise": "The member had an opportunity to answer.",
+      "rival": "The notice may have come back while a second delivery channel was available.",
+      "scope": "hearing-A",
+      "stage": "procedure",
+      "criterion": "returned-notice-and-practicable-unused-alternative",
+      "method": "observation",
+      "parameters": {},
+      "change_when": true,
+      "on_change": "renew-notice"
+    },
+    {
+      "id": "disputed-reading",
+      "premise": "The recording settles whether the member could enter without assistance.",
+      "rival": "The same view could show the clerk opening the barrier manually.",
+      "scope": "hearing-A/recording-2",
+      "stage": "procedure",
+      "criterion": "member-could-enter-unassisted",
+      "method": "observation",
+      "parameters": {},
+      "change_when": false,
+      "on_change": "rehear-disputed-issue"
+    },
+    {
+      "id": "earlier-ruling",
+      "premise": "The deciding panel adopted paragraph four as its reason for denying access.",
+      "rival": "Several members may have agreed only to send the complaint to another office.",
+      "scope": "appeal-17/paragraph-4",
+      "stage": "merits",
+      "criterion": "licence-required-before-hearing",
+      "method": "joined-reason",
+      "parameters": {
+        "panel": [
+          "alder",
+          "birch",
+          "cedar",
+          "dove",
+          "elm"
+        ]
+      },
+      "change_when": false,
+      "on_change": "reconsider-finding"
+    },
+    {
+      "id": "supervision",
+      "premise": "A disinterested supervisor examined the exclusion and could reverse it.",
+      "rival": "The licensing officers' own group may have controlled the review.",
+      "scope": "hearing-A/licence-exclusion",
+      "stage": "procedure",
+      "criterion": "substance-reviewed-with-reversal-power",
+      "method": "supervision",
+      "parameters": {
+        "decision_controller": "exchange-desk",
+        "interested_controller": "licence-guild"
+      },
+      "change_when": false,
+      "on_change": "seek-independent-review"
+    },
+    {
+      "id": "mandate",
+      "premise": "No delegation to compel this licence has been identified.",
+      "rival": "An instrument from the assembly in force at the time would require a new authority review.",
+      "scope": "exchange-east",
+      "stage": "authority",
+      "criterion": "compulsory-licensing",
+      "method": "mandate",
+      "parameters": {
+        "issuer": "assembly",
+        "actor": "exchange-desk",
+        "action": "compel-licence"
+      },
+      "change_when": true,
+      "on_change": "refer-for-mandate-review"
+    },
+    {
+      "id": "personal-relief",
+      "premise": "The member's original opportunity has been restored.",
+      "rival": "Reposting a notice might leave the same admission barrier in place.",
+      "scope": "member-A/open-hearing",
+      "stage": "remedy",
+      "criterion": "member-can-use-original-hearing-opportunity",
+      "method": "observation",
+      "parameters": {},
+      "change_when": false,
+      "on_change": "verify-individual-relief"
+    },
+    {
+      "id": "licence-charge",
+      "premise": "The desk allocated at most the extra review time this applicant's request caused.",
+      "rival": "It may have charged the member for unrelated system maintenance.",
+      "scope": "member-A/licence-application",
+      "stage": "merits",
+      "criterion": "extra-work-attributable-to-this-request",
+      "method": "impact-cap",
+      "parameters": {
+        "unit": "clerk-minutes"
+      },
+      "change_when": true,
+      "on_change": "reconsider-finding"
+    },
+    {
+      "id": "purpose",
+      "premise": "The public plan preceded any promise of an exclusive private licence.",
+      "rival": "A named provider may have secured an advance commitment before the review began.",
+      "scope": "exchange-east/plan",
+      "stage": "merits",
+      "criterion": "dated-private-commitment-predates-public-plan",
+      "method": "observation",
+      "parameters": {},
+      "change_when": true,
+      "on_change": "reconsider-finding"
+    }
+  ],
+  "records": [
+    {
+      "scope": "licensed-east",
+      "criterion": "on-time-admissions-per-eligible-application",
+      "stage": "merits",
+      "id": "east-returns",
+      "rule": "effect",
+      "kind": "relative-rate",
+      "event_at": 5,
+      "available_at": 6,
+      "source": "east-registrar",
+      "account": "On-time admissions rose from fifty to sixty among one hundred eligible applications.",
+      "data": {
+        "comparison": "unlicensed-west",
+        "before": 2,
+        "after": 5,
+        "treated_before": [
+          50,
+          100
+        ],
+        "treated_after": [
+          60,
+          100
+        ],
+        "comparison_before": null,
+        "comparison_after": null
+      }
+    },
+    {
+      "scope": "provider-fees",
+      "criterion": "identified-rivals-received-and-acted-on-conditional-invitation",
+      "stage": "inquiry",
+      "id": "price-list",
+      "rule": "agreement",
+      "kind": "context",
+      "event_at": 3,
+      "available_at": 4,
+      "source": "published-tariffs",
+      "account": "Three providers changed their fee on the same day.",
+      "data": {}
+    },
+    {
+      "scope": "hearing-A",
+      "criterion": "returned-notice-and-practicable-unused-alternative",
+      "stage": "procedure",
+      "id": "notice-log",
+      "rule": "notice",
+      "kind": "observation",
+      "event_at": 5,
+      "available_at": 5,
+      "source": "delivery-clerk",
+      "account": "The letter returned unopened. The file listed a working in-person delivery route.",
+      "data": {
+        "value": true
+      }
+    },
+    {
+      "scope": "hearing-A/recording-2",
+      "criterion": "member-could-enter-unassisted",
+      "stage": "procedure",
+      "id": "first-reader",
+      "rule": "disputed-reading",
+      "kind": "observation",
+      "event_at": 4,
+      "available_at": 5,
+      "source": "office-viewer",
+      "account": "I saw the gate open as the member approached.",
+      "data": {
+        "value": true
+      }
+    },
+    {
+      "scope": "appeal-17/paragraph-4",
+      "criterion": "licence-required-before-hearing",
+      "stage": "merits",
+      "id": "result-vote",
+      "rule": "earlier-ruling",
+      "kind": "joined-reason",
+      "event_at": 2,
+      "available_at": 3,
+      "source": "published-order",
+      "account": "The panel unanimously returned the intake file.",
+      "data": {
+        "part": "judgment-only",
+        "joined": [
+          "alder",
+          "birch",
+          "cedar",
+          "dove",
+          "elm"
+        ]
+      }
+    },
+    {
+      "scope": "hearing-A/licence-exclusion",
+      "criterion": "substance-reviewed-with-reversal-power",
+      "stage": "procedure",
+      "id": "chair-review",
+      "rule": "supervision",
+      "kind": "supervision",
+      "event_at": 5,
+      "available_at": 6,
+      "source": "minutes",
+      "account": "The licensing guild chair reviewed the merits and could reverse the desk's decision.",
+      "data": {
+        "reviewer_controller": "licence-guild",
+        "examined_merits": true,
+        "can_reverse": true
+      }
+    },
+    {
+      "scope": "exchange-east",
+      "criterion": "compulsory-licensing",
+      "stage": "authority",
+      "id": "urgency-memo",
+      "rule": "mandate",
+      "kind": "context",
+      "event_at": 5,
+      "available_at": 5,
+      "source": "operations-desk",
+      "account": "Delaying the rule could reduce capacity this month.",
+      "data": {}
+    },
+    {
+      "scope": "member-A/licence-application",
+      "criterion": "extra-work-attributable-to-this-request",
+      "stage": "merits",
+      "id": "total-work",
+      "rule": "licence-charge",
+      "kind": "impact-cap",
+      "event_at": 4,
+      "available_at": 5,
+      "source": "desk-invoice",
+      "account": "Thirty minutes were charged. The invoice gives no estimate of work caused by this application.",
+      "data": {
+        "unit": "clerk-minutes",
+        "imposed": 30,
+        "attributable": null
+      }
+    }
+  ]
+}

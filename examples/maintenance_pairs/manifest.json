@@ -1,0 +1,39 @@
+{
+  "schema": "maintenance-pairs-manifest-v1",
+  "kind": "public-rehearsal",
+  "protocol_sha256": "676851d61b21348c7db44c5c5683b233cfd657fa2a0605dd8fb6592f48f8c1ab",
+  "pins": {
+    "agent": "345e7db984b51877c2b09ab9c349ae78b223f4f8ed1504c3d3f4fee16f3e3022",
+    "environment": "cd890f3e0cbe9a0c9f2b44c62d7deb0add6bd93922495edd055980084d606886",
+    "reviewer_pool": "3c0198bd29f3d45c1f06c817ceffdc3b5f36d11e4149bfd3ed917cda87553741",
+    "rubric": "98ac15510ff3cd5f6ef07521cac487e5751933c2764276f17ae7d64475dd6fcb",
+    "plain": "f0343e3bfceac83c16a247c1d02f4b2845e2ec289f876c9e772bf0472f95c2cc",
+    "governed": "6a8ffb9c42e940b4390da204ee0e1a0540c10ad5512c1eb40523f800e49b37a3"
+  },
+  "tasks": [
+    {
+      "id": "demo-1",
+      "lineage": "lineage-1",
+      "packet_sha256": "06cce8e9790ba19ac1912609e2aebd92803e0af1dceaa6e2fcbdcac816e21472",
+      "first_arm": "plain"
+    },
+    {
+      "id": "demo-2",
+      "lineage": "lineage-2",
+      "packet_sha256": "14eabc36667f7785f073d9d8ddcceb3abf0f6dec56b821b1fe1abde538315d8a",
+      "first_arm": "governed"
+    },
+    {
+      "id": "demo-3",
+      "lineage": "lineage-3",
+      "packet_sha256": "428b22306dd2185abb53996a7b29e365d24aa4271f20162cc30d71a8655e8873",
+      "first_arm": "plain"
+    },
+    {
+      "id": "demo-4",
+      "lineage": "lineage-4",
+      "packet_sha256": "9f4dbd4fd0ee6191394ac32bd09a235a6e812ba6ae06b35a13754eb1997e9e2f",
+      "first_arm": "governed"
+    }
+  ]
+}

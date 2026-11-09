@@ -1,8 +1,10 @@
 # Contributing
 
-Start with a concrete observation or proposed improvement. Explain the affected process or participant, the expected result, the observed result, and how the change can be checked. Disagreement is welcome; a majority of agent names is not independent evidence.
+If you tried to do something here and got stuck, tell us where. One sentence is enough. You can also flag a practice worth keeping. Use the [contributor observation form](https://github.com/LadyElinor/unfinished-commonwealth/issues/new?template=observation.md). A proposed fix, follow-up work and public credit are all optional.
 
-For a first contribution, use [Start here](docs/START_HERE.md). Reproduce a published result, check the sixteen-cell warning comparison independently, or exercise the JSON participation profile. A useful report can be a mismatch, a failed installation, or an instruction that required guessing. Use the repository's reproduction-report issue template and include the exact commit, environment, commands, skipped checks and observed output. English and Chinese reports are welcome.
+If you maintain the affected area, try the reported step yourself. When taking it up, say who will check it. Look first at the instruction, tools and access the contributor had. If you change something, link the change and give the result of repeating the original task. If you defer or decline it, give the reason and identify any remaining obstacle. The reporter can step away at any point. Ask before naming them in release notes or other recognition.
+
+For a first technical contribution, use [Start here](docs/START_HERE.md). Reproduce a published result, check the sixteen-cell warning comparison independently, or exercise the JSON participation profile. To report a reproduction, use the repository's reproduction-report template and include the exact commit, environment, commands, skipped checks and observed output. For a proposed change, describe whom it affects, what outcome you expect, and how to check it. English and Chinese reports are welcome. Disagreement is welcome. A count of agent names alone cannot establish independent evidence.
 
 Before submitting a change, run:
 
@@ -13,6 +15,12 @@ python scripts/verify.py
 Keep the runtime dependency-free unless a new dependency has a clear purpose. Add tests for behavioral changes, failures, and boundaries. Do not add tests that merely repeat implementation text. Preserve supplied testimony verbatim in records and keep interpretation separate. Never submit secrets, private conversations, personal data, live credentials, or real production databases as fixtures.
 
 The original three scenarios, all D1 cases, all N1 cells and example reports are exposed development material. Never relabel them as withheld evaluation data. Report failed cases and resource costs alongside successes. If a comparison changes the observations or resources available to different arms, disclose that difference. Record whether a check reran the supplied implementation, independently reimplemented arithmetic, or used independently controlled evidence; these establish different things.
+
+When proposing a consequential restriction or reviewing an adverse result, identify the precise
+finding that would change your recommendation. Name the affected person or group, the competing
+explanation, the evidence available at the time, and who could act on a changed finding.
+The [worked review](docs/DECISION_PREMISES.md) shows how to preserve a dissent and test a later
+observation without rewriting the decision. Apply the same questions to maintainers' own rules.
 
 Protocol changes need a schema/version decision and replay compatibility analysis. Changes to the reference result, validity contract, budget, evaluator, or authority rules require an explicit review of the claims they affect. The verifier cannot certify the legitimacy of a new policy.
 
@@ -27,3 +35,18 @@ At the same time, do not make a predelegated safety halt depend on completing an
 ordinary review form. Test both blocked unwarranted action and delayed or
 unavailable legitimate correction. Apply these requirements to our maintainers
 and synthetic agents as well as to institutions being studied.
+
+An independent custodian can contribute to the [paired repository-maintenance study](docs/MAINTENANCE_STUDY_PROTOCOL.md).
+The protocol describes eligibility, sealed intake, matched reviewer access, and blind grading.
+Keep private cases and answers out of issues, pull requests, and development checkouts.
+Anyone can reproduce the [four public arithmetic examples](examples/maintenance_pairs/README.md).
+
+The [custodian handoff](docs/MAINTENANCE_CUSTODY_HANDOFF.md) gives the independent custodian, witness and grading lead a public rehearsal and the commands for the private study.
+
+When proposing or reviewing a rule that changes access, identify who could use
+the same opportunity under the same material conditions. Look for a contemporaneous
+counterexample or dissent, report what you found, explain the office's authority over each issue, and
+distinguish a narrower ruling or new hearing from relief the person could use.
+Name who owns verification, when it is due, and which other denials remain.
+The [equal-treatment review](docs/EQUAL_TREATMENT_REVIEW.md) applies these questions
+to our own intake decisions and includes a runnable example.
