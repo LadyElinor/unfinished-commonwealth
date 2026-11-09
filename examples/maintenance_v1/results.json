@@ -1,0 +1,124 @@
+{
+  "schema": "commonwealth.cortac-maintenance.v1",
+  "baseline_commit": "3688dcdfa70b27531c8f0d3bd315a88736c87655",
+  "cortac_commit": "ea7a72456e00bd2b80aa4ccd9ae97262aedc3562",
+  "binding_sha256": "f6617e30931075b386bb1e2079fa789b97ccfeddd45588afe21d387b3a104b70",
+  "review_sha256": "dfe25c13e0d9120de150d25ca6068d21abdd2bb1c1f38bfa290e5670696b651f",
+  "controls": {
+    "repository_task_refused": true,
+    "patch_action_refused": true,
+    "patch_method_refused": true,
+    "missing_field_refused": true,
+    "removed_limit_refused": true,
+    "erased_dissent_refused": true,
+    "fail_not_promoted": true,
+    "fabricated_all_pass_is_structurally_accepted": true
+  },
+  "verifier_probes": [
+    {
+      "case": "empty",
+      "version": "baseline",
+      "require_no_skips": false,
+      "exit_code": 5,
+      "elapsed_ns": 123344228,
+      "log_sha256": "e70fec2825d9bf206d27463a792768195039599cb39bcca66339f47283f84cce"
+    },
+    {
+      "case": "empty",
+      "version": "candidate",
+      "require_no_skips": false,
+      "exit_code": 1,
+      "elapsed_ns": 165995112,
+      "log_sha256": "5e25972ad77b88ee094e8b8af8dc96e7f0bd9c749db5401b4e1e58f7877efa0a",
+      "status": "FAILED"
+    },
+    {
+      "case": "all-skipped",
+      "version": "baseline",
+      "require_no_skips": false,
+      "exit_code": 0,
+      "elapsed_ns": 136599409,
+      "log_sha256": "2901d179e315c8179a8b8ba05b06af92febecb1f8ed5f6895abdac828f8621dd"
+    },
+    {
+      "case": "all-skipped",
+      "version": "candidate",
+      "require_no_skips": false,
+      "exit_code": 1,
+      "elapsed_ns": 134164699,
+      "log_sha256": "0cd38559ada2e72709c4aa16e8d87d015fa955e78f3fa5c05b2b9dd53ca0df6e",
+      "status": "FAILED"
+    },
+    {
+      "case": "pass",
+      "version": "baseline",
+      "require_no_skips": false,
+      "exit_code": 0,
+      "elapsed_ns": 135668425,
+      "log_sha256": "62e8c0cc4c9bf81a1c5db254e762869832b7a5541b6c7dca62bb774db15fdf15"
+    },
+    {
+      "case": "pass",
+      "version": "candidate",
+      "require_no_skips": false,
+      "exit_code": 0,
+      "elapsed_ns": 134443285,
+      "log_sha256": "ff27800f3893932825027240dc0185f69617a77433ad6e3de1db57895290f980",
+      "status": "PASSED"
+    },
+    {
+      "case": "mixed",
+      "version": "baseline",
+      "require_no_skips": false,
+      "exit_code": 0,
+      "elapsed_ns": 97726489,
+      "log_sha256": "901e057007ca7fc9271bff0c7393e0200b64953d45a967a8acc337e6b41b0fdc"
+    },
+    {
+      "case": "mixed",
+      "version": "candidate",
+      "require_no_skips": false,
+      "exit_code": 0,
+      "elapsed_ns": 118065795,
+      "log_sha256": "984cfe9b2f7e29f7c211e063355b0c6e1619545b1dd226496a31408d549d1613",
+      "status": "PASSED_WITH_SKIPS"
+    },
+    {
+      "case": "mixed",
+      "version": "candidate",
+      "require_no_skips": true,
+      "exit_code": 1,
+      "elapsed_ns": 101289421,
+      "log_sha256": "4b89e80d2777be788490cc0abab07e7a68bf2511d38621f47a7d86f47b3efc21",
+      "status": "FAILED"
+    },
+    {
+      "case": "failure",
+      "version": "baseline",
+      "require_no_skips": false,
+      "exit_code": 1,
+      "elapsed_ns": 102537810,
+      "log_sha256": "03f83c119914aba4fbfc1545922b4959b7ef809c850808050fb64f5813c1f706"
+    },
+    {
+      "case": "failure",
+      "version": "candidate",
+      "require_no_skips": false,
+      "exit_code": 1,
+      "elapsed_ns": 93978375,
+      "log_sha256": "8fd829a5ee8fb4ed956822ecdc9dcf53ee4b380563b79f05419e1517ce46bbcc",
+      "status": "FAILED"
+    }
+  ],
+  "preserved_files": 266,
+  "review_structurally_complete": true,
+  "supplied_assessments_pass": false,
+  "s2_scheduling": "NOT_ATTEMPTED_NO_ADMITTED_REPOSITORY_TASK",
+  "authority": "NONE",
+  "scope": "LOCAL_RESEARCH_ONLY",
+  "independent_review": false,
+  "efficacy_measured": false,
+  "autonomous_patch_generation": false,
+  "agent_latency_tokens_money": "NOT_MEASURED",
+  "python": "3.12.14"
+}

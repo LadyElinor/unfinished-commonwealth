@@ -1,0 +1,46 @@
+{
+  "schema": "commonwealth.maintenance-baseline.v1",
+  "baseline_commit": "3688dcdfa70b27531c8f0d3bd315a88736c87655",
+  "verifier_sha256": "7f6b0941b1fe43b41e5c2ac540e3a4337e52882006823188f0d8d98e1d74e3f8",
+  "python": "3.12.14",
+  "cases": [
+    {
+      "case": "empty",
+      "exit_code": 5,
+      "success_message": false,
+      "elapsed_ns": 138666627,
+      "fixture_source": ""
+    },
+    {
+      "case": "all-skipped",
+      "exit_code": 0,
+      "success_message": true,
+      "elapsed_ns": 131603853,
+      "fixture_source": "import unittest\n@unittest.skip(\"deliberately unavailable\")\nclass T(unittest.TestCase):\n def test_one(self): pass\n"
+    },
+    {
+      "case": "pass",
+      "exit_code": 0,
+      "success_message": true,
+      "elapsed_ns": 142878525,
+      "fixture_source": "import unittest\nclass T(unittest.TestCase):\n def test_one(self): self.assertTrue(True)\n"
+    },
+    {
+      "case": "mixed",
+      "exit_code": 0,
+      "success_message": true,
+      "elapsed_ns": 129024853,
+      "fixture_source": "import unittest\nclass T(unittest.TestCase):\n def test_one(self): pass\n @unittest.skip(\"deliberately unavailable\")\n def test_two(self): pass\n"
+    },
+    {
+      "case": "failure",
+      "exit_code": 1,
+      "success_message": false,
+      "elapsed_ns": 106981927,
+      "fixture_source": "import unittest\nclass T(unittest.TestCase):\n def test_one(self): self.fail(\"deliberate negative control\")\n"
+    }
+  ],
+  "scope": "EXPOSED_ENGINEERING_CHECK",
+  "independent_operators": false,
+  "efficacy_measured": false
+}

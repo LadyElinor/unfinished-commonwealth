@@ -10,6 +10,10 @@ python scripts/verify.py
 python scripts/reproduce.py .local/reproduction
 python -m commonwealth verify .local/reproduction/demo.sqlite
 python -m commonwealth.study_v1 run .local/study-v1
+python -m commonwealth.coordination_v1 run .local/coordination-v1
+python -m commonwealth.coordination_v2 run .local/coordination-v2
+python -m commonwealth.uncertainty_v1 run .local/uncertainty-v1
+node scripts/audit_uncertainty.mjs .local/uncertainty-v1/episodes.jsonl .local/uncertainty-v1/results.json
 python -m commonwealth.procedure_v1 run .local/procedure-v1
 python -m commonwealth.discernment_v1 run .local/discernment-v1
 python -m commonwealth.integrity_v1 run .local/integrity-v1
@@ -30,6 +34,17 @@ The separate study command creates 432 complete journals, a detailed result
 matrix and a compact summary. Replay uses `python -m commonwealth.study_v1 replay
 PATH_TO_JOURNAL`. The last-written `results.json` marks a complete run; files
 left before that marker are partial artifacts. All study fixtures are exposed.
+
+G1 creates 672 complete JSONL episodes and a digest-bound summary. Replay a line
+with `python -m commonwealth.coordination_v1 replay .local/coordination-v1/episodes.jsonl --line 1`.
+Packaging reproduces the committed G1 summary and replays an installed-wheel
+episode, in addition to the historical study checks.
+
+G2 writes 2,016 complete JSONL episodes, separating protected operation and guard
+bypass controls. Use `python -m commonwealth.coordination_v2 replay .local/coordination-v2/episodes.jsonl --line 2016`
+to check the last episode. Packaging also reproduces its summary and installed
+replay. G2-1 is superseded; its exact historical code/results are linked in the
+[G2-2 design](COORDINATION_V2_DESIGN.md).
 
 I1 writes 112 advisory comparisons. R1 writes 14 review traces. R1 reconsideration
 requires the exact original journal at replay:
@@ -114,3 +129,12 @@ Do not edit the legacy reducer to change live behavior. Unknown versions,
 protocol downgrades, malformed JSON, and type-substituted records are refused.
 See [protocol compatibility](PROTOCOL.md). Older packages cannot read v2
 events; back up an old database before continuing it with the new version.
+
+E1 writes 3,840 exposed records. Its independent Node checker verifies arithmetic,
+scheduling and all summary counters, while Python replay also reconstructs policy
+choices. Use `python -m commonwealth.uncertainty_v1 replay .local/uncertainty-v1/episodes.jsonl --line 3840`.
+The source/wheel verification also reproduces E1 from the installed package.
+
+The [E1 checker contract](UNCERTAINTY_CHECKER_CONTRACT.md) documents strict input
+limits, raw byte hashes, initial/final outcome partitions, and explicit scope
+flags. `--partial` does not verify complete matrix coverage or policy execution.

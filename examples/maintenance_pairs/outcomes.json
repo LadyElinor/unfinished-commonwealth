@@ -1,0 +1,248 @@
+{
+  "schema": "maintenance-pairs-outcomes-v1",
+  "manifest_sha256": "61912572098a9e07dafe143f0efe8f3fd3ac98b4fefada1f3ad1322f6593e7a9",
+  "lineage_assessment": "unknown",
+  "runs": [
+    {
+      "task": "demo-1",
+      "arm": "plain",
+      "order": 1,
+      "packet_sha256": "06cce8e9790ba19ac1912609e2aebd92803e0af1dceaa6e2fcbdcac816e21472",
+      "workflow_sha256": "f0343e3bfceac83c16a247c1d02f4b2845e2ec289f876c9e772bf0472f95c2cc",
+      "agent_sha256": "345e7db984b51877c2b09ab9c349ae78b223f4f8ed1504c3d3f4fee16f3e3022",
+      "environment_sha256": "cd890f3e0cbe9a0c9f2b44c62d7deb0add6bd93922495edd055980084d606886",
+      "receipt_sha256": "618828d15fc9c5b7d6b31585d69bec48e118d1f83fc9d7c781625ad2a343ddb7",
+      "closure": "completed",
+      "disposition": "accept",
+      "candidates": [
+        {
+          "sha256": "974989329f402ee6b81dfe435fad823e77ffc6661ecfa69d29345848175e106f",
+          "elapsed_ms": 1000,
+          "grade": "incorrect"
+        }
+      ],
+      "usage": {
+        "elapsed_ms": 1100,
+        "reviewer_ms": 30,
+        "public_checks": 1,
+        "model_requests": 2,
+        "input_tokens": 150,
+        "output_tokens": 40,
+        "cost_micro_usd": 100
+      },
+      "deviations": []
+    },
+    {
+      "task": "demo-1",
+      "arm": "governed",
+      "order": 2,
+      "packet_sha256": "06cce8e9790ba19ac1912609e2aebd92803e0af1dceaa6e2fcbdcac816e21472",
+      "workflow_sha256": "6a8ffb9c42e940b4390da204ee0e1a0540c10ad5512c1eb40523f800e49b37a3",
+      "agent_sha256": "345e7db984b51877c2b09ab9c349ae78b223f4f8ed1504c3d3f4fee16f3e3022",
+      "environment_sha256": "cd890f3e0cbe9a0c9f2b44c62d7deb0add6bd93922495edd055980084d606886",
+      "receipt_sha256": "5de3cac0788733cf5fef0aad5b6a6383e401efd54f3cb513f6f647016c195720",
+      "closure": "completed",
+      "disposition": "accept",
+      "candidates": [
+        {
+          "sha256": "ae57a38b9cdb14d57787d338c2b51f11651ebc7269a8cf4648b2efc0efa3dae7",
+          "elapsed_ms": 1000,
+          "grade": "incorrect"
+        },
+        {
+          "sha256": "10efbc194a25427a324ddce89dc76fee1bf0b088be375b2a4ae2d7582172b917",
+          "elapsed_ms": 4000,
+          "grade": "correct"
+        }
+      ],
+      "usage": {
+        "elapsed_ms": 4100,
+        "reviewer_ms": 30,
+        "public_checks": 2,
+        "model_requests": 2,
+        "input_tokens": 150,
+        "output_tokens": 40,
+        "cost_micro_usd": 100
+      },
+      "deviations": []
+    },
+    {
+      "task": "demo-2",
+      "arm": "plain",
+      "order": 2,
+      "packet_sha256": "14eabc36667f7785f073d9d8ddcceb3abf0f6dec56b821b1fe1abde538315d8a",
+      "workflow_sha256": "f0343e3bfceac83c16a247c1d02f4b2845e2ec289f876c9e772bf0472f95c2cc",
+      "agent_sha256": "345e7db984b51877c2b09ab9c349ae78b223f4f8ed1504c3d3f4fee16f3e3022",
+      "environment_sha256": "cd890f3e0cbe9a0c9f2b44c62d7deb0add6bd93922495edd055980084d606886",
+      "receipt_sha256": "52a581a9b1248e9dbd5ba97e13e69f109014160da1ba0df8884265b7093f7369",
+      "closure": "completed",
+      "disposition": "accept",
+      "candidates": [
+        {
+          "sha256": "cab907ba2477802edfe846599c9155990127ef1221fbf27720a2ebebe41049be",
+          "elapsed_ms": 2000,
+          "grade": "correct"
+        }
+      ],
+      "usage": {
+        "elapsed_ms": 2100,
+        "reviewer_ms": 30,
+        "public_checks": 1,
+        "model_requests": 2,
+        "input_tokens": 150,
+        "output_tokens": 40,
+        "cost_micro_usd": 100
+      },
+      "deviations": []
+    },
+    {
+      "task": "demo-2",
+      "arm": "governed",
+      "order": 1,
+      "packet_sha256": "14eabc36667f7785f073d9d8ddcceb3abf0f6dec56b821b1fe1abde538315d8a",
+      "workflow_sha256": "6a8ffb9c42e940b4390da204ee0e1a0540c10ad5512c1eb40523f800e49b37a3",
+      "agent_sha256": "345e7db984b51877c2b09ab9c349ae78b223f4f8ed1504c3d3f4fee16f3e3022",
+      "environment_sha256": "cd890f3e0cbe9a0c9f2b44c62d7deb0add6bd93922495edd055980084d606886",
+      "receipt_sha256": "6fa22bd4668a12932bad9b705c8d31f0380c23ec4bc0300670a122906503a209",
+      "closure": "completed",
+      "disposition": "decline",
+      "candidates": [
+        {
+          "sha256": "b2695b5a88ba6065752287ce9f31120f3009c47b6424e2365cca1181c772e16d",
+          "elapsed_ms": 1200,
+          "grade": "correct"
+        },
+        {
+          "sha256": "bd60b433bb03db3a2d9b96e0bd8c8fc661a963d4254397ef19cef4a8f55ae001",
+          "elapsed_ms": 3000,
+          "grade": "incorrect"
+        }
+      ],
+      "usage": {
+        "elapsed_ms": 3100,
+        "reviewer_ms": 30,
+        "public_checks": 2,
+        "model_requests": 2,
+        "input_tokens": 150,
+        "output_tokens": 40,
+        "cost_micro_usd": 100
+      },
+      "deviations": []
+    },
+    {
+      "task": "demo-3",
+      "arm": "plain",
+      "order": 1,
+      "packet_sha256": "428b22306dd2185abb53996a7b29e365d24aa4271f20162cc30d71a8655e8873",
+      "workflow_sha256": "f0343e3bfceac83c16a247c1d02f4b2845e2ec289f876c9e772bf0472f95c2cc",
+      "agent_sha256": "345e7db984b51877c2b09ab9c349ae78b223f4f8ed1504c3d3f4fee16f3e3022",
+      "environment_sha256": "cd890f3e0cbe9a0c9f2b44c62d7deb0add6bd93922495edd055980084d606886",
+      "receipt_sha256": "40e34e68b243c0154e58c026189dbd3727dd5e86e0aafd5b121c8a77c88fade7",
+      "closure": "timeout",
+      "disposition": "unresolved",
+      "candidates": [],
+      "usage": {
+        "elapsed_ms": 1800000,
+        "reviewer_ms": 30,
+        "public_checks": 0,
+        "model_requests": 2,
+        "input_tokens": 150,
+        "output_tokens": 40,
+        "cost_micro_usd": 100
+      },
+      "deviations": []
+    },
+    {
+      "task": "demo-3",
+      "arm": "governed",
+      "order": 2,
+      "packet_sha256": "428b22306dd2185abb53996a7b29e365d24aa4271f20162cc30d71a8655e8873",
+      "workflow_sha256": "6a8ffb9c42e940b4390da204ee0e1a0540c10ad5512c1eb40523f800e49b37a3",
+      "agent_sha256": "345e7db984b51877c2b09ab9c349ae78b223f4f8ed1504c3d3f4fee16f3e3022",
+      "environment_sha256": "cd890f3e0cbe9a0c9f2b44c62d7deb0add6bd93922495edd055980084d606886",
+      "receipt_sha256": "d477c85f88585968e7f8bb2fb45afa345e7cf86681554e93c5a7294bcce00015",
+      "closure": "unknown",
+      "disposition": "unresolved",
+      "candidates": [
+        {
+          "sha256": "16af6eebc8ba11eb92770ddd16d68adbf2f64fc429684f4ebe81a054ea1157ef",
+          "elapsed_ms": 500,
+          "grade": "incorrect"
+        },
+        {
+          "sha256": "dbb762455d8394e631cffe07caded964d8382a40f278853d256c80cac31c603d",
+          "elapsed_ms": 1000,
+          "grade": "unknown"
+        }
+      ],
+      "usage": {
+        "elapsed_ms": 1100,
+        "reviewer_ms": 30,
+        "public_checks": 2,
+        "model_requests": 2,
+        "input_tokens": 150,
+        "output_tokens": 40,
+        "cost_micro_usd": null
+      },
+      "deviations": []
+    },
+    {
+      "task": "demo-4",
+      "arm": "plain",
+      "order": 2,
+      "packet_sha256": "9f4dbd4fd0ee6191394ac32bd09a235a6e812ba6ae06b35a13754eb1997e9e2f",
+      "workflow_sha256": "f0343e3bfceac83c16a247c1d02f4b2845e2ec289f876c9e772bf0472f95c2cc",
+      "agent_sha256": "345e7db984b51877c2b09ab9c349ae78b223f4f8ed1504c3d3f4fee16f3e3022",
+      "environment_sha256": "cd890f3e0cbe9a0c9f2b44c62d7deb0add6bd93922495edd055980084d606886",
+      "receipt_sha256": "064e81499e33396abe4cf2eb20a915e49b55f5997fc98b49e429541e98db5fe6",
+      "closure": "completed",
+      "disposition": "decline",
+      "candidates": [
+        {
+          "sha256": "d40d266f38f224a146015775c79daded70d4cc8aaae27a9f85089cd7a51222ca",
+          "elapsed_ms": 1500,
+          "grade": "correct"
+        }
+      ],
+      "usage": {
+        "elapsed_ms": 1600,
+        "reviewer_ms": 30,
+        "public_checks": 1,
+        "model_requests": 2,
+        "input_tokens": 150,
+        "output_tokens": 40,
+        "cost_micro_usd": 100
+      },
+      "deviations": []
+    },
+    {
+      "task": "demo-4",
+      "arm": "governed",
+      "order": 1,
+      "packet_sha256": "9f4dbd4fd0ee6191394ac32bd09a235a6e812ba6ae06b35a13754eb1997e9e2f",
+      "workflow_sha256": "6a8ffb9c42e940b4390da204ee0e1a0540c10ad5512c1eb40523f800e49b37a3",
+      "agent_sha256": "345e7db984b51877c2b09ab9c349ae78b223f4f8ed1504c3d3f4fee16f3e3022",
+      "environment_sha256": "cd890f3e0cbe9a0c9f2b44c62d7deb0add6bd93922495edd055980084d606886",
+      "receipt_sha256": "9514f8829b99c2030082c2ebf7c6cd1588a23329d6011b00bc5e9e08215dd076",
+      "closure": "completed",
+      "disposition": "accept",
+      "candidates": [
+        {
+          "sha256": "d4258e1a563c9207be353ad85f517219d135f0b3b73a17657918833b274b42b1",
+          "elapsed_ms": 1800,
+          "grade": "correct"
+        }
+      ],
+      "usage": {
+        "elapsed_ms": 1900,
+        "reviewer_ms": 30,
+        "public_checks": 1,
+        "model_requests": 2,
+        "input_tokens": 150,
+        "output_tokens": 40,
+        "cost_micro_usd": 100
+      },
+      "deviations": []
+    }
+  ]
+}

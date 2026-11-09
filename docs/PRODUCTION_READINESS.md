@@ -10,7 +10,7 @@ The current engine is still a fixture-driven research workshop, not that product
 operational commands have a fixed 256-command lifetime. These are not production
 capacity or business-domain guarantees. Operational tooling must not relabel them.
 
-Distribution **0.1.4rc1** is an unpublished operational prerequisite candidate.
+Distribution **0.1.4rc2** is an unpublished operational prerequisite candidate.
 Historical engine/runtime version **0.1.3** and all research reducers remain
 unchanged. Separately versioned **O1 / operations-1.0.0** adds inspection, WSGI
 adaptation and recovery. B1.1 is the selected host implementation; C2 remains the

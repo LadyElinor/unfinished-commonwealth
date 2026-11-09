@@ -1,10 +1,38 @@
 # Roadmap
 
-For the implemented components, reproduction commands and bounded contribution tasks, see [Start here](docs/START_HERE.md). The original workshop remains frozen at 0.1.3; the current distribution is an unpublished 0.1.4rc1 research candidate.
+For the implemented components, reproduction commands and bounded contribution tasks, see [Start here](docs/START_HERE.md). The original workshop remains frozen at 0.1.3; the current distribution is an unpublished 0.1.4rc2 research candidate.
 
 ## Measurement before additional protocol work
 
 The [fixed-trace timing comparison](docs/CHARGED_WORKSHOP_RESULTS.md) and the D1 external policy control now run alongside the historical evaluations. The [N1 warning study](docs/NEIGHBOR_TIMING_RESULTS.md) tests paid, fallible consultation against unconditional reservation, a coin and a matched instrument. A communal benefit beyond a fixed policy with equivalent information and independently held-out cases remain open gates.
+
+The separately frozen [G1 comparison](docs/COORDINATION_V1_RESULTS.md) tests
+method-selection authority and report routing on the existing D1 scheduler.
+All 672 episodes retain false-warning delays, suppressed warnings, repairs and
+prior misses. A simple evidence selector suffices; central/delegated direct
+reporting arms tie in aggregate. Next: independent arithmetic/schedule review
+and separately controlled evidence for any new efficacy claim. G1 does not
+authorize a governance deployment or alter individual-rights safeguards.
+
+[G2](docs/COORDINATION_V2_RESULTS.md) adds an actual two-of-three selection rule
+and explicitly modeled retaliation, closing two G1 omissions. Its G2-2 revision
+corrects a disclosed information-flow error from the first development run:
+filtering cannot erase the report author's own knowledge. The superseded run
+remains available in Git history. Outcomes still do not demonstrate an advantage
+over the evidence selector or an institutional efficacy result.
+
+[E1 / E1R](docs/UNCERTAINTY_V1_RESULTS.md) now implements the next two bounded
+tranches: uncertain evidence with fallible review, then separate selective
+inspection-credit denial and neutral-cut controls. All 3,840 cases are exposed.
+The fixed evidence policies do not beat constants on unconditional correctness
+in this authored matrix; wrong reviews can regress a correct result. The
+independent JavaScript checker caught and documented a corrected first-output
+accounting defect. G1/G2 and their prior evidence stay frozen.
+
+The [next evaluation gates](docs/UNCERTAINTY_EVALUATION_GATES.md) require a concrete
+noncritical task, independently controlled evidence, and a prospective analysis
+with an appropriate unit of analysis. More generated fixtures cannot satisfy
+that gate. Rights review capture and adaptive self-censorship remain untested.
 
 ## O1 operational prerequisites: production still blocked
 

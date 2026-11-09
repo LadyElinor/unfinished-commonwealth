@@ -90,3 +90,33 @@ Actual principal authentication, protected evidence retention, enforceable
 cross-department review, external effects and operational acceptance remain out
 of scope. See [production limits](PRODUCTION_READINESS.md) and
 [existing balanced advisory review](REVIEW_V1.md).
+
+## Owed assistance
+
+> When someone tells us our help has hurt them, they should be free to tell us the whole of it without first having to take care of us.
+
+Run the [wrongful-denial example](../examples/owed-assistance.json) from the repository root.
+
+```sh
+python -m commonwealth.remediation_v1.assistance examples/owed-assistance.json --as-of 6
+python -m unittest discover -s tests -p test_owed_assistance.py -v
+```
+
+The `owed-assistance-1` packet starts after the institution has recognized a particular person's award. The original account also warns about a rule affecting other people. Keep the private account in its original wording. The person may decline public reconciliation, publicity, repeat testimony and further contact, or leave any preference unanswered. The review reads payment evidence and institutional files without scoring the person's demeanor or requiring another response. The CLI emits the two assessments, recorded burdens, record references and packet digest. The private Python `review_assistance(packet, as_of=...)` result also retains the full input. Keep both the source file and any identifying output within the intended audience.
+
+| What the record shows | Who owns the next action |
+| --- | --- |
+| An award or a payment instruction, with no verified credit | The paying office reconciles delivery. The full award remains without delivery evidence. |
+| A separate register credits 40 of 100 fictional units to the named recipient | The paying office follows the remaining 60. A returned transfer, a wrong recipient, or a credit asserted solely by the paying or deciding office cannot supply the missing evidence. |
+| The full award is credited. The community has only acknowledged the rule warning. | The payment report records delivery. The named institution still owes a reviewer assignment. |
+| A reviewer has examined both other files and found another wrongful denial | The reviewer retains responsibility for follow-up, and the other case is explicitly listed as owed correction. This record establishes a finding in that file. Its remedy needs its own delivery evidence. |
+
+**Payment evidence.** The amount, award reference, and recipient are fixed by the supplied award. Each transfer carries one current record, declared controller, observation time and fictional amount. The fixed delivery test counts only a matching credit from a controller distinct from the payee, paying office and original decision office. Record identifiers are unique across the packet. Multiple transfers can cover installments. Reusing a transfer ID is rejected, and excess credits are reported. The balance without evidence measures uncertainty about delivery. It cannot prove actual nonpayment. If the current transfer state changes, retain the old snapshot separately.
+
+**Inquiry and burden.** An acknowledgment leaves the institution responsible. An eligible reviewer needs a distinct declared controller from the original office, paying office and affected person. The reviewer records the search of institutional files under the named rule after assignment. The inventory declares its coverage. Missing, incomplete or wrong-rule searches keep the inquiry open. Each file requires a current finding. Missing and inconclusive findings, corrections owed and unused adverse records remain visible. Review of the declared inventory can finish without establishing the rule's safety outside that inventory.
+
+Record time and other burdens in fictional work units by who bore them. A required act by the affected person is flagged even at zero recorded cost, for example when someone declines a demand to tell the story again. Optional contributions are distinguished from demands, and unknown costs are counted separately. No entries means no work was recorded. These measures leave any institutional demand visible after payment.
+
+The sample ends with 100 units credited, four work units recorded against the institution, and another case (`other-8`) still owed correction. All entries are fictional. The host can omit other denials, invent a settlement or label one controller as two. This local review cannot authenticate consent, establish the completeness of a search, move money or enforce a remedy.
+
+The [role-history rehearsal](ROLE_HISTORY_RESULTS.md) checks who selected the files, briefed the panel and voted. It compares office-name screening and case-linked history under matched budgets and reserve availability.
