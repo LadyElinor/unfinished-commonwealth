@@ -274,12 +274,25 @@ class ParticipantTests(unittest.TestCase):
         self.assertNotIn(self.token, canonical(self.workshop.events()))
 
     def test_failed_credential_write_does_not_issue_capability(self):
-        with self.assertRaises(OSError):
-            self.boundary.issue(self.root / "missing" / "credential")
-        with patch("commonwealth.participant_v1.store.os.fsync", side_effect=OSError("injected")):
-            with self.assertRaises(OSError):
-                self.boundary.issue(self.root / "failed")
-        self.assertFalse((self.root / "failed").exists())
+        destination = self.root / "missing" / "credential"
+        self.assertFalse(destination.parent.exists())
+        with self.subTest(check="missing parent at exclusive create"):
+            with self.assertRaises(FileNotFoundError):
+                self.boundary.issue(destination)
+        with self.subTest(check="no file at requested destination"):
+            self.assertFalse(destination.exists())
+        with self.subTest(check="only the setup capability remains"):
+            self.assertEqual(len(self.boundary.audit()["capabilities"]), 1)
+
+    def test_failed_credential_write_at_fsync_rolls_back(self):
+        destination = self.root / "failed"
+        fault = OSError("injected fsync failure")
+        with patch("commonwealth.participant_v1.store.os.fsync", side_effect=fault) as sync:
+            with self.assertRaises(OSError) as raised:
+                self.boundary.issue(destination)
+        sync.assert_called_once()
+        self.assertIs(raised.exception, fault)
+        self.assertFalse(destination.exists())
         self.assertEqual(len(self.boundary.audit()["capabilities"]), 1)
 
     def test_install_never_overwrites_existing_boundary(self):

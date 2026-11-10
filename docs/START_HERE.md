@@ -51,6 +51,21 @@ node scripts/audit_measurement.mjs study .local/first-reproduction/d1/journals .
 node scripts/audit_measurement.mjs assembly examples/assembly_v1/public_record.json
 ```
 
+If credential issuance behaves differently in a sandbox, run both rollback
+checks directly from the checkout root (also works in Windows Command Prompt):
+
+```sh
+python -m unittest discover -s tests -p test_participant_v1.py -k failed_credential_write -v
+```
+
+The first check calls `Boundary.issue()` with a missing parent and expects
+`FileNotFoundError` at exclusive file creation. The second injects an error at
+`fsync` after creation and checks that issuance removes the file. Both check
+that only the setup capability remains. Report each outcome and the failing
+assertion, along with the commit, OS, Python version, and any sandbox message.
+A successful run elsewhere leaves the cause of the original failure open.
+Keep bearer values and credential files out of the report.
+
 The JavaScript checker separately computes arithmetic, reconstructs peer service from recorded costs, and recounts public chamber votes. It does not verify signatures, independent custody or the truth of ballots. Installing dependencies may require network access; the experiments themselves make no model calls.
 
 The [UID-boundary demonstration](UID_ISOLATION.md) is a separate opt-in Linux check with privileged setup on a disposable runner. Ordinary unit tests do not establish that it ran. `python -m commonwealth.measurement_v1 readiness` deliberately exits 2 with `LOCAL_RESEARCH_ONLY`; that result is expected.
@@ -58,7 +73,7 @@ The [UID-boundary demonstration](UID_ISOLATION.md) is a separate opt-in Linux ch
 ## Choose one contribution
 
 1. **Reproduce and report a result.** Record the commit, local modifications, OS, Python/Node versions, exact commands, exit codes, skipped checks and summary comparison. Report a failed attempt as well as a successful one. Rerunning this checkout is a replication of supplied code, not an independent reference implementation.
-2. **Check sixteen N1 cells independently.** Use a spreadsheet, hand calculation or another implementation of the [frozen rules](NEIGHBOR_TIMING_DESIGN.md), at primary deadline 3 and warning reliability 3/4. Compare `coin` and `ask-peer`. Both should reserve eight slots and miss eight primary deadlines. Peer misses should be four versus two, while total peer lateness stays four slots in each arm. Retain every cell and explain any disagreement. Do not tune the rules after seeing a mismatch.
+2. **Check sixteen N1 cells independently.** Use a spreadsheet, hand calculation or another implementation of the [frozen rules](NEIGHBOR_TIMING_DESIGN.md), at primary deadline 3 and warning reliability 3/4. Compare `coin` and `ask-peer`. Both should reserve eight slots and miss eight primary deadlines. Peer misses should be four versus two, while total peer lateness stays four slots in each arm. Retain each late job’s delay and each policy’s consultation cost. Compare your cell-level account with the [N1 results](NEIGHBOR_TIMING_RESULTS.md) and explain any disagreement. Do not tune the rules after seeing a mismatch.
 3. **Implement a JSON fixture agent.** Follow [AP1](AGENT_PARTICIPATION_V1.md) in another language and report the first ambiguous instruction. Exercise stale briefs, role mismatch, decline and recovery as well as acceptance. The scored C1c comparison intentionally accepts only its pinned Python fixture; use AP1 conformance for a new agent and propose a new frozen comparison before scoring it.
 
 Use the reproduction-report template when opening an issue. English and Chinese reports are welcome. Publish only synthetic inputs and sanitized output. Keep credentials, private context and production databases out of reports.
