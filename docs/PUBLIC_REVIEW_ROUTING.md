@@ -79,3 +79,15 @@ budget selects a separately identified budget-control report. Its independent
 checker truncates the hand-counted paths at the declared budget. Counting
 callbacks test whether unadmitted code was actually invoked, which a
 self-reported event trace alone cannot establish.
+
+For example, the two-slot control can select a fallback reviewer and then run
+out of budget before consulting them. To reproduce that distinction, run
+
+```sh
+python scripts/public_review_routing.py --budget 2 | node scripts/recount_public_review_routing.mjs
+```
+
+The failing arm reports `selected_by: host`, zero consultations, two spent
+slots and `blocked_action: consult`. Its reviewed candidate and grade are
+null. An admitted selector that raises an unexpected exception still stops the
+rehearsal. This budget exercise covers the four declared fixture behaviors.

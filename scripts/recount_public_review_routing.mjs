@@ -14,17 +14,25 @@ const paths = {
 
 function recount(record) {
   keys(record, ['schema', 'source_sha256', 'brief', 'slot_budget_per_arm', 'runs'], 'header');
-  same(record.schema, 'public-review-routing-v1', 'schema');
+  const budgetControl = record.schema === 'public-review-routing-budget-v1';
+  if (!budgetControl) same(record.schema, 'public-review-routing-v1', 'schema');
   same(record.source_sha256, source, 'source');
-  same(record.slot_budget_per_arm, 3, 'budget');
+  const budget = record.slot_budget_per_arm;
+  if (budgetControl) check(Number.isInteger(budget) && budget >= 0 && budget <= 3, 'budget');
+  else same(budget, 3, 'budget');
   same(record.brief, {case: 'demo-2', candidate, eligible: ['validation', 'reporting']}, 'brief');
   check(Array.isArray(record.runs), 'runs');
   same(record.runs.map(run => run.arm).sort(), Object.keys(paths).sort(), 'arm roster');
   const summary = [];
   for (const run of record.runs) {
-    keys(run, ['arm', 'events', 'reviewer', 'selected_by', 'reviewed_candidate',
-               'illustrative_grade', 'slots_used'], 'run fields');
-    const path = paths[run.arm];
+    const fields = ['arm', 'events', 'reviewer', 'selected_by', 'reviewed_candidate',
+               'illustrative_grade', 'slots_used'];
+    if (budgetControl) fields.push('blocked_action');
+    keys(run, fields, 'run fields');
+    const fullPath = paths[run.arm];
+    const path = fullPath.slice(0, budget);
+    const blocked = fullPath[budget]?.[1] ?? null;
+    if (budgetControl) same(run.blocked_action, blocked, 'blocked action');
     check(Array.isArray(run.events) && run.events.length === path.length, 'event count');
     let slots = 0;
     for (const [i, [actor, action, result]] of path.entries()) {
@@ -32,13 +40,16 @@ function recount(record) {
       slots += run.events[i].slots;
     }
     same(run.slots_used, slots, 'spent slots');
-    const consulted = path.at(-1)[1] === 'consult';
-    const selectedBy = consulted ? path.at(-2)[0] : null;
+    const consulted = path.at(-1)?.[1] === 'consult';
+    const selection = path.find(([, action, result]) => action !== 'consult' && result === 'validation');
+    const selectedBy = selection?.[0] ?? null;
     same(run.selected_by, selectedBy, 'selection authority');
-    same(run.reviewer, consulted ? 'validation' : null, 'reviewer');
+    same(run.reviewer, selection ? 'validation' : null, 'reviewer');
     same(run.reviewed_candidate, consulted ? candidate : null, 'reviewed candidate');
     same(run.illustrative_grade, consulted ? 'correct' : null, 'illustrative grade');
-    summary.push({arm: run.arm, selected_by: selectedBy, consultations: Number(consulted), slots});
+    const row = {arm: run.arm, selected_by: selectedBy, consultations: Number(consulted), slots};
+    if (budgetControl) row.blocked_action = blocked;
+    summary.push(row);
   }
   return summary;
 }
