@@ -12,7 +12,20 @@ const paths = {
   failure: [['fixture-router', 'route', 'failed-before-dispatch'], ['host', 'fallback', 'validation'], consult],
 };
 
-function recount(record) {
+// Called only after the ordered events and all terminal fields have passed recount.
+function submitterStatus(run, consulted, blocked) {
+  if (blocked === 'route') return 'Routing blocked. No reviewer selected or grade issued.';
+  if (blocked === 'fallback') return 'Routing failed. Fallback blocked. No reviewer selected or grade issued.';
+  if (run.selected_by === null) return 'The selector abstained. No reviewer selected or grade issued.';
+
+  const selectors = {'host': 'Routing failed. The host', 'fixed-selector': 'The fixed selector',
+                     'fixture-router': 'The fixture router'};
+  const selection = selectors[run.selected_by] + ' selected the ' + run.reviewer + ' reviewer.';
+  if (consulted) return selection + ' Consultation completed. Illustrative grade: ' + run.illustrative_grade + '.';
+  return selection + ' Consultation blocked. No grade issued.';
+}
+
+function recount(record, showStatus) {
   keys(record, ['schema', 'source_sha256', 'brief', 'slot_budget_per_arm', 'runs'], 'header');
   const budgetControl = record.schema === 'public-review-routing-budget-v1';
   if (!budgetControl) same(record.schema, 'public-review-routing-v1', 'schema');
@@ -49,13 +62,18 @@ function recount(record) {
     same(run.illustrative_grade, consulted ? 'correct' : null, 'illustrative grade');
     const row = {arm: run.arm, selected_by: selectedBy, consultations: Number(consulted), slots};
     if (budgetControl) row.blocked_action = blocked;
+    if (showStatus) row.submitter_status = submitterStatus(run, consulted, blocked);
     summary.push(row);
   }
   return summary;
 }
 
 try {
-  console.log(JSON.stringify(recount(parseJSON(fs.readFileSync(0, 'utf8'))), null, 2));
+  const args = process.argv.slice(2);
+  check(args.length === 0 || (args.length === 1 && args[0] === '--submitter-status'),
+        'Usage: recount_public_review_routing.mjs [--submitter-status]');
+  const summary = recount(parseJSON(fs.readFileSync(0, 'utf8')), args.length === 1);
+  console.log(JSON.stringify(summary, null, 2));
 } catch (error) {
   console.error(error.message);
   process.exitCode = 1;

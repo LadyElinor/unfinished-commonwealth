@@ -65,8 +65,8 @@ class RoutingRecountTests(unittest.TestCase):
     def setUpClass(cls):
         cls.emitted = subprocess.check_output([sys.executable, ROOT / "scripts/public_review_routing.py"])
 
-    def recount(self, raw):
-        return subprocess.run(["node", CHECKER], input=raw, capture_output=True)
+    def recount(self, raw, *args):
+        return subprocess.run(["node", CHECKER, *args], input=raw, capture_output=True)
 
     def test_public_comparison(self):
         result = self.recount(self.emitted)
@@ -116,6 +116,41 @@ class RoutingRecountTests(unittest.TestCase):
                 result = self.recount(json.dumps(report).encode())
                 self.assertNotEqual(result.returncode, 0)
                 self.assertIn(error.encode(), result.stderr)
+
+    def test_submitter_status_two_slot_pair(self):
+        result = self.recount(json.dumps(rehearsal(2)).encode(), "--submitter-status")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        statuses = {row["arm"]: row["submitter_status"] for row in json.loads(result.stdout)}
+        self.assertEqual(statuses["fixed"], "The fixed selector selected the validation reviewer. "
+                         "Consultation completed. Illustrative grade: correct.")
+        self.assertEqual(statuses["failure"], "Routing failed. The host selected the validation reviewer. "
+                         "Consultation blocked. No grade issued.")
+
+    def test_submitter_status_across_cutoffs(self):
+        for budget in range(4):
+            report = rehearsal(budget)
+            result = self.recount(json.dumps(report).encode(), "--submitter-status")
+            self.assertEqual(result.returncode, 0, result.stderr)
+            for run, row in zip(report["runs"], json.loads(result.stdout), strict=True):
+                with self.subTest(arm=run["arm"], budget=budget):
+                    status = row["submitter_status"]
+                    consulted = any(e["action"] == "consult" for e in run["events"])
+                    self.assertEqual("Consultation completed." in status, consulted)
+                    self.assertEqual("Illustrative grade: correct." in status, run["illustrative_grade"] == "correct")
+                    self.assertEqual("grade issued." in status, run["illustrative_grade"] is None)
+                    if run["blocked_action"]:
+                        self.assertIn({"route": "Routing blocked.", "fallback": "Fallback blocked.",
+                                       "consult": "Consultation blocked."}[run["blocked_action"]], status)
+                    if run["events"] and run["events"][-1]["result"] == "abstained":
+                        self.assertIn("abstained.", status)
+
+    def test_submitter_status_withholds_all_rows_for_invalid_grade(self):
+        report = rehearsal(2)
+        report["runs"][-1]["illustrative_grade"] = "correct"
+        result = self.recount(json.dumps(report).encode(), "--submitter-status")
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn(b"illustrative grade", result.stderr)
+        self.assertEqual(result.stdout, b"")
 
     def test_changed_histories(self):
         for edit in ("drop-failure", "wrong-actor", "reordered-events", "free-failure",

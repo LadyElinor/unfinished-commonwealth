@@ -91,3 +91,41 @@ The failing arm reports `selected_by: host`, zero consultations, two spent
 slots and `blocked_action: consult`. Its reviewed candidate and grade are
 null. An admitted selector that raises an unexpected exception still stops the
 rehearsal. This budget exercise covers the four declared fixture behaviors.
+
+## Two-slot reader probe and submitter status
+
+At `02312bc`, readers received a single raw receipt and the prompt “In one
+sentence, what would you tell the submitter happened to their request?”
+Supporting fields were requested after the first sentence. The following
+responses and exposure conditions were reported by the contributor.
+
+**Reader 1, failing arm**
+
+> A routing attempt failed; the host then selected a validation reviewer, but the decision budget was exhausted before any consultation, so no review occurred and no grade was issued.
+
+**Reader 1, fixed arm**
+
+> The fixed selector routed the request to a validation reviewer; the host consulted that reviewer, and the submission was graded correct.
+
+**Reader 2, failing arm**
+
+> The routing step failed, the host then selected a validation reviewer as a fallback, and the second decision slot was used without any consultation taking place, so no grade was produced.
+
+Both readers identified the blocked consultation on the failing receipt.
+Reader 2 reportedly had no prior exposure to the other arm, earlier responses
+or recount. Reader 1 also identified the completed consultation on the fixed
+receipt. “Graded correct” refers to the stipulated fixture grade. The isolated
+arm shows the slots spent and the blocked action. The enclosing report supplies
+the starting budget. This closes the probe for these reported readings only.
+
+To see the corresponding submitter text alongside the verified counts, run
+
+```sh
+python scripts/public_review_routing.py --budget 2 | node scripts/recount_public_review_routing.mjs --submitter-status
+```
+
+The text uses the checked consultation event and grade. The fixed and failing
+receipts both name the validation reviewer and spend two slots. Only the fixed
+arm displays a completed consultation and an illustrative grade. An invalid
+report produces no status rows. The automated tests exercise the displayed
+text. They cannot verify reader independence or establish comprehension rates.
