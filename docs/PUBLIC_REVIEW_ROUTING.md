@@ -129,3 +129,71 @@ receipts both name the validation reviewer and spend two slots. Only the fixed
 arm displays a completed consultation and an illustrative grade. An invalid
 report produces no status rows. The automated tests exercise the displayed
 text. They cannot verify reader independence or establish comprehension rates.
+
+## Sentence-only submitter check
+
+### What the reported ablation establishes
+
+One reader supplied a sentence for each of three presentations of the failing
+arm at `02312bc`. The [raw-receipt sentence](../examples/submitter_probe/card-a.md)
+(A) explicitly says consultation was blocked and no grade was issued. Adding a
+legend defining `blocked_action` (B) elicited “Routing failed; the host fell
+back to selecting a validation reviewer; the budget then blocked the consult
+action, so no consultation or grade occurred.” The
+[shortened-receipt sentence](../examples/submitter_probe/card-c.md) (C)
+reports reviewer selection and slot use and leaves consultation and grade
+unstated. None of these three responses asserts a completed review.
+
+C removes three fields together: `blocked_action`, `reviewed_candidate` and
+`illustrative_grade`. The remaining events end at fallback. They contain no
+consultation event. The arm reports slots spent, while the enclosing report
+supplies the starting budget. Keep “both decision slots” verbatim as the
+reader's wording. This observation concerns one reader's summaries. It cannot
+attribute the omission to a particular field or show what a submitter infers.
+
+### Facilitator handoff
+
+Use one fresh recipient per card for an initial paired rehearsal. Ask about
+prior exposure without describing the case. Record exposure as reported.
+Readers who have seen the source, earlier interpretations or the other card
+can provide feedback separately. Set the recipient order in advance and flip
+a coin for the first assignment (heads A, tails C). Give the other recipient
+the remaining card. Record assignments before collecting answers.
+
+1. Give each recipient only the plain text from their assigned card, privately.
+   Copy its contents without the filename, repository link, surrounding notes
+   or other card. Each sees one exact sentence and the same neutral question.
+2. Save the first answer verbatim with a participant code and capture time
+   before issuing any further questions. Preserve that original if the reader
+   later clarifies. Record a missing answer as missing.
+3. Then send only the [common follow-up](../examples/submitter_probe/follow-up.md).
+   Keep the three responses separate from the first answer. Reveal the receipt
+   or discuss the two cards only after both recipients finish.
+
+### How to record the result
+
+For the unaided response, record separately what it says about selection,
+consultation and grade. For each, distinguish an assertion that it happened,
+an assertion that it did not, explicit uncertainty and silence. Keep unclear
+language verbatim and flag it as ambiguous. A failure to mention review is
+an omission. Count a false completion claim only if the wording asserts that
+consultation occurred. Code an asserted grade separately.
+
+| Evidence available | Reviewer selected? | Consultation took place? | Grade issued? |
+| --- | --- | --- | --- |
+| Sentence A alone | Yes | No | No |
+| Sentence C alone | Yes | The text doesn’t say | The text doesn’t say |
+| Frozen failing-arm receipt | Yes | No | No |
+
+Use the sentence row when interpreting the prompted answers. For example, a
+C recipient who answers “no” to consultation has inferred the correct history
+from a sentence that leaves it open. A C recipient who answers “the text
+doesn’t say” has accurately read the sentence. A C recipient who says the
+review was completed has made a claim that conflicts with the frozen record.
+
+Retain the card revision, assignment, exposure declaration, unaided response,
+its three codes, and the three follow-up answers together. Report individual
+observations and missing responses. This handoff contains no fresh recipient
+results. A two-recipient rehearsal can reveal a misunderstanding worth
+investigating. It cannot estimate a comprehension rate or distinguish the
+effect of the sentence from differences between recipients.
