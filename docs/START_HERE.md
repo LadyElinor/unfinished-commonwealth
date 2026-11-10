@@ -90,3 +90,8 @@ The next experimental advance needs a prospectively specified question and contr
 For the E1 verifier, read the [accounting-checker contract](UNCERTAINTY_CHECKER_CONTRACT.md):
 it separates independently recomputed accounting, full Python policy replay, and
 external authenticity that neither establishes.
+
+The [public reviewer routing rehearsal](PUBLIC_REVIEW_ROUTING.md) follows one
+illustrative maintenance candidate through direct selection, abstention and
+fallback. Run its independent recount to see who chose the reviewer and which
+actions consumed the decision budget.

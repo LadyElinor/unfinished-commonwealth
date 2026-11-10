@@ -39,3 +39,17 @@ set-of-agents and routing-mode comparisons. The
 [AutoGen team's local executor](https://github.com/geniusgeek/AgenticFleet/blob/2bbdb5b7acb2f69a36a6ba827da86ee8fe1e772a/src/agentic_fleet/app.py)
 illustrates why the routing fixture only returns a proposal. Neither framework
 is a dependency. This exercise is separate from the frozen 24-pair study.
+
+## Run and recount
+
+From a source checkout with Python 3.11+ and Node 18+, run:
+
+```sh
+python scripts/public_review_routing.py | node scripts/recount_public_review_routing.mjs
+python -m unittest discover -s tests -p test_public_review_routing.py -v
+```
+
+Run the Python command alone to see the input brief, ordered events and
+terminal records. The Node command reads that document on stdin and reports
+selection authority, consultations and slots for each arm. Its reference paths
+and candidate digest are fixed independently of the emitter.
