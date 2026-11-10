@@ -53,3 +53,29 @@ Run the Python command alone to see the input brief, ordered events and
 terminal records. The Node command reads that document on stdin and reports
 selection authority, consultations and slots for each arm. Its reference paths
 and candidate digest are fixed independently of the emitter.
+
+## Budget boundary controls
+
+On revision `a7d9715`, a counting selector was called once with a zero-slot
+budget. With one slot, the host selected a reviewer and then raised an error
+before consultation. The caller could not recover that selection from the
+exception. These observations motivated the following public controls.
+
+Run the same four policies at each integer budget from zero through three.
+Admission must precede the router call, host fallback choice and consultation.
+An unaffordable action consumes zero slots. Retain the ordered paid events,
+the first blocked action, and any reviewer and selection authority already
+established. A candidate and grade appear only after consultation.
+
+| Slots available | Fixed and direct | Abstaining | Failing |
+| --- | --- | --- | --- |
+| 0 | Route blocked | Route blocked | Route blocked |
+| 1 | Reviewer selected, consultation blocked | Abstains | Failure charged, fallback blocked |
+| 2 | Consulted | Abstains | Host selected reviewer, consultation blocked |
+| 3 | Consulted | Abstains | Consulted after fallback |
+
+The no-argument v1 command retains its original four receipts. An explicit
+budget selects a separately identified budget-control report. Its independent
+checker truncates the hand-counted paths at the declared budget. Counting
+callbacks test whether unadmitted code was actually invoked, which a
+self-reported event trace alone cannot establish.
