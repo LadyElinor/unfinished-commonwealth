@@ -17,11 +17,15 @@ class Gate:
               token: str | None = None, *, robotic: bool = False) -> bool:
         identity = principal.identity if principal else None
         authorized = principal is not None and resource_team in principal.teams
-        if robotic:
+        # Action classification belongs to the gate. The legacy flag may only
+        # request stricter handling, never relax a protected action.
+        requires_approval = action == "move_simulated" or robotic
+        authorized = authorized and action in {"read_private", "move_simulated"}
+        if requires_approval:
             authorized = (authorized and token is not None and token not in self.revoked
                           and self.approvals.get(token) == (identity, resource_team, action))
         self.audit.append({"principal": identity, "team": resource_team,
-                           "action": action, "robotic": robotic, "allowed": bool(authorized)})
+                           "action": action, "robotic": requires_approval, "allowed": bool(authorized)})
         return bool(authorized)
 
     def revoke(self, token: str) -> None:

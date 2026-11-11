@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Public research finding",
+  "type": "object",
+  "required": [
+    "schema",
+    "finding_id",
+    "project",
+    "source",
+    "scope",
+    "authorization",
+    "claim",
+    "evidence_type",
+    "verification",
+    "risk",
+    "recommended_action",
+    "artifact_sha256"
+  ],
+  "properties": {
+    "schema": {
+      "const": "public-research-finding-1"
+    },
+    "finding_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "url",
+        "publisher",
+        "retrieved_at",
+        "version_or_commit"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "publisher": {
+          "type": "string",
+          "minLength": 1
+        },
+        "retrieved_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "version_or_commit": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authorization": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "verification": {
+      "type": "object",
+      "required": [
+        "status",
+        "independent_reproduction",
+        "reviewer"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "source_identified",
+            "source_read",
+            "observed_local",
+            "hypothesis",
+            "unresolved",
+            "independently_reproduced"
+          ]
+        },
+        "independent_reproduction": {
+          "type": "boolean"
+        },
+        "reviewer": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "independent_reproduction": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "status": {
+                "const": "independently_reproduced"
+              },
+              "reviewer": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "independently_reproduced"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "independent_reproduction": {
+                "const": true
+              }
+            }
+          }
+        }
+      ]
+    },
+    "risk": {
+      "type": "object",
+      "required": [
+        "category",
+        "severity"
+      ],
+      "properties": {
+        "category": {
+          "type": "string",
+          "minLength": 1
+        },
+        "severity": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "recommended_action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifact_sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "citation_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "exposure_assessment": {
+      "type": "object",
+      "required": [
+        "publicly_accessible",
+        "intentionally_published",
+        "misconfigured",
+        "confirmed_unauthorized_disclosure"
+      ],
+      "properties": {
+        "publicly_accessible": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "intentionally_published": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "misconfigured": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "confirmed_unauthorized_disclosure": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "artifact_path": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

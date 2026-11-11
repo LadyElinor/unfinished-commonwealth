@@ -1,0 +1,19 @@
+{
+  "schema": "public-research-replay-1",
+  "local": {
+    "fixture_sha256": "3e33616072c64b883ed1b1525596bb2c635c2f0787327eb6d94ac0b4c8ed952a",
+    "decisions": 8,
+    "journal_events": 9,
+    "allowed": 2
+  },
+  "cortac": {
+    "trace_sha256": "001bff201c3aa06186b11558e0de1a977c7c0a6b8bd41114b46fc9f3e3d21d14",
+    "episodes": 42,
+    "audited_effects": 9,
+    "no_effect_episodes": 33,
+    "refused_private_reads": 9,
+    "failed_sinks_rolled_back": 3
+  },
+  "external_targets_contacted": 0,
+  "independent_human_review": false
+}

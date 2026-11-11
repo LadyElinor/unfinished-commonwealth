@@ -277,3 +277,5 @@ records strict local admission, a WSGI adapter and verified recovery tools.
 **Production remains blocked**: the real workflow, deployment gateway/access
 policy and operational acceptance have not been established. No deployment or
 package-index release is performed.
+
+[Public research and synthetic authorization benchmarks](research/security-scanning/README.md) collects robotics, aerospace and agent-governance sources and reproduces the local access-control cases.

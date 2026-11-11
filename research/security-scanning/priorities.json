@@ -1,0 +1,35 @@
+{
+  "weights": {
+    "relevance": 35,
+    "security_governance": 30,
+    "evidence": 20,
+    "implementation": 15
+  },
+  "illustrative_ranking": [
+    {
+      "project": "OPA",
+      "score": 100
+    },
+    {
+      "project": "NASA Ogma",
+      "score": 96
+    },
+    {
+      "project": "NASA F Prime",
+      "score": 94
+    },
+    {
+      "project": "Space ROS",
+      "score": 90
+    },
+    {
+      "project": "Nav2",
+      "score": 87
+    },
+    {
+      "project": "MoveIt 2",
+      "score": 84
+    }
+  ],
+  "note": "Illustrative expert judgments; underlying dimension scores not supplied and must not be reverse engineered."
+}

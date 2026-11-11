@@ -1,0 +1,13 @@
+{
+  "searched_at": "2026-11-11",
+  "scope": "Public documentation, published repositories, maker-linked showcases and disclosed advisories",
+  "queries_used": [
+    {"query": "Claroc GhostShares 2 Grok Unite.AI November 10 2026 report 37571", "citation_ids": ["GS-01", "GS-02"]},
+    {"query": "NASA Space ROS overview Technical Reports Server Space ROS project overview verification aerospace 2023 NASA Space ROS PDF", "citation_ids": ["AERO-04"]},
+    {"query": "Microsoft Agent Governance Toolkit GitHub microsoft agent governance toolkit runtime enforcement Open Policy Agent official", "citation_ids": ["GOV-03"]},
+    {"query": "CISA ICS advisory universal robots industrial robotics advisory cisa.gov UR robots", "citation_ids": ["OT-01"]},
+    {"query": "CPIC Clinical Pharmacogenetics Implementation Consortium ClinPGx Stanford PharmGKB PharmCAT CPIC about NIH resource clinical guideline drugs genotypes official", "citation_ids": ["MED-01"]}
+  ],
+  "additional_discovery": "Direct document and repository inspection of the previously supplied citation register. Public application links and their inspection scopes are in public-apps.json.",
+  "suggested_queries": ["site:github.com/nasa robotics autonomy safety", "site:github.com/space-ros rover simulation", "site:nasa.gov autonomous spacecraft fault protection", "site:github.com robotics runtime verification", "site:cisa.gov industrial control robotics advisory", "SpaceX public engineering software repositories"]
+}

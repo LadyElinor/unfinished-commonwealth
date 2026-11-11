@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research priority matrix</title>
+<style>
+:root{font-family:Inter,system-ui,sans-serif;color:#192f34;background:#f3f5f2}
+main{max-width:64rem;margin:auto;padding:clamp(1rem,4vw,3rem)}
+h1{font-size:clamp(1.9rem,4vw,3rem);margin:0 0 .75rem}h2{margin:1.65rem 0 .6rem;font-size:1.25rem}p{max-width:75ch;line-height:1.55}
+fieldset{border:1px solid #afc2be;border-radius:.5rem;padding:1rem;background:white;display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr))}
+legend,th{font-weight:650}label{display:grid;gap:.35rem}input{box-sizing:border-box;width:5rem;padding:.5rem;font:inherit;border:1px solid #899d99;border-radius:.25rem;background:#fff}
+.scroll{overflow:auto}table{width:100%;border-collapse:collapse;background:white}th,td{text-align:left;padding:.6rem;border-bottom:1px solid #cfdbd7}thead th{background:#dceae5;font-size:.88rem}
+ol{padding-left:1.7rem;line-height:1.7}button{font:inherit;padding:.55rem .85rem;border-radius:.3rem;border:1px solid #45645d;color:#163d33;background:white}button:focus-visible,input:focus-visible{outline:3px solid #286278}
+</style>
+<main><h1>Research priority matrix</h1>
+<p>Choose weights and enter your ratings from 0 to 100. Each score is the weighted sum divided by the total weight. The published scores are illustrative judgments. Their underlying ratings were never supplied.</p>
+<form id="matrix"><fieldset id="weights"><legend>Weights</legend></fieldset>
+<h2>Candidate ratings</h2><div class="scroll"><table><thead><tr><th scope="col">Candidate</th><th scope="col">Published score</th><th scope="col">Relevance</th><th scope="col">Governance</th><th scope="col">Evidence</th><th scope="col">Implementation</th><th scope="col">Your score</th></tr></thead><tbody id="candidates"></tbody></table></div>
+<p><button type="reset">Reset ratings and weights</button></p></form>
+<h2>Your ranking</h2><div id="ranking" aria-live="polite"></div>
+</main><script type="application/json" id="reference">{"weights": {"relevance": 35, "security_governance": 30, "evidence": 20, "implementation": 15}, "illustrative_ranking": [{"project": "OPA", "score": 100}, {"project": "NASA Ogma", "score": 96}, {"project": "NASA F Prime", "score": 94}, {"project": "Space ROS", "score": 90}, {"project": "Nav2", "score": 87}, {"project": "MoveIt 2", "score": 84}], "note": "Illustrative expert judgments; underlying dimension scores not supplied and must not be reverse engineered."}</script>
+<script>
+'use strict';
+const reference = JSON.parse(document.querySelector('#reference').textContent);
+const dimensions = [['relevance', 'Project relevance'], ['security_governance', 'Security and governance'],
+                    ['evidence', 'Evidence quality'], ['implementation', 'Implementation potential']];
+const form = document.querySelector('#matrix');
+function input(label, value='') {
+  const field = document.createElement('input');
+  field.type='number'; field.min='0'; field.max='100'; field.step='any'; field.defaultValue=value;
+  field.setAttribute('aria-label', label); return field;
+}
+const weights = dimensions.map(([key, name]) => {
+  const label = document.createElement('label');
+  const field = input(name+' weight', reference.weights[key]);
+  label.append(name, field); document.querySelector('#weights').append(label); return field;
+});
+const candidates = reference.illustrative_ranking.map(({project, score}) => {
+  const row = document.querySelector('#candidates').insertRow();
+  const title=document.createElement('th'); title.scope='row'; title.textContent=project; row.append(title);
+  row.insertCell().textContent=score;
+  const ratings = dimensions.map(([,name]) => {
+    const field = input(project+' '+name); row.insertCell().append(field); return field;
+  });
+  return {project, ratings, result:row.insertCell()};
+});
+function update() {
+  const values=weights.map(w=>w.valueAsNumber);
+  const total=values.reduce((sum,x)=>sum+x,0);
+  const valid=total>0 && weights.every(w=>w.validity.valid && w.value!=='');
+  const ranked=[];
+  for (const {project,ratings,result} of candidates) {
+    let score=0, complete=valid;
+    for (const [index, field] of ratings.entries()) {
+      if (values[index]===0) continue;
+      if (!field.validity.valid || field.value==='') { complete=false; break; }
+      score+=values[index]*field.valueAsNumber;
+    }
+    result.textContent=complete?(score/total).toFixed(2):'—';
+    if (complete) ranked.push({project, score:score/total});
+  }
+  const panel=document.querySelector('#ranking');
+  if (!valid) { panel.textContent='Enter valid weights with a positive total.'; return; }
+  if (!ranked.length) { panel.textContent='Enter a rating for every dimension with a positive weight to rank a candidate.'; return; }
+  ranked.sort((a,b)=>b.score-a.score);
+  const list=document.createElement('ol');
+  let rank=1;
+  ranked.forEach((entry,index)=>{
+    if (index && entry.score!==ranked[index-1].score) rank=index+1;
+    const item=document.createElement('li');item.value=rank;
+    item.textContent=entry.project+' · '+entry.score.toFixed(2);list.append(item);
+  });
+  panel.replaceChildren(list);
+}
+form.addEventListener('input', update);
+form.addEventListener('reset', ()=>requestAnimationFrame(update));
+form.addEventListener('submit',e=>e.preventDefault());update();
+</script></html>
