@@ -25,3 +25,5 @@ Discover publicly documented AI, aerospace, robotics and security projects witho
 
 ## Project integration
 Outputs are advisory inputs to Unfinished Commonwealth and CORTAC; they confer no operational authority. Space ROS, Marscraft and Lunar Weevil integration must remain simulation-first.
+
+For SpaceX-related Grok.me, Starship, Falcon or employee-demo searches, follow [Grok.me aerospace discovery](references/grokme-aerospace-discovery.md). Record publication intent, hosting, authorship and engineering validation separately.

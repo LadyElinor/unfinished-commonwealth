@@ -322,5 +322,36 @@
       "https://docs.x.ai/grok-bot/teams-and-enterprises",
       "https://docs.x.ai/grok-bot/skills-routines-and-automations"
     ]
+  },
+  {
+    "id": "SPACE-DEMO-01",
+    "title": "Grok Bot Vision Pro demonstration",
+    "publisher": "What People Made, quoting Evan Bacon",
+    "url": "https://www.whatpeoplemade.com/i/a-vision-pro-app-that-grok-bot-built-for-itself-060901.html",
+    "retrieved_at": "2026-11-11",
+    "source_type": "secondary_showcase",
+    "relevance": "Spatial placement of conversational agents. Employment attribution comes from the showcase.",
+    "verification_status": "source_read",
+    "version_or_commit": null,
+    "license": null,
+    "supporting_urls": [
+      "https://x.com/Baconbrix/status/2109406594241060901"
+    ]
+  },
+  {
+    "id": "SPACE-DEMO-02",
+    "title": "Cybertruck then Mars",
+    "publisher": "PromptShipped, crediting @TherapyToaster",
+    "url": "https://www.promptshipped.com/app/cybertruck-then-mars-moon-to-mars-space-game-built-with-grok",
+    "retrieved_at": "2026-11-11",
+    "source_type": "maker_linked_showcase",
+    "relevance": "Independently credited Starship-themed interface for staged Moon and Mars gameplay.",
+    "verification_status": "source_read",
+    "version_or_commit": null,
+    "license": null,
+    "supporting_urls": [
+      "https://cybertruck-starship-launch.grok.me/",
+      "https://x.com/TherapyToaster/status/2111033248071438638"
+    ]
   }
 ]
