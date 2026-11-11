@@ -9,7 +9,7 @@ import re
 import unittest
 from urllib.error import HTTPError
 
-from research.security_scanning.authorization import Gate, Principal
+from research.security_scanning.authorization import CommandApproval, Gate, Principal
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'research/security-scanning'
@@ -34,6 +34,41 @@ class ResearchScanTests(unittest.TestCase):
         self.assertTrue(gate.check(alice, 'alpha', 'hold_simulated', 'only-hold', robotic=True))
         gate.revoke('only-move')
         self.assertFalse(gate.check(alice, 'alpha', 'move_simulated', 'only-move'))
+
+    def test_review_binds_effective_arguments_after_rewrite(self):
+        actor = Principal('operator', frozenset({'sim'}))
+        target = dict(site='A', sample=[1, True])
+        grant = CommandApproval.for_arguments(actor.identity, 'sim', 'sample', target)
+        gate = Gate({'reviewed': grant, 'legacy': ('operator', 'sim', 'sample')})
+        def request(arguments, token='reviewed'):
+            return gate.check(actor, 'sim', 'sample', token, arguments=arguments)
+        self.assertTrue(request(dict(sample=[1, True], site='A')))
+        self.assertEqual(gate.audit[-1]['arguments_sha256'], grant.arguments_sha256)
+        self.assertFalse(request(dict(site='A', sample=[True, 1])))
+        target['site'] = 'B'
+        self.assertFalse(request(target))
+        self.assertFalse(request(target, 'legacy'))
+        self.assertFalse(request(None))
+        gate.approvals['revised'] = CommandApproval.for_arguments(actor.identity, 'sim', 'sample', target)
+        self.assertTrue(request(target, 'revised'))
+        gate.revoke('revised')
+        self.assertFalse(request(target, 'revised'))
+        for malformed in ({1: 2}, {'v': float('nan')}, {'v': (1, 2)}):
+            self.assertFalse(request(malformed, 'legacy'))
+            self.assertIn('argument_error', gate.audit[-1])
+
+    def test_project_readouts_and_geometry_domain(self):
+        spec = importlib.util.spec_from_file_location('readouts', DATA / 'project-checks/readouts.py')
+        readouts = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(readouts)
+        observed = readouts.compare()
+        self.assertAlmostEqual(observed['thrust_initial_twr'], 4.23, places=2)
+        self.assertAlmostEqual(observed['rd62_cursor_mm'], 75.257, places=3)
+        self.assertEqual(observed['geometry_reference_spread'], '16/25')
+        self.assertEqual(readouts.spread((1, 0), (-2, 0)), 0)
+        self.assertEqual(readouts.spread((2, 3), (-3, 2)), 1)
+        with self.assertRaises(ValueError):
+            readouts.spread((0, 0), (3, 4))
 
     def test_two_benchmark_recounts(self):
         self.assertEqual(replay.observe(), replay.load(DATA / 'verification/expected-replay.json'))

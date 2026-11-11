@@ -45,3 +45,5 @@ The supplied illustrative totals are OPA 100, Ogma 96, F Prime 94, Space ROS 90,
 | Quarterly | Owned synthetic access, revocation, rollback and command scenarios | Replay, independent reviewer record when available and comparison with the previous baseline |
 
 The cadence is guidance for contributors. The current snapshot records ordinary source inspection and the local benchmark. No background collection is configured.
+
+The [mathematics, engineering and programming inspection](project-checks/README.md) checks two published numerical readouts, compares an authored orbital simulation with a separate integrator, and traces an argument-rewrite lesson into the local authority gate.

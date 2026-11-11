@@ -1,0 +1,80 @@
+{
+  "inspected_at": "2026-11-11",
+  "id_scope": "User-supplied project catalogue; IDs are distinct from citation-register.json.",
+  "projects": [
+    {
+      "id": "MATH-01",
+      "project": "RD-62 Rational-Duplex",
+      "public_source": "https://www.promptshipped.com/app/rd-62-rational-duplex-slide-rule-simulator-built-with-grok",
+      "app": "https://rd-1-rational-slide-rule.grok.me/",
+      "inspection": "gallery screenshot + numerical comparison",
+      "observation": "D scale shows 4.0000 at 75.257 mm on a 125.00 mm log line. Both faces share the cursor. The SVG and DXF controls are visible; file exports were not exercised.",
+      "screenshot": "https://www.promptshipped.com/shots/13805d200750.webp",
+      "screenshot_sha256": "d90fd9a1829f7b7fe4d2c31fddf998b9f4cad745a24f4be68d3d7ee8c1b6d820"
+    },
+    {
+      "id": "MATH-02",
+      "project": "Chance Lab",
+      "public_source": "https://www.promptshipped.com/app/chance-lab-probability-simulator-built-with-grok",
+      "app": "https://nther.grok.me/",
+      "inspection": "earlier direct UI trial",
+      "observation": "Twenty draws with a 100% heads weight gave twenty heads. A generic small-sample warning was still shown."
+    },
+    {
+      "id": "ENG-01",
+      "project": "Physics Playground",
+      "public_source": "https://x.ai/news/grok-build-for-everyone",
+      "inspection": "official showcase",
+      "observation": "Gravity, restitution and friction are user controls. The engineering check is to read parameters back from the loaded engine model."
+    },
+    {
+      "id": "ENG-02",
+      "project": "Mars Colony",
+      "public_source": "https://www.promptshipped.com/app/mars-colony-base-building-game-built-with-grok",
+      "app": "https://mars-colony.grok.me/",
+      "inspection": "earlier interface inspection + gallery",
+      "observation": "The landing and block-placement controls are visible. Habitat and solar construction motivate a future save/reload resource-ledger comparison."
+    },
+    {
+      "id": "ENG-05",
+      "project": "THRUST",
+      "public_source": "https://www.promptshipped.com/app/thrust-reusable-spacecraft-builder-built-with-grok",
+      "app": "https://thrust1.grok.me/",
+      "inspection": "gallery screenshot + numerical comparison",
+      "observation": "The Yardbird Mk.I screenshot separates dry mass, propellant and thrust. The rounded liftoff TWR is reproducible. Specific impulse or equivalent exhaust speed is needed to independently check the displayed delta-v.",
+      "screenshot": "https://www.promptshipped.com/shots/e2f70c8204be.webp",
+      "screenshot_sha256": "22d608f424c8aa6749958ec59c8fc62916629a1dafd571d5d9eaf5cafa51e5e0"
+    },
+    {
+      "id": "ENG-06",
+      "project": "Operation Galileo",
+      "public_source": "https://caworman.com/operation-galileo/",
+      "app": "https://caworman.com/wp-content/uploads/2026/10/operation-galileo.html?v=20261030",
+      "inspection": "published HTML numerical core + one trajectory comparison",
+      "observation": "The four moons follow prescribed circular paths. The ship feels Jupiter and the moving moons. The game advances it with a step-size-controlled fourth-order Runge–Kutta method. See galileo.mjs for a separately integrated one-hour coast."
+    },
+    {
+      "id": "ENG-07",
+      "project": "EEQW Grid",
+      "public_source": "https://www.promptshipped.com/app/eeqw-grid-ka-band-operator-console-concept-built-with-grok",
+      "app": "https://glow-meadow-flora-daisy.grok.me/",
+      "inspection": "public interface",
+      "observation": "The three-site console distinguishes a reported body position, a reference position, and whether action may proceed. Its own display labels the system an architecture proposal."
+    },
+    {
+      "id": "DEV-01",
+      "project": "Prompt Injection Scanner",
+      "public_source": "https://www.promptshipped.com/app/prompt-injection-scanner-built-with-grok",
+      "app": "https://injectionguard.grok.me/",
+      "inspection": "earlier public interface inspection",
+      "observation": "The interface describes a weighted heuristic. No representative labeled corpus or independently measured false-positive rate was available in this scan."
+    },
+    {
+      "id": "DEV-02",
+      "project": "Grok Build",
+      "public_source": "https://github.com/xai-org/grok-build/tree/2bdd1d6a6369de0e8c68132ea4539e9abd9e14a8",
+      "inspection": "pinned source and upstream tests read",
+      "observation": "The implementation validates hook-rewritten arguments and rebuilds the tool envelope from them. The permission-prompt regression checks that the user sees rewritten input. The upstream Rust suite was not run here."
+    }
+  ]
+}
