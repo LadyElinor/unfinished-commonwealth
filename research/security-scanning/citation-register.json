@@ -187,7 +187,13 @@
     "verification_status": "source_read",
     "version_or_commit": "2bdd1d6a6369de0e8c68132ea4539e9abd9e14a8",
     "license": "Apache-2.0",
-    "supporting_urls": []
+    "supporting_urls": [
+      "https://github.com/xai-org/grok-build/blob/2bdd1d6a6369de0e8c68132ea4539e9abd9e14a8/crates/codegen/xai-grok-agent/README.md",
+      "https://github.com/xai-org/grok-build/blob/2bdd1d6a6369de0e8c68132ea4539e9abd9e14a8/crates/codegen/xai-grok-shell/README.md",
+      "https://github.com/xai-org/grok-build/blob/2bdd1d6a6369de0e8c68132ea4539e9abd9e14a8/crates/codegen/xai-grok-pager/docs/user-guide/05-configuration.md",
+      "https://github.com/xai-org/grok-build/blob/2bdd1d6a6369de0e8c68132ea4539e9abd9e14a8/crates/codegen/xai-grok-shell/src/session/acp_session_impl/tool_calls.rs",
+      "https://github.com/xai-org/grok-build/blob/2bdd1d6a6369de0e8c68132ea4539e9abd9e14a8/crates/codegen/xai-grok-shell/src/session/acp_session_tests/pre_tool_use_decision_tests.rs"
+    ]
   },
   {
     "id": "GROK-04",
@@ -284,5 +290,37 @@
     "version_or_commit": "75fd8f979502eb9f81ce380577939c9c3ec33dc7",
     "license": null,
     "supporting_urls": []
+  },
+  {
+    "id": "GROK-06",
+    "title": "Grok prompts",
+    "publisher": "xAI / SpaceXSI",
+    "url": "https://github.com/xai-org/grok-prompts",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_repository",
+    "relevance": "Versioned prompt-to-product mapping for chat, @grok on X and API model variants.",
+    "verification_status": "source_read",
+    "version_or_commit": "a7c186f5ccac95875c0041aed60398f6ecb6d6c7",
+    "license": "GNU Affero General Public License v3.0 (repository declaration)",
+    "supporting_urls": [
+      "https://github.com/xai-org/grok-prompts/blob/a7c186f5ccac95875c0041aed60398f6ecb6d6c7/README.md"
+    ]
+  },
+  {
+    "id": "GROK-07",
+    "title": "Grok Bot hosted service documentation",
+    "publisher": "xAI / SpaceXSI",
+    "url": "https://docs.x.ai/grok-bot/overview",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_documentation",
+    "relevance": "Hosted computers, routines, approvals and enterprise controls. Evidence of documented settings only.",
+    "verification_status": "source_read",
+    "version_or_commit": null,
+    "license": null,
+    "supporting_urls": [
+      "https://docs.x.ai/grok-bot/approvals-security-and-privacy",
+      "https://docs.x.ai/grok-bot/teams-and-enterprises",
+      "https://docs.x.ai/grok-bot/skills-routines-and-automations"
+    ]
   }
 ]
