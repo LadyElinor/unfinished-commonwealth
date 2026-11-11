@@ -26,3 +26,11 @@ python -m unittest discover -s tests -p 'test_grok_*.py' -v
 ```
 
 All test identities, resources and approvals are synthetic.
+
+## Recovery experiment with two local databases
+
+`DurableGateway.decide` remains a decision-only interface. The opt-in `stage_simulation` method supports the parameterless `simulate` request with exactly actor, action and resource. A trusted fixture signer includes `delivery_protocol="local-sample-v1"` and the destination `SampleLedger.identity` in the approval. A successful transaction consumes the nonce, records approval and decision, and stages the intent together. Historical decisions never become pending work.
+
+Run `python -m unittest discover -s tests -p 'test_grok_delivery.py' -v`. The tests exercise the public staging and delivery methods with two independent SQLite files. The complete fixture effect is one sample row. The sink commits it under a unique nonce, binds the receipt to the approved content and destination, and returns that same receipt on matching retries. Before any new effect, the sink checks its identity and the time window. An existing receipt can be recovered after expiry. Confirmation is a second transaction in the gateway. An unconfirmed command can already have a committed sample; retrying it consults the same sink.
+
+Both processes and database files are assumed trusted, and a stable ledger must survive between attempts. The harness does not authenticate an external endpoint, survive rollback of both files, or confer any authority to publish or move hardware. Durable revocation of pending intents is outside this experiment.
