@@ -16,4 +16,4 @@ jobs:
         with:
           python-version: '3.12'
       - name: Run offline reference regressions
-        run: python -m unittest tests.test_grok_integration tests.test_grok_orbits -v
+        run: python -m unittest discover -s tests -p 'test_grok_*.py' -v
