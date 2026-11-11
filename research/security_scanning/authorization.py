@@ -19,8 +19,7 @@ class Gate:
         authorized = principal is not None and resource_team in principal.teams
         # Action classification belongs to the gate. The legacy flag may only
         # request stricter handling, never relax a protected action.
-        requires_approval = action == "move_simulated" or robotic
-        authorized = authorized and action in {"read_private", "move_simulated"}
+        requires_approval = action != "read_private" or robotic
         if requires_approval:
             authorized = (authorized and token is not None and token not in self.revoked
                           and self.approvals.get(token) == (identity, resource_team, action))

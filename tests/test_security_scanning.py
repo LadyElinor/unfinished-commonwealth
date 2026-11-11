@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import re
 import unittest
+from urllib.error import HTTPError
 
 from research.security_scanning.authorization import Gate, Principal
 
@@ -27,6 +28,10 @@ class ResearchScanTests(unittest.TestCase):
         self.assertFalse(gate.check(alice, 'alpha', 'arbitrary', 'only-move'))
         self.assertTrue(gate.check(alice, 'alpha', 'read_private'))
         self.assertTrue(gate.check(alice, 'alpha', 'move_simulated', 'only-move'))
+        # Existing callers may pin other named simulation operations.
+        gate.approvals['only-hold'] = ('alice', 'alpha', 'hold_simulated')
+        self.assertFalse(gate.check(alice, 'alpha', 'hold_simulated'))
+        self.assertTrue(gate.check(alice, 'alpha', 'hold_simulated', 'only-hold', robotic=True))
         gate.revoke('only-move')
         self.assertFalse(gate.check(alice, 'alpha', 'move_simulated', 'only-move'))
 
@@ -66,6 +71,27 @@ class ResearchScanTests(unittest.TestCase):
             self.assertIn(row['citation_id'], sources)
         for query in replay.load(DATA / 'discovery.json')['queries_used']:
             self.assertTrue(set(query['citation_ids']) <= sources.keys())
+
+    def test_refresh_distinguishes_missing_release_from_failed_lookup(self):
+        spec = importlib.util.spec_from_file_location('inventory_refresh', DATA / 'refresh_inventory.py')
+        refresh = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(refresh)
+        repo = dict(repository='https://github.com/nasa/ogma', citation_id='SAFE-01', head_revision='old')
+        for status in (404, 403):
+            def metadata(path):
+                if path.endswith('/releases/latest'):
+                    raise HTTPError(path, status, 'fixture', {}, None)
+                if '/commits?' in path:
+                    return [dict(sha='new', commit={'committer': {'date': '2026-11-11'}})]
+                return dict(default_branch='develop', archived=False)
+            with self.subTest(status=status):
+                if status == 404:
+                    observed = refresh.observe(repo, metadata)
+                    self.assertEqual((observed['previous_revision'], observed['revision']), ('old', 'new'))
+                    self.assertIsNone(observed['release'])
+                else:
+                    with self.assertRaises(HTTPError):
+                        refresh.observe(repo, metadata)
 
     def test_priority_matrix_preserves_reference_scores(self):
         html = (DATA / 'priority-matrix.html').read_text(encoding='utf-8')

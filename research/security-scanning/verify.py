@@ -56,7 +56,7 @@ def replay_local():
             allowed = gate.check(actor, step['team'], step['action'], step.get('token'))
             require(allowed is step['expect'], step['case'])
             expected = dict(principal=step['principal'], team=step['team'], action=step['action'],
-                            allowed=step['expect'], robotic=step['action'] == 'move_simulated')
+                            allowed=step['expect'], robotic=step['action'] != 'read_private')
         require(gate.audit == before + [expected], 'audit mismatch for ' + step['case'])
     return dict(fixture_sha256=sha(path.read_bytes()), decisions=len(data['steps'])-1,
                 journal_events=len(gate.audit), allowed=sum(e.get('allowed', False) for e in gate.audit))

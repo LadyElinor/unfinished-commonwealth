@@ -30,6 +30,10 @@ GS-01 identifies Claroc's first-hand investigation. GS-02 identifies Unite.AI's 
 
 The imported procedures cover [source discovery](public-source-discovery/SKILL.md), [prioritization](research-prioritization/SKILL.md), [static review](authorized-security-review/SKILL.md), [robotics](aerospace-robotics-assessment/SKILL.md), [governance](agent-governance-audit/SKILL.md) and [verification](research-evidence-verification/SKILL.md).
 
+## Refresh repository metadata
+
+Run `python research/security-scanning/refresh_inventory.py SAFE-01 GOV-02` to compare the public Ogma and OPA repository metadata against this inventory. Omit the IDs to check all inventoried repositories. The command reads public GitHub project metadata, latest release and default-branch revision, prints dated JSON, preserves per-source errors and returns a nonzero status on partial failure. Review changed source trees and licenses at their new revision before adopting the new observations. A refresh leaves the checked-in baseline intact.
+
 ## Priorities and cadence
 
 The supplied illustrative totals are OPA 100, Ogma 96, F Prime 94, Space ROS 90, Nav2 87 and MoveIt 2 84. The original per-dimension ratings are unknown. The [matrix](priority-matrix.html) preserves the reference column and calculates a separate ranking once ratings are entered for every positively weighted dimension. Relevance, governance, evidence and implementation start at 35, 30, 20 and 15. Zero total weight produces no score. Ties share rank. The score prioritizes research effort.
