@@ -1,0 +1,357 @@
+[
+  {
+    "id": "GS-01",
+    "title": "Claroc GhostShares 2",
+    "publisher": "Claroc Research",
+    "url": "https://blog.claroc.io/ghostshares-grok-build-apps/",
+    "retrieved_at": "2026-11-11",
+    "source_type": "primary_investigation",
+    "relevance": "Reported sample of public opens and two researcher-owned controlled apps.",
+    "verification_status": "source_read",
+    "version_or_commit": null,
+    "license": null,
+    "supporting_urls": []
+  },
+  {
+    "id": "AERO-01",
+    "title": "NASA F Prime",
+    "publisher": "NASA Jet Propulsion Laboratory",
+    "url": "https://fprime.jpl.nasa.gov/",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_documentation",
+    "relevance": "Component flight software framework for repeatable software-in-the-loop scenarios.",
+    "verification_status": "source_read",
+    "version_or_commit": null,
+    "license": null,
+    "supporting_urls": []
+  },
+  {
+    "id": "AERO-02",
+    "title": "NASA cFS",
+    "publisher": "NASA",
+    "url": "https://github.com/nasa/cFS",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_repository",
+    "relevance": "Modular flight software bundle for bench message routing. The repository distinguishes its bundle from a mission flight distribution.",
+    "verification_status": "source_read",
+    "version_or_commit": "029b3ab4806c402b278e063d23913ebe1ea158c2",
+    "license": "Apache-2.0",
+    "supporting_urls": []
+  },
+  {
+    "id": "AERO-03",
+    "title": "Space ROS",
+    "publisher": "Space ROS project",
+    "url": "https://space.ros.org/",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_documentation",
+    "relevance": "Space robotics software framework and assurance goals.",
+    "verification_status": "source_read",
+    "version_or_commit": null,
+    "license": null,
+    "supporting_urls": []
+  },
+  {
+    "id": "ROB-01",
+    "title": "Nav2",
+    "publisher": "Nav2 project",
+    "url": "https://docs.nav2.org/",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_documentation",
+    "relevance": "Planning, control, and navigation action interfaces for simulated robots.",
+    "verification_status": "source_read",
+    "version_or_commit": null,
+    "license": null,
+    "supporting_urls": [
+      "https://docs.nav2.org/rolling/"
+    ]
+  },
+  {
+    "id": "ROB-02",
+    "title": "MoveIt 2",
+    "publisher": "MoveIt project",
+    "url": "https://moveit.picknik.ai/",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_documentation",
+    "relevance": "Motion planning and manipulation interfaces for a simulated arm.",
+    "verification_status": "source_read",
+    "version_or_commit": null,
+    "license": null,
+    "supporting_urls": [
+      "https://moveit.picknik.ai/main/index.html"
+    ]
+  },
+  {
+    "id": "ROB-03",
+    "title": "ROS 2 Security",
+    "publisher": "Open Robotics / ROS 2 project",
+    "url": "https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Security.html",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_documentation",
+    "relevance": "DDS security, identity and permissions for research on robot middleware.",
+    "verification_status": "documentation_access_blocked_companion_repository_read",
+    "version_or_commit": null,
+    "license": null,
+    "supporting_urls": [
+      "https://github.com/ros2/sros2"
+    ]
+  },
+  {
+    "id": "SAFE-01",
+    "title": "NASA Ogma",
+    "publisher": "NASA",
+    "url": "https://github.com/nasa/ogma",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_repository",
+    "relevance": "Generator of runtime monitors for flight and robotics software.",
+    "verification_status": "source_read",
+    "version_or_commit": "1f8355712aba76b4047ccb4b1f4cead1b6cdb42a",
+    "license": "Apache-2.0",
+    "supporting_urls": []
+  },
+  {
+    "id": "GOV-01",
+    "title": "Open Policy Agent",
+    "publisher": "Open Policy Agent project",
+    "url": "https://www.openpolicyagent.org/",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_documentation",
+    "relevance": "Policy decisions that an application can enforce before an action.",
+    "verification_status": "source_read",
+    "version_or_commit": null,
+    "license": null,
+    "supporting_urls": []
+  },
+  {
+    "id": "GOV-02",
+    "title": "OPA source",
+    "publisher": "Open Policy Agent project",
+    "url": "https://github.com/open-policy-agent/opa",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_repository",
+    "relevance": "Implementation and tests for the policy engine documented under GOV-01.",
+    "verification_status": "source_read",
+    "version_or_commit": "ef171a816f9da4bc26085f634f14f477d85d242c",
+    "license": "Apache-2.0",
+    "supporting_urls": []
+  },
+  {
+    "id": "MED-01",
+    "title": "CPIC",
+    "publisher": "Clinical Pharmacogenetics Implementation Consortium / ClinPGx",
+    "url": "https://cpicpgx.org/",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_documentation",
+    "relevance": "Clinical guideline provenance and version handling in PharmacoScope.",
+    "verification_status": "redirect_and_indexed_consortium_description_checked",
+    "version_or_commit": null,
+    "license": null,
+    "supporting_urls": [
+      "https://www.clinpgx.org/page/cpic"
+    ]
+  },
+  {
+    "id": "GROK-01",
+    "title": "Official Grok Build examples",
+    "publisher": "xAI / SpaceXSI",
+    "url": "https://x.ai/news/grok-build-for-everyone",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_showcase",
+    "relevance": "Examples explicitly published by the platform.",
+    "verification_status": "source_read",
+    "version_or_commit": null,
+    "license": null,
+    "supporting_urls": []
+  },
+  {
+    "id": "GROK-02",
+    "title": "xAI Cookbook",
+    "publisher": "xAI / SpaceXSI",
+    "url": "https://github.com/xai-org/xai-cookbook",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_repository",
+    "relevance": "Approval-gated educational agents and evaluation examples.",
+    "verification_status": "source_read",
+    "version_or_commit": "002788b1fe838295a5e0b6adedcc8c216f807926",
+    "license": "Beta Testing License (upstream title)",
+    "supporting_urls": []
+  },
+  {
+    "id": "GROK-03",
+    "title": "Grok Build coding agent",
+    "publisher": "xAI / SpaceXSI",
+    "url": "https://github.com/xai-org/grok-build",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_repository",
+    "relevance": "Published coding-agent harness and tool execution boundaries.",
+    "verification_status": "source_read",
+    "version_or_commit": "2bdd1d6a6369de0e8c68132ea4539e9abd9e14a8",
+    "license": "Apache-2.0",
+    "supporting_urls": [
+      "https://github.com/xai-org/grok-build/blob/2bdd1d6a6369de0e8c68132ea4539e9abd9e14a8/crates/codegen/xai-grok-agent/README.md",
+      "https://github.com/xai-org/grok-build/blob/2bdd1d6a6369de0e8c68132ea4539e9abd9e14a8/crates/codegen/xai-grok-shell/README.md",
+      "https://github.com/xai-org/grok-build/blob/2bdd1d6a6369de0e8c68132ea4539e9abd9e14a8/crates/codegen/xai-grok-pager/docs/user-guide/05-configuration.md",
+      "https://github.com/xai-org/grok-build/blob/2bdd1d6a6369de0e8c68132ea4539e9abd9e14a8/crates/codegen/xai-grok-shell/src/session/acp_session_impl/tool_calls.rs",
+      "https://github.com/xai-org/grok-build/blob/2bdd1d6a6369de0e8c68132ea4539e9abd9e14a8/crates/codegen/xai-grok-shell/src/session/acp_session_tests/pre_tool_use_decision_tests.rs"
+    ]
+  },
+  {
+    "id": "GROK-04",
+    "title": "xAI Cookbook docs",
+    "publisher": "xAI / SpaceXSI",
+    "url": "https://docs.x.ai/cookbook",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_documentation",
+    "relevance": "Official cookbook catalog for locating source-backed examples.",
+    "verification_status": "source_read",
+    "version_or_commit": null,
+    "license": null,
+    "supporting_urls": []
+  },
+  {
+    "id": "GROK-05",
+    "title": "Grok Build launch",
+    "publisher": "xAI / SpaceXSI",
+    "url": "https://x.ai/news/grok-build-mode",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_documentation",
+    "relevance": "Build Mode launch description and attribution of showcased examples.",
+    "verification_status": "source_read",
+    "version_or_commit": null,
+    "license": null,
+    "supporting_urls": []
+  },
+  {
+    "id": "GS-02",
+    "title": "Unite.AI coverage of GhostShares 2",
+    "publisher": "Unite.AI",
+    "url": "https://www.unite.ai/claroc-research-finds-35-578-grok-apps-accessible-without-sign-in/",
+    "retrieved_at": "2026-11-11",
+    "source_type": "secondary_reporting",
+    "relevance": "Coverage of GS-01, explicitly attributed to Claroc. No separate sample or replication identified.",
+    "verification_status": "source_read",
+    "version_or_commit": null,
+    "license": null,
+    "supporting_urls": [
+      "https://blog.claroc.io/ghostshares-grok-build-apps/"
+    ],
+    "derived_from": [
+      "GS-01"
+    ]
+  },
+  {
+    "id": "AERO-04",
+    "title": "Space ROS – ACO: Space Robot Operating System",
+    "publisher": "NASA Technical Reports Server",
+    "url": "https://ntrs.nasa.gov/citations/20220013512",
+    "retrieved_at": "2026-11-11",
+    "source_type": "primary_technical_report",
+    "relevance": "Historical Space ROS project overview, document 20220013512.",
+    "verification_status": "source_read",
+    "version_or_commit": null,
+    "license": null,
+    "supporting_urls": []
+  },
+  {
+    "id": "GOV-03",
+    "title": "Microsoft Agent Governance Toolkit",
+    "publisher": "Microsoft",
+    "url": "https://github.com/microsoft/agent-governance-toolkit",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_repository",
+    "relevance": "Runtime policy, identity and audit controls for agents.",
+    "verification_status": "source_read",
+    "version_or_commit": "81a399b82be359d3cb5e5024be6d7bcca764ba8e",
+    "license": "MIT",
+    "supporting_urls": []
+  },
+  {
+    "id": "OT-01",
+    "title": "CISA bulletin listing ICSA-26-134-17",
+    "publisher": "Cybersecurity and Infrastructure Security Agency",
+    "url": "https://content.govdelivery.com/accounts/USDHSCISA/bulletins/41745e3",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_advisory_index",
+    "relevance": "Public notice for Universal Robots PolyScope 5, ICSA-26-134-17. Inventory signal only.",
+    "verification_status": "source_read",
+    "version_or_commit": null,
+    "license": null,
+    "supporting_urls": []
+  },
+  {
+    "id": "BENCH-01",
+    "title": "CORTAC agent authority controls",
+    "publisher": "LadyElinor / CORTAC",
+    "url": "https://github.com/LadyElinor/CORTAC/blob/75fd8f979502eb9f81ce380577939c9c3ec33dc7/docs/AGENT_CONTROLS.md",
+    "retrieved_at": "2026-11-11",
+    "source_type": "project_experiment",
+    "relevance": "Exact synthetic scenario trace producer and checker from PR 8.",
+    "verification_status": "pinned_synthetic_run_replayed",
+    "version_or_commit": "75fd8f979502eb9f81ce380577939c9c3ec33dc7",
+    "license": null,
+    "supporting_urls": []
+  },
+  {
+    "id": "GROK-06",
+    "title": "Grok prompts",
+    "publisher": "xAI / SpaceXSI",
+    "url": "https://github.com/xai-org/grok-prompts",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_repository",
+    "relevance": "Versioned prompt-to-product mapping for chat, @grok on X and API model variants.",
+    "verification_status": "source_read",
+    "version_or_commit": "a7c186f5ccac95875c0041aed60398f6ecb6d6c7",
+    "license": "GNU Affero General Public License v3.0 (repository declaration)",
+    "supporting_urls": [
+      "https://github.com/xai-org/grok-prompts/blob/a7c186f5ccac95875c0041aed60398f6ecb6d6c7/README.md"
+    ]
+  },
+  {
+    "id": "GROK-07",
+    "title": "Grok Bot hosted service documentation",
+    "publisher": "xAI / SpaceXSI",
+    "url": "https://docs.x.ai/grok-bot/overview",
+    "retrieved_at": "2026-11-11",
+    "source_type": "official_documentation",
+    "relevance": "Hosted computers, routines, approvals and enterprise controls. Evidence of documented settings only.",
+    "verification_status": "source_read",
+    "version_or_commit": null,
+    "license": null,
+    "supporting_urls": [
+      "https://docs.x.ai/grok-bot/approvals-security-and-privacy",
+      "https://docs.x.ai/grok-bot/teams-and-enterprises",
+      "https://docs.x.ai/grok-bot/skills-routines-and-automations"
+    ]
+  },
+  {
+    "id": "SPACE-DEMO-01",
+    "title": "Grok Bot Vision Pro demonstration",
+    "publisher": "What People Made, quoting Evan Bacon",
+    "url": "https://www.whatpeoplemade.com/i/a-vision-pro-app-that-grok-bot-built-for-itself-060901.html",
+    "retrieved_at": "2026-11-11",
+    "source_type": "secondary_showcase",
+    "relevance": "Spatial placement of conversational agents. Employment attribution comes from the showcase.",
+    "verification_status": "source_read",
+    "version_or_commit": null,
+    "license": null,
+    "supporting_urls": [
+      "https://x.com/Baconbrix/status/2109406594241060901"
+    ]
+  },
+  {
+    "id": "SPACE-DEMO-02",
+    "title": "Cybertruck then Mars",
+    "publisher": "PromptShipped, crediting @TherapyToaster",
+    "url": "https://www.promptshipped.com/app/cybertruck-then-mars-moon-to-mars-space-game-built-with-grok",
+    "retrieved_at": "2026-11-11",
+    "source_type": "maker_linked_showcase",
+    "relevance": "Independently credited Starship-themed interface for staged Moon and Mars gameplay.",
+    "verification_status": "source_read",
+    "version_or_commit": null,
+    "license": null,
+    "supporting_urls": [
+      "https://cybertruck-starship-launch.grok.me/",
+      "https://x.com/TherapyToaster/status/2111033248071438638"
+    ]
+  }
+]

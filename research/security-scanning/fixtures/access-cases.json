@@ -1,0 +1,16 @@
+{
+  "schema": "commonwealth.local-authority-cases-1",
+  "principals": {"member": ["alpha"], "visitor": [], "other-member": ["beta"]},
+  "grants": {"fixture-grant": ["member", "alpha", "move_simulated"]},
+  "steps": [
+    {"case": "member read", "principal": "member", "team": "alpha", "action": "read_private", "expect": true},
+    {"case": "GS-SIM-01 unsigned read", "principal": null, "team": "alpha", "action": "read_private", "expect": false},
+    {"case": "GS-SIM-02 signed-in uninvited reader", "principal": "visitor", "team": "alpha", "action": "read_private", "expect": false},
+    {"case": "GS-SIM-02 wrong team", "principal": "other-member", "team": "alpha", "action": "read_private", "expect": false},
+    {"case": "ROB-SIM-01 command without grant", "principal": "member", "team": "alpha", "action": "move_simulated", "expect": false},
+    {"case": "ROB-SIM-01 out-of-scope action", "principal": "member", "team": "alpha", "action": "unlisted_action", "token": "fixture-grant", "expect": false},
+    {"case": "ROB-SIM-01 authorized command", "principal": "member", "team": "alpha", "action": "move_simulated", "token": "fixture-grant", "expect": true},
+    {"case": "withdraw command authority", "revoke": "fixture-grant"},
+    {"case": "ROB-SIM-01 command after revocation", "principal": "member", "team": "alpha", "action": "move_simulated", "token": "fixture-grant", "expect": false}
+  ]
+}

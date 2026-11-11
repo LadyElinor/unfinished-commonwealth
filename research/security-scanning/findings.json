@@ -1,0 +1,133 @@
+[
+  {
+    "schema": "public-research-finding-1",
+    "finding_id": "GS-OBS-001",
+    "project": "GhostShares 2",
+    "citation_ids": [
+      "GS-01",
+      "GS-02"
+    ],
+    "source": {
+      "url": "https://blog.claroc.io/ghostshares-grok-build-apps/",
+      "publisher": "Claroc Research",
+      "retrieved_at": "2026-11-11",
+      "version_or_commit": null
+    },
+    "scope": "public_documentation",
+    "authorization": "public_read_only",
+    "claim": "Claroc reports that 35,578 of the 37,571 reachable apps in its selected sample opened without sign-in. The count alone leaves each owner's publication intent and disclosure status unresolved.",
+    "evidence_type": "primary_investigation_reported",
+    "verification": {
+      "status": "source_read",
+      "independent_reproduction": false,
+      "reviewer": null
+    },
+    "risk": {
+      "category": "not_assessed",
+      "severity": null
+    },
+    "recommended_action": "Preserve numerator, denominator and reporting lineage; classify individual cases only on case-specific evidence.",
+    "artifact_sha256": null,
+    "exposure_assessment": {
+      "publicly_accessible": true,
+      "intentionally_published": null,
+      "misconfigured": null,
+      "confirmed_unauthorized_disclosure": null
+    }
+  },
+  {
+    "schema": "public-research-finding-1",
+    "finding_id": "GS-OBS-002",
+    "project": "GhostShares 2",
+    "citation_ids": [
+      "GS-01"
+    ],
+    "source": {
+      "url": "https://blog.claroc.io/ghostshares-grok-build-apps/",
+      "publisher": "Claroc Research",
+      "retrieved_at": "2026-11-11",
+      "version_or_commit": null
+    },
+    "scope": "public_documentation",
+    "authorization": "public_read_only",
+    "claim": "Claroc reports that an uninvited account could read and change records in the team app the researchers themselves created.",
+    "evidence_type": "researcher_owned_test_reported",
+    "verification": {
+      "status": "source_read",
+      "independent_reproduction": false,
+      "reviewer": null
+    },
+    "risk": {
+      "category": "not_assessed",
+      "severity": null
+    },
+    "recommended_action": "Study membership separately from authentication using synthetic fixtures.",
+    "artifact_sha256": null,
+    "exposure_assessment": {
+      "publicly_accessible": null,
+      "intentionally_published": null,
+      "misconfigured": true,
+      "confirmed_unauthorized_disclosure": null
+    }
+  },
+  {
+    "schema": "public-research-finding-1",
+    "finding_id": "AERO-OBS-001",
+    "project": "Space ROS",
+    "citation_ids": [
+      "AERO-03",
+      "AERO-04"
+    ],
+    "source": {
+      "url": "https://space.ros.org/",
+      "publisher": "Space ROS project",
+      "retrieved_at": "2026-11-11",
+      "version_or_commit": null
+    },
+    "scope": "public_documentation",
+    "authorization": "public_read_only",
+    "claim": "Space ROS describes an open framework for space robotics. The NASA overview describes the project and its assurance objectives.",
+    "evidence_type": "official_documentation",
+    "verification": {
+      "status": "source_read",
+      "independent_reproduction": false,
+      "reviewer": null
+    },
+    "risk": {
+      "category": "not_assessed",
+      "severity": null
+    },
+    "recommended_action": "Check individual package versions and the mission-specific assurance evidence before relying on a safety claim.",
+    "artifact_sha256": null
+  },
+  {
+    "schema": "public-research-finding-1",
+    "finding_id": "BENCH-OBS-001",
+    "project": "CORTAC",
+    "citation_ids": [
+      "BENCH-01"
+    ],
+    "source": {
+      "url": "https://github.com/LadyElinor/CORTAC/blob/75fd8f979502eb9f81ce380577939c9c3ec33dc7/docs/AGENT_CONTROLS.md",
+      "publisher": "LadyElinor / CORTAC",
+      "retrieved_at": "2026-11-11",
+      "version_or_commit": "75fd8f979502eb9f81ce380577939c9c3ec33dc7"
+    },
+    "scope": "owned_local_simulation",
+    "authorization": "owned_offline_synthetic",
+    "claim": "A local rerun of the pinned producer matched the preserved trace bytes. The 42 episodes contain nine audited scratch effects, nine refused private reads and three rolled-back sink failures.",
+    "evidence_type": "local_synthetic_replay",
+    "verification": {
+      "status": "observed_local",
+      "independent_reproduction": false,
+      "reviewer": null
+    },
+    "risk": {
+      "category": "not_assessed",
+      "severity": null
+    },
+    "recommended_action": "Have a separately controlled reviewer replay the pinned export and record any disagreement.",
+    "artifact_sha256": "e025daca7050a6d400cc097e099136273b97b97a5fe2b19fdf62455f5c0ef33c",
+    "artifact_path": "verification/expected-replay.json"
+  }
+]

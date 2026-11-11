@@ -1,0 +1,13 @@
+{
+  "nav2": {
+    "nav2_revision": "94d1c2a345dda6ff637e6a72c9101d927ee99f19",
+    "serialized_bytes": 81,
+    "cdr_round_trip": true
+  },
+  "lunar_weevil": {
+    "weevil_revision": "84904cbea653b98b85d3a012dc3806c62761c884",
+    "mujoco": "3.3.7",
+    "steps": 2000,
+    "simulated_seconds": 2.0
+  }
+}

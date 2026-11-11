@@ -1,0 +1,190 @@
+{
+  "title": "Grok.me public project inspection",
+  "as_of": "2026-11-11",
+  "scope": "Twelve additional candidate projects selected for fit with ongoing work. Discovered through maker-linked public showcase listings. This is a shortlist, with no inference about the broader population.",
+  "evidence_levels": {
+    "exercised": "A named UI behavior was directly exercised and observed.",
+    "page": "Read the public app interface. Any additional maker-directory features are explicitly attributed to the listing.",
+    "listing": "Read the public maker-linked listing. The app homepage returned HTTP 403 to a direct request in this pass."
+  },
+  "reuse": "No individual app reuse license was established. Links to original posts are taken from the directory; the posts were not independently verified. Adaptation ideas and proposed checks are suggestions for the user's projects.",
+  "discovery": "https://www.promptshipped.com/tool/grok",
+  "entries": [
+    {
+      "name": "Prompt Injection Scanner",
+      "app_url": "https://injectionguard.grok.me/",
+      "listing_url": "https://www.promptshipped.com/app/prompt-injection-scanner-built-with-grok",
+      "listed_maker": "@Biggs237",
+      "original_post_linked_by_listing": "https://x.com/Biggs237/status/2116838920377790720",
+      "evidence": "page",
+      "project_matches": [
+        "CORTAC",
+        "Adiona"
+      ],
+      "observed_or_attributed": "The app displays its weighted text categories, score bands and a Download HTML control.",
+      "proposed_application": "Use the score as an advisory flag. Keep it outside command authorization.",
+      "proposed_check": "In local CORTAC fixtures, hold the warrant fixed and vary the text. A score change must leave approval, revocation and commit outcomes unchanged."
+    },
+    {
+      "name": "Planning and Development",
+      "app_url": "https://planning-and-devolopent-notes.grok.me/",
+      "listing_url": "https://www.promptshipped.com/app/planning-and-development-markdown-notebook-built-with-grok",
+      "listed_maker": "@AkDravenwolf",
+      "original_post_linked_by_listing": "https://x.com/AkDravenwolf/status/2112271917361348682",
+      "evidence": "page",
+      "project_matches": [
+        "CORTAC",
+        "Warranted Constitution"
+      ],
+      "observed_or_attributed": "The demo notebook describes assistant access to read and edit. The maker-linked listing describes a read-without-editing option.",
+      "proposed_application": "Adapt this as a visible permission for reading a decision record and a separate permission for changing it.",
+      "proposed_check": "Run a synthetic read-only review, produce a suggested change, withdraw edit authority and check the original bytes and audit trail."
+    },
+    {
+      "name": "Chance Lab",
+      "app_url": "https://nther.grok.me/",
+      "listing_url": "https://www.promptshipped.com/app/chance-lab-probability-simulator-built-with-grok",
+      "listed_maker": "@alfafahad001",
+      "original_post_linked_by_listing": "https://x.com/alfafahad001/status/2116880564863017383",
+      "evidence": "exercised",
+      "project_matches": [
+        "Unfinished Commonwealth",
+        "Evaluating AI Claims in Life Sciences"
+      ],
+      "observed_or_attributed": "Displays observed counts against a chosen coin or dice model and resets the tally on a new coin weight.",
+      "proposed_application": "Pair a predeclared baseline with observed outcomes in the workshop or study viewer.",
+      "observed_check": "With heads weight set to 100%, running 20 trials returned 20 heads, 0 tails, and a displayed gap of 0.0 percentage points. The explanation still cautioned about the small sample. Use a separate explanation for deterministic settings."
+    },
+    {
+      "name": "Mars Colony",
+      "app_url": "https://mars-colony.grok.me/",
+      "listing_url": "https://www.promptshipped.com/app/mars-colony-base-building-game-built-with-grok",
+      "listed_maker": "@1776_13",
+      "original_post_linked_by_listing": "https://x.com/1776_13/status/2119892912511009214",
+      "evidence": "page",
+      "project_matches": [
+        "Marscraft"
+      ],
+      "observed_or_attributed": "The public page shows landing status and keyboard building controls. The listing describes terrain, habitat and solar blocks and browser saves.",
+      "proposed_application": "Use the landing-to-construction sequence to introduce life support and energy.",
+      "proposed_check": "Try one starter habitat. Show its power and oxygen budgets before placement, after placement and after a save/reload."
+    },
+    {
+      "name": "Orrery",
+      "app_url": "https://goodorrery.grok.me/",
+      "listing_url": "https://www.promptshipped.com/app/orrery-solar-system-model-built-with-grok",
+      "listed_maker": "@Gr8WhiteBuffalo",
+      "original_post_linked_by_listing": "https://x.com/Gr8WhiteBuffalo/status/2114215755856167243",
+      "evidence": "page",
+      "project_matches": [
+        "Marscraft"
+      ],
+      "observed_or_attributed": "The interface offers body selection, time controls and a disclosed compression of distances and sizes. Orbital tilts are exaggerated on screen.",
+      "proposed_application": "Use a readable overview beside a mission readout in physical units.",
+      "proposed_check": "Zoom or change the display scale while keeping the same simulated instant. The numerical Earth–Mars range and derived signal delay should stay fixed."
+    },
+    {
+      "name": "Night Roadster",
+      "app_url": "https://night-roadster.grok.me/",
+      "listing_url": "https://www.promptshipped.com/app/night-roadster-neon-highway-driving-game-built-with-grok",
+      "listed_maker": "@kekiuspisimus",
+      "original_post_linked_by_listing": "https://x.com/kekiuspisimus/status/2112874776373133316",
+      "evidence": "page",
+      "project_matches": [
+        "Harbor Run"
+      ],
+      "observed_or_attributed": "The public game lists chase, cockpit and orbit cameras. Its listing describes speed and g-force displays.",
+      "proposed_application": "Display one recorded drive through different cameras with a shared telemetry strip.",
+      "proposed_check": "Replay one lap with each camera. Sector times and acceleration samples should agree across views."
+    },
+    {
+      "name": "Innerverse",
+      "app_url": "https://beacon-shale-quiet-crisp.grok.me/",
+      "listing_url": "https://www.promptshipped.com/app/innerverse-human-cell-3d-built-with-grok",
+      "listed_maker": "@haroldcarey",
+      "original_post_linked_by_listing": "https://x.com/haroldcarey/status/2116551607156629878",
+      "evidence": "page",
+      "project_matches": [
+        "PharmacoScope",
+        "Evaluating AI Claims in Life Sciences"
+      ],
+      "observed_or_attributed": "A guided tour and free exploration take the reader through seven magnification stops from a cell toward DNA.",
+      "proposed_application": "Organize a PGx teaching case from gene to variant to interpretation to a cited guideline.",
+      "proposed_check": "Ask a learner to identify which statement is a molecular observation and which relies on clinical evidence."
+    },
+    {
+      "name": "Candle Crypt Racing",
+      "app_url": "https://candlecryptracing.grok.me/",
+      "listing_url": "https://www.promptshipped.com/app/candle-crypt-racing-combat-racing-game-built-with-grok",
+      "listed_maker": "@DrKavarga",
+      "original_post_linked_by_listing": "https://x.com/DrKavarga/status/2118084441558139284",
+      "evidence": "page",
+      "project_matches": [
+        "Harbor Run"
+      ],
+      "observed_or_attributed": "The menu separates garage, circuit selection and championship play across 15 circuits.",
+      "proposed_application": "Use its menu organization for a track, weather and vehicle selection flow.",
+      "proposed_check": "Time how long a first-time driver takes to start the same track under two weather settings."
+    },
+    {
+      "name": "AERIS",
+      "app_url": "https://aer1s.grok.me/",
+      "listing_url": "https://www.promptshipped.com/app/aeris-gravity-sandbox-built-with-grok",
+      "listed_maker": "@_JER0N1M0_",
+      "original_post_linked_by_listing": "https://x.com/_JER0N1M0_/status/2116683455001989600",
+      "evidence": "page",
+      "project_matches": [
+        "Lunar Weevil",
+        "Marscraft"
+      ],
+      "observed_or_attributed": "A gravity strength slider, manipulation modes and preset scenes share a single public control panel.",
+      "proposed_application": "Provide named local stress cases beside the rover simulation controls.",
+      "proposed_check": "Reset the same seeded scene and compare run traces and units under two gravity settings. The demo's dynamics were not benchmarked."
+    },
+    {
+      "name": "THRUST",
+      "app_url": "https://thrust1.grok.me/",
+      "listing_url": "https://www.promptshipped.com/app/thrust-reusable-spacecraft-builder-built-with-grok",
+      "listed_maker": "@lI_MACHINE_Il",
+      "original_post_linked_by_listing": "https://x.com/lI_MACHINE_Il/status/2113898304459211141",
+      "evidence": "listing",
+      "project_matches": [
+        "Marscraft",
+        "Lunar Weevil"
+      ],
+      "observed_or_attributed": "The maker-linked catalog describes a hangar grid, vehicle mass properties, test flights and a turnaround-cost panel.",
+      "proposed_application": "Connect a chosen vehicle configuration to its test result and operating cost.",
+      "proposed_check": "Change one benign payload item locally and track its mass delta from the configuration screen into the test receipt."
+    },
+    {
+      "name": "RD-62 Rational-Duplex",
+      "app_url": "https://rd-1-rational-slide-rule.grok.me/",
+      "listing_url": "https://www.promptshipped.com/app/rd-62-rational-duplex-slide-rule-simulator-built-with-grok",
+      "listed_maker": "@Forgivens",
+      "original_post_linked_by_listing": "https://x.com/Forgivens/status/2113867521870717399",
+      "evidence": "listing",
+      "project_matches": [
+        "Adiona Geometric Reasoner",
+        "master maths"
+      ],
+      "observed_or_attributed": "The catalog describes a two-sided virtual slide rule showing algebra and rational-geometry quantities, with SVG or DXF plate export.",
+      "proposed_application": "Give learners an inspectable geometric construction and an exact numerical answer beside it.",
+      "proposed_check": "Use a 3–4–5 triangle with squared lengths 9, 16 and 25, and compare instrument readings with exact arithmetic."
+    },
+    {
+      "name": "Floor",
+      "app_url": "https://raven-garden-daisy-heart.grok.me/",
+      "listing_url": "https://www.promptshipped.com/app/floor-one-question-live-poll-built-with-grok",
+      "listed_maker": "@Rashidwahidi1",
+      "original_post_linked_by_listing": "https://x.com/Rashidwahidi1/status/2113007253339116023",
+      "evidence": "listing",
+      "project_matches": [
+        "Unfinished Commonwealth",
+        "legislative workshop"
+      ],
+      "observed_or_attributed": "The catalog describes an on-device, single-question poll with a running tally.",
+      "proposed_application": "Show a public consultation tally as one input alongside quorum, dissent and the formal decision.",
+      "proposed_check": "Use synthetic votes for which a majority supports a proposal while the quorum requirement remains unmet. Show both facts."
+    }
+  ]
+}
