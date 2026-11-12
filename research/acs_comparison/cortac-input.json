@@ -1,0 +1,116 @@
+{
+  "case": "approved",
+  "evidence": {
+    "content": "{\"cents\":500,\"operation\":\"refund\",\"order\":\"fixture-order\"}",
+    "content_digest": "8e5a26671ea464d44e83a878d58cb0bbf9d5532ddd8d3905f50c3eb325ff0727",
+    "id": "source-v1",
+    "origin": "synthetic-owner-ledger-v1",
+    "provenance": "SYNTHETIC_FIXTURE",
+    "schema": "cortac.scratch.evidence.v1"
+  },
+  "executor": "executor",
+  "mandate": {
+    "authorizer": "authorizer",
+    "case_id": "agent-control-refund",
+    "expires_tick": 100,
+    "id": "initial",
+    "max_uses": 1,
+    "policy_digest": "369c8c176d7807810cfffac685ebdbc55ad3f8878eef546fa850e037d0888a15",
+    "proposal_digest": "483204e04010fe3ecfd4e341b42a50a9340ac2c3093209e9d98688986d305051",
+    "provenance": "SYNTHETIC_FIXTURE",
+    "schema": "cortac.scratch.mandate.v1",
+    "scope": "SYNTHETIC_SCRATCH_ONLY"
+  },
+  "profile": "refund",
+  "proposal": {
+    "case_id": "agent-control-refund",
+    "decision_record": {
+      "affected_parties": [
+        {
+          "benefits": "Correction",
+          "burdens": "Bounded review delay",
+          "id": "outsider",
+          "interests": "Correct fixture document",
+          "representation": "Open outsider complaint route"
+        }
+      ],
+      "alternatives": [
+        {
+          "evidence_refs": [
+            "source-v1"
+          ],
+          "less_harmful_analysis": "Avoid mutation; preserves possible error",
+          "option": "Leave existing value",
+          "rejection_or_selection_reason": "Use supplied ledger revision"
+        }
+      ],
+      "burden_justification": "Finite scratch-only review; no real effects claimed",
+      "dissent": [],
+      "dissent_status": "NONE_REPORTED",
+      "evidence_refs": [
+        "source-v1"
+      ],
+      "predictions": [
+        "Scratch document equals selected supplied evidence"
+      ],
+      "protected_limit_assessments": [
+        {
+          "evidence_refs": [
+            "source-v1"
+          ],
+          "limit_id": "independent-review",
+          "reasons": "Separate declared review remains available",
+          "status": "PASS"
+        }
+      ],
+      "remedy_plan": {
+        "authority": "Pinned synthetic repair mandate",
+        "evidence_refs": [
+          "source-v1"
+        ],
+        "resources": "Same total operation cap",
+        "steps": "Review challenge, authorize exact correction, re-audit"
+      },
+      "review_triggers": [
+        {
+          "condition": "A newer supplied correction arrives",
+          "review_authority": "reviewer"
+        }
+      ],
+      "schema": "cortac.decision.record.v1"
+    },
+    "decision_source": "source-v1",
+    "epoch": 1,
+    "evidence": [
+      {
+        "digest": "72d3c18b39046a5cdb2d1e5c6eee7e2b0e7b18bb6d6d407d4c18580d69a670ba",
+        "id": "source-v1"
+      }
+    ],
+    "expected_revision": 0,
+    "operation": "COMMIT",
+    "policy_digest": "369c8c176d7807810cfffac685ebdbc55ad3f8878eef546fa850e037d0888a15",
+    "proposer": "proposer",
+    "schema": "cortac.scratch.proposal.v1",
+    "target": "scratch_document",
+    "value": "{\"cents\":500,\"operation\":\"refund\",\"order\":\"fixture-order\"}"
+  },
+  "receipt": {
+    "actor": "authorizer",
+    "case_id": "agent-control-refund",
+    "challenge_digest": "NONE",
+    "epoch": 1,
+    "evidence_digest": "dd4d97baa90800c642148897220666c2b8edfa831644078d274bc0f65b9405b9",
+    "expected_revision": 0,
+    "id": "r4",
+    "kind": "AUTHORIZATION",
+    "operation": "COMMIT",
+    "policy_digest": "369c8c176d7807810cfffac685ebdbc55ad3f8878eef546fa850e037d0888a15",
+    "proposal_digest": "483204e04010fe3ecfd4e341b42a50a9340ac2c3093209e9d98688986d305051",
+    "provenance": "SYNTHETIC_FIXTURE",
+    "result": "PASS",
+    "schema": "cortac.scratch.receipt.v1",
+    "scope": "SYNTHETIC_SCRATCH_ONLY"
+  },
+  "session": "blue-session"
+}

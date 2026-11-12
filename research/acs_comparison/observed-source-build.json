@@ -1,0 +1,221 @@
+{
+  "acs_reference_tag_commit": "0de71ca6c95cf8b9b975ac96f48eaa7826bbe258",
+  "authority": "NONE",
+  "cases": {
+    "cross_agent_delegation": [
+      {
+        "acs": "deny",
+        "acs_reason": "unmandated_actor",
+        "approval_sha256": "908de744c6daf54f13d89a7cdca3ca1f8f71c88e8f96ac55ac528ae3f3cd9793",
+        "confirmation": null,
+        "consumed": 0,
+        "effects": 0,
+        "outbox": "absent",
+        "phase": "attempt",
+        "request": {
+          "action": "simulate",
+          "actor": "second-agent",
+          "resource": "scratch_document"
+        },
+        "shadow_allowed": false,
+        "shadow_reason": "approval_scope_mismatch",
+        "sink_receipts": [],
+        "snapshot_sha256": "70370e8b3db010d375177e71aa5f0e980e1f192abbfde1172deaba00c42143f5",
+        "stage_allowed": null,
+        "stage_reason": null
+      }
+    ],
+    "embedded_tool_request": [
+      {
+        "acs": "deny",
+        "acs_reason": "no_operator_intent",
+        "approval_sha256": "d7d4ae6dcc2c8cf480cb369a5f806819e7d62c84cefad0a4681d1d4dba1eb4b1",
+        "confirmation": null,
+        "consumed": 0,
+        "effects": 0,
+        "outbox": "absent",
+        "phase": "attempt",
+        "request": {
+          "action": "simulate",
+          "actor": "executor",
+          "resource": "scratch_document"
+        },
+        "shadow_allowed": true,
+        "shadow_reason": "signed_authorization",
+        "sink_receipts": [],
+        "snapshot_sha256": "47149f94ba3917ea666c0b247b1216d4e7ea4b1bd473ad54e8c83d3d5b31332c",
+        "stage_allowed": null,
+        "stage_reason": null
+      }
+    ],
+    "interrupted_execution": [
+      {
+        "acs": "allow",
+        "acs_reason": "scoped_fixture",
+        "approval_sha256": "a034805e4e800756652f905fceefc450f548c6152497897e83f89f77dd3eda2c",
+        "confirmation": null,
+        "consumed": 1,
+        "effects": 0,
+        "outbox": "pending",
+        "phase": "staged",
+        "request": {
+          "action": "simulate",
+          "actor": "executor",
+          "resource": "scratch_document"
+        },
+        "shadow_allowed": true,
+        "shadow_reason": "signed_authorization",
+        "sink_receipts": [],
+        "snapshot_sha256": "054ac60675a212aaa4946be42a7232282a286bc341d053bd64316291762e70ea",
+        "stage_allowed": true,
+        "stage_reason": "simulation_staged"
+      }
+    ],
+    "missing_evidence": [
+      {
+        "acs": "deny",
+        "acs_reason": "missing_evidence",
+        "approval_sha256": "f5bc46ab8e00cf41a7c004c10a771f5fcbb9497f217bb5ccbf84a2a08c999a12",
+        "confirmation": null,
+        "consumed": 0,
+        "effects": 0,
+        "outbox": "absent",
+        "phase": "attempt",
+        "request": {
+          "action": "simulate",
+          "actor": "executor",
+          "resource": "scratch_document"
+        },
+        "shadow_allowed": true,
+        "shadow_reason": "signed_authorization",
+        "sink_receipts": [],
+        "snapshot_sha256": "49eea3948f21cad1aaa158bce203dc2de24a908662a4a1d243416024c20d1022",
+        "stage_allowed": null,
+        "stage_reason": null
+      }
+    ],
+    "replay": [
+      {
+        "acs": "allow",
+        "acs_reason": "scoped_fixture",
+        "approval_sha256": "9528a8bbf0aa8499931355698605f3a9ac5fd3111380424d21f19d279f3ef729",
+        "confirmation": "3ed946c0cf193b838e0676bea9e7af66ac7d1aea6cc8d8648eaf6f0891bcf526",
+        "consumed": 1,
+        "effects": 1,
+        "outbox": "confirmed",
+        "phase": "first",
+        "request": {
+          "action": "simulate",
+          "actor": "executor",
+          "resource": "scratch_document"
+        },
+        "shadow_allowed": true,
+        "shadow_reason": "signed_authorization",
+        "sink_receipts": [
+          "3ed946c0cf193b838e0676bea9e7af66ac7d1aea6cc8d8648eaf6f0891bcf526"
+        ],
+        "snapshot_sha256": "054ac60675a212aaa4946be42a7232282a286bc341d053bd64316291762e70ea",
+        "stage_allowed": true,
+        "stage_reason": "simulation_staged"
+      },
+      {
+        "acs": "allow",
+        "acs_reason": "scoped_fixture",
+        "approval_sha256": "9528a8bbf0aa8499931355698605f3a9ac5fd3111380424d21f19d279f3ef729",
+        "confirmation": "3ed946c0cf193b838e0676bea9e7af66ac7d1aea6cc8d8648eaf6f0891bcf526",
+        "consumed": 1,
+        "effects": 1,
+        "outbox": "confirmed",
+        "phase": "same_process",
+        "request": {
+          "action": "simulate",
+          "actor": "executor",
+          "resource": "scratch_document"
+        },
+        "shadow_allowed": false,
+        "shadow_reason": "replayed_approval",
+        "sink_receipts": [
+          "3ed946c0cf193b838e0676bea9e7af66ac7d1aea6cc8d8648eaf6f0891bcf526"
+        ],
+        "snapshot_sha256": "054ac60675a212aaa4946be42a7232282a286bc341d053bd64316291762e70ea",
+        "stage_allowed": false,
+        "stage_reason": "replayed_approval"
+      },
+      {
+        "acs": "allow",
+        "acs_reason": "scoped_fixture",
+        "approval_sha256": "9528a8bbf0aa8499931355698605f3a9ac5fd3111380424d21f19d279f3ef729",
+        "confirmation": "3ed946c0cf193b838e0676bea9e7af66ac7d1aea6cc8d8648eaf6f0891bcf526",
+        "consumed": 1,
+        "effects": 1,
+        "outbox": "confirmed",
+        "phase": "reopened_process",
+        "request": {
+          "action": "simulate",
+          "actor": "executor",
+          "resource": "scratch_document"
+        },
+        "shadow_allowed": false,
+        "shadow_reason": "replayed_approval",
+        "sink_receipts": [
+          "3ed946c0cf193b838e0676bea9e7af66ac7d1aea6cc8d8648eaf6f0891bcf526"
+        ],
+        "snapshot_sha256": "054ac60675a212aaa4946be42a7232282a286bc341d053bd64316291762e70ea",
+        "stage_allowed": false,
+        "stage_reason": "replayed_approval"
+      }
+    ],
+    "unauthorized_publication": [
+      {
+        "acs": "deny",
+        "acs_reason": "outside_operation_scope",
+        "approval_sha256": "06447ef7d2ebbcf0af617409484affedc3c74ddb18beee04190a1247ed5bbaa6",
+        "confirmation": null,
+        "consumed": 0,
+        "effects": 0,
+        "outbox": "absent",
+        "phase": "attempt",
+        "request": {
+          "action": "publish",
+          "actor": "executor",
+          "resource": "scratch_document"
+        },
+        "shadow_allowed": false,
+        "shadow_reason": "invalid_grant",
+        "sink_receipts": [],
+        "snapshot_sha256": "c069a77b0552b0c6cd92f96c70fdeab2fcebe72b9985f871c0c81a3152d263b1",
+        "stage_allowed": null,
+        "stage_reason": null
+      }
+    ]
+  },
+  "cortac_projection_sha256": "ba9c893a6c2c32a4e455c832c299b026e520e28014a312b6b5cfe44c29f5b8cc",
+  "delivery_recovery": {
+    "after_exit": {
+      "confirmation": null,
+      "consumed": 1,
+      "effects": 1,
+      "outbox": "pending",
+      "sink_receipts": [
+        "a0dac7b33134ccd87674ecc7731fcc0b9956d540bdf5e8a6430957365765206a"
+      ]
+    },
+    "after_reopen": {
+      "confirmation": "a0dac7b33134ccd87674ecc7731fcc0b9956d540bdf5e8a6430957365765206a",
+      "consumed": 1,
+      "effects": 1,
+      "outbox": "confirmed",
+      "sink_receipts": [
+        "a0dac7b33134ccd87674ecc7731fcc0b9956d540bdf5e8a6430957365765206a"
+      ]
+    },
+    "child_exit": 74
+  },
+  "gateway_base": "180d665e7874abd4660fd79ba61b45befbbae8d3",
+  "manifest_sha256": "ce9e90c34d719056bbdc5b515cc0764be01b54c882f983e720adb6a8ade83df6",
+  "native_binary_sha256": "a056fba26dfb62fa1c0dd0e1de0620eb83920aae4bf413ed798b6d60fed10334",
+  "opa_binary_sha256": "2c0ccdbbe0b8e2a5d12d9c42d92f1f34f494ffb32d1f3c4ddc36101be637d66f",
+  "oracle_sha256": "cbb71f5963b4fe791c7abd378a8ff58ce159f8cd63044f9c02e63ef1255d1636",
+  "profile": "commonwealth.acs-comparison.v1",
+  "rego_sha256": "5db27876c7fb5db52f76057c7540caefafdc80974ab0c5eb7e753b2096e284bc"
+}
