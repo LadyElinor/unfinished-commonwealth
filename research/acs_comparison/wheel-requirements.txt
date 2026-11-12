@@ -1,0 +1,2 @@
+# Linux x86-64, CPython 3.11+ ABI. This headless experiment only uses the native pre-tool hook.
+agent-control-specification==0.3.1b0 --hash=sha256:c45ffb572f42247e4c9317539cddbab3eb9009bfce3eccc865fdc764760c60c7

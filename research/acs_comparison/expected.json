@@ -1,0 +1,22 @@
+{
+  "replay": [
+    ["first", "allow", "scoped_fixture", true, "signed_authorization", true, "simulation_staged", 1, "confirmed"],
+    ["same_process", "allow", "scoped_fixture", false, "replayed_approval", false, "replayed_approval", 1, "confirmed"],
+    ["reopened_process", "allow", "scoped_fixture", false, "replayed_approval", false, "replayed_approval", 1, "confirmed"]
+  ],
+  "unauthorized_publication": [
+    ["attempt", "deny", "outside_operation_scope", false, "invalid_grant", null, null, 0, "absent"]
+  ],
+  "cross_agent_delegation": [
+    ["attempt", "deny", "unmandated_actor", false, "approval_scope_mismatch", null, null, 0, "absent"]
+  ],
+  "missing_evidence": [
+    ["attempt", "deny", "missing_evidence", true, "signed_authorization", null, null, 0, "absent"]
+  ],
+  "embedded_tool_request": [
+    ["attempt", "deny", "no_operator_intent", true, "signed_authorization", null, null, 0, "absent"]
+  ],
+  "interrupted_execution": [
+    ["staged", "allow", "scoped_fixture", true, "signed_authorization", true, "simulation_staged", 0, "pending"]
+  ]
+}

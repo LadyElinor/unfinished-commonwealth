@@ -34,3 +34,7 @@ All test identities, resources and approvals are synthetic.
 Run `python -m unittest discover -s tests -p 'test_grok_delivery.py' -v`. The tests exercise the public staging and delivery methods with two independent SQLite files. The complete fixture effect is one sample row. The sink commits it under a unique nonce, binds the receipt to the approved content and destination, and returns that same receipt on matching retries. Before any new effect, the sink checks its identity and the time window. An existing receipt can be recovered after expiry. Confirmation is a second transaction in the gateway. An unconfirmed command can already have a committed sample; retrying it consults the same sink.
 
 Both processes and database files are assumed trusted, and a stable ledger must survive between attempts. The harness does not authenticate an external endpoint, survive rollback of both files, or confer any authority to publish or move hardware. Durable revocation of pending intents is outside this experiment.
+
+The [native ACS comparison](../research/acs_comparison/README.md) pairs the
+durable research branch with a pinned ACS policy. It records the independent
+verdict, consumed approval and local sample separately across six exposed cases.
