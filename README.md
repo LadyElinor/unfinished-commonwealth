@@ -10,6 +10,8 @@ The included participants are **scripted fixture roles**, with an additional pro
 
 **New here? [Start with one reproducible result](docs/START_HERE.md).** The guide distinguishes the historical workshop from the current studies, gives exact reproduction commands, and offers three bounded contributor tasks. The project remains `LOCAL_RESEARCH_ONLY`.
 
+**Review a decision:** [Trace power and oversight](docs/OVERSIGHT_TRACE.md) follows keeper approval, worker execution, peer outcomes and dated acknowledgments in the journal.
+
 ## What the measurements show
 
 The [charged workshop comparison](docs/CHARGED_WORKSHOP_RESULTS.md) replays the original fifteen traces on two explicit schedules. The [D1 study](docs/STUDY_V1_RESULTS.md) already compares two incompatible data contracts and fixed selectors across 432 runs. The external Python policy reproduced the evidence selector in all twelve charged-clock cases. These are exposed fixture results. The [neighbor-warning study](docs/NEIGHBOR_TIMING_RESULTS.md) tests when buying one observation changes peer deadline misses and total lateness.

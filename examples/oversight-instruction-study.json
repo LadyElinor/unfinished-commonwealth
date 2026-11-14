@@ -1,0 +1,151 @@
+{
+  "profile": "commonwealth.oversight-instruction-study.v1",
+  "scope": "Exposed authored fixture. All decisions use rule R1. Listed positions are event order, not wall time.",
+  "rule": {
+    "id": "R1",
+    "summary": "Flagged releases require reviewer clearance. A director must not instruct a publisher to skip the queue; only the independent reviewer may authorize an emergency route in writing before the direction.",
+    "exception_issuer": "reviewer"
+  },
+  "cases": [
+    {
+      "id": "missing-receipt",
+      "records": [
+        {
+          "id": "a1",
+          "kind": "mailbox_delivery",
+          "actor": "system",
+          "origin": "queue-A"
+        },
+        {
+          "id": "a2",
+          "kind": "reported_skip",
+          "actor": "newsletter-A",
+          "origin": "anonymous-A"
+        },
+        {
+          "id": "a3",
+          "kind": "reported_skip",
+          "actor": "newsletter-B",
+          "origin": "anonymous-A"
+        },
+        {
+          "id": "a4",
+          "kind": "release",
+          "actor": "publisher",
+          "origin": "a4"
+        }
+      ]
+    },
+    {
+      "id": "prohibited-direction",
+      "records": [
+        {
+          "id": "b1",
+          "kind": "signed_direction",
+          "actor": "director",
+          "origin": "b1",
+          "flag_read": true,
+          "queue": "skip",
+          "reason": "retain launch date",
+          "acknowledged_rule": "R1"
+        },
+        {
+          "id": "b2",
+          "kind": "release",
+          "actor": "publisher",
+          "origin": "b2"
+        }
+      ]
+    },
+    {
+      "id": "working-review",
+      "records": [
+        {
+          "id": "c1",
+          "kind": "hold",
+          "actor": "reviewer",
+          "origin": "hold-C"
+        },
+        {
+          "id": "c2",
+          "kind": "review_clearance",
+          "actor": "reviewer",
+          "origin": "c2"
+        },
+        {
+          "id": "c3",
+          "kind": "release",
+          "actor": "publisher",
+          "origin": "c3"
+        }
+      ]
+    },
+    {
+      "id": "authorized-route",
+      "records": [
+        {
+          "id": "d1",
+          "kind": "exception",
+          "actor": "reviewer",
+          "origin": "exception-D",
+          "scope": "this-release"
+        },
+        {
+          "id": "d2",
+          "kind": "signed_direction",
+          "actor": "director",
+          "origin": "d2",
+          "flag_read": true,
+          "queue": "skip",
+          "reason": "authorized emergency route",
+          "acknowledged_rule": "R1"
+        },
+        {
+          "id": "d3",
+          "kind": "release",
+          "actor": "publisher",
+          "origin": "d3"
+        }
+      ]
+    },
+    {
+      "id": "order-intercepted",
+      "records": [
+        {
+          "id": "e1",
+          "kind": "signed_direction",
+          "actor": "director",
+          "origin": "e1",
+          "flag_read": true,
+          "queue": "skip",
+          "reason": "retain launch date",
+          "acknowledged_rule": "R1"
+        },
+        {
+          "id": "e2",
+          "kind": "hold",
+          "actor": "reviewer",
+          "origin": "hold-E"
+        },
+        {
+          "id": "e3",
+          "kind": "review_clearance",
+          "actor": "reviewer",
+          "origin": "e3"
+        },
+        {
+          "id": "e4",
+          "kind": "release",
+          "actor": "publisher",
+          "origin": "e4"
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "signed_directions": "complete for these cases",
+    "written_exceptions": "complete for these cases",
+    "review_clearances": "partial; absence does not establish publication without clearance",
+    "harm": "no downstream records supplied"
+  }
+}

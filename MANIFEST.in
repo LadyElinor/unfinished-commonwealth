@@ -11,3 +11,4 @@ include client_dist/pyproject.toml client_dist/README.md
 prune client_dist/build
 prune client_dist/src/unfinished_commonwealth_client.egg-info
 recursive-include examples/agent_profile_v1 *.py *.mjs
+recursive-include .agents/skills/trace-power-and-oversight *.md
