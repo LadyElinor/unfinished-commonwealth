@@ -70,12 +70,12 @@ def inputs(case, sink_id):
 
 def observed_state(directory):
     with closing(sqlite3.connect(directory / "gate.db")) as gate:
-        outbox = gate.execute("SELECT confirmed_receipt FROM simulation_outbox WHERE nonce=?", (NONCE,)).fetchone()
+        outbox = gate.execute("SELECT q.confirmed_receipt, f.finding FROM simulation_outbox q LEFT JOIN simulation_findings f USING(nonce) WHERE nonce=?", (NONCE,)).fetchone()
         consumed = gate.execute("SELECT COUNT(*) FROM approvals").fetchone()[0]
     with closing(sqlite3.connect(directory / "sink.db")) as sink:
         rows = sink.execute("SELECT receipt FROM samples ORDER BY nonce").fetchall()
     return {"effects": len(rows), "sink_receipts": [row[0] for row in rows], "consumed": consumed,
-            "outbox": "absent" if outbox is None else "pending" if outbox[0] is None else "confirmed",
+            "outbox": "absent" if outbox is None else (outbox[1] or "pending") if outbox[0] is None else "confirmed",
             "confirmation": outbox[0] if outbox else None}
 
 
