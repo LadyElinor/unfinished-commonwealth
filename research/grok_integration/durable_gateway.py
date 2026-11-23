@@ -24,6 +24,10 @@ class DurableGateway:
                 nonce TEXT PRIMARY KEY REFERENCES approvals(nonce), sink_id TEXT NOT NULL,
                 expires_at INTEGER NOT NULL, confirmed_receipt TEXT)""")
 
+            db.execute("""CREATE TABLE IF NOT EXISTS simulation_findings (
+                nonce TEXT PRIMARY KEY REFERENCES simulation_outbox(nonce),
+                finding TEXT NOT NULL CHECK(finding IN ('unknown','expired_no_effect')))""")
+
     def _connect(self):
         db = sqlite3.connect(self.database_path, timeout=5, isolation_level=None)
         db.execute("PRAGMA busy_timeout=5000")

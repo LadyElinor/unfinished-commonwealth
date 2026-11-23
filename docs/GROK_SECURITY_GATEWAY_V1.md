@@ -38,3 +38,5 @@ Both processes and database files are assumed trusted, and a stable ledger must 
 The [native ACS comparison](../research/acs_comparison/README.md) pairs the
 durable research branch with a pinned ACS policy. It records the independent
 verdict, consumed approval and local sample separately across six exposed cases.
+
+Delivery has a separately inspectable outcome. Call `delivery_status(gateway, nonce)` for the durable finding, or `reconcile_sample(gateway, ledger, nonce, now=tick)` to inspect the designated local sink without creating a sample. A ledger that cannot be checked gives `unknown`; a matching original receipt gives `confirmed`. Only verified absence after expiry gives `expired_no_effect`. The sink seals that nonce in the same transaction as its absence check, so even concurrent or delayed retries cannot create an effect after that finding. A crash between sink and gateway commits is reconciled by reopening both. Historical null confirmations remain pending until checked. These outcomes say nothing about a separate duty to assist or notify; this adapter cannot resolve that duty. The trusted, stable sink and clock assumptions still apply.

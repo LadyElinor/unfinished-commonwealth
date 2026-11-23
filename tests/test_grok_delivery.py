@@ -8,7 +8,7 @@ from unittest.mock import patch
 
 from research.grok_integration.durable_gateway import DurableGateway
 from research.grok_integration.secure_gateway import sign_approval
-from research.grok_integration.simulation_delivery import SampleLedger, deliver_sample
+from research.grok_integration.simulation_delivery import SampleLedger, deliver_sample, delivery_status, reconcile_sample
 
 
 class SampleDeliveryTests(unittest.TestCase):
@@ -57,6 +57,44 @@ class SampleDeliveryTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'window closed'):
             deliver_sample(self.gateway, self.ledger, 'one', now=21)
         self.assertEqual(self.count(), 0)
+
+    def test_unavailable_is_unknown_then_verified_expiry_survives_restart(self):
+        self.assertTrue(self.stage().allowed)
+        self.assertEqual(reconcile_sample(self.gateway, None, 'one', now=21)['outcome'], 'unknown')
+        reopened = DurableGateway(self.root/'gate.db', self.key)
+        self.assertEqual(delivery_status(reopened, 'one')['outcome'], 'unknown')
+        sink = SampleLedger(self.ledger.path)
+        result = reconcile_sample(reopened, sink, 'one', now=21)
+        self.assertEqual(result, {'outcome':'expired_no_effect', 'receipt':None, 'obligations':'not_assessed'})
+        self.assertEqual(reconcile_sample(reopened, None, 'one'), result)
+        with self.assertRaisesRegex(ValueError, 'window closed'):
+            deliver_sample(reopened, sink, 'one', now=12)
+        self.assertEqual(self.count(), 0)
+
+    def test_reconciliation_never_delivers_and_recovers_both_commit_gaps(self):
+        self.assertTrue(self.stage().allowed)
+        self.assertEqual(reconcile_sample(self.gateway, self.ledger, 'one', now=11)['outcome'], 'pending')
+        self.assertEqual(self.count(), 0)
+        with patch('research.grok_integration.simulation_delivery._save', side_effect=OSError):
+            with self.assertRaises(OSError):
+                reconcile_sample(self.gateway, self.ledger, 'one', now=21)
+        with self.assertRaisesRegex(ValueError, 'window closed'):
+            deliver_sample(self.gateway, self.ledger, 'one', now=12)
+        self.assertEqual(delivery_status(self.gateway, 'one')['outcome'], 'expired_no_effect')
+        self.assertEqual(self.count(), 0)
+
+    def test_reconciliation_after_lost_receipt_only_observes(self):
+        self.assertTrue(self.stage().allowed)
+        with patch('research.grok_integration.simulation_delivery._save', side_effect=OSError):
+            with self.assertRaises(OSError):
+                deliver_sample(self.gateway, self.ledger, 'one', now=12)
+        with patch.object(self.ledger, 'record', side_effect=AssertionError('must not deliver')):
+            self.assertEqual(reconcile_sample(self.gateway, None, 'one')['outcome'], 'unknown')
+            found = reconcile_sample(self.gateway, self.ledger, 'one', now=22)
+            self.assertEqual(found['outcome'], 'confirmed')
+            self.assertTrue(found['receipt'])
+            self.assertEqual(delivery_status(self.gateway, 'one'), found)
+        self.assertEqual(self.count(), 1)
 
     def test_concurrent_delivery(self):
         self.assertTrue(self.stage().allowed)
