@@ -1,0 +1,41 @@
+[Unit]
+Description=Unfinished Commonwealth change review recorder
+After=local-fs.target
+RequiresMountsFor=/var/lib/commonwealth-change-review /opt/commonwealth
+StartLimitIntervalSec=60
+StartLimitBurst=4
+
+[Service]
+Type=exec
+User=commonwealth-review
+Group=commonwealth-review
+EnvironmentFile=/etc/commonwealth/change-review.env
+Environment=PYTHONDONTWRITEBYTECODE=1 PYTHONNOUSERSITE=1
+ExecStart=/opt/commonwealth/bin/commonwealth-change-review serve --database /var/lib/commonwealth-change-review/reviews.sqlite --socket /run/commonwealth-change-review/service.sock --submitter-uid ${SUBMITTER_UID} --reviewer-uid ${REVIEWER_UID}
+RuntimeDirectory=commonwealth-change-review
+RuntimeDirectoryMode=0750
+StateDirectory=commonwealth-change-review
+StateDirectoryMode=0700
+UMask=0077
+Restart=on-failure
+RestartSec=2s
+TimeoutStopSec=20s
+NoNewPrivileges=true
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_UNIX
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+TasksMax=32
+MemoryMax=256M
+LimitNOFILE=128
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

@@ -4,13 +4,13 @@
 
 The research question is practical: can a community improve its cooperation as its participants, circumstances, and procedures change?
 
-The frozen workshop runtime is **0.1.3**. This checkout also includes separately versioned research harnesses and participant tooling, packaged as the unpublished **0.1.4rc2** candidate. It runs real integer-data transformations inside a bounded workshop, shares a record-inspection budget between two jobs, records testimony and predictions, and passes a tested practice to a successor working on different data. Python 3.11 or later is sufficient for the core runtime and tests. Optional Assembly, JSON-schema and JavaScript checks have additional dependencies.
+The frozen workshop runtime is **0.1.3**. This checkout also includes separately versioned research harnesses and participant tooling, packaged alongside the new Change Review service in **0.1.4rc3**. It runs real integer-data transformations inside a bounded workshop, shares a record-inspection budget between two jobs, records testimony and predictions, and passes a tested practice to a successor working on different data. Python 3.11 or later is sufficient for the core runtime and tests. Optional Assembly, JSON-schema and JavaScript checks have additional dependencies.
 
 The included participants are **scripted fixture roles**, with an additional proposal-only JSON interface for a separately operated model or human. No model-backed study has been run. This repository does not establish independent machine persons, autonomous civilization, or authority outside its local workshop.
 
-**New here? [Start with one reproducible result](docs/START_HERE.md).** The guide distinguishes the historical workshop from the current studies, gives exact reproduction commands, and offers three bounded contributor tasks. The project remains `LOCAL_RESEARCH_ONLY`.
+**New here? [Start with one reproducible result](docs/START_HERE.md).** The guide distinguishes the historical workshop from the current studies, gives exact reproduction commands, and offers three bounded contributor tasks. These workshop studies remain `LOCAL_RESEARCH_ONLY`.
 
-**Release candidate.** [Reproduce 0.1.4rc2](docs/RELEASE_0_1_4_RC2.md) from one checkout, including the installed wheel and client.
+**Change Review service.** Record real software change proposals and review decisions on one Linux host. The [operator guide](docs/CHANGE_REVIEW_OPERATIONS.md) covers installation from the candidate wheel, local account roles, receipts, monitoring and restore. The earlier [0.1.4rc2 research build](docs/RELEASE_0_1_4_RC2.md) remains available from its pinned branch.
 
 **Two volunteer roles are open for the paired maintenance study.** An independent custodian controls private defect intake. A separate grading lead organizes blinded patch evaluation. Role descriptions, workload and the public sign-up are in [Issue #7](https://github.com/LadyElinor/unfinished-commonwealth/issues/7). Please post only your role interest and availability there. Case material belongs in the custodian’s private channel after the witnessed freeze.
 

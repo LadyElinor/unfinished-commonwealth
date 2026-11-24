@@ -5,6 +5,7 @@ include examples/role-history-traces.jsonl.gz
 recursive-include scripts *.py *.mjs
 recursive-include tests *.py *.json
 recursive-include commonwealth/data *.json
+recursive-include commonwealth/change_review_v1/deploy *.service *.env.example
 exclude .local/*
 
 recursive-include client_dist/src *.py *.txt

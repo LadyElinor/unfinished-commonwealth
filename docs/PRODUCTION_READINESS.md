@@ -1,5 +1,7 @@
 # Production readiness: operational candidate, blocked release
 
+The fixture-based O1 assessment below applies to its historical release candidate. The separately versioned [Change Review service](CHANGE_REVIEW_OPERATIONS.md) introduced in distribution 0.1.4rc3 has an actual change-record schema, a packaged Linux unit, installed-service acceptance checks and its own operational launch decision.
+
 ## Target and decision boundary
 
 The intended next product is a trusted-operator, single-host, noncritical

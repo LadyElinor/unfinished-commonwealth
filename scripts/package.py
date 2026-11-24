@@ -20,6 +20,10 @@ import tempfile
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
+CHANGE_REVIEW_RESOURCES = (
+    "commonwealth/change_review_v1/deploy/commonwealth-change-review.service",
+    "commonwealth/change_review_v1/deploy/change-review.env.example",
+)
 
 
 def run(arguments, cwd, expected=0):
@@ -72,6 +76,7 @@ def main():
         source = roots[0]
         for relative in ("README.md", "LICENSE", "docs/PROTOCOL.md",
                          "scripts/verify.py", "scripts/check_reproduction.py", "tests/test_workshop.py",
+                         "scripts/change_review_acceptance.py", "scripts/change_review_systemd.py", *CHANGE_REVIEW_RESOURCES,
                          "docs/RELEASE_0_1_4_RC2.md", "docs/MAINTENANCE_CUSTODY_HANDOFF.md",
                          "commonwealth/data/scenarios.json", "docs/STUDY_V1_DESIGN.md",
                          "commonwealth/study_v1/engine.py", "tests/test_study_scheduler.py",
@@ -138,8 +143,9 @@ def main():
         if len(wheels) != 1:
             raise RuntimeError("Expected exactly one wheel")
         with zipfile.ZipFile(wheels[0]) as archive:
-            if "commonwealth/data/scenarios.json" not in archive.namelist():
-                raise RuntimeError("Wheel omitted fixture data")
+            for member in ("commonwealth/data/scenarios.json", *CHANGE_REVIEW_RESOURCES):
+                if member not in archive.namelist() or archive.read(member) != (source / member).read_bytes():
+                    raise RuntimeError(f"Wheel resource differs from its source distribution: {member}")
         environment = temporary / "venv"
         run([sys.executable, "-m", "venv", str(environment)], temporary)
         executable = environment / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
@@ -153,8 +159,10 @@ def main():
             "import json, commonwealth; from importlib.metadata import version; "
             "print(json.dumps({'module_version': commonwealth.__version__, "
             "'distribution_version': version('unfinished-commonwealth')}))"], smoke))
-        if installed["module_version"] != "0.1.3" or installed["distribution_version"] != "0.1.4rc2":
+        if installed["module_version"] != "0.1.3" or installed["distribution_version"] != "0.1.4rc3":
             raise RuntimeError("Installed historical runtime or prerelease distribution version mismatch")
+        review_cli = command.with_name("commonwealth-change-review" + command.suffix)
+        run([str(review_cli), "--help"], smoke)
         remediation = json.loads(run([str(executable), "-m", "commonwealth.remediation_v1",
             str(source / "examples/remediation-v1-packet.json"), "--as-of", "6"], smoke))
         if (remediation["repair_status"] != "supplied-record-supports-declared-criterion"
@@ -339,7 +347,12 @@ def main():
             "installed_version": installed["module_version"],
             "distribution_version": installed["distribution_version"],
             "operational_prerequisites": operations,
-            "installed_entry_points": ["commonwealth", "python -m commonwealth"],
+            "change_review": {
+                "installed_cli_help": "PASSED",
+                "deployment_resources": list(CHANGE_REVIEW_RESOURCES),
+                "multi_uid_and_service_manager_acceptance": "SEPARATE_RECEIPTS_REQUIRED",
+            },
+            "installed_entry_points": ["commonwealth", "python -m commonwealth", "commonwealth-change-review"],
             "packaged_scenarios": sorted(fixtures), "demo_replay": replay,
             "comparison_runs": len(comparison["runs"]),
             "study_runs": study["runs"], "study_replay": study_replay,
