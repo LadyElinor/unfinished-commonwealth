@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "unfinished-commonwealth"
-version = "0.1.4rc2"
+version = "0.1.4rc3"
 description = "A persistent research workshop for cooperative agents, consequences, and institutional memory"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -13,12 +13,14 @@ dependencies = []
 [project.scripts]
 commonwealth = "commonwealth.measurement_v1.reporting:main"
 commonwealth-operations = "commonwealth.operations_v1.__main__:main"
+commonwealth-change-review = "commonwealth.change_review_v1.__main__:main"
 
 [tool.setuptools.packages.find]
 include = ["commonwealth*"]
 
 [tool.setuptools.package-data]
 commonwealth = ["data/*.json"]
+"commonwealth.change_review_v1" = ["deploy/*.service", "deploy/*.env.example"]
 
 [project.optional-dependencies]
 assembly = ["cryptography>=41"]

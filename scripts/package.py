@@ -20,6 +20,10 @@ import tempfile
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
+CHANGE_REVIEW_RESOURCES = (
+    "commonwealth/change_review_v1/deploy/commonwealth-change-review.service",
+    "commonwealth/change_review_v1/deploy/change-review.env.example",
+)
 
 
 def run(arguments, cwd, expected=0):
@@ -52,6 +56,29 @@ def extract_source(source_archive, destination):
     return root
 
 
+def check_installed_change_review(command, directory):
+    run([str(command), "--help"], directory)
+    receipt = {"installed_cli_help": "PASSED", "deployment_resources": list(CHANGE_REVIEW_RESOURCES),
+               "offline_database": "NOT_RUN_NON_LINUX", "peer_uid_and_systemd": "SEPARATE_RECEIPTS_REQUIRED"}
+    if sys.platform != "linux":
+        return receipt
+    private = directory / "change-review-state"
+    private.mkdir(mode=0o700)
+    db, backup, recovered = (str(private / name) for name in ("new.sqlite", "snapshot.sqlite", "restored.sqlite"))
+    def invoke(*args):
+        return json.loads(run([str(command), *args], directory))
+    initial = invoke("init", db)
+    snapshot = invoke("backup", db, backup)
+    restored = invoke("restore", backup, recovered, "--expected-sha256", snapshot["sha256"])
+    verified = invoke("verify", recovered)
+    if (not initial["ok"] or initial != verified or verified["records"] != 0 or verified["decisions"] != 0
+            or snapshot["register_id"] != verified["register_id"] or restored["sha256"] != snapshot["sha256"]):
+        raise RuntimeError("Installed change-review database recovery did not preserve the empty register")
+    receipt["offline_database"] = {"status": "PASSED", "operations": ["init", "backup", "restore", "verify"],
+                                   "register_preserved": True, "retained_digest_verified": True}
+    return receipt
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("directory", help="new output directory for source archive, wheel and verification")
@@ -72,6 +99,7 @@ def main():
         source = roots[0]
         for relative in ("README.md", "LICENSE", "docs/PROTOCOL.md",
                          "scripts/verify.py", "scripts/check_reproduction.py", "tests/test_workshop.py",
+                         "scripts/change_review_acceptance.py", "scripts/change_review_systemd.py", *CHANGE_REVIEW_RESOURCES,
                          "docs/RELEASE_0_1_4_RC2.md", "docs/MAINTENANCE_CUSTODY_HANDOFF.md",
                          "commonwealth/data/scenarios.json", "docs/STUDY_V1_DESIGN.md",
                          "commonwealth/study_v1/engine.py", "tests/test_study_scheduler.py",
@@ -131,15 +159,18 @@ def main():
             if not (source / relative).is_file():
                 raise RuntimeError(f"Source archive omitted {relative}")
         # Run the same checks on what downstream source users actually receive.
-        run([sys.executable, "scripts/verify.py"], source)
+        source_receipt = temporary / "source-verification.json"
+        run([sys.executable, "scripts/verify.py", "--report", str(source_receipt)], source)
+        verified_source = json.loads(source_receipt.read_text(encoding="utf-8"))
         run([sys.executable, "-c", "from setuptools.build_meta import build_wheel; "
              "import sys; build_wheel(sys.argv[1])", str(output)], source)
         wheels = list(output.glob("*.whl"))
         if len(wheels) != 1:
             raise RuntimeError("Expected exactly one wheel")
         with zipfile.ZipFile(wheels[0]) as archive:
-            if "commonwealth/data/scenarios.json" not in archive.namelist():
-                raise RuntimeError("Wheel omitted fixture data")
+            for member in ("commonwealth/data/scenarios.json", *CHANGE_REVIEW_RESOURCES):
+                if member not in archive.namelist() or archive.read(member) != (source / member).read_bytes():
+                    raise RuntimeError(f"Wheel resource differs from its source distribution: {member}")
         environment = temporary / "venv"
         run([sys.executable, "-m", "venv", str(environment)], temporary)
         executable = environment / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
@@ -153,8 +184,10 @@ def main():
             "import json, commonwealth; from importlib.metadata import version; "
             "print(json.dumps({'module_version': commonwealth.__version__, "
             "'distribution_version': version('unfinished-commonwealth')}))"], smoke))
-        if installed["module_version"] != "0.1.3" or installed["distribution_version"] != "0.1.4rc2":
+        if installed["module_version"] != "0.1.3" or installed["distribution_version"] != "0.1.4rc3":
             raise RuntimeError("Installed historical runtime or prerelease distribution version mismatch")
+        review_cli = command.with_name("commonwealth-change-review" + command.suffix)
+        change_review = check_installed_change_review(review_cli, smoke)
         remediation = json.loads(run([str(executable), "-m", "commonwealth.remediation_v1",
             str(source / "examples/remediation-v1-packet.json"), "--as-of", "6"], smoke))
         if (remediation["repair_status"] != "supplied-record-supports-declared-criterion"
@@ -335,11 +368,13 @@ def main():
             "source_archive": sources[0].name, "wheel": wheels[0].name,
             "artifact_sha256": {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in (sources[0],wheels[0])},
             "build_tools": {"python": platform.python_version(), "setuptools": distribution_version("setuptools"), "wheel": distribution_version("wheel")},
-            "source_checks": "PASSED", "clean_install": "PASSED",
+            "source_checks": verified_source["status"], "source_tests": verified_source["tests"],
+            "source_artifacts": verified_source["artifacts"], "clean_install": "PASSED",
             "installed_version": installed["module_version"],
             "distribution_version": installed["distribution_version"],
             "operational_prerequisites": operations,
-            "installed_entry_points": ["commonwealth", "python -m commonwealth"],
+            "change_review": change_review,
+            "installed_entry_points": ["commonwealth", "python -m commonwealth", "commonwealth-change-review"],
             "packaged_scenarios": sorted(fixtures), "demo_replay": replay,
             "comparison_runs": len(comparison["runs"]),
             "study_runs": study["runs"], "study_replay": study_replay,
