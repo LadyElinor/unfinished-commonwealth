@@ -87,6 +87,14 @@ def install(cleanup, wheel):
     return hashlib.sha256(unit_bytes).hexdigest()
 
 
+def remove_test_group():
+    # Ubuntu userdel may already remove a same-named, now empty primary group.
+    removed = run("groupdel", SERVICE, check=False)
+    if removed.returncode == 6 and run("getent", "group", SERVICE, check=False).returncode == 2:
+        return
+    require(removed.returncode == 0, f"groupdel failed with exit {removed.returncode}")
+
+
 def make_account(cleanup, name):
     run("useradd", "--system", "--no-create-home", "--no-user-group", "--gid", SERVICE,
         "--home-dir", "/nonexistent", "--shell", "/usr/sbin/nologin", name)
@@ -204,7 +212,7 @@ def main():
                 evidence["wheel_sha256"] = hashlib.sha256(args.wheel.read_bytes()).hexdigest()
                 evidence["installed_unit_sha256"] = install(cleanup, args.wheel.resolve())
                 run("groupadd", "--system", SERVICE)
-                cleanup.callback(run, "groupdel", SERVICE)
+                cleanup.callback(remove_test_group)
                 ids = {name: make_account(cleanup, name) for name in (SERVICE, SUBMITTER, REVIEWER)}
                 require(len(set(ids.values())) == 3 and all(uid > 0 for uid in ids.values()), "invalid test identities")
                 evidence.update(exercise(cleanup, ids))
