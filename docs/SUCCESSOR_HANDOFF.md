@@ -32,3 +32,19 @@ python -m commonwealth verify .local/successor-development/cases/case-signed-tig
 ```
 
 Use a new directory per run. The packet is a JSON object with a `cases` array, each item containing exactly a unique lowercase slug `id` and a protocol-2 `fixture` in the format of [the workshop fixtures](../commonwealth/data/scenarios.json). Each fixture must meet the fresh-tick capacity requirement above. The output contains the packet and its canonical digest, all presentations and per-case outcomes, and independently replayable donor, checkpoint and arm journals. This trial has no promotion path.
+
+## Exposed development results
+
+The [frozen design and executable](https://github.com/LadyElinor/unfinished-commonwealth/commit/c598c02859df184dccd8198634fec9d23048720d) preceded this run. The [complete per-case results](../examples/successor-handoff-development.json) retain the options, outcomes, shared inputs and journal heads. All twelve arm journals replayed. There are four distinct workshops, each observed for three decision-following ticks.
+
+| Assigned handoff | Correct primary batches / 12 | Neighbor misses / 12 | Pending neighbor batches at horizon | Primary inspections | Neighbor inspections |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| No advice, direct selector | 12 | 0 | 0 | 48 | 36 |
+| Current, follow the donor | 6 | 6 | 6 | 96 | 18 |
+| Revised, check fit first | 12 | 0 | 0 | 60 | 36 |
+
+Each arm received 114 inspection credits across the twelve scored ticks. Under current advice, tight capacity left all six affected neighbor batches unfinished, with six elapsed late ticks and eighteen inspections outstanding at the horizon. Even on the stable ample-capacity case, the donor's method used twice the primary inspections of the direct selector. The revised handoff kept that method on this one case and changed method on the other three. These results show how the transfer check can prevent a specified failure for a script that follows advice. The direct selector matched its task and neighbor outcomes and spent fewer inspections.
+
+The required fresh observation was the same across arms on each case. Across the four distinct checkpoints it consumed 16 primary and 12 neighbor inspections; all four fresh primary means were wrong and each arriving neighbor batch completed on time. These costs are separate from the table. Every final state retained the donor's one unresolved objection. The journal establishes persistence of the account, while its substantive resolution remains open.
+
+A [prospective synthetic draw](HANDOFF_DRAW.md) uses additional eligible instances generated after the freeze.

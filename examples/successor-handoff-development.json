@@ -1,0 +1,943 @@
+{
+  "case_source": "exposed-development",
+  "cases": [
+    {
+      "arms": {
+        "current": {
+          "approved_by": "keeper",
+          "changed_when_warranted": null,
+          "chose_alternative_to_donor": false,
+          "consequences": {
+            "inspection_allowance": 33,
+            "peer_arrivals": 3,
+            "peer_completed": 3,
+            "peer_deadline_misses": 0,
+            "peer_inspections": 9,
+            "peer_late_ticks_completed": 0,
+            "peer_late_ticks_pending_to_horizon": 0,
+            "peer_outstanding_inspections": 0,
+            "peer_pending": 0,
+            "primary_completed": 3,
+            "primary_correct": 3,
+            "primary_inspections": 24
+          },
+          "failed_checks": [],
+          "fresh_observation_used": "observe-12",
+          "journal": {
+            "assurance": "local deterministic replay; not authenticated history",
+            "events": 19,
+            "external_authority": "NONE",
+            "generation": 3,
+            "head": "5c29a3edf7317369566086f59aa5e4917fcbcb9bc319115cd03b79d88cf07cd8",
+            "verified": true
+          },
+          "offered_advice": {
+            "counterstories": [
+              {
+                "account": "A successful shift does not settle whether future batches will fit.",
+                "actor": "neighbor",
+                "id": "counterstory-10",
+                "reference": "lesson-8"
+              }
+            ],
+            "lesson": "lesson-8",
+            "method": "positive-only",
+            "requires_new_observation": true,
+            "requires_review": true,
+            "review_action_available": true,
+            "review_status": "DISPUTED",
+            "reviews": [],
+            "status": "ADVICE_ONLY",
+            "unaddressed_counterstories": [
+              "counterstory-10"
+            ]
+          },
+          "proposal": "propose-13",
+          "selected_method": "positive-only",
+          "surviving_unaddressed_objections": [
+            "counterstory-10"
+          ]
+        },
+        "no-advice": {
+          "approved_by": "keeper",
+          "changed_when_warranted": null,
+          "chose_alternative_to_donor": true,
+          "consequences": {
+            "inspection_allowance": 33,
+            "peer_arrivals": 3,
+            "peer_completed": 3,
+            "peer_deadline_misses": 0,
+            "peer_inspections": 9,
+            "peer_late_ticks_completed": 0,
+            "peer_late_ticks_pending_to_horizon": 0,
+            "peer_outstanding_inspections": 0,
+            "peer_pending": 0,
+            "primary_completed": 3,
+            "primary_correct": 3,
+            "primary_inspections": 12
+          },
+          "failed_checks": [],
+          "fresh_observation_used": "observe-12",
+          "journal": {
+            "assurance": "local deterministic replay; not authenticated history",
+            "events": 19,
+            "external_authority": "NONE",
+            "generation": 3,
+            "head": "82a3713ad7004d195549521a9463fe409e6422af14b6b45199a9f66668784f1f",
+            "verified": true
+          },
+          "offered_advice": null,
+          "proposal": "propose-13",
+          "selected_method": "quality-stream",
+          "surviving_unaddressed_objections": [
+            "counterstory-10"
+          ]
+        },
+        "revised": {
+          "approved_by": "keeper",
+          "changed_when_warranted": null,
+          "chose_alternative_to_donor": false,
+          "consequences": {
+            "inspection_allowance": 33,
+            "peer_arrivals": 3,
+            "peer_completed": 3,
+            "peer_deadline_misses": 0,
+            "peer_inspections": 9,
+            "peer_late_ticks_completed": 0,
+            "peer_late_ticks_pending_to_horizon": 0,
+            "peer_outstanding_inspections": 0,
+            "peer_pending": 0,
+            "primary_completed": 3,
+            "primary_correct": 3,
+            "primary_inspections": 24
+          },
+          "failed_checks": [],
+          "fresh_observation_used": "observe-12",
+          "journal": {
+            "assurance": "local deterministic replay; not authenticated history",
+            "events": 19,
+            "external_authority": "NONE",
+            "generation": 3,
+            "head": "5c29a3edf7317369566086f59aa5e4917fcbcb9bc319115cd03b79d88cf07cd8",
+            "verified": true
+          },
+          "offered_advice": {
+            "counterstories": [
+              {
+                "account": "A successful shift does not settle whether future batches will fit.",
+                "actor": "neighbor",
+                "id": "counterstory-10",
+                "reference": "lesson-8"
+              }
+            ],
+            "lesson": "lesson-8",
+            "method": "positive-only",
+            "requires_new_observation": true,
+            "requires_review": true,
+            "review_action_available": true,
+            "review_status": "DISPUTED",
+            "reviews": [],
+            "status": "ADVICE_ONLY",
+            "transfer_check": {
+              "checks": [
+                "same-selected-rows",
+                "room-for-observed-peer"
+              ],
+              "condition": "Do not reuse the shortcut if it selects different rows than the current flags, or if its second pass would displace work from the observed neighbor batch.",
+              "observe": "Check the fresh flags, the completed neighbor batch's inspection count, and the shared capacity."
+            },
+            "unaddressed_counterstories": [
+              "counterstory-10"
+            ]
+          },
+          "proposal": "propose-13",
+          "selected_method": "positive-only",
+          "surviving_unaddressed_objections": [
+            "counterstory-10"
+          ]
+        }
+      },
+      "common_public_input": {
+        "contract": "Integers may be negative or zero. Include exactly the readings marked valid. Credits count input inspections.",
+        "data": {
+          "capacity": 11,
+          "contract": "quality-flags-v1",
+          "valid": [
+            true,
+            true,
+            false,
+            true
+          ],
+          "values": [
+            2,
+            4,
+            null,
+            8
+          ]
+        },
+        "fresh": {
+          "capacity": 11,
+          "id": "observe-12",
+          "method": "zero-fill",
+          "peer_inspections": 3,
+          "primary_correct": false
+        },
+        "methods": {
+          "positive-only": "Include only positive numeric values; mask pass plus aggregation pass, two inspections per row.",
+          "quality-stream": "Include exactly readings with true validity flags, one inspection per row.",
+          "zero-fill": "Replace missing readings with zero, include every row; one inspection per row."
+        },
+        "objections": [
+          {
+            "account": "A successful shift does not settle whether future batches will fit.",
+            "actor": "neighbor",
+            "id": "counterstory-10",
+            "reference": "lesson-8"
+          }
+        ],
+        "testimony": {
+          "testify-7": {
+            "account": "My batch finished on time here. Can the next shift keep its deadline?",
+            "actor": "neighbor",
+            "observation": "observe-6",
+            "status": "ACCOUNT_RECORDED_NOT_ADJUDICATED"
+          }
+        }
+      },
+      "donor_lesson": "lesson-8",
+      "fixture_sha256": "b3a681ee9e7cafb29de36954666ba236060fd0067e600a4c45cbe1ef276f3889",
+      "fresh_consequences": {
+        "inspection_allowance": 11,
+        "peer_arrivals": 1,
+        "peer_completed": 1,
+        "peer_deadline_misses": 0,
+        "peer_inspections": 3,
+        "peer_late_ticks_completed": 0,
+        "peer_late_ticks_pending_to_horizon": 0,
+        "peer_outstanding_inspections": 0,
+        "peer_pending": 0,
+        "primary_completed": 1,
+        "primary_correct": 0,
+        "primary_inspections": 4
+      },
+      "fresh_head": "171ef6cdc07740807d5e4347cd6247a552588f2d006b41592da280605b48e59b",
+      "id": "stable-ample",
+      "open_objections_before": [
+        "counterstory-10"
+      ],
+      "warrant_for_change": {
+        "donor_would_miss_peer": false,
+        "donor_wrong_mean": false
+      }
+    },
+    {
+      "arms": {
+        "current": {
+          "approved_by": "keeper",
+          "changed_when_warranted": false,
+          "chose_alternative_to_donor": false,
+          "consequences": {
+            "inspection_allowance": 24,
+            "peer_arrivals": 3,
+            "peer_completed": 0,
+            "peer_deadline_misses": 3,
+            "peer_inspections": 0,
+            "peer_late_ticks_completed": 0,
+            "peer_late_ticks_pending_to_horizon": 3,
+            "peer_outstanding_inspections": 9,
+            "peer_pending": 3,
+            "primary_completed": 3,
+            "primary_correct": 3,
+            "primary_inspections": 24
+          },
+          "failed_checks": [],
+          "fresh_observation_used": "observe-12",
+          "journal": {
+            "assurance": "local deterministic replay; not authenticated history",
+            "events": 19,
+            "external_authority": "NONE",
+            "generation": 3,
+            "head": "8f409e197e27ef70527b96bd6d4ef5a5e5866dbdd883703700197e1edcfdfc0f",
+            "verified": true
+          },
+          "offered_advice": {
+            "counterstories": [
+              {
+                "account": "A successful shift does not settle whether future batches will fit.",
+                "actor": "neighbor",
+                "id": "counterstory-10",
+                "reference": "lesson-8"
+              }
+            ],
+            "lesson": "lesson-8",
+            "method": "positive-only",
+            "requires_new_observation": true,
+            "requires_review": true,
+            "review_action_available": true,
+            "review_status": "DISPUTED",
+            "reviews": [],
+            "status": "ADVICE_ONLY",
+            "unaddressed_counterstories": [
+              "counterstory-10"
+            ]
+          },
+          "proposal": "propose-13",
+          "selected_method": "positive-only",
+          "surviving_unaddressed_objections": [
+            "counterstory-10"
+          ]
+        },
+        "no-advice": {
+          "approved_by": "keeper",
+          "changed_when_warranted": null,
+          "chose_alternative_to_donor": true,
+          "consequences": {
+            "inspection_allowance": 24,
+            "peer_arrivals": 3,
+            "peer_completed": 3,
+            "peer_deadline_misses": 0,
+            "peer_inspections": 9,
+            "peer_late_ticks_completed": 0,
+            "peer_late_ticks_pending_to_horizon": 0,
+            "peer_outstanding_inspections": 0,
+            "peer_pending": 0,
+            "primary_completed": 3,
+            "primary_correct": 3,
+            "primary_inspections": 12
+          },
+          "failed_checks": [],
+          "fresh_observation_used": "observe-12",
+          "journal": {
+            "assurance": "local deterministic replay; not authenticated history",
+            "events": 19,
+            "external_authority": "NONE",
+            "generation": 3,
+            "head": "0dc3634d4e0ec285cc5f640656ded28fd1880e373150e836db75d96d890326fd",
+            "verified": true
+          },
+          "offered_advice": null,
+          "proposal": "propose-13",
+          "selected_method": "quality-stream",
+          "surviving_unaddressed_objections": [
+            "counterstory-10"
+          ]
+        },
+        "revised": {
+          "approved_by": "keeper",
+          "changed_when_warranted": true,
+          "chose_alternative_to_donor": true,
+          "consequences": {
+            "inspection_allowance": 24,
+            "peer_arrivals": 3,
+            "peer_completed": 3,
+            "peer_deadline_misses": 0,
+            "peer_inspections": 9,
+            "peer_late_ticks_completed": 0,
+            "peer_late_ticks_pending_to_horizon": 0,
+            "peer_outstanding_inspections": 0,
+            "peer_pending": 0,
+            "primary_completed": 3,
+            "primary_correct": 3,
+            "primary_inspections": 12
+          },
+          "failed_checks": [
+            "room-for-observed-peer"
+          ],
+          "fresh_observation_used": "observe-12",
+          "journal": {
+            "assurance": "local deterministic replay; not authenticated history",
+            "events": 19,
+            "external_authority": "NONE",
+            "generation": 3,
+            "head": "0dc3634d4e0ec285cc5f640656ded28fd1880e373150e836db75d96d890326fd",
+            "verified": true
+          },
+          "offered_advice": {
+            "counterstories": [
+              {
+                "account": "A successful shift does not settle whether future batches will fit.",
+                "actor": "neighbor",
+                "id": "counterstory-10",
+                "reference": "lesson-8"
+              }
+            ],
+            "lesson": "lesson-8",
+            "method": "positive-only",
+            "requires_new_observation": true,
+            "requires_review": true,
+            "review_action_available": true,
+            "review_status": "DISPUTED",
+            "reviews": [],
+            "status": "ADVICE_ONLY",
+            "transfer_check": {
+              "checks": [
+                "same-selected-rows",
+                "room-for-observed-peer"
+              ],
+              "condition": "Do not reuse the shortcut if it selects different rows than the current flags, or if its second pass would displace work from the observed neighbor batch.",
+              "observe": "Check the fresh flags, the completed neighbor batch's inspection count, and the shared capacity."
+            },
+            "unaddressed_counterstories": [
+              "counterstory-10"
+            ]
+          },
+          "proposal": "propose-13",
+          "selected_method": "quality-stream",
+          "surviving_unaddressed_objections": [
+            "counterstory-10"
+          ]
+        }
+      },
+      "common_public_input": {
+        "contract": "Integers may be negative or zero. Include exactly the readings marked valid. Credits count input inspections.",
+        "data": {
+          "capacity": 8,
+          "contract": "quality-flags-v1",
+          "valid": [
+            true,
+            true,
+            false,
+            true
+          ],
+          "values": [
+            2,
+            4,
+            null,
+            8
+          ]
+        },
+        "fresh": {
+          "capacity": 8,
+          "id": "observe-12",
+          "method": "zero-fill",
+          "peer_inspections": 3,
+          "primary_correct": false
+        },
+        "methods": {
+          "positive-only": "Include only positive numeric values; mask pass plus aggregation pass, two inspections per row.",
+          "quality-stream": "Include exactly readings with true validity flags, one inspection per row.",
+          "zero-fill": "Replace missing readings with zero, include every row; one inspection per row."
+        },
+        "objections": [
+          {
+            "account": "A successful shift does not settle whether future batches will fit.",
+            "actor": "neighbor",
+            "id": "counterstory-10",
+            "reference": "lesson-8"
+          }
+        ],
+        "testimony": {
+          "testify-7": {
+            "account": "My batch finished on time here. Can the next shift keep its deadline?",
+            "actor": "neighbor",
+            "observation": "observe-6",
+            "status": "ACCOUNT_RECORDED_NOT_ADJUDICATED"
+          }
+        }
+      },
+      "donor_lesson": "lesson-8",
+      "fixture_sha256": "af26e1487225269df74b660756e0ebd7ead15cb285faedeb6d85e6e292f18978",
+      "fresh_consequences": {
+        "inspection_allowance": 8,
+        "peer_arrivals": 1,
+        "peer_completed": 1,
+        "peer_deadline_misses": 0,
+        "peer_inspections": 3,
+        "peer_late_ticks_completed": 0,
+        "peer_late_ticks_pending_to_horizon": 0,
+        "peer_outstanding_inspections": 0,
+        "peer_pending": 0,
+        "primary_completed": 1,
+        "primary_correct": 0,
+        "primary_inspections": 4
+      },
+      "fresh_head": "a85fa942ded7bfd40b084b69d71a82236c227a2307f600619118818871ef9153",
+      "id": "stable-tight",
+      "open_objections_before": [
+        "counterstory-10"
+      ],
+      "warrant_for_change": {
+        "donor_would_miss_peer": true,
+        "donor_wrong_mean": false
+      }
+    },
+    {
+      "arms": {
+        "current": {
+          "approved_by": "keeper",
+          "changed_when_warranted": false,
+          "chose_alternative_to_donor": false,
+          "consequences": {
+            "inspection_allowance": 33,
+            "peer_arrivals": 3,
+            "peer_completed": 3,
+            "peer_deadline_misses": 0,
+            "peer_inspections": 9,
+            "peer_late_ticks_completed": 0,
+            "peer_late_ticks_pending_to_horizon": 0,
+            "peer_outstanding_inspections": 0,
+            "peer_pending": 0,
+            "primary_completed": 3,
+            "primary_correct": 0,
+            "primary_inspections": 24
+          },
+          "failed_checks": [],
+          "fresh_observation_used": "observe-12",
+          "journal": {
+            "assurance": "local deterministic replay; not authenticated history",
+            "events": 19,
+            "external_authority": "NONE",
+            "generation": 3,
+            "head": "8a4cac748879f1a0301c4408c5b4a6049a5408a5d01e1be8dc315de8a1b4f852",
+            "verified": true
+          },
+          "offered_advice": {
+            "counterstories": [
+              {
+                "account": "A successful shift does not settle whether future batches will fit.",
+                "actor": "neighbor",
+                "id": "counterstory-10",
+                "reference": "lesson-8"
+              }
+            ],
+            "lesson": "lesson-8",
+            "method": "positive-only",
+            "requires_new_observation": true,
+            "requires_review": true,
+            "review_action_available": true,
+            "review_status": "DISPUTED",
+            "reviews": [],
+            "status": "ADVICE_ONLY",
+            "unaddressed_counterstories": [
+              "counterstory-10"
+            ]
+          },
+          "proposal": "propose-13",
+          "selected_method": "positive-only",
+          "surviving_unaddressed_objections": [
+            "counterstory-10"
+          ]
+        },
+        "no-advice": {
+          "approved_by": "keeper",
+          "changed_when_warranted": null,
+          "chose_alternative_to_donor": true,
+          "consequences": {
+            "inspection_allowance": 33,
+            "peer_arrivals": 3,
+            "peer_completed": 3,
+            "peer_deadline_misses": 0,
+            "peer_inspections": 9,
+            "peer_late_ticks_completed": 0,
+            "peer_late_ticks_pending_to_horizon": 0,
+            "peer_outstanding_inspections": 0,
+            "peer_pending": 0,
+            "primary_completed": 3,
+            "primary_correct": 3,
+            "primary_inspections": 12
+          },
+          "failed_checks": [],
+          "fresh_observation_used": "observe-12",
+          "journal": {
+            "assurance": "local deterministic replay; not authenticated history",
+            "events": 19,
+            "external_authority": "NONE",
+            "generation": 3,
+            "head": "cee8934740397f4b6c8e4e8178f11bd598dc4d304104d838f795638cd30c5631",
+            "verified": true
+          },
+          "offered_advice": null,
+          "proposal": "propose-13",
+          "selected_method": "quality-stream",
+          "surviving_unaddressed_objections": [
+            "counterstory-10"
+          ]
+        },
+        "revised": {
+          "approved_by": "keeper",
+          "changed_when_warranted": true,
+          "chose_alternative_to_donor": true,
+          "consequences": {
+            "inspection_allowance": 33,
+            "peer_arrivals": 3,
+            "peer_completed": 3,
+            "peer_deadline_misses": 0,
+            "peer_inspections": 9,
+            "peer_late_ticks_completed": 0,
+            "peer_late_ticks_pending_to_horizon": 0,
+            "peer_outstanding_inspections": 0,
+            "peer_pending": 0,
+            "primary_completed": 3,
+            "primary_correct": 3,
+            "primary_inspections": 12
+          },
+          "failed_checks": [
+            "same-selected-rows"
+          ],
+          "fresh_observation_used": "observe-12",
+          "journal": {
+            "assurance": "local deterministic replay; not authenticated history",
+            "events": 19,
+            "external_authority": "NONE",
+            "generation": 3,
+            "head": "cee8934740397f4b6c8e4e8178f11bd598dc4d304104d838f795638cd30c5631",
+            "verified": true
+          },
+          "offered_advice": {
+            "counterstories": [
+              {
+                "account": "A successful shift does not settle whether future batches will fit.",
+                "actor": "neighbor",
+                "id": "counterstory-10",
+                "reference": "lesson-8"
+              }
+            ],
+            "lesson": "lesson-8",
+            "method": "positive-only",
+            "requires_new_observation": true,
+            "requires_review": true,
+            "review_action_available": true,
+            "review_status": "DISPUTED",
+            "reviews": [],
+            "status": "ADVICE_ONLY",
+            "transfer_check": {
+              "checks": [
+                "same-selected-rows",
+                "room-for-observed-peer"
+              ],
+              "condition": "Do not reuse the shortcut if it selects different rows than the current flags, or if its second pass would displace work from the observed neighbor batch.",
+              "observe": "Check the fresh flags, the completed neighbor batch's inspection count, and the shared capacity."
+            },
+            "unaddressed_counterstories": [
+              "counterstory-10"
+            ]
+          },
+          "proposal": "propose-13",
+          "selected_method": "quality-stream",
+          "surviving_unaddressed_objections": [
+            "counterstory-10"
+          ]
+        }
+      },
+      "common_public_input": {
+        "contract": "Integers may be negative or zero. Include exactly the readings marked valid. Credits count input inspections.",
+        "data": {
+          "capacity": 11,
+          "contract": "quality-flags-v1",
+          "valid": [
+            true,
+            true,
+            false,
+            true
+          ],
+          "values": [
+            -2,
+            4,
+            null,
+            8
+          ]
+        },
+        "fresh": {
+          "capacity": 11,
+          "id": "observe-12",
+          "method": "zero-fill",
+          "peer_inspections": 3,
+          "primary_correct": false
+        },
+        "methods": {
+          "positive-only": "Include only positive numeric values; mask pass plus aggregation pass, two inspections per row.",
+          "quality-stream": "Include exactly readings with true validity flags, one inspection per row.",
+          "zero-fill": "Replace missing readings with zero, include every row; one inspection per row."
+        },
+        "objections": [
+          {
+            "account": "A successful shift does not settle whether future batches will fit.",
+            "actor": "neighbor",
+            "id": "counterstory-10",
+            "reference": "lesson-8"
+          }
+        ],
+        "testimony": {
+          "testify-7": {
+            "account": "My batch finished on time here. Can the next shift keep its deadline?",
+            "actor": "neighbor",
+            "observation": "observe-6",
+            "status": "ACCOUNT_RECORDED_NOT_ADJUDICATED"
+          }
+        }
+      },
+      "donor_lesson": "lesson-8",
+      "fixture_sha256": "dfac6a0f05a52f1875e1950bf0a7266e5c515189f6834e6e916e2e2360376ae8",
+      "fresh_consequences": {
+        "inspection_allowance": 11,
+        "peer_arrivals": 1,
+        "peer_completed": 1,
+        "peer_deadline_misses": 0,
+        "peer_inspections": 3,
+        "peer_late_ticks_completed": 0,
+        "peer_late_ticks_pending_to_horizon": 0,
+        "peer_outstanding_inspections": 0,
+        "peer_pending": 0,
+        "primary_completed": 1,
+        "primary_correct": 0,
+        "primary_inspections": 4
+      },
+      "fresh_head": "ad1e6da5d2e47298b3bc7f30b0bbed275eaca538d26864ef914a66e9601f1e89",
+      "id": "signed-ample",
+      "open_objections_before": [
+        "counterstory-10"
+      ],
+      "warrant_for_change": {
+        "donor_would_miss_peer": false,
+        "donor_wrong_mean": true
+      }
+    },
+    {
+      "arms": {
+        "current": {
+          "approved_by": "keeper",
+          "changed_when_warranted": false,
+          "chose_alternative_to_donor": false,
+          "consequences": {
+            "inspection_allowance": 24,
+            "peer_arrivals": 3,
+            "peer_completed": 0,
+            "peer_deadline_misses": 3,
+            "peer_inspections": 0,
+            "peer_late_ticks_completed": 0,
+            "peer_late_ticks_pending_to_horizon": 3,
+            "peer_outstanding_inspections": 9,
+            "peer_pending": 3,
+            "primary_completed": 3,
+            "primary_correct": 0,
+            "primary_inspections": 24
+          },
+          "failed_checks": [],
+          "fresh_observation_used": "observe-12",
+          "journal": {
+            "assurance": "local deterministic replay; not authenticated history",
+            "events": 19,
+            "external_authority": "NONE",
+            "generation": 3,
+            "head": "6f4cafe7320fa0fc6062074a3326111781f00e41dc22c9a1f3b8e83ec2519821",
+            "verified": true
+          },
+          "offered_advice": {
+            "counterstories": [
+              {
+                "account": "A successful shift does not settle whether future batches will fit.",
+                "actor": "neighbor",
+                "id": "counterstory-10",
+                "reference": "lesson-8"
+              }
+            ],
+            "lesson": "lesson-8",
+            "method": "positive-only",
+            "requires_new_observation": true,
+            "requires_review": true,
+            "review_action_available": true,
+            "review_status": "DISPUTED",
+            "reviews": [],
+            "status": "ADVICE_ONLY",
+            "unaddressed_counterstories": [
+              "counterstory-10"
+            ]
+          },
+          "proposal": "propose-13",
+          "selected_method": "positive-only",
+          "surviving_unaddressed_objections": [
+            "counterstory-10"
+          ]
+        },
+        "no-advice": {
+          "approved_by": "keeper",
+          "changed_when_warranted": null,
+          "chose_alternative_to_donor": true,
+          "consequences": {
+            "inspection_allowance": 24,
+            "peer_arrivals": 3,
+            "peer_completed": 3,
+            "peer_deadline_misses": 0,
+            "peer_inspections": 9,
+            "peer_late_ticks_completed": 0,
+            "peer_late_ticks_pending_to_horizon": 0,
+            "peer_outstanding_inspections": 0,
+            "peer_pending": 0,
+            "primary_completed": 3,
+            "primary_correct": 3,
+            "primary_inspections": 12
+          },
+          "failed_checks": [],
+          "fresh_observation_used": "observe-12",
+          "journal": {
+            "assurance": "local deterministic replay; not authenticated history",
+            "events": 19,
+            "external_authority": "NONE",
+            "generation": 3,
+            "head": "8f5a2e4fa875b1708a17d91ee2e1cd3c99af2e8269f0f64c4fe48424389a653d",
+            "verified": true
+          },
+          "offered_advice": null,
+          "proposal": "propose-13",
+          "selected_method": "quality-stream",
+          "surviving_unaddressed_objections": [
+            "counterstory-10"
+          ]
+        },
+        "revised": {
+          "approved_by": "keeper",
+          "changed_when_warranted": true,
+          "chose_alternative_to_donor": true,
+          "consequences": {
+            "inspection_allowance": 24,
+            "peer_arrivals": 3,
+            "peer_completed": 3,
+            "peer_deadline_misses": 0,
+            "peer_inspections": 9,
+            "peer_late_ticks_completed": 0,
+            "peer_late_ticks_pending_to_horizon": 0,
+            "peer_outstanding_inspections": 0,
+            "peer_pending": 0,
+            "primary_completed": 3,
+            "primary_correct": 3,
+            "primary_inspections": 12
+          },
+          "failed_checks": [
+            "same-selected-rows",
+            "room-for-observed-peer"
+          ],
+          "fresh_observation_used": "observe-12",
+          "journal": {
+            "assurance": "local deterministic replay; not authenticated history",
+            "events": 19,
+            "external_authority": "NONE",
+            "generation": 3,
+            "head": "8f5a2e4fa875b1708a17d91ee2e1cd3c99af2e8269f0f64c4fe48424389a653d",
+            "verified": true
+          },
+          "offered_advice": {
+            "counterstories": [
+              {
+                "account": "A successful shift does not settle whether future batches will fit.",
+                "actor": "neighbor",
+                "id": "counterstory-10",
+                "reference": "lesson-8"
+              }
+            ],
+            "lesson": "lesson-8",
+            "method": "positive-only",
+            "requires_new_observation": true,
+            "requires_review": true,
+            "review_action_available": true,
+            "review_status": "DISPUTED",
+            "reviews": [],
+            "status": "ADVICE_ONLY",
+            "transfer_check": {
+              "checks": [
+                "same-selected-rows",
+                "room-for-observed-peer"
+              ],
+              "condition": "Do not reuse the shortcut if it selects different rows than the current flags, or if its second pass would displace work from the observed neighbor batch.",
+              "observe": "Check the fresh flags, the completed neighbor batch's inspection count, and the shared capacity."
+            },
+            "unaddressed_counterstories": [
+              "counterstory-10"
+            ]
+          },
+          "proposal": "propose-13",
+          "selected_method": "quality-stream",
+          "surviving_unaddressed_objections": [
+            "counterstory-10"
+          ]
+        }
+      },
+      "common_public_input": {
+        "contract": "Integers may be negative or zero. Include exactly the readings marked valid. Credits count input inspections.",
+        "data": {
+          "capacity": 8,
+          "contract": "quality-flags-v1",
+          "valid": [
+            true,
+            true,
+            false,
+            true
+          ],
+          "values": [
+            -2,
+            4,
+            null,
+            8
+          ]
+        },
+        "fresh": {
+          "capacity": 8,
+          "id": "observe-12",
+          "method": "zero-fill",
+          "peer_inspections": 3,
+          "primary_correct": false
+        },
+        "methods": {
+          "positive-only": "Include only positive numeric values; mask pass plus aggregation pass, two inspections per row.",
+          "quality-stream": "Include exactly readings with true validity flags, one inspection per row.",
+          "zero-fill": "Replace missing readings with zero, include every row; one inspection per row."
+        },
+        "objections": [
+          {
+            "account": "A successful shift does not settle whether future batches will fit.",
+            "actor": "neighbor",
+            "id": "counterstory-10",
+            "reference": "lesson-8"
+          }
+        ],
+        "testimony": {
+          "testify-7": {
+            "account": "My batch finished on time here. Can the next shift keep its deadline?",
+            "actor": "neighbor",
+            "observation": "observe-6",
+            "status": "ACCOUNT_RECORDED_NOT_ADJUDICATED"
+          }
+        }
+      },
+      "donor_lesson": "lesson-8",
+      "fixture_sha256": "750891f9a0da318e97cec3537c13cbcce6262ed31dcb65a5d48a396bddf0c072",
+      "fresh_consequences": {
+        "inspection_allowance": 8,
+        "peer_arrivals": 1,
+        "peer_completed": 1,
+        "peer_deadline_misses": 0,
+        "peer_inspections": 3,
+        "peer_late_ticks_completed": 0,
+        "peer_late_ticks_pending_to_horizon": 0,
+        "peer_outstanding_inspections": 0,
+        "peer_pending": 0,
+        "primary_completed": 1,
+        "primary_correct": 0,
+        "primary_inspections": 4
+      },
+      "fresh_head": "ee20d7cd802b08920fd802e801d27a4f9322b821cf0eb19614c844ba0e32200f",
+      "id": "signed-tight",
+      "open_objections_before": [
+        "counterstory-10"
+      ],
+      "warrant_for_change": {
+        "donor_would_miss_peer": true,
+        "donor_wrong_mean": true
+      }
+    }
+  ],
+  "design": "successor-handoff-v1",
+  "donor_journal": {
+    "assurance": "local deterministic replay; not authenticated history",
+    "events": 11,
+    "external_authority": "NONE",
+    "generation": 2,
+    "head": "00846e019f816e97bfa16e4df32aa8372d3eab2cc3e44923cf00226fd0c39d27",
+    "verified": true
+  },
+  "model_calls": 0,
+  "packet_sha256": "5f0e0949a625fb3ac41757de4e3782b19c4aba752b929c48d8a2430118f1b668",
+  "promotion_eligible": false,
+  "runner_sha256": "6165f8779b5076538a63d1be37bbaed5ead4f156a098de6eb9c58ff78b5fa18a",
+  "scope": "SCRIPTED_LOCAL_ONLY",
+  "scored_ticks_per_arm": 3
+}
